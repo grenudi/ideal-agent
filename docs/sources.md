@@ -827,3 +827,41 @@ By
 
 Takes
 : what still reaches a human: destroying or exfiltrating, weakening security, crossing trust boundaries, affecting others
+
+
+<a id="copilot-agent-firewall"></a>
+### Copilot coding agent: customize the agent firewall
+
+Url
+: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/customize-the-agent-firewall
+
+Author
+: GitHub
+
+Year
+: 2026
+
+By
+: GitHub
+
+Takes
+: downloads from allowlisted official sources pass; other hosts are flagged, not asked for
+
+
+<a id="slsa-verifying-artifacts"></a>
+### SLSA v1.0: Verifying artifacts
+
+Url
+: https://slsa.dev/spec/v1.0/verifying-artifacts
+
+Author
+: OpenSSF
+
+Year
+: 2023
+
+By
+: SLSA
+
+Takes
+: check a file's hash or provenance against an expectation from a separate trusted channel before use

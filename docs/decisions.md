@@ -635,3 +635,28 @@ About
 
 Research
 : lane-starts
+
+
+<a id="2026-11-17-reading-is-not-acting"></a>
+### 2026-11-17-reading-is-not-acting
+
+Date
+: 2026-11-17
+
+Brief
+: The author's bounds name acting on the world in his name, not reading it: a checked official download is the lane's; a mirror, a host binary, terms or money are not
+
+Decision
+: keep-a-shared-resource's bounds now say 'acting on the world in his name' - sending a message or mail, posting, publishing, a call, a pull request or patch to someone else's project, an account, terms accepted, anything bought or paid - instead of 'anything outward'; and a fourth point says what is the lane's asking no one: everything technical not on that list. A public file from a project's own release site, its checksum or signature checked against what the site publishes, kept in the work's own folder with its source and checksum recorded, used without being run on the lab host (a device may boot it from memory), needs no one's word. A file without a published checksum or signature, from a mirror, or a program to run on the host is the lane coordinator's decision, research first if needed. The coordinator card says the same.
+
+Why
+: The author, 2026-11-17: no need to ask his permission for downloads; roles should prevent this for the future; work should depend on him in such decisions as little as possible - it is a technical question, and roles' expertise handles it. Measured: two download asks in two minutes, from 'anything outward' in decision 2026-11-17-decisions-go-to-the-lane. Others gate the use of bytes, not reading them (auto mode, Copilot firewall, SLSA).
+
+Rejected
+: A list of allowed sites (it ages, and a project's own release site is already the test); every download through the lane coordinator (a checked official file needs no judgment); dropping the checksum check (a file from a hijacked link would be booted); counting licence acceptance as technical (it binds the author: his).
+
+About
+: organising-agents
+
+Research
+: reading-is-not-acting
