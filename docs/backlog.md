@@ -156,10 +156,10 @@ Opened
 ### Measure a role-named session's first turn with read-weight on plugin 0.3.0
 
 Status
-: open
+: in-progress
 
 Note
-: Before: keepers on 0.2.8 held 72,474 and 79,801 tokens at the first turn, session start 8,615 B. After: the first session started with Role: on 0.3.0 - read-weight on its transcript; expect about 1k tokens less, the session start 497 B plus the role 3.5-5.7 KB.
+: keeper-6 had no Role line (every practice at the first prompt): 80,864 tokens, as before. The clean after is surya-keeper-7, started with Role: keeper; orchestration measures it.
 
 Waits
 : plugin 0.3.0 installed on the lab and a session started with a Role line
@@ -204,6 +204,22 @@ Waits
 
 About
 : organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="skills-listed-per-role"></a>
+### Which skills and plugins a role's session lists at its start
+
+Status
+: open
+
+Note
+: surya-keeper-6 (2026-11-17, read-weight): the skill listing was 22,468 B of its first turn, ideal-agent's 11 about 4.3 KB of it, the rest other plugins' and Anthropic's skills; it had no Role line, so every practice came at its first prompt (8,375 B), as designed. Next: measure the listing by source, and see whether a role's card or the project's settings can keep only the skills it loads.
+
+About
+: housekeeping
 
 Opened
 : 2026-11-17
