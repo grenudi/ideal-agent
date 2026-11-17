@@ -12,15 +12,14 @@ ideal-knowledge-base - never a second way of making them.
 
 ## Measure
 
-- **What a started session read**: `${CLAUDE_PLUGIN_ROOT}/scripts/read-weight TRANSCRIPT` on its Claude Code
-  transcript (`~/.claude/projects/*/SESSION.jsonl`) - the context it held at its first turn, at its first act
-  on the work and at its end, in tokens, and the largest things it read before acting. The first turn is
-  mostly Claude Code's own instructions and the tools of every connector the session carries (about 75
-  thousand tokens on the lab, 2026-11-17): a role that needs no mail, web search or documents is started
-  without those connectors - the author's setting, so proposed, not changed. Since 2026-11-17 Gmail and
-  Claude Docs are off by default for new sessions (Firecrawl stays on for research); a session that needs
-  one asks the author, who turns it on from the composer's + menu, Connectors.
-- **The start weight**, per role: `${CLAUDE_PLUGIN_ROOT}/scripts/start-weight PLACE` on a clone of the
+- **What a started session read**: the plugin's `scripts/read-weight TRANSCRIPT` on its transcript - the context it
+  held at its first turn, at its first act and at its end, in tokens, the largest things it read before
+  acting, what it was given and never used, and what it struggled with. The first turn is mostly the
+  harness's own instructions, its skill listing and the tools of every connector the session carries (about
+  75 thousand tokens on the lab, 2026-11-17): what a role does not use is turned off in the author's settings,
+  proposed to him, not changed. Where the transcripts are and which settings trim what: ideal-agent's base,
+  the harness's subject (`tad q about --subject claude-code`).
+- **The start weight**, per role: the plugin's `scripts/start-weight PLACE` on a clone of the
   project's base at its main - the session start, the skills' descriptions, lab-session-start, AGENTS.md,
   the agent folder's README, and each brief. Record it, dated, in the project's base.
 - **The answers**: the base's fixed questions (idealkb's measure of a base, `the-measure`) - the bytes
@@ -70,8 +69,8 @@ what-a-started-agent-reads), and every turn re-reads all it holds. So:
   a table; never a bare `--help` (surya's second keeper spent 12 KB on one) and never a whole table or log.
 - **Heavy reading goes to a subagent** that returns only what you asked for, in so many characters: a long
   transcript, a vendor tree, a set of papers. Its reading never enters your context.
-- **Skills and connectors only when needed**: a skill's body when you reach its step; a connector (Gmail,
-  Claude Docs) only when the task asks for it - ask the author to turn it on.
+- **Skills and connectors only when needed**: a skill's body when you reach its step; a connector (mail,
+  documents) only when the task asks for it - ask the author to turn it on.
 - **Model and effort by role**: a keeper, a patrol or a waker on a lighter model at medium or low effort; a
   research turning point or a design decision on the most capable; check what the models are before saying so.
 
@@ -104,7 +103,7 @@ matters, written where the next session reads it. Any session does this to itsel
    brief, superseding the previous one - its role in two lines, the sessions it relies on, what is in flight
    and its next step, what waits on the author, the author's standing words, what not to repeat. Land it and
    read it back. Records of decisions and work stay where they are; the hand-over names them by id.
-2. **Say how the role starts fresh**: one line the author (or the session, with start_session) gives a new
+2. **Say how the role starts fresh**: one line the author (or the session, starting it itself) gives a new
    session - read the first paragraph of the role's brief and `tad q row --id ROLE-how-it-stands`, nothing
    else until a step needs it.
 3. **Hand the conversation over**: tell the author it is written and where; the old session ends when the new

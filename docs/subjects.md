@@ -63,3 +63,10 @@ What
 
 What
 : What a fresh agent must read before acting: measured, held to a budget, simplified behind summaries.
+
+
+<a id="claude-code"></a>
+### Claude Code
+
+What
+: How the general method is done in Claude Code, the harness the agents run today: only what our skills, roles and scripts use, each dated and sourced, superseded when Claude Code moves
