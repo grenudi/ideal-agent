@@ -1,6 +1,6 @@
 [package]
 name = "ideal-agent"
-version = "0.3.23"
+version = "0.3.24"
 edition = "2021"
 description = "The ideal agent's hooks: the ways held when they are tried - no push to main, no Python - and the practices at the start of every session"
 license = "MIT"
