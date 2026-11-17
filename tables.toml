@@ -45,6 +45,11 @@ required = true
 name = "shown_in"
 type = "string"
 
+# A practice no longer in force: when and why, its words and reason kept in the row (Chesterton's fence).
+[[tables.practices.fields]]
+name = "retired"
+type = "string"
+
 # How others organise agents: what they do, and what we take from it.
 [tables.landscape]
 key = ["id"]

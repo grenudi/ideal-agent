@@ -18,4 +18,4 @@ keeper can take it without you. Independent questions go to read-only `researche
 - **Hands over**: a `SUBJECT-how-it-stands` research row; it ends when the question is answered.
 - **Reports to**: the session that started it, in a few plain lines.
 
-Practices: 01 04 07 08 09 12 13 15 16 19 21 22 23 24 25 32 45
+Practices: 01 04 07 08 09 12 13 15 16 19 21 22 23 24 25 31 32 45

@@ -51,7 +51,7 @@ fn in_order(text: &str) -> Vec<(String, serde_json::Value)> {
     let mut all: Vec<(String, serde_json::Value)> = text
         .lines()
         .filter_map(|line| serde_json::from_str::<serde_json::Value>(line).ok())
-        .filter(|v| v["practice"].is_string())
+        .filter(|v| v["practice"].is_string() && !v["retired"].is_string())
         .map(|v| (v["id"].as_str().unwrap_or("").to_string(), v))
         .collect();
     all.sort_by(|a, b| a.0.cmp(&b.0));
@@ -157,6 +157,14 @@ mod tests {
             render(t, "test").contains("22. Look first. Then say what is.\n"),
             "the whole is one command away"
         );
+    }
+
+    #[test]
+    fn a_retired_practice_is_not_read() {
+        let t = "{\"id\":\"01-a\",\"practice\":\"Keep.\",\"why\":\"w\",\"for\":\"agents\"}\n{\"id\":\"02-b\",\"practice\":\"Gone.\",\"why\":\"w\",\"for\":\"agents\",\"retired\":\"2026-11-17: no longer\"}\n";
+        assert!(render_short(t, "t", None).contains("1. Keep."));
+        assert!(!render_short(t, "t", None).contains("Gone."));
+        assert!(!render(t, "t").contains("Gone."));
     }
 
     #[test]

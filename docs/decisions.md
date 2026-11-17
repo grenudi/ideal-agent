@@ -451,3 +451,28 @@ About
 
 Research
 : agent-roles
+
+
+<a id="2026-11-17-practices-without-oco-tools"></a>
+### 2026-11-17-practices-without-oco-tools
+
+Date
+: 2026-11-17
+
+Brief
+: The practices keep OCO's ideas in tad and ikb terms; those that existed only for ocoeco's tools retire, their reasons kept in the row
+
+Decision
+: Sixteen practices are reworded without ocoeco's tools, their idea and reason kept: 02 (the owning project's backlog), 03 (the role's practices and how-it-stands at the start), 04 (lab-agent inbox and session messages), 05 (the board read off tad q next and about), 06 (work on the lab, in a session there or a lab job - not only through oco-agent), 16, 20 (the weakest link read from the data; hand-work counted on the backlog), 26 (refining recorded in the owning data), 29 (a named query, not a lens), 30 (--about names where work was made), 31 (look the id up with tad q), 33 (a query is seen, not tested), 34 (the author's turns in the place that keeps his words), 37 (ikb practice-shown-in), 38 (ideal-agent's start and skills are the shared words), 39 (what followed read off tad q recent and the landed pull requests). 40 (the window) and 41 (a lens changed in place) retire: a new field retired keeps when and why in the row, the start and the practices query skip it. The role cards take up 03, 05, 29, 31, 34, 37, 38 and 39 where they fit.
+
+Why
+: The author, 2026-11-17 (relayed by the coordinator): everything related to oco tools (not oco as a concept) became too bloated and here we are developing ways to detach from that and make better autonomous, independent tools. Keep the OCO concept - an open commons, knowledge kept as data, everything recorded, looked at before acting; retire what exists only for ocoeco's lenses, window, glimpses, focus, fits, fulldome and oco-agent jobs.
+
+Rejected
+: Deleting 40 and 41 (their reasons - why the inside was wanted - would be lost: Chesterton's fence); rewriting the why of each (the why is what happened; a note that it was reworded is added instead); retiring 05, 29, 30, 31, 39 with their tools (their ideas - read off, not typed; never an id from memory - hold in tad); retiring 06 (the lab as the one place where state lives still holds; only oco-agent as the sole way goes); renumbering (a practice is called by its number everywhere).
+
+About
+: practices
+
+Research
+: agent-roles

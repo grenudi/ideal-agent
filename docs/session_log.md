@@ -253,3 +253,24 @@ Rejected
 
 About
 : knowledge-base
+
+---
+
+
+<a id="2026-11-17-practices-without-oco-tools"></a>
+### Practices without ocoeco's tools (plugin 0.3.3)
+
+Entry date
+: 2026-11-17
+
+Done
+: Sixteen reworded, 40 and 41 retired with a new retired field and record (practice-retired); the start, ideal-agent practices and tad q practices skip retired ones; role cards take up the reworded ones that fit.
+
+Considered
+: Which to retire: only those whose content is only an ocoeco command (40, 41).
+
+Rejected
+: See decision 2026-11-17-practices-without-oco-tools.
+
+About
+: practices

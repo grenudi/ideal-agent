@@ -22,4 +22,4 @@ renew the sessions below you.
   after a batch has landed or after an idle hour.
 - **Reports to**: the author - in a few plain lines, how much closer the work is to the ideal.
 
-Practices: 01 02 04 07 08 09 12 14 15 16 19 20 21 22 24 25 26 27 35 36 44 45
+Practices: 01 02 04 05 07 08 09 12 14 15 16 19 20 21 22 24 25 26 27 29 34 35 36 39 44 45
