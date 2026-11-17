@@ -15,7 +15,7 @@ base is, and why, is kept there; this is how to use one.
 
    | To know | Ask |
    |---|---|
-   | everything known of a subject | `tad q about --subject S` (`tad q about` lists the subjects) |
+   | how a subject stands, then all that is known of it | `tad q about --subject S` - its summary first, the condensed records by id (`--whole true` for all); `tad q about` lists the subjects and where a summary is due |
    | the work ahead | `tad q next` (`--about S` for one subject) |
    | where something is said | `tad q find --text WORDS` |
    | one record whole | `tad q row --id ID` |
@@ -25,7 +25,8 @@ base is, and why, is kept there; this is how to use one.
    Long answers: `--format csv` (the default box is about six times larger).
 3. **Record through the named records**, never by hand: `tad r decision` (with what was rejected),
    `tad r research`, `tad r source`, `tad r backlog`, `tad r session-log` - each with `--about`, what it is
-   about, so that `tad q about` finds it. A missing record or query is a new file in `records/` or
+   about, so that `tad q about` finds it - and renew the subject's summary when `tad q about` says one is due
+   (record-the-work). A missing record or query is a new file in `records/` or
    `queries/`, in the same change. Then `tad canon && tad render`, and land (land-a-change).
 4. **Where a row ends and a file begins**: a thing there are many of with one shape is a row; prose read
    once in order (a README, a brief, a long essay cited by a row) is a file.

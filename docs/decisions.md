@@ -199,3 +199,25 @@ Rejected
 
 About
 : ideal-agent
+
+
+<a id="2026-11-17-look-around-first-skill"></a>
+### 2026-11-17-look-around-first-skill
+
+Date
+: 2026-11-17
+
+Decision
+: Practice 22 is extended, not doubled: a proposal - the author's too - is met by looking at where things stand and how others do it and reconsidering it before acting; the finding is a research row with its sources and its material in a dated folder, and a subject's summary is renewed when due. The how is a skill, look-around-first: where things stand by the base's queries, how others do it (the researcher agent may take it), reconsider, keep the finding as a row plus a dated folder, renew the summary. ask-a-knowledge-base and record-the-work say the summary and the material. ideal-agent's pin moves to idealkb 0.3.0, so its own know-how follows the same layers.
+
+Why
+: The author, 2026-11-17: before acting on a proposal, his own included, look around, research a little, reconsider, and record the condensed finding with its research kept out of the way. Proposal processes elsewhere build the look in (research look-around-habit-world); idealkb 0.2.0 gave the place (its decisions 2026-11-17-summary-layer and 2026-11-17-research-aside).
+
+Rejected
+: A new practice beside 22: one nature under two names. A hook forcing a look before every edit: most edits need none, and a hook cannot tell a proposal from a typo. Folding the method into research-a-feature: that is a session's whole method for a hard feature; this is minutes before any change.
+
+About
+: practices
+
+Research
+: look-around-habit-world

@@ -305,22 +305,6 @@ Shown in
 : creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own, open-commons-observatory/ecosystem/decisions:2026-11-15-the-way-in-for-the-conversation
 
 
-<a id="22-look-around-first"></a>
-### 22-look-around-first
-
-Practice
-: Look around first: before acting, say what is, what we are dealing with, why it is so, and what others already learned - and record it as research in the project, cited by the decisions that rest on it. Look inside the commons before outside it: our own crates and tools (argenv, tad, ocoeco) come first, and an outside one is chosen only with the reason recorded. Before replacing or retiring anything, find why it exists (Chesterton's fence): follow every pointer to its reasoning - READMEs, decisions, the repository it came from, its spikes - and carry that reasoning into the replacement's own data before anything that points to it is deleted. (2026-11-12: tad's Rust rewrite dropped SQL, the reason tad exists, because its research lived in the template's log and an unmerged spike, and the README pointing there was deleted with the Python engine.)
-
-Why
-: Three wrong theories about a bootloader cost three reboots; one look at the device's own record settled it. And the hand-work ledger stood on research the commons had not written down.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-14-a-surface-said-by-a-lens
-
-
 <a id="23-words-are-decisions"></a>
 ### 23-words-are-decisions
 
@@ -659,3 +643,19 @@ For
 
 Shown in
 : grenudi/ideal-agent/decisions:2026-11-17-one-keeper-per-shared-resource
+
+
+<a id="22-look-around-first"></a>
+### 22-look-around-first
+
+Practice
+: Look around first: before acting, say what is, what we are dealing with, why it is so, and what others already learned - and record it as research in the project, cited by the decisions that rest on it. A proposal - the author's too - is met the same way: look at where things stand and how others do it, then reconsider it against both before acting; its words are not taken as they stand. The finding is a research row with its sources, its own material in a dated folder (research/SUBJECT/YYYY-MM-DD/), and where a subject's records have grown its summary is renewed (idealkb). How: the skill look-around-first. Look inside the commons before outside it: our own crates and tools (argenv, tad, ocoeco) come first, and an outside one is chosen only with the reason recorded. Before replacing or retiring anything, find why it exists (Chesterton's fence): follow every pointer to its reasoning - READMEs, decisions, the repository it came from, its spikes - and carry that reasoning into the replacement's own data before anything that points to it is deleted. (2026-11-12: tad's Rust rewrite dropped SQL, the reason tad exists, because its research lived in the template's log and an unmerged spike, and the README pointing there was deleted with the Python engine.)
+
+Why
+: Three wrong theories about a bootloader cost three reboots; one look at the device's own record settled it. And the hand-work ledger stood on research the commons had not written down. The author, 2026-11-17: before acting on a proposal, his own included, look at where things stand, research how others do it, reconsider - and keep that research with its sources, out of every future agent's way.
+
+For
+: agents
+
+Shown in
+: open-commons-observatory/ocoeco/decisions:2026-11-14-a-surface-said-by-a-lens
