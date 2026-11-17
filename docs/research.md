@@ -137,25 +137,6 @@ About
 : housekeeping
 
 
-<a id="ideal-agent-how-it-stands"></a>
-### ideal-agent-how-it-stands
-
-Date
-: 2026-11-17
-
-Brief
-: ideal-agent hand-over, 2026-11-17 14:00 UTC: plugin 0.2.8 on the lab; open: release-binaries, guard-stop-unlanded, the clean after-measure; follow idealkb 0.7.1 by the weekly pin.
-
-Question
-: Where does the ideal-agent session's work stand, for a fresh session to take it up?
-
-Found
-: ROLE: keeps grenudi/ideal-agent, the one home of general agent know-how - its tad database (practices, decisions, research, landscape, subjects; follows ideal-knowledge-base, pinned 0.5.0, the weekly pin job moves it to 0.7.1) and the Claude Code plugin (skills, hooks, the researcher agent; scripts/ideal-agent, start-weight, read-weight), installed on the lab at 0.2.8 (after each landing: claude plugin marketplace update ideal-agent, claude plugin update ideal-agent@ideal-agent; the next session start builds the program). Skills record with ikb and read a base's IKB.md (ideal-agent #25, by the ikb session local_2017aeff). The domain is elsewhere: linux-phone in linux-phone-oco/docs, owned by orchestration (fresh session local_7d95b264; hand-over orchestration-how-it-stands); the knowledge-base shape in grenudi/ideal-knowledge-base (build session local_b8ca2fb5; it checks every follower before a release). SESSIONS: coordinator local_12b18c70 (the author's), orchestration local_7d95b264, idealkb local_b8ca2fb5, ikb local_2017aeff. IN FLIGHT (tad q next): measure-start-without-connectors - before 81,280 tokens first turn (keeper 2, by hand); the first after (a scheduled run, 75,649) is not comparable; orchestration sends a scheduled-route keeper started after Gmail and Claude Docs were turned off; orchestration takes tad q phone-queue --next into the keeper brief. release-binaries (hooks on machines without cargo); guard-stop-unlanded (a Stop hook). STANDING WORDS: nothing depends on ocoeco; tad, idealkb and ikb only; look around first with sources; briefs first, deeper only when a step needs it; keep the start light and hold little (keep-the-start-light: budgets, read-weight, renew a long-lived role at 250k, or 150k after a batch or an idle hour); the practices are the author's words - propose, never rewrite; Rust or shell, never Python, executables in scripts/; bump plugin.json and Cargo.toml together. DON'T: write a file before fresh - it cleans untracked files (read-weight was lost so once); run ocoeco check on a tad place; read a whole transcript yourself - give it to a subagent. Fresh start: the first paragraph of README.md and this row, nothing else until a step needs it.
-
-About
-: ideal-agent
-
-
 <a id="agent-roles"></a>
 ### agent-roles
 
@@ -179,3 +160,22 @@ About
 
 Material
 : research/organising-agents/2026-11-17/
+
+
+<a id="ideal-agent-how-it-stands"></a>
+### ideal-agent-how-it-stands
+
+Date
+: 2026-11-17
+
+Brief
+: ideal-agent hand-over, 2026-11-17 evening: plugin 0.3.0 with roles on the lab; open: briefs-name-their-role, measure-a-role-start, release-binaries, guard-stop-unlanded.
+
+Question
+: Where does the ideal-agent session's work stand, for a fresh session to take it up?
+
+Found
+: ROLE: keeps grenudi/ideal-agent, the one home of general agent know-how - its tad database (practices, decisions, research, landscape, subjects; follows ideal-knowledge-base, pinned 0.5.0, the weekly pin job moves it to 0.7.1) and the Claude Code plugin (skills, hooks, the role cards and the researcher agent in agents/; scripts/ideal-agent, start-weight, read-weight), installed on the lab at 0.3.0 (after each landing: claude plugin marketplace update ideal-agent, claude plugin update ideal-agent@ideal-agent; the next session start builds the program). Skills record with ikb and read a base's IKB.md (ideal-agent #25, by the ikb session local_2017aeff). The domain is elsewhere: linux-phone in linux-phone-oco/docs, owned by orchestration (fresh session local_7d95b264; hand-over orchestration-how-it-stands); the knowledge-base shape in grenudi/ideal-knowledge-base (build session local_b8ca2fb5; it checks every follower before a release). SESSIONS: ideal-agent owner ideal-agent-roles (this hand-over's writer); coordinator local_12b18c70 (the author's), orchestration local_7d95b264, idealkb local_b8ca2fb5, ikb local_2017aeff. ROLES (decision 2026-11-17-roles-as-agent-cards): seven cards in agents/ - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol; a brief names one (Role: NAME, Also practices: N) and the UserPromptSubmit hook (ideal-agent role) gives its card and only its practices at the first prompt; a new role is a card, never a new layer. IN FLIGHT (tad q next): briefs-name-their-role (proposed to orchestration, which owns docs); measure-a-role-start (read-weight on the first role-named session on 0.3.0); measure-start-without-connectors - before 81,280 tokens first turn (keeper 2, by hand); the first after (a scheduled run, 75,649) is not comparable; orchestration sends a scheduled-route keeper started after Gmail and Claude Docs were turned off; orchestration takes tad q phone-queue --next into the keeper brief. release-binaries (hooks on machines without cargo); guard-stop-unlanded (a Stop hook). STANDING WORDS: nothing depends on ocoeco; tad, idealkb and ikb only; look around first with sources; briefs first, deeper only when a step needs it; keep the start light and hold little (keep-the-start-light: budgets, read-weight, renew a long-lived role at 250k, or 150k after a batch or an idle hour); the practices are the author's words - propose, never rewrite; Rust or shell, never Python, executables in scripts/; bump plugin.json and Cargo.toml together. DON'T: write a file before fresh - it cleans untracked files (read-weight was lost so once); run ocoeco check on a tad place; read a whole transcript yourself - give it to a subagent. Fresh start: the first paragraph of README.md and this row, nothing else until a step needs it.
+
+About
+: ideal-agent
