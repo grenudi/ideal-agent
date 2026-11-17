@@ -630,3 +630,22 @@ By
 
 Takes
 : everyone reports small friction; owners fix; the pile becomes data for priorities
+
+
+<a id="ikb-friction-in-transcripts"></a>
+### What agents spend on recording into a tad knowledge base (ikb-friction-and-world)
+
+Url
+: https://github.com/grenudi/ideal-knowledge-base/blob/main/research/ikb/2026-11-17/friction-in-transcripts.md
+
+Author
+: ikb-cli session
+
+Year
+: 2026
+
+By
+: grenudi/ideal-knowledge-base
+
+Takes
+: 31 transcripts: 41 of 240 tad r calls failed (17%), each failure ~8.4 calls and ~11k tokens; after ikb 0-1 failures in 4 runs at equal tokens - a one-off subagent count, not rerunnable; the method read-weight's struggled-with now repeats by script
