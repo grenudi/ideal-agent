@@ -53,7 +53,8 @@ tad r practice --id NN-a-name --practice ... --why ... --for agents   # tad stat
 make verify    # what CI runs
 ```
 
-The observatory gathers these tables by this repository's mark (`oco.toml`) and shows them as its rows.
+Nothing here depends on ocoeco. The mark (`oco.toml`) and `.github/workflows/gather.yml` only let the
+author's observatory read these tables, a passive feed.
 
 ## Where things were before
 

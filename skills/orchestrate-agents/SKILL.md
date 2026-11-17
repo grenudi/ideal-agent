@@ -12,8 +12,9 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
 
 ## The loop
 
-1. **Look at the whole, through the lenses** - `ocoeco focus still-showing`, the board, the project's face,
-   each linked session's latest report. Say what is from what they show, not from memory.
+1. **Look at the whole, through the project's knowledge base** - `tad q next`, `tad q recent`,
+   `tad q about --subject S` (ask-a-knowledge-base) - its face, the board, and each linked session's latest
+   report. Say what is from what they show, not from memory.
 2. **Check the ways, by measurement before judgment.** For each agent: does its work land through `land`
    with checks, recorded in the owning place's data, signed by its name? Is any status, run or result typed
    by hand that a machine could measure? Does it change a shared device only through the tool that holds

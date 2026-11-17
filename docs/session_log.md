@@ -64,3 +64,18 @@ Done
 
 About
 : knowledge-base
+
+---
+
+
+<a id="2026-11-17-nothing-of-ocoeco"></a>
+### Nothing of ocoeco
+
+Entry date
+: 2026-11-17
+
+Done
+: Skills and the researcher teach tad and idealkb's queries and records only; landit checks tad places with tad (lab-agent #219); plugin 0.1.4.
+
+About
+: ideal-agent

@@ -8,8 +8,8 @@ method - moves here, and the project keeps a pointer.
 - **Data through tad, landing through land.** `data/*.json` and `docs/` are written by tad only: rows with
   the named records (`tad statements` lists them: practice, decision, research, source, landscape, backlog,
   backlog-status, session-log), each naming its subject in `--about` (a row of `subjects`, or a backlog
-  item), then `tad canon && tad render && make verify`. No ocoeco notes, no
-  glimpses: the commit and its pull request are the record, signed by your OCOECO_BY.
+  item), then `tad canon && tad render && make verify`. Nothing of ocoeco: the commit and its pull request
+  are the record, signed by your OCOECO_BY.
 - **The plugin**: `.claude-plugin/` (plugin.json, marketplace.json), `skills/NAME/SKILL.md`,
   `hooks/hooks.json`, `agents/NAME.md`. Executables live in `scripts/` (never a top-level `bin/`); shell
   or Rust only, never Python. Bump `version` in plugin.json and Cargo.toml together (CI checks it): the

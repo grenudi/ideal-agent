@@ -14,9 +14,9 @@ description: Start of every session in the open-commons ecosystem (on the lab ma
    call `land` from a shell that has not sourced `oco-work` (without it `land` also merges pending release PRs).
 3. **The inbox.** `lab-agent inbox` - print every unread message, answer each, then `lab-agent inbox --ack`.
    The hook prints them at the start, read but not acknowledged.
-4. **Look before choosing.** From `~/Projects/marshall-oco/marshall-oco.github.io`: `ocoeco focus practices`,
-   `ocoeco fulldome --surface as-outline`, `ocoeco focus still-showing`; the board (`lab-agent board show`);
-   the project's own face and database (`tad q backlog`, `tad q decisions` in its tad place). Your brief - the
+4. **Look before choosing**, in the project's knowledge base (ask-a-knowledge-base): `tad q next` (the work
+   ahead), `tad q recent` (what was recorded lately), `tad q about --subject S` (one subject whole); then its
+   face and the board (`lab-agent board show`). Your brief - the
    domain part of your role - is in the project's agent folder (`ideal-agent-PROJECT/`, or the folder its
    AGENTS.md names); the method of the role is a skill here
    (orchestrate-agents, research-a-feature, bring-up-a-part).
