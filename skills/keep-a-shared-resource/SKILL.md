@@ -77,6 +77,9 @@ A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lan
   the role's head (`Role:`, `Name:`, `Also practices:`), the brief's path, and where its work is read - the
   top of the lane's queue, or the lane's open question in its base. It says plainly the writes it may make
   (land, records, the resource through its tool), since a launched run is told to make no other.
+- **Where a launcher reads its work**: one named query, the lane's next item of a kind - each item names the
+  device it is for and what it needs (the resource, research, a build); linux-phone: `tad q lane-next
+  --device D --needs phone|research|build`.
 - **The lane coordinator** writes the work into the base first - the queue item, or the question - and then
   runs the launcher, on any turn. A launcher runs once at a time, so a lane never has two keepers.
 - **Within its own turn** the lane coordinator still uses subagents for a short question (one round, a
