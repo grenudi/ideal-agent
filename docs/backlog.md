@@ -232,10 +232,10 @@ Opened
 ### lab-agent retires 1: the token to a neutral path
 
 Status
-: open
+: done
 
 Note
-: Proof: scripts/lab-agent-free shows no ~/.config/lab-agent in land, agent-env, the two pins units, oco-agent. Next: author OK the path, symlink the old one, one PR per reader. Orchestration owns it.
+: Done 2026-11-17: token at ~/.config/ideal-agent/token (600), old path a symlink to it; land, agent-env and the 2 pins units read the new path (lab-machine PR 29, this change). oco-agent and oco-* tools stay on the symlink until step 2. lab-agent-free count 34 -> 28 (the rest are other steps: src, skills, units, setup, devlab).
 
 About
 : organising-agents

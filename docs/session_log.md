@@ -352,3 +352,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-lab-agent-step-1-token-to-a-neutral-path"></a>
+### lab-agent step 1: token to a neutral path
+
+Entry date
+: 2026-11-17
+
+Done
+: Moved the token with mv to ~/.config/ideal-agent/token (mode 600), symlinked the old path; gh auth status works from the new path. Readers moved: lab-machine bin/land, 2 pins units, README (PR 29, installed to ~/.local/bin and ~/.config/systemd/user), scripts/agent-env here. lab-agent-free 34 -> 28.
+
+Considered
+: Leaving oco-agent, oco-work and watcher tools on the symlink: they go in step 2.
+
+Rejected
+: Editing oco-agent readers now: retired next, no point.
+
+About
+: organising-agents
