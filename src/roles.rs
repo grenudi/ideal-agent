@@ -37,12 +37,28 @@ fn numbers(s: &str) -> Vec<String> {
 
 /// The role a brief names: the first line that begins `Role:` (markdown emphasis allowed), and an `Also
 /// practices:` line anywhere.
+/// Where the brief begins in a first prompt: past the reminders the app puts in front of it (`<system-reminder>`
+/// blocks, such as the linked sessions), and past the background a starting session gives (`Background (from the
+/// session that started this one):` ... `Task:`). A prompt that then begins with another tag - a message from
+/// another session - names no role.
+pub fn brief_of(prompt: &str) -> Option<&str> {
+    let mut s = prompt.trim_start();
+    while let Some(rest) = s.strip_prefix("<system-reminder>") {
+        s = rest.split_once("</system-reminder>")?.1.trim_start();
+    }
+    if s.starts_with('<') {
+        return None;
+    }
+    if s.starts_with("Background (from the session that started this one):") {
+        s = s.split_once("\nTask:\n")?.1.trim_start();
+    }
+    Some(s)
+}
+
 /// Only the head of a prompt is read - a brief names its role in its first lines - and never a message another
 /// session sent, which arrives wrapped in a tag and may quote a role as an example.
 pub fn named_in(prompt: &str) -> Option<Named> {
-    if prompt.trim_start().starts_with('<') {
-        return None;
-    }
+    let prompt = brief_of(prompt)?;
     let head: String = prompt.lines().take(HEAD).collect::<Vec<_>>().join("\n");
     let prompt = head.as_str();
     let clean = |l: &str| {
@@ -280,6 +296,22 @@ mod tests {
         let deep = format!("{}Role: keeper", "line\n".repeat(HEAD));
         assert!(named_in(&deep).is_none(), "only the head names it");
         assert!(name_in(&format!("{}Name: x", "line\n".repeat(HEAD))).is_none());
+    }
+
+    #[test]
+    fn a_started_session_names_its_role_past_the_apps_reminders_and_the_background() {
+        let p = "<system-reminder>\nLinked sessions now: x = local_1 (idle).\n</system-reminder>\n\nBackground (from the session that started this one):\nYou are surya's keeper.\n\nRole: patrol in the background is not the brief.\n\nTask:\nRole: keeper (ideal-agent)\nName: surya-keeper-8\nAlso practices: 42\n\nThe work.";
+        let n = named_in(p).expect("named past the reminder and the background");
+        assert_eq!(
+            (n.role.as_str(), n.name.as_deref(), n.also.clone()),
+            ("keeper", Some("surya-keeper-8"), vec!["42".to_string()])
+        );
+        let msg = "<system-reminder>\nx\n</system-reminder>\n<cross-session-message from=\"y\">\nRole: keeper\n</cross-session-message>";
+        assert!(
+            named_in(msg).is_none(),
+            "a message behind a reminder names none"
+        );
+        assert!(named_in("<system-reminder>\nunclosed\nRole: keeper").is_none());
     }
 
     #[test]

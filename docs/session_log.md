@@ -289,3 +289,24 @@ Done
 
 About
 : knowledge-base
+
+---
+
+
+<a id="2026-11-17-role-past-the-reminders"></a>
+### A started session's role is read past the app's reminders and the background (0.3.6)
+
+Entry date
+: 2026-11-17
+
+Done
+: Sign from orchestration: surya-keeper-7 named Role: keeper at the top of its brief but got every practice - a session started from another session begins with the app's <system-reminder> (linked sessions) and the starter's Background ... Task:, so 0.3.2's never-from-a-tag rule skipped it. brief_of now skips leading system-reminder blocks and, when present, the background up to Task:, then reads the first 8 lines; a cross-session message is still refused. Replayed on keeper-7's real first prompt: keeper card, name surya-keeper-7.
+
+Considered
+: Searching the whole prompt for Role (re-opens the mid-run re-role sign of 0.3.1).
+
+Rejected
+: Asking starters to avoid the background: the app adds it.
+
+About
+: organising-agents
