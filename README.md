@@ -26,8 +26,8 @@ seconds) into the plugin's data folder; until then nothing is refused.
 | **skills/** | `lab-session-start`, `land-a-change`, `record-the-work`, `change-a-device`; the methods of the roles: `orchestrate-agents`, `research-a-feature`, `bring-up-a-part`, `keep-a-shared-resource` |
 | **agents/** | `researcher`: read-only research on one question, returned with its sources |
 
-A project's brief (its `prompts/`) keeps only its domain - what a role owns, its device's tool, its places -
-and names the skill for the method.
+A project keeps only its domain - what a role owns, its device's tool, its places - in its agent folder
+(`ideal-agent-PROJECT/`, or the folder its AGENTS.md names), whose briefs name the skill for each method.
 
 ## The database
 
@@ -56,8 +56,8 @@ The observatory gathers these tables by this repository's mark (`oco.toml`) and 
 The practices were the observatory's (`open-commons-observatory.github.io`, `design/data/practices.json`);
 the skills were `creation-guidelines/lab-agent`'s `oco-agent/skills/`, linked into the lab's
 `~/.claude/skills`; the push and Python rules were in `linux-phone-oco/lab-tools`' `devlab guard`, which
-keeps only its phone's rule; the role methods were briefs in `linux-phone-oco/docs` `prompts/`, which keep
-their domain part. Why it moved: [decision 2026-11-17-one-home-for-agent-know-how](docs/decisions.md).
+keeps only its phone's rule; the role methods were briefs in `linux-phone-oco/docs` `prompts/`, whose
+domain part is now its `ideal-agent-linux-phone-oco/` folder. Why it moved: [decision 2026-11-17-one-home-for-agent-know-how](docs/decisions.md).
 
 ## Licence
 
