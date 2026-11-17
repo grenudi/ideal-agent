@@ -58,10 +58,10 @@ Opened
 ### Move the general agent know-how here and retire the old places with a pointer
 
 Status
-: in-progress
+: done
 
 Note
-: Landing the repository first (mark, database, plugin). Then, each beside the old way until both behave the same: install the plugin on the lab and prove each hook and skill; lab-agent guide reads the practices here and the observatory's copy is retired; devlab guard keeps only the phone's rule and the lab's settings drop its start hook; lab-agent's oco-agent/skills and the ~/.claude/skills links point here; docs' prompts keep their domain part and name the skills.
+: Done 2026-11-17, each read back from main: ideal-agent #1 and #2; lab-tools #65 (devlab guard keeps only the phone's rule; installed; the lab's settings keep only its PreToolUse hook); lab-agent #218 (guide reads the practices here, built-in copy refreshed, oco-agent/skills retired with a pointer; installed); docs #159 (briefs keep their domain and name the skills; decisions for lab-tools and docs); marshall-oco #32 and ecosystem #159 gather ideal-agent; ocoeco #456 and ecosystem #160 repoint the links to the practices; the observatory's design/data/practices.json retired with a pointer. The plugin is installed on the lab (user scope) and proven live in a fresh session: practices and inbox at start, push to main and pip refused by ideal-agent guard, a branch push and grep python allowed, ssh to the phone refused by devlab guard, a quoted here-document allowed, all eight skills and the researcher listed. The old ~/.claude/skills links are in ~/.claude/backups/skills-links-before-ideal-agent.
 
 Opened
 : 2026-11-17
