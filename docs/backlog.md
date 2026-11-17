@@ -45,10 +45,10 @@ Opened
 ### devlab's guard reads shell commands with ideal-agent's reader instead of its own copy
 
 Status
-: open
+: done
 
 Note
-: The command reader (src/shell.rs) was taken whole from devlab's guard, which keeps a copy for its phone rule. ideal-agent's has since learned here-documents (their body is data): devlab's copy still reads a quoted here-document's text as commands, so a file whose text names a phone address would be refused. Next: devlab depends on the ideal-agent crate (git dependency at a tag) and drops its copy - orchestration's, as devlab's owner.
+: Done 2026-11-17 by orchestration: devlab's guard uses ideal_agent::shell::{simple_commands, unwrapped}, pinned in devlab/Cargo.toml at rev 5967ea8 (read back from lab-tools' main); its own copy is gone. A quoted here-document naming the phone's address passes, a real ssh there is refused. When the reader changes here, devlab takes it by bumping the rev.
 
 Opened
 : 2026-11-17
