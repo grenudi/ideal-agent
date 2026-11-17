@@ -135,3 +135,22 @@ Sources
 
 About
 : housekeeping
+
+
+<a id="ideal-agent-how-it-stands"></a>
+### ideal-agent-how-it-stands
+
+Date
+: 2026-11-17
+
+Brief
+: ideal-agent hand-over, 2026-11-17 13:30 UTC: the plugin 0.2.6 is on the lab; open work is release-binaries, guard-stop-unlanded and measuring a keeper without connectors.
+
+Question
+: Where does the ideal-agent session's work stand, for a fresh session to take it up?
+
+Found
+: ROLE: keeps grenudi/ideal-agent, the one home of general agent know-how - its tad database (practices, decisions, research, landscape, subjects; follows ideal-knowledge-base 0.5.0) and the Claude Code plugin (skills, hooks, the researcher agent; scripts/ideal-agent, start-weight, read-weight), installed on the lab (claude plugin update ideal-agent@ideal-agent after each landing; the next session start builds the program). Everything else is the domain's: linux-phone in linux-phone-oco/docs (orchestration local_325ef65d owns it), the knowledge-base shape in grenudi/ideal-knowledge-base (build session local_b8ca2fb5 owns it; it checks followers before each release). SESSIONS: coordinator local_12b18c70 (the author's; renews from docs' coordinator-how-it-stands), orchestration local_325ef65d, idealkb local_b8ca2fb5, summaries local_52d57a2a. IN FLIGHT: tad q next - release-binaries (hooks without cargo), guard-stop-unlanded (a Stop hook), measure-start-without-connectors (orchestration sends the next keeper's read-weight first-turn tokens; before 73-81k). STANDING WORDS: nothing depends on ocoeco; tad and idealkb only; look around first with sources; briefs first, read deeper only when a step needs it; keep the start light (budgets in keep-the-start-light); practices are the author's words - propose, never rewrite; Rust or shell, never Python, executables in scripts/. DON'T: run ocoeco check on a tad place (landit no longer does); copy whole files from an old clone; read a whole transcript yourself - give it to a subagent. Fresh start: read the first paragraph of README.md and this row (tad q row --id ideal-agent-how-it-stands), nothing else until a step needs it.
+
+About
+: ideal-agent
