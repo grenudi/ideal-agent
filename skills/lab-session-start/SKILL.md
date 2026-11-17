@@ -25,7 +25,8 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
    your role). A job outside the harness sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **The inbox** - `lab-agent inbox`:
    answer each unread message, then `--ack`.
 
-Then act.
+Your brief and the author's words are a starting point: look around before you build on them
+(look-around-first). Then act.
 
 ## Read only when
 

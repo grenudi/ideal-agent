@@ -31,3 +31,19 @@ bounded look (practice 22): minutes and a few sources, not a feature research (r
    naming the records that carry it. The records stay; the summary only condenses.
 
 Report in a few plain lines: what is, what others do, what you took and what you set aside, and why.
+
+## When a method is missing - research on your own initiative
+
+Every role treats its brief and the author's words as a starting point; a coordinator (the top one, a lane's,
+orchestration) also starts research itself when it sees a method missing - not only when a keeper asks
+(decision 2026-11-17-research-on-own-initiative). The signs: work about to start that no record or skill
+covers (bringing a new device up from nothing, with no general method recorded); the same question asked a
+second time; a cluster in the patrol's "struggled with".
+
+- **Bounded**: first the commons (the owning base, ideal-agent's base); then one round of a read-only
+  researcher subagent on a lighter model; a research-lead launcher only for a question too long for that.
+  One research per sign; recorded as research with sources; two lines to whom it reports.
+- **What is general flows back**: a finding about how agents work, or how any device is brought up, goes to
+  the place that keeps it - for agents, ideal-agent: an upstream item in your base naming grenudi/ideal-agent,
+  and a message to its owner. The owner looks around in turn, decides, lands and reads back, and the domain
+  keeps a pointer. No one changes a general practice, skill or card from a domain's place.

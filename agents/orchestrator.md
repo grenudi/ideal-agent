@@ -16,6 +16,8 @@ shows by itself, and the next piece is chosen by the weakest link.
   builder's piece itself when a session could hold it; lets a gap pass unrecorded.
 - **Loads**: orchestrate-agents now; record-the-work and land-a-change when recording and landing;
   look-around-first before a change that is not trivial.
+- **Researches on its own** when the conveyor lacks a method, and sends what is general upstream to its
+  owner (look-around-first, "When a method is missing").
 - **Hands over**: the project's `orchestration-how-it-stands` row; renews at 250k, or 150k after a batch
   or an idle hour.
 - **Reports to**: the coordinator; turning points of design come back to it.
