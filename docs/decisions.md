@@ -426,3 +426,28 @@ About
 
 Research
 : agent-roles
+
+
+<a id="2026-11-17-a-neutral-start"></a>
+### 2026-11-17-a-neutral-start
+
+Date
+: 2026-11-17
+
+Brief
+: ideal-agent owns a neutral start, scripts/agent-env: token, PATH, AGENT_NAME signing, branch and land - sourced before every Bash command; nothing of ocoeco
+
+Decision
+: scripts/agent-env (sh, sourced) gives GH_TOKEN from the lab-agent token, ~/.local/bin and ~/.cargo/bin on PATH, AGENT_NAME as the commits' author and committer (given; else the brief's Name: line, kept by the role hook; else the role; else OCOECO_BY; else agent), LAND_RELEASE=0, OCOECO_BY set to the same name for places still on ocoeco, and branch NAME (fetch, a new branch from origin/main, refused on uncommitted work, nothing cleaned). The SessionStart hook names it in CLAUDE_ENV_FILE, which Claude Code evaluates before every Bash command, so no brief or skill says . oco-work; a job outside Claude Code sources it from the clone. land stays lab-agent's command, reached on PATH.
+
+Why
+: The author (relayed by the coordinator, 2026-11-17): oco-work is used only for its environment, landit and fresh; its ocoeco helpers and the OCOECO_BY name are leftovers he does not want; a small neutral start owned by ideal-agent, keeping places on ocoeco working until they move. Claude Code's hooks docs: CLAUDE_ENV_FILE is given to SessionStart and evaluated before each Bash command; the session id reaches Bash as CLAUDE_CODE_SESSION_ID, so the start reads the session's role state.
+
+Rejected
+: Keeping . oco-work in every brief (it carries ocoeco and must be repeated in every shell, since an export does not outlive one Bash call); a copy of oco-work without ocoeco installed into ~/.local/bin by the hook (a second copy to keep, written outside the plugin); fresh's reset and clean (it loses files written before it - the hand-over warned of it); landit (its checks are the place's own CI, which land waits for; a commit and land --no-manual suffice); setting AGENT_NAME from the UserPromptSubmit hook's environment (that hook gets no CLAUDE_ENV_FILE); moving land into ideal-agent now (it is lab-agent's and used by everyone; left as a follow-up).
+
+About
+: organising-agents
+
+Research
+: agent-roles

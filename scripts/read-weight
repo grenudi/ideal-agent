@@ -12,7 +12,7 @@
 set -eu
 [ $# -ge 1 ] && [ $# -le 2 ] || { echo "usage: read-weight TRANSCRIPT [ACT]" >&2; exit 2; }
 t=$1
-act=${2:-'devlab (phone (sh|root|put|reboot)|kernel|suite run|suspend|hear)|tad r |landit|git commit'}
+act=${2:-'devlab (phone (sh|root|put|reboot)|kernel|suite run|suspend|hear)|tad r |land |landit|git commit'}
 command -v jq > /dev/null || { echo "read-weight: needs jq" >&2; exit 2; }
 
 jq -rs --arg act "$act" '

@@ -7,7 +7,7 @@ method - moves here, and the project keeps a pointer.
 
 - **A knowledge base following idealkb** (`idealkb.toml`; below), its own records `practice`, `landscape`,
   `backlog-status`; `--about` names a row of `subjects` or a backlog item. Then `make verify`. Nothing of
-  ocoeco: the commit and its pull request are the record, signed by your OCOECO_BY.
+  ocoeco: the commit and its pull request are the record, signed by your AGENT_NAME (scripts/agent-env).
 - **The plugin**: `.claude-plugin/` (plugin.json, marketplace.json), `skills/NAME/SKILL.md`,
   `hooks/hooks.json`, `agents/NAME.md`. Executables live in `scripts/` (never a top-level `bin/`); shell
   or Rust only, never Python. Bump `version` in plugin.json and Cargo.toml together (CI checks it): the

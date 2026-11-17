@@ -77,6 +77,15 @@ contract! {
         summary:     "Where Claude Code installed the plugin: its data/practices.json is read when main cannot be reached",
         ..Input::EMPTY
     };
+    /// Where Claude Code keeps what every Bash command of the session evaluates first.
+    ENV_FILE: String, Command = Input {
+        key:         "env_file",
+        ty:          Type::Path,
+        subcommands: &[Command::Start],
+        env:         Some(Env { name: "CLAUDE_ENV_FILE", ..Env::EMPTY }),
+        summary:     "The session's environment file (Claude Code gives it to the SessionStart hook): the start names scripts/agent-env in it, so that every Bash command has the token, the PATH, the name the work is signed with, branch and land",
+        ..Input::EMPTY
+    };
     /// Which shell.
     SHELL: String, Command = Input {
         key:         "shell",

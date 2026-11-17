@@ -30,13 +30,13 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
 - **A missing record or query** is a new file in the base's `records/` or `queries/`, in the same change.
 
 Then land (land-a-change): the commit and its pull request are the record of
-the work, signed by your OCOECO_BY. Hand-work done a third time asks for a tool: record it on the backlog.
+the work, signed by your AGENT_NAME. Hand-work done a third time asks for a tool: record it on the backlog.
 
 A place still kept the older way, with ocoeco (oco/ tables, glimpses), is another project's legacy: follow
 its own AGENTS.md there.
 
 **The author's words**: every turn of his, as said, with its moment - `turn ID AFTER AT TEXT SAID` (a word of
-oco-work) into marshall-oco/conversation.
+oco-work, which that place still uses) into marshall-oco/conversation.
 
 ## Hand-over
 

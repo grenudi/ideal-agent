@@ -60,6 +60,28 @@ fn read_event() -> serde_json::Value {
     serde_json::from_str(&input).unwrap_or(serde_json::Value::Null)
 }
 
+/// Name the neutral start (scripts/agent-env) in the session's environment file, once: every Bash command of the
+/// session then sources it first (decision 2026-11-17-a-neutral-start).
+fn agent_env(file: &std::path::Path, root: &std::path::Path) {
+    let script = root.join("scripts/agent-env");
+    if !script.is_file() {
+        return;
+    }
+    let line = format!(
+        ". '{}'\n",
+        script.display().to_string().replace('\'', "'\\''")
+    );
+    let held = std::fs::read_to_string(file).unwrap_or_default();
+    if !held.contains(line.trim_end()) {
+        use std::io::Write;
+        let _ = std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(file)
+            .and_then(|mut f| f.write_all(line.as_bytes()));
+    }
+}
+
 fn print_all(text: &str, source: &str) {
     println!("## The practices (ideal-agent)\n");
     print!("{}", practices::render_short(text, source, None));
@@ -111,6 +133,7 @@ fn run() -> Result<()> {
     };
     let from = get(&Contract::FROM).map(PathBuf::from);
     let root = get(&Contract::PLUGIN_ROOT).map(PathBuf::from);
+    let env_file = get(&Contract::ENV_FILE).map(PathBuf::from);
 
     match command {
         Command::Guard => {
@@ -127,6 +150,9 @@ fn run() -> Result<()> {
         }
         Command::Start => {
             let event = read_event();
+            if let (Some(f), Some(r)) = (env_file.as_deref(), root.as_deref()) {
+                agent_env(f, r);
+            }
             let session = event["session_id"].as_str().unwrap_or("");
             let source = event["source"].as_str().unwrap_or("");
             let agent = event["agent_type"]
@@ -142,6 +168,7 @@ fn run() -> Result<()> {
                 let named = roles::Named {
                     role: a.to_string(),
                     also: vec![],
+                    name: None,
                 };
                 roles::remember(session, Some(&named));
                 print!(

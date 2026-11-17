@@ -18,7 +18,7 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
 2. **Check the ways, by measurement before judgment.** For each agent: does its work land through `land`
    with checks, recorded in the owning place's data, signed by its name? Is any status, run or result typed
    by hand that a machine could measure? Does it change a shared device only through the tool that holds
-   it? Count hand-work: an action done a third time by hand is a tool to build or a word for `oco-work` -
+   it? Count hand-work: an action done a third time by hand is a tool to build or a word for the start (scripts/agent-env) -
    build it, or put it on the backlog and tell the agent. Say what you see as a sign, answered by refining
    the whole, never as blame.
 3. **Turn rules into mechanisms.** A way an agent must remember will be forgotten. What every project
@@ -41,7 +41,7 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
    rows) and when a turning point needs the most capable one; check what the models are before saying so.
    Every session you start gets a role: `Role: NAME` as its brief's first line (coordinator,
    lane-coordinator, orchestrator, keeper, research-lead, builder, patrol - the cards in the plugin's agents/),
-   started with the model and effort its card names; the brief adds only the domain's specifics and never
+   and a `Name: NAME` line for who signs its work, started with the model and effort its card names; the brief adds only the domain's specifics and never
    repeats the card.
 7. **How agents are brought up.** Now and then, `scripts/read-weight` on the transcripts of the sessions
    started since the last look (keep-the-start-light, "How well agents are brought up"); and renew yourself

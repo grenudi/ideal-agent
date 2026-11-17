@@ -1,0 +1,43 @@
+# agent-env - the neutral start of an agent's shell, sourced (`. agent-env`), never run: what every session
+# and job needs to work on the commons, and nothing of ocoeco (decision 2026-11-17-a-neutral-start).
+# In a Claude Code session with the ideal-agent plugin it is sourced before every Bash command by itself
+# (the session start names it in CLAUDE_ENV_FILE); a job outside Claude Code sources it from a clone:
+#   . ~/Projects/grenudi/ideal-agent/scripts/agent-env
+#
+#   AGENT_NAME     the name the work is signed with - the commits' author and committer. Given, it is kept;
+#                  else the session's `Name:` line, else its role, else OCOECO_BY (places still on ocoeco),
+#                  else "agent"
+#   GH_TOKEN       the lab-agent token, where ~/.config/lab-agent/token is (mode 600, never in a repository)
+#   PATH           ~/.local/bin (land, tad, ikb, devlab) and ~/.cargo/bin first
+#   branch NAME    branch first: this clone, fetched, on a new branch NAME from origin/main - refused while
+#                  the clone holds uncommitted work, which is never cleaned away
+#   land           land the current branch: its PR, every check, the merge, main read back (lab-agent's land)
+
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) PATH="$HOME/.local/bin:$PATH" ;; esac
+case ":$PATH:" in *":$HOME/.cargo/bin:"*) ;; *) PATH="$HOME/.cargo/bin:$PATH" ;; esac
+export PATH
+[ -n "${GH_TOKEN:-}" ] || { [ -r "$HOME/.config/lab-agent/token" ] && GH_TOKEN=$(cat "$HOME/.config/lab-agent/token") && export GH_TOKEN; }
+
+if [ -z "${AGENT_NAME:-}" ]; then
+    _ia_state="${XDG_STATE_HOME:-$HOME/.local/state}/ideal-agent/sessions/${CLAUDE_CODE_SESSION_ID:-none}"
+    if [ -r "$_ia_state" ]; then
+        AGENT_NAME=$(sed -n 's/^name //p' "$_ia_state" | head -n 1)
+        [ -n "$AGENT_NAME" ] || AGENT_NAME=$(sed -n 's/^role //p' "$_ia_state" | head -n 1)
+    fi
+    unset _ia_state
+    AGENT_NAME=${AGENT_NAME:-${OCOECO_BY:-agent}}
+fi
+export AGENT_NAME
+export GIT_AUTHOR_NAME="$AGENT_NAME" GIT_COMMITTER_NAME="$AGENT_NAME"
+export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-agent@creation-guidelines}" GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL:-agent@creation-guidelines}"
+# a release pull request is landed on its own (land --release), not with every change
+export LAND_RELEASE="${LAND_RELEASE:-0}"
+# places still on ocoeco read the name as OCOECO_BY until they move
+export OCOECO_BY="${OCOECO_BY:-$AGENT_NAME}"
+
+branch() {
+    [ $# -eq 1 ] || { echo "usage: branch NAME" >&2; return 2; }
+    git rev-parse --git-dir > /dev/null 2>&1 || { echo "branch: not in a clone" >&2; return 1; }
+    [ -z "$(git status --porcelain)" ] || { echo "branch: this clone holds uncommitted work - commit it or set it aside first" >&2; return 1; }
+    git fetch -q origin && git switch -q -c "$1" origin/main && echo "on $1, from origin/main $(git rev-parse --short HEAD)"
+}
