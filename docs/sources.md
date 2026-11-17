@@ -649,3 +649,29 @@ By
 
 Takes
 : 31 transcripts: 41 of 240 tad r calls failed (17%), each failure ~8.4 calls and ~11k tokens; after ikb 0-1 failures in 4 runs at equal tokens - a one-off subagent count, not rerunnable; the method read-weight's struggled-with now repeats by script
+
+
+<a id="lab-agent-repo"></a>
+### creation-guidelines/lab-agent (main, 0.1.53)
+
+Url
+: https://github.com/creation-guidelines/lab-agent
+
+By
+: research-lab-agent
+
+Takes
+: what ran, when, what depends on it
+
+
+<a id="lab-agent-jobs-repo"></a>
+### grenudi/lab-agent-jobs: job and board history
+
+Url
+: https://github.com/grenudi/lab-agent-jobs
+
+By
+: research-lab-agent
+
+Takes
+: what ran, when, what depends on it

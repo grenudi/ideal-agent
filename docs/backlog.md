@@ -226,3 +226,99 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="lab-agent-1-token-neutral-path"></a>
+### lab-agent retires 1: the token to a neutral path
+
+Status
+: open
+
+Note
+: Proof: scripts/lab-agent-free shows no ~/.config/lab-agent in land, agent-env, the two pins units, oco-agent. Next: author OK the path, symlink the old one, one PR per reader. Orchestration owns it.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="lab-agent-2-ocoeco-timers-stop"></a>
+### lab-agent retires 2: stop the oco timers
+
+Status
+: open
+
+Note
+: Proof: systemctl --user list-timers shows no oco-* timer. Next: the author's word that ocoeco's lab lenses are not wanted; the lab's keeper stops them.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="lab-agent-3-jobs-by-systemd-run"></a>
+### lab-agent retires 3: long jobs by systemd-run --user
+
+Status
+: open
+
+Note
+: Proof: one walleye kernel build run and read back as a user unit with its journal; then lab-agent.service and oco-agent.service stop. Waits on the author: keep-awake while a build runs.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="lab-agent-5-inbox-guide-out-of-the-start"></a>
+### lab-agent retires 5: the session start without lab-agent inbox
+
+Status
+: open
+
+Note
+: Waits on the author: does he still write to the lab through ntfy. Proof: plugin src names no lab-agent; start reads session messages only.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="lab-agent-6-root-exec-grant"></a>
+### lab-agent retires 6: root for devlab and setup without lab-agent
+
+Status
+: open
+
+Note
+: Waits on the author and root: wrapper or narrower grant (decision text). Proof: devlab flash dry-run and provision pass with DEVLAB_ROOT set to the new one; scripts/lab-agent-free reaches 0.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="lab-agent-4-board-notify-to-curl-and-backlog"></a>
+### lab-agent retires 4: devlab watch to curl and a backlog row
+
+Status
+: open
+
+Note
+: Proof: a test alert pushed from the watch unit reaches the author's phone (he confirms); devlab names no lab-agent board; the 40 stale board items closed or moved to their backlogs.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17
