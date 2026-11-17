@@ -96,3 +96,22 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="sources-by-back"></a>
+### Move the sources' 'Made by ...' back into by, once idealkb v0.3.0 is pinned
+
+Status
+: open
+
+Note
+: idealkb #7 (v0.3.0) made by an optional field of the generic sources table and the source record takes --by. The Monday pin job brings it here. Next: once idealkb.toml says 0.3.0, set by from the three takes that begin 'Made by ' (lava-scheduler, ci-tron-introduction, pmos-hw-ci-status) and strip that prefix.
+
+Waits
+: the idealkb pin moving to 0.3.0
+
+About
+: knowledge-base
+
+Opened
+: 2026-11-17
