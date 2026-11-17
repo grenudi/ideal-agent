@@ -760,3 +760,28 @@ About
 
 Research
 : device-from-nothing
+
+
+<a id="2026-11-17-a-domain-layer-names-its-base"></a>
+### 2026-11-17-a-domain-layer-names-its-base
+
+Date
+: 2026-11-17
+
+Brief
+: A domain's layer stays where its knowledge is - docs' agent folder, lanes in their device repos - one brief per role it uses, deltas only, checked by overlay-check
+
+Decision
+: No separate repository: the domain layer is the agent folder of the domain's commons base (linux-phone-oco/docs, ideal-agent-linux-phone-oco/), mirroring ideal-agent's roles - one brief per role card it uses, named for it, beginning with the Role, Name and Also lines - and holding only what the domain adds: its devices, tools, places, queries, order of work. Anything general is named (the card, the skill and its section, the practice's number), never said again. A lane's brief (a device's coordinator, its keeper's device part) moves into that device repository's agent folder with its rows (move-device-rows), from a skeleton device-template ships. The folder's README names the ideal-agent version it was last checked against; scripts/overlay-check (6-word runs, 15%) is run by the patrol and by whoever changes a brief; a general finding goes back as an upstream item to ideal-agent (docs' upstream, as #56 did).
+
+Why
+: The author, 2026-11-17: the domain version keeps ideal-agent's structure, references it for general behaviour and adds only specifics, never copying. Measured: half the folder restates ideal-agent and two briefs now contradict it - a copy goes stale. Others pin a base and hold deltas (plugin dependencies, Helm, Kustomize, Debian); nobody checks restating, so the check is ours.
+
+Rejected
+: A separate ideal-agent-linux-phone repository with its own base (a third place to keep in step; the domain's knowledge is docs' and the devices'); a linux-phone Claude plugin depending on ideal-agent (later, if the domain grows skills of its own - today briefs are read by path, and a plugin adds a listing to every session); copying ideal-agent's tree into the domain (it is what went stale); waiting for the device move before trimming (the contradictions act now).
+
+About
+: organising-agents
+
+Research
+: domain-layer

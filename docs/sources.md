@@ -941,3 +941,41 @@ By
 
 Takes
 : mainline from the nearest supported sibling, one change at a time, with UART, framebuffer or ramoops to see it
+
+
+<a id="claude-code-plugin-dependencies"></a>
+### Claude Code: plugin dependencies
+
+Url
+: https://code.claude.com/docs/en/plugins/dependencies.md
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+By
+: Anthropic
+
+Takes
+: a plugin depends on another by a semver range resolved from release tags; names are namespaced; no agent extends another's body
+
+
+<a id="helm-library-charts"></a>
+### Helm: library charts
+
+Url
+: https://helm.sh/docs/topics/library_charts/
+
+Author
+: Helm
+
+Year
+: 2026
+
+By
+: CNCF
+
+Takes
+: the overlay pins its base and includes its templates by name, overriding only what differs

@@ -1,0 +1,42 @@
+#!/bin/sh
+# Whether a domain's agent folder restates ideal-agent instead of naming it (decision
+# 2026-11-17-a-domain-layer-names-its-base): for each brief, the share of its words that stand in a run of N
+# words also found in ideal-agent's role cards, skills or practices. A domain layer holds only what differs.
+#
+#   overlay-check FOLDER [N] [LIMIT]   FOLDER: a domain's agent folder (its *.md briefs); N: the run of words that
+#                                      counts as restated (default 6); LIMIT: the share, in percent, above which
+#                                      a brief fails (default 15)
+# Prints one line per brief - bytes, restated percent, and the first restated run - then the whole. Ends 1
+# when a brief is over LIMIT, 2 on a wrong call. Needs tad for the practices (skipped where it is missing).
+set -eu
+[ $# -ge 1 ] && [ $# -le 3 ] || { echo "usage: overlay-check FOLDER [N] [LIMIT]" >&2; exit 2; }
+folder=$1; n=${2:-6}; limit=${3:-15}
+[ -d "$folder" ] || { echo "overlay-check: no folder $folder" >&2; exit 2; }
+root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
+base=$(mktemp); trap 'rm -f "$base"' EXIT
+{ cat "$root"/agents/*.md "$root"/skills/*/SKILL.md
+  (cd "$root" && tad q practices --format csv 2>/dev/null) || true; } > "$base"
+fail=0
+for f in "$folder"/*.md; do
+    out=$(awk -v n="$n" -v basefile="$base" '
+        function words(s,   t) { t = tolower(s); gsub(/[^a-z0-9]+/, " ", t); return t }
+        BEGIN {
+            while ((getline line < basefile) > 0) all = all " " words(line)
+            k = split(all, w, " ")
+            for (i = 1; i + n - 1 <= k; i++) { s = w[i]; for (j = 1; j < n; j++) s = s " " w[i + j]; seen[s] = 1 }
+        }
+        { text = text " " words($0) }
+        END {
+            m = split(text, v, " "); hit = 0; first = ""
+            for (i = 1; i + n - 1 <= m; i++) {
+                s = v[i]; for (j = 1; j < n; j++) s = s " " v[i + j]
+                if (s in seen) { for (j = 0; j < n; j++) mark[i + j] = 1; if (first == "") first = s }
+            }
+            for (i in mark) hit++
+            printf "%d\t%s\n", (m ? int(100 * hit / m) : 0), first
+        }' "$f")
+    pct=${out%%"$(printf '\t')"*}; run=${out#*"$(printf '\t')"}
+    printf '%s\t%s B\t%s%% restated\t%s\n' "$(basename "$f")" "$(wc -c < "$f" | tr -d ' ')" "$pct" "$run"
+    [ "$pct" -le "$limit" ] || fail=1
+done
+exit $fail

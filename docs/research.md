@@ -510,3 +510,28 @@ Sources
 
 About
 : skills
+
+
+<a id="domain-layer"></a>
+### domain-layer
+
+Date
+: 2026-11-17
+
+Brief
+: linux-phone's agent folder: 49% restates ideal-agent (mostly paraphrase), two briefs contradict it; others pin a base and hold deltas, and none checks restating
+
+Question
+: Where should a domain's layer over ideal-agent live, how does it mirror ideal-agent without copying it, and how does it pin, follow and send back?
+
+Found
+: docs' ideal-agent-linux-phone-oco: 26 KB, 49% general, 36% domain, 15% one lane; phone-keeper and surya-coordinator contradict the current cards; overlay-check flags feature-research 27%, orchestration 22%, README 17% (6-word runs). No device repository has a base or an agent folder yet. Others: plugin dependencies by semver range, Helm library charts, Kustomize overlays, Debian Standards-Version - a pinned base, an overlay of deltas; nobody checks restating.
+
+Sources
+: claude-code-plugin-dependencies,helm-library-charts,agents-md,claude-code-subagents
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-17/
