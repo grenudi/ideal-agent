@@ -45,40 +45,57 @@ fn live() -> Option<String> {
     (out.status.success() && text.contains("\"practice\"")).then_some(text)
 }
 
-/// The practices as a session start reads them: numbered, each practice's own words alone - its reason and
-/// whom it is for are one command away (`ideal-agent practices`), so the start stays light (practice
-/// 45-keep-the-start-light: half of what a fresh session read before acting was the reasons).
+/// The practices in the order of their ids, each with the number its id begins with (01-record-in-tad is
+/// 1), so that a practice is called by the same number wherever it stands in the file.
+fn in_order(text: &str) -> Vec<(String, serde_json::Value)> {
+    let mut all: Vec<(String, serde_json::Value)> = text
+        .lines()
+        .filter_map(|line| serde_json::from_str::<serde_json::Value>(line).ok())
+        .filter(|v| v["practice"].is_string())
+        .map(|v| (v["id"].as_str().unwrap_or("").to_string(), v))
+        .collect();
+    all.sort_by(|a, b| a.0.cmp(&b.0));
+    all.into_iter()
+        .enumerate()
+        .map(|(i, (id, v))| {
+            let n = id
+                .split('-')
+                .next()
+                .and_then(|d| d.parse::<u32>().ok())
+                .map_or((i + 1).to_string(), |n| n.to_string());
+            (n, v)
+        })
+        .collect()
+}
+
+/// A practice's first sentence: its words up to the first full stop that ends a sentence.
+pub fn first_sentence(practice: &str) -> &str {
+    match practice.find(". ") {
+        Some(i) => &practice[..=i],
+        None => practice,
+    }
+}
+
+/// The practices as a session start reads them: numbered, each its first sentence alone - the rest of its
+/// words, its reason and whom it is for are one command away (`ideal-agent practices`), so the start stays
+/// light (practice 45-keep-the-start-light; the author chose first sentences on 2026-11-17).
 pub fn render_short(text: &str, source: &str) -> String {
     let mut out = format!("How to work in the open-commons ecosystem ({source})\n\n");
-    let mut n = 0;
-    for line in text.lines() {
-        let Ok(v) = serde_json::from_str::<serde_json::Value>(line) else {
-            continue;
-        };
-        let Some(practice) = v["practice"].as_str() else {
-            continue;
-        };
-        n += 1;
-        out.push_str(&format!("{n}. {practice}\n"));
+    for (n, v) in in_order(text) {
+        let practice = v["practice"].as_str().unwrap_or("");
+        out.push_str(&format!("{n}. {}\n", first_sentence(practice)));
     }
-    out.push_str("\nWhy each holds, and for whom: `lab-agent guide` on the lab, or the plugin's `scripts/ideal-agent practices`.\n");
+    out.push_str("\nEach practice whole, with why it holds and for whom: `lab-agent guide` on the lab, or the plugin's `scripts/ideal-agent practices`.\n");
     out
 }
 
-/// The practices, numbered, each with why and for whom; lines that are not practices are skipped.
+/// The practices, numbered, each whole with why and for whom; lines that are not practices are skipped.
 pub fn render(text: &str, source: &str) -> String {
     let mut out = format!("How to work in the open-commons ecosystem ({source})\n\n");
-    let mut n = 0;
-    for line in text.lines() {
-        let Ok(v) = serde_json::from_str::<serde_json::Value>(line) else {
-            continue;
-        };
-        let Some(practice) = v["practice"].as_str() else {
-            continue;
-        };
-        n += 1;
+    for (n, v) in in_order(text) {
         out.push_str(&format!(
-            "{n}. {practice}\n   why: {}\n   for: {}\n\n",
+            "{n}. {}\n   why: {}\n   for: {}\n\n",
+            v["practice"].as_str().unwrap_or(""),
             v["why"].as_str().unwrap_or(""),
             v["for"].as_str().unwrap_or("")
         ));
@@ -115,6 +132,27 @@ mod tests {
             "the reason is one command away"
         );
         assert!(r.contains("ideal-agent practices"));
+    }
+
+    #[test]
+    fn the_start_reads_first_sentences_in_the_order_of_the_ids() {
+        let t = "{\"id\":\"22-look\",\"practice\":\"Look first. Then say what is.\",\"why\":\"w\",\"for\":\"agents\"}\n{\"id\":\"03-memory\",\"practice\":\"Adjust your memory.\",\"why\":\"w\",\"for\":\"agents\"}\n";
+        let r = render_short(t, "test");
+        let three = r
+            .find("3. Adjust your memory.\n")
+            .expect("numbered by its id");
+        let twenty_two = r
+            .find("22. Look first.\n")
+            .expect("its first sentence alone");
+        assert!(
+            three < twenty_two,
+            "in the order of the ids, not of the file"
+        );
+        assert!(!r.contains("Then say what is."));
+        assert!(
+            render(t, "test").contains("22. Look first. Then say what is.\n"),
+            "the whole is one command away"
+        );
     }
 
     #[test]
