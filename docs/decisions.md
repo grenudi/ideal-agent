@@ -351,3 +351,28 @@ About
 
 Research
 : what-a-started-agent-reads
+
+
+<a id="2026-11-17-connectors-off-by-default"></a>
+### 2026-11-17-connectors-off-by-default
+
+Date
+: 2026-11-17
+
+Brief
+: Gmail and Claude Docs are off by default for new sessions; Firecrawl stays on for research; a session that needs one asks the author.
+
+Decision
+: The author turned Gmail and Claude Docs off by default for new sessions; Firecrawl stays on. The skills lab-session-start and keep-the-start-light say so: a session whose task needs Gmail or Claude Docs asks the author, who turns it on for that session from the composer's + menu, Connectors. The next keeper's start is measured with scripts/read-weight to confirm the saving.
+
+Why
+: The author, 2026-11-17. Measured (what-a-started-agent-reads): every session held 73-81k tokens before reading anything, nearly all Claude Code and the tools of every connector it carries - Gmail 31 tools, Claude Docs 8 - while the project's own start was 4-6k; a keeper or a research session uses neither.
+
+Rejected
+: Switching connectors per session from outside, by role (the app offers no such switch: it applies to one session and sets the default for new ones). Turning Firecrawl off too (research sessions need it to look outside the commons). Leaving all on (every session pays for tools it never calls).
+
+About
+: housekeeping
+
+Research
+: what-a-started-agent-reads

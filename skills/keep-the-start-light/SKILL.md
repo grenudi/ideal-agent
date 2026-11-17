@@ -17,7 +17,9 @@ ideal-knowledge-base - never a second way of making them.
   on the work and at its end, in tokens, and the largest things it read before acting. The first turn is
   mostly Claude Code's own instructions and the tools of every connector the session carries (about 75
   thousand tokens on the lab, 2026-11-17): a role that needs no mail, web search or documents is started
-  without those connectors - the author's setting, so proposed, not changed.
+  without those connectors - the author's setting, so proposed, not changed. Since 2026-11-17 Gmail and
+  Claude Docs are off by default for new sessions (Firecrawl stays on for research); a session that needs
+  one asks the author, who turns it on from the composer's + menu, Connectors.
 - **The start weight**, per role: `${CLAUDE_PLUGIN_ROOT}/scripts/start-weight PLACE` on a clone of the
   project's base at its main - the session start, the skills' descriptions, lab-session-start, AGENTS.md,
   the agent folder's README, and each brief. Record it, dated, in the project's base.
