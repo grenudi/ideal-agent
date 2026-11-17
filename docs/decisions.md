@@ -243,3 +243,25 @@ About
 
 Research
 : housekeeping-the-start
+
+
+<a id="2026-11-17-the-start-reads-first-sentences"></a>
+### 2026-11-17-the-start-reads-first-sentences
+
+Date
+: 2026-11-17
+
+Decision
+: The session start prints each practice's first sentence alone, numbered by its id and in the order of the ids; each practice whole, with why it holds and for whom, is one command away (lab-agent guide, scripts/ideal-agent practices). Practice 45's opening was split so that its first sentence says the practice.
+
+Why
+: The author chose it on 2026-11-17 (backlog practices-short-at-the-start, proposed by housekeeping): the practices' own words were 13.7 KB of the 14.4 KB session start; their first sentences are 7.9 KB. Numbering by position had shown practice 22, written last into the file, as the 44th.
+
+Rejected
+: The author shortening each long practice by hand (his choice was the first sentence; the whole stays as he wrote it). A summary line written for each practice (a second text of each practice to keep in step with the first).
+
+About
+: housekeeping
+
+Research
+: housekeeping-the-start

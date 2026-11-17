@@ -121,10 +121,10 @@ Opened
 ### Proposed to the author: the session start shows each practice's first sentence only
 
 Status
-: open
+: done
 
 Note
-: The practices' own words are 13.7 KB of the 13.9 KB session start; their first sentences are 7.9 KB, and five practices run past 590 characters (one 1268). Proposed, not done: the practices are the author's words (practice 45: only proposed). Ways: the start prints first sentences, the whole one command away; or the author shortens the longest practices himself.
+: Done 2026-11-17 at the author's word: the session start prints first sentences (decision 2026-11-17-the-start-reads-first-sentences).
 
 Waits
 : the author
