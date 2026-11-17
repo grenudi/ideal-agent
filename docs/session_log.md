@@ -373,3 +373,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-lane-next"></a>
+### A lane's next item: lane-next in linux-phone's docs
+
+Entry date
+: 2026-11-17
+
+Done
+: With orchestration's yes: docs #260 - backlog.device, needs phone|research|build, lane-next --device --needs, phone-next and phone-queue require --device, the records refuse needs without a device, the briefs name it. keep-a-shared-resource names the lane's next-item query.
+
+Considered
+: An optional --device, the project as the lane.
+
+Rejected
+: See docs decision 2026-11-17-a-backlog-item-names-its-device.
+
+About
+: organising-agents
