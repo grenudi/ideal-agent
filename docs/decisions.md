@@ -8,6 +8,9 @@
 Date
 : 2026-11-17
 
+Brief
+: grenudi/ideal-agent is the one home of general agent know-how, a tad database and one Claude Code plugin; each project keeps its domain.
+
 Decision
 : grenudi/ideal-agent is the one home of general agent know-how in the open commons: the practices (moved from the observatory), the shared skills (from creation-guidelines/lab-agent oco-agent/skills), the general hooks (from linux-phone-oco/lab-tools' devlab guard), the general role methods (from linux-phone-oco/docs prompts/) and the research and decisions on how agents are organised. It keeps them in its own tad database and ships them as one Claude Code plugin and marketplace, so one install gives any machine, project or cloud session the same agent. Each old place is retired with a pointer here once the new one behaves the same; what is one project's domain (a device's tool, a project's records, its how-it-stands rows) stays in that project's own data, so both improve in their own place.
 
@@ -30,6 +33,9 @@ Research
 Date
 : 2026-11-17
 
+Brief
+: Agents are named sessions with briefs; their shared state is the projects' data, not a tracker; research runs in parallel, a shared device is queued.
+
 Decision
 : Agents are sessions with a name, a brief and places they own; their shared state is the data the projects already keep - backlog, decisions, research, session logs, measured results - read through ocoeco's lenses, not a tracker of their own. An orchestration session tends the conveyor and the agents: it checks the ways by measuring hand-work, turns every rule it can into a mechanism (a tool's hold on a device, Claude Code command hooks, CI), keeps the face fluent, and starts a research session per hard feature. Research parallelises; changes to one shared device are queued through one session. (First decided for linux-phone-oco in its docs, decision of the same id; its linux-phone parts stay there.)
 
@@ -48,6 +54,9 @@ About
 
 Date
 : 2026-11-17
+
+Brief
+: An expert is a domain written down in its records, not a session kept alive: sessions read the rows, hand over into them, and end.
 
 Decision
 : An expert is a domain written down in its project's data, not a session kept alive. Each hard domain is its rows - research, decisions, backlog, tests, sources - plus one research row per domain, DOMAIN-how-it-stands, that holds the tacit part (dead ends, where experiments live, what never to do again), added to item by item, never rewritten whole. A session takes up a domain by its brief and that domain's rows, and becomes its expert by reading them; it is ended when its part lands, or before its context is compacted, after writing its hand-over into those rows (not into notes outside the repository); the next starts fresh from them. Questions route by the record first: read the domain's rows; if they do not answer, message the domain's live session directly, not through orchestration; with no live session, start a short read-only consult from the rows on a lighter model, and write every answer back as a row. One writer per domain and one hand on a shared device. (First decided for linux-phone-oco in its docs, decision of the same id.)
@@ -71,6 +80,9 @@ Research
 Date
 : 2026-11-17
 
+Brief
+: The shared procedures and the methods of the roles are skills in the plugin; a project's brief keeps only its domain and names the skill.
+
 Decision
 : The procedures every agent follows are kept once, as Claude Code skills in this plugin (skills/): lab-session-start, land-a-change, record-the-work, change-a-device - and the general methods of the roles that were briefs for one project: orchestrate-agents, research-a-feature, bring-up-a-part. A project's brief (linux-phone-oco/docs prompts/) keeps only its domain part - what it owns, its device's tool, its places - and names the skill for the method. The skills replace creation-guidelines/lab-agent's oco-agent/skills, which were linked into the lab's ~/.claude/skills; that folder now points here. (lab-agent's decision 2026-11-17-skills-shared-by-every-agent, carried here: procedures shared as agent skills, discoverable rather than remembered.)
 
@@ -89,6 +101,9 @@ About
 
 Date
 : 2026-11-17
+
+Brief
+: The general hooks are the plugin's: no push to main, no Python, the practices at start - a Rust program built by the plugin; devlab keeps the phone's rule.
 
 Decision
 : The general ways Claude Code can hold are the plugin's hooks (hooks/hooks.json): PreToolUse on Bash refuses git push that reaches main and python/pip (exit 2, the reason given to the agent); SessionStart prints the practices and, where lab-agent is installed, the unread messages. They call ideal-agent, a small Rust program in this repository, declared with argenv; the plugin builds it once per version from the source it carries (scripts/ideal-agent, cargo) into the plugin's own data folder. The command reader and both rules are taken whole, with their tests, from devlab's guard (linux-phone-oco/lab-tools), which keeps only what is its device's: ssh, scp, rsync to a phone outside devlab.
@@ -109,6 +124,9 @@ About
 Date
 : 2026-11-17
 
+Brief
+: The practices are a table of ideal-agent's database; guide and the session start read them here; the observatory's copy is retired.
+
 Decision
 : The practices are a table of this database (data/practices.json), entered with tad r practice and exported in the mark, so the observatory gathers and shows them as ideal-agent's rows. lab-agent guide and ideal-agent start read them live from this repository's main; the observatory no longer keeps its own copy (its design/data/practices.json is retired with a pointer here).
 
@@ -128,6 +146,9 @@ About
 Date
 : 2026-11-17
 
+Brief
+: ideal-agent's records live in its own tad database; the commit is the record of the work, no glimpses.
+
 Decision
 : ideal-agent keeps its records in its own tad database: data through tad (tad r NAME), landing through land; the commit and its pull request are the record of the work, signed by the name the session works under. No glimpses and no oco/ tables: the mark exports data/ directly.
 
@@ -146,6 +167,9 @@ About
 
 Date
 : 2026-11-17
+
+Brief
+: A resource only one may change has one keeper: a lasting role with disposable sessions, serving a queue others prepare; its tool holds the lock.
 
 Decision
 : The general pattern of a keeper of a shared resource is ideal-agent's: practice 44-one-keeper-per-shared-resource and the role skill keep-a-shared-resource. One owner per resource; a lasting role whose sessions are disposable (hand-over into the resource's how-it-stands record, then end); others prepare and queue items with their proofs, the keeper executes by the weakest link; the queue is a named query over the project's backlog, shown on its face; a scheduled run or the patrol starts the next keeper session when the queue has work and no keeper is live, and a lease keeps two keepers from running; the resource's own tool still holds the lock. A project keeps only its specifics - the resource, its tool, its queue's query, its lease, its schedule (linux-phone-oco: surya's phone keeper, in docs' ideal-agent-linux-phone-oco/, extending this).
@@ -169,6 +193,9 @@ Research
 Date
 : 2026-11-17
 
+Brief
+: ideal-agent follows ideal-knowledge-base by pin; every record names its subject in about, a row of subjects or a backlog item.
+
 Decision
 : ideal-agent follows grenudi/ideal-knowledge-base at 0.1.0, its second follower after linux-phone-oco/docs: idealkb's generic queries (about, next, find, row, recent), records (decision, research, backlog, session-log, source) and the generic parts of AGENTS.md and tables.toml, pinned in idealkb.toml. Every record of the standing tables names its subject in about - a row of the new subjects table (ideal-agent, practices, skills, hooks, organising-agents, keeper, knowledge-base, records) or a backlog item - checked by references rules. ideal-agent's own tables (practices, landscape, subjects, about) and records (practice, practice-shown-in, landscape, backlog-status) stay its own. queries/backlog.sql gives way to next. ocoeco's reasoning lens lets a decision be about a subject (ocoeco #458).
 
@@ -188,6 +215,9 @@ About
 Date
 : 2026-11-17
 
+Brief
+: ideal-agent depends on and teaches nothing of ocoeco; landit checks tad places with tad; what remains is passive or the author's words.
+
 Decision
 : ideal-agent depends on nothing of ocoeco and teaches nothing of it: its skills and its researcher look and record through the project's tad knowledge base and idealkb's queries and records only (about, next, find, row, recent, the named records); a place still kept with ocoeco is mentioned in one line as another project's legacy. landit checks a tad place with tad check and make verify, never ocoeco check, and makes no glimpse there (lab-agent #219). What remains is passive: the mark (oco.toml) and gather.yml, by which the author's observatory reads these tables; OCOECO_BY, the name oco-work signs commits with; and the practices' own text, in which 10 of 44 practices name ocoeco (14 counting its lenses and glimpses: 03, 05, 20, 22, 26, 29, 30, 31, 33, 37, 39, 40, 41, 42) - the author's words, reported to him, not rewritten here.
 
@@ -206,6 +236,9 @@ About
 
 Date
 : 2026-11-17
+
+Brief
+: Practice 22 is extended, not doubled: a proposal, the author's too, is met by a small look around, kept as a research row with dated material.
 
 Decision
 : Practice 22 is extended, not doubled: a proposal - the author's too - is met by looking at where things stand and how others do it and reconsidering it before acting; the finding is a research row with its sources and its material in a dated folder, and a subject's summary is renewed when due. The how is a skill, look-around-first: where things stand by the base's queries, how others do it (the researcher agent may take it), reconsider, keep the finding as a row plus a dated folder, renew the summary. ask-a-knowledge-base and record-the-work say the summary and the material. ideal-agent's pin moves to idealkb 0.3.0, so its own know-how follows the same layers.
@@ -229,6 +262,9 @@ Research
 Date
 : 2026-11-17
 
+Brief
+: Housekeeping measures what a fresh agent reads per role, against a budget; the patrol measures, the owner simplifies, cutting words is only proposed.
+
 Decision
 : Housekeeping of the start is practice 45-keep-the-start-light and the skill keep-the-start-light, the upkeep of idealkb's summary and dated-research layers. Measured: the start weight per role (scripts/start-weight: the session start, skill descriptions, lab-session-start, AGENTS.md, the agent folder's README, the brief) and the base's fixed questions (idealkb's the-measure). Budget: 32 KB a role or a fifth more than last time; 3 KB a front file; 8 KB a brief; a summary due by idealkb's rule. Who: measuring is a duty of each project's patrol, every run (linux-phone: the linux-phone-patrol scheduled task); over budget it files one backlog item; the owner of the file simplifies. By itself: measure, record, file, write a due summary, mark research superseded; only proposed: removing words from a brief, a front file, a skill or the start, moving files, and any change to a practice. Applied first to ideal-agent's own part: the session start prints the practices without their reasons (22.5 KB to 13.9 KB), the reasons one command away.
 
@@ -251,6 +287,9 @@ Research
 Date
 : 2026-11-17
 
+Brief
+: The session start prints each practice's first sentence, numbered by its id; the whole is one command away.
+
 Decision
 : The session start prints each practice's first sentence alone, numbered by its id and in the order of the ids; each practice whole, with why it holds and for whom, is one command away (lab-agent guide, scripts/ideal-agent practices). Practice 45's opening was split so that its first sentence says the practice.
 
@@ -265,3 +304,25 @@ About
 
 Research
 : housekeeping-the-start
+
+
+<a id="2026-11-17-briefs-first"></a>
+### 2026-11-17-briefs-first
+
+Date
+: 2026-11-17
+
+Brief
+: ideal-agent follows idealkb 0.4.0: every decision and research has a brief, answers give briefs, the whole on demand.
+
+Decision
+: ideal-agent follows ideal-knowledge-base 0.4.0, whose concept brief-first gives every record a one-line brief and every answer briefs, the whole read only when the task needs it. Its 13 decisions and 4 research rows were given briefs by hand; ask-a-knowledge-base and record-the-work say to read briefs first and to record with --brief; a file opens with its brief, its first paragraph.
+
+Why
+: The author, 2026-11-17: records - tables and files - should all have a brief summary to begin with, read by default; deeper only when the task needs it - reflected in idealkb, referenced by ideal-agent as its implementation. Measured here: the about answer for housekeeping 1.4 KB by briefs against 5.3 KB whole.
+
+Rejected
+: Leaving the old rows to the first-sentence stand-in (they are few and ours; a written brief says what matters, a first sentence only what came first). A practice of its own (the skills every session uses already carry it; the start stays light).
+
+About
+: knowledge-base

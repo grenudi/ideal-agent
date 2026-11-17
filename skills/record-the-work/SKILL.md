@@ -13,9 +13,9 @@ place with `--project`).
 A base is kept by tad and follows grenudi/ideal-knowledge-base (ask-a-knowledge-base). Write only through
 its named records - `tad statements` lists them with their parameters:
 
-- **Decisions**: `tad r decision --id DATE-slug --decision ... --why ... --rejected ... --about S` - always
+- **Decisions**: `tad r decision --id DATE-slug --brief ONE-LINE --decision ... --why ... --rejected ... --about S` - always
   with what was rejected and why.
-- **Research**: `tad r research --id ... --question ... --found ... --sources a,b --about S`, each source
+- **Research**: `tad r research --id ... --brief ONE-LINE --question ... --found ... --sources a,b --about S`, each source
   `tad r source --id ... --title ... --url ...`. Its own material, if more than fits a row, in a dated folder
   it names (`--material research/SUBJECT/YYYY-MM-DD/`); research redone is a new row `--supersedes` the old.
 - **Backlog**: `tad r backlog --id ... --title ... --note ... --about S` - one row per piece of work, its
