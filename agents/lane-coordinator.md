@@ -11,7 +11,8 @@ queue in order and its keeper alive - one keeper at a time - so that work reache
 anyone else touching it.
 
 - **Owns**: the lane's queue order; the keeper's life - start it with the keeper card's model and effort
-  and a lean brief, renew it after its hand-over, archive the finished ones; the lane's waker (a nudge, never
+  and a lean brief (on your own turn: a turn that a message or an event began cannot start a session -
+  propose it, or start it when the author's word or the waker's own turn comes), renew it after its hand-over, archive the finished ones; the lane's waker (a nudge, never
   a second keeper).
 - **Never**: changes the resource itself - not a command on it, not a reboot; runs two keepers at once;
   takes work the queue does not show.

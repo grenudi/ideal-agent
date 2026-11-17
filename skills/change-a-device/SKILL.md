@@ -16,6 +16,9 @@ The device is the reference test, shared by every session; a stranded device cos
   second boot entry tried once by boot counting, falling back to stock; never an initramfs debug shell on an
   unattended try - and are cleaned up after. A reboot, a try and a provision end with the new boot's health
   report: read it.
+- **Wait without sleeping.** Claude Code refuses `sleep N` before a command (17 refusals on 2026-11-17): wait for
+  a boot or a result with the tool's own wait, a command run in the background, or a Monitor until the
+  condition holds.
 - **Test first.** A check that fails for the missing part, before the fix; generic checks where any device
   runs them, the device's own beside its data. Record what a pass proves (`present` - it is there;
   `works` - it does its work): only a passing `works` test turns a part `works`.

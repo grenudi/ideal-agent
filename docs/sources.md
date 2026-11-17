@@ -98,22 +98,6 @@ Takes
 : Knowledge kept by rewriting one summary erodes (context collapse) and drifts toward the terse (brevity bias); itemised, incremental additions to a playbook keep the detail. ICLR 2026.
 
 
-<a id="mast-mas-failures"></a>
-### Why Do Multi-Agent LLM Systems Fail?
-
-Url
-: https://arxiv.org/abs/2503.13657
-
-Author
-: Cemri et al.
-
-Year
-: 2025
-
-Takes
-: 1600+ traces, 14 failure modes in three groups: system design, misalignment between agents (lost context, ignored input, withheld information), task verification. Gains from multi-agent systems are often minimal. NeurIPS 2025.
-
-
 <a id="chroma-context-rot"></a>
 ### Context Rot: How Increasing Input Tokens Impacts LLM Performance
 
@@ -551,3 +535,98 @@ By
 
 Takes
 : the newcomer's own log of friction is cheap signal; the owning team fixes
+
+
+<a id="anthropic-writing-tools"></a>
+### Writing effective tools for agents - with agents
+
+Url
+: https://www.anthropic.com/engineering/writing-tools-for-agents
+
+Author
+: Anthropic
+
+Year
+: 2025
+
+By
+: Anthropic
+
+Takes
+: read transcripts and evals for tool errors and redundant calls; fix the tool's description or shape
+
+
+<a id="microsoft-agent-trajectories"></a>
+### Investigating agent trajectories
+
+Url
+: https://microsoft.github.io/agent-experience/playbook/investigating-agent-trajectories/
+
+Author
+: Microsoft
+
+Year
+: 2026
+
+By
+: Microsoft
+
+Takes
+: note the first wrong call; bring the evidence to whoever owns the cause; a new skill is the last resort
+
+
+<a id="langfuse-error-analysis"></a>
+### Langfuse: error analysis
+
+Url
+: https://langfuse.com/academy/monitoring/error-analysis.md
+
+Author
+: Langfuse
+
+Year
+: 2025
+
+By
+: Langfuse
+
+Takes
+: read traces, cluster first failures, repeat after changes; the domain calls stay with people
+
+
+<a id="mast-mas-failures"></a>
+### Why Do Multi-Agent LLM Systems Fail? (MAST)
+
+Url
+: https://arxiv.org/abs/2503.13657
+
+Author
+: Cemri et al.
+
+Year
+: 2025
+
+By
+: Cemri et al.
+
+Takes
+: a taxonomy of 14 failure modes - system design, misalignment, verification
+
+
+<a id="swarmia-paper-cuts"></a>
+### Paper cuts in developer experience
+
+Url
+: https://swarmia.com/blog/paper-cuts-in-developer-experience
+
+Author
+: Rebecca Murphey
+
+Year
+: 2024
+
+By
+: Swarmia
+
+Takes
+: everyone reports small friction; owners fix; the pile becomes data for priorities
