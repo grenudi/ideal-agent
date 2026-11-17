@@ -1,0 +1,30 @@
+#!/bin/sh
+# What the plugin's hooks call: ideal-agent (src/), built from the source this plugin carries, once per
+# version, into the plugin's own data folder - which Claude Code keeps across updates. The session start
+# builds it (cargo, a minute the first time); the guard never builds, it must answer at once.
+set -u
+root="${CLAUDE_PLUGIN_ROOT:-$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)}"
+data="${CLAUDE_PLUGIN_DATA:-${XDG_DATA_HOME:-$HOME/.local/share}/ideal-agent}"
+PATH="$HOME/.cargo/bin:$PATH"
+version=$(sed -n 's/^version = "\(.*\)"$/\1/p' "$root/Cargo.toml" | head -n 1)
+bin="$data/$version/bin/ideal-agent"
+
+if [ ! -x "$bin" ]; then
+    if [ "${1:-}" = guard ]; then
+        # not built yet: nothing is refused until the session start has built it
+        cat > /dev/null
+        echo "ideal-agent $version is not built yet: its guard holds from the next session start" >&2
+        exit 0
+    fi
+    if ! command -v cargo > /dev/null 2>&1; then
+        echo "ideal-agent: cargo is not on this machine, so the plugin's hooks are not built: install Rust (rustup.rs) and start a new session." >&2
+        exit 0
+    fi
+    mkdir -p "$data/$version"
+    if ! cargo install --quiet --locked --path "$root" --root "$data/$version" \
+        --target-dir "$data/target" > "$data/$version/build.log" 2>&1; then
+        echo "ideal-agent: building the plugin's hooks failed - see $data/$version/build.log" >&2
+        exit 0
+    fi
+fi
+exec "$bin" "$@"

@@ -1,0 +1,14 @@
+{
+  "name": "ideal-agent",
+  "owner": { "name": "grenudi", "url": "https://github.com/grenudi" },
+  "metadata": {
+    "description": "The ideal agent of the open commons: one plugin for every machine, project and cloud session."
+  },
+  "plugins": [
+    {
+      "name": "ideal-agent",
+      "source": "./",
+      "description": "The practices at every session start, the ways held by hooks, the shared procedures and role methods as skills."
+    }
+  ]
+}

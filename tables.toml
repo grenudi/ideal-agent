@@ -1,0 +1,255 @@
+# The tables of ideal-agent, declared as data: the authority on what data/ may hold, checked by tad
+# (creation-guidelines/tad-engine) on every change. One database: the general know-how of agents in the
+# open commons. What is one project's domain stays in that project's own data.
+
+[tables.about]
+key = ["title"]
+
+[[tables.about.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.about.fields]]
+name = "summary"
+type = "string"
+required = true
+
+# How an agent works: read at the start of every session (ideal-agent start, lab-agent guide) and shown
+# by the observatory as this place's rows.
+[tables.practices]
+key = ["id"]
+
+[[tables.practices.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.practices.fields]]
+name = "practice"
+type = "string"
+required = true
+
+[[tables.practices.fields]]
+name = "why"
+type = "string"
+required = true
+
+[[tables.practices.fields]]
+name = "for"
+type = "string"
+required = true
+
+[[tables.practices.fields]]
+name = "shown_in"
+type = "string"
+
+[tables.decisions]
+key = ["id"]
+
+[[tables.decisions.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.decisions.fields]]
+name = "date"
+type = "date"
+required = true
+
+[[tables.decisions.fields]]
+name = "decision"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "why"
+type = "string"
+required = true
+
+[[tables.decisions.fields]]
+name = "rejected"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "about"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "research"
+type = "string"
+
+[tables.research]
+key = ["id"]
+
+[[tables.research.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.research.fields]]
+name = "date"
+type = "date"
+
+[[tables.research.fields]]
+name = "question"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "found"
+type = "string"
+required = true
+
+[[tables.research.fields]]
+name = "sources"
+type = "string"
+
+[tables.sources]
+key = ["id"]
+
+[[tables.sources.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.sources.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.sources.fields]]
+name = "url"
+type = "string"
+required = true
+starts_with = "https://"
+
+[[tables.sources.fields]]
+name = "author"
+type = "string"
+
+[[tables.sources.fields]]
+name = "year"
+type = "integer"
+
+[[tables.sources.fields]]
+name = "by"
+type = "string"
+
+[[tables.sources.fields]]
+name = "takes"
+type = "string"
+
+# How others organise agents: what they do, and what we take from it.
+[tables.landscape]
+key = ["id"]
+
+[[tables.landscape.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.landscape.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "project"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "what"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "for_us"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "link"
+type = "string"
+required = true
+starts_with = "https://"
+
+[[tables.landscape.fields]]
+name = "checked"
+type = "date"
+required = true
+
+[tables.backlog]
+key = ["id"]
+
+[[tables.backlog.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.backlog.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.backlog.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["open", "in-progress", "done"]
+
+[[tables.backlog.fields]]
+name = "note"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "opened"
+type = "date"
+required = true
+
+[[tables.backlog.fields]]
+name = "waits"
+type = "string"
+
+[tables.session_log]
+key = ["id"]
+
+[[tables.session_log.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.session_log.fields]]
+name = "entry_date"
+type = "date"
+required = true
+
+[[tables.session_log.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "done"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "considered"
+type = "string"
+
+[[tables.session_log.fields]]
+name = "rejected"
+type = "string"
+
+[[rules.references]]
+field = "decisions.research"
+to = ["research"]

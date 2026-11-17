@@ -1,0 +1,21 @@
+# This repository's mark: how it fits the Open Commons Observatory's picture.
+# https://github.com/open-commons-observatory/open-commons-observatory.github.io/tree/main/marks
+schema = 1
+
+[project]
+id = "grenudi/ideal-agent"
+name = "Ideal agent: how an agent works in the open commons - practices, skills, hooks and roles, written once"
+title = "Ideal agent"
+kind = "canon"
+parent = "open-commons-observatory"
+
+# One tad database (tables.toml, data/): the observatory reads its tables as this place's rows. The record of
+# work is the commit itself - no glimpses (decision 2026-11-17-one-database-no-glimpses).
+[exports]
+practices = "data/practices.json"
+decisions = "data/decisions.json"
+research = "data/research.json"
+sources = "data/sources.json"
+landscape = "data/landscape.json"
+backlog = "data/backlog.json"
+session_log = "data/session_log.json"
