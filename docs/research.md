@@ -219,10 +219,10 @@ Question
 : Is a role needed that finds what a role's agents struggle with while working, and is it one with the start-health measure?
 
 Found
-: read-weight's struggled-with over 41 transcripts: 301 of 5,375 calls failed - Python refused 27, land's --manual and --help 21, sleep refused 17, checks failed 11, start_session refused 8, ssh to the phone refused 7, oco-work turn failed 5; 56 tad sql writes past named records in 13 sessions (backlog fields 22). Anthropic, Microsoft, Langfuse: read transcripts for tool errors and first wrong calls, cluster, owners fix; SRE and paper cuts: owners decide. Detection shares one pass with start health.
+: read-weight's struggled-with over 41 transcripts: 301 of 5,375 calls failed - Python refused 27, land's --manual and --help 21, sleep refused 17, checks failed 11, start_session refused 8, ssh to the phone refused 7, oco-work turn failed 5; 56 tad sql writes past named records in 13 sessions (backlog fields 22). Anthropic, Microsoft, Langfuse: read transcripts for tool errors and first wrong calls, cluster, owners fix; SRE and paper cuts: owners decide. Detection shares one pass with start health. Before it, by hand: ikb-cli's count (ideal-knowledge-base research ikb-friction-and-world) - 17% of tad r calls failed, ~11k tokens each; ikb then brought failures to 0-1 in 4 runs at equal tokens.
 
 Sources
-: anthropic-writing-tools,microsoft-agent-trajectories,langfuse-error-analysis,mast-mas-failures,sre-eliminating-toil,swarmia-paper-cuts
+: anthropic-writing-tools,microsoft-agent-trajectories,langfuse-error-analysis,mast-mas-failures,sre-eliminating-toil,swarmia-paper-cuts,ikb-friction-in-transcripts
 
 About
 : housekeeping
