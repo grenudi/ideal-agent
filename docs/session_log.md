@@ -124,3 +124,18 @@ Done
 
 About
 : housekeeping
+
+---
+
+
+<a id="2026-11-17-hold-little-and-renew"></a>
+### Hold little, and renew
+
+Entry date
+: 2026-11-17
+
+Done
+: keep-the-start-light gains holding little, how agents are brought up, and renewing a long-lived role; practice 45 extended; orchestrate-agents step 7; the coordinator's hand-over and brief in docs (#195); plugin 0.2.6.
+
+About
+: housekeeping

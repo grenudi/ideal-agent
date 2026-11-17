@@ -354,3 +354,45 @@ Author
 
 Takes
 : Agents trust whatever they read: keep them off stale documentation by verification workflows, freshness metadata (when a page was last checked), documentation generated from the code, and weighting by authority.
+
+
+<a id="claude-compaction"></a>
+### Compaction overview - Claude Platform Docs
+
+Url
+: https://platform.claude.com/docs/en/build-with-claude/compaction
+
+Author
+: Anthropic
+
+Takes
+: Compaction replaces older turns with a summary Claude writes; the session goes on, but what is kept is whatever the summary chose.
+
+
+<a id="context-engineering-cookbook"></a>
+### Context engineering: memory, compaction, and tool clearing
+
+Url
+: https://platform.claude.com/cookbook/tool-use-context-engineering-context-engineering-tools
+
+Author
+: Anthropic
+
+Takes
+: Three primitives for long-running agents: clearing old tool results that can be fetched again, compaction of the conversation, and a memory of notes kept outside the window. Together they kept a run's peak context at half the baseline and its end at 14k tokens instead of 334k.
+
+
+<a id="gastown-handoff"></a>
+### Gas Town Emergency User Manual
+
+Url
+: https://steve-yegge.medium.com/gas-town-emergency-user-manual-cf0e4556d74b
+
+Author
+: Steve Yegge
+
+Year
+: 2026
+
+Takes
+: Use gt handoff liberally after every task, in every worker: sessions are cattle, the role's identity and its hook carry the work to the next session.

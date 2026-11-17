@@ -5,11 +5,11 @@
 How an agent works in the open commons, written once: the practices every session reads at its start, the decisions and research they rest on, and how others organise agents. The same know-how ships as a Claude Code plugin - skills, hooks and roles - so one install gives any machine, project or cloud session the same agent. What is one project's domain stays in that project's own data.
 
 - [Backlog](backlog.md): 9
-- [Decisions](decisions.md): 16
+- [Decisions](decisions.md): 17
 - [Landscape](landscape.md): 4
 - [Practices](practices.md): 45
-- [Research](research.md): 5
-- [Session Log](session_log.md): 8
-- [Sources](sources.md): 24
+- [Research](research.md): 6
+- [Session Log](session_log.md): 9
+- [Sources](sources.md): 27
 - [Subjects](subjects.md): 9
 - [Summaries](summaries.md): 0

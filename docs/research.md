@@ -113,3 +113,25 @@ Sources
 
 About
 : housekeeping
+
+
+<a id="long-lived-roles-renewed"></a>
+### long-lived-roles-renewed
+
+Date
+: 2026-11-17
+
+Brief
+: Long-lived sessions held 560-926k tokens after 730-1,385 turns, re-reading 255-747M in all, never compacting; a written hand-over and a fresh start cut a turn to about 83k.
+
+Question
+: How should a long-lived role - coordinator, orchestration, a keeper - keep its context small, when should it renew itself, and how?
+
+Found
+: Measured 2026-11-17 from the transcripts: the coordinator held 840k tokens after 1,222 turns in 13 hours and had re-read 574M tokens in all; the other long sessions 783k (548M, 11 h), 926k (747M, 9 h) and ideal-agent itself 560k (255M, 3 h); none had compacted. A fresh coordinator from its brief's first paragraph (0.5 KB), its hand-over row (2.7 KB) and the queue's top (1.9 KB) starts at about 83k tokens with the harness - a tenth of a turn now. Claude Code compacts automatically near the window's end, keeping whatever its summary chose; Anthropic's guidance clears tool results that can be fetched again and keeps notes outside the window (a run's end context 14k instead of 334k); Gas Town hands off after every task, the role's identity carrying the work to a fresh session. The hand-over written into the role's record keeps what matters and is read by any next session; a subagent can read a whole transcript and return the summary (the coordinator's 12.9 MB in 2.5 KB, its 77k tokens never entering the asking session).
+
+Sources
+: claude-compaction,context-engineering-cookbook,gastown-handoff,anthropic-context-engineering
+
+About
+: housekeeping
