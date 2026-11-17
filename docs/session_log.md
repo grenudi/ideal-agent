@@ -274,3 +274,18 @@ Rejected
 
 About
 : practices
+
+---
+
+
+<a id="2026-11-17-the-skills-send-an-agent-to-ikb-help-and-ikb"></a>
+### the skills send an agent to ikb --help and ikb help RECORD
+
+Entry date
+: 2026-11-17
+
+Done
+: record-the-work and ask-a-knowledge-base say: ikb --help, then ikb help RECORD, then ikb RECORD; IKB.md is the page for people. Plugin 0.3.5.
+
+About
+: knowledge-base

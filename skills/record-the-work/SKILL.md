@@ -11,9 +11,9 @@ domain goes to that project (for every linux-phone place: linux-phone-oco/docs, 
 place with `--project`).
 
 A base is kept by tad and follows grenudi/ideal-knowledge-base (ask-a-knowledge-base). Record with
-`ikb` (grenudi/ideal-knowledge-base; `sh bin/install-ikb.sh` in the base installs it): read the base's own
-`IKB.md` once - every record with its options, written from its `records/*.sql` - then
-`ikb RECORD --option value`. Long text goes in from a file or stdin (`--found @-`), the id is made from the
+`ikb` (grenudi/ideal-knowledge-base; `sh bin/install-ikb.sh` in the base installs it): `ikb --help` lists the base's records
+(one line each), `ikb help RECORD` gives the one you need - its options, written from its `records/*.sql` - then
+`ikb RECORD --option value` (`IKB.md` is the same page for people). Long text goes in from a file or stdin (`--found @-`), the id is made from the
 brief, canon and render run after; never SQL, never by hand. What to say in each:
 
 - **Decisions** - always with what was rejected and why; a decision and a research carry a one-line `--brief`

@@ -26,7 +26,7 @@ base is, and why, is kept there; this is how to use one.
    by its brief, its one line. Go deeper - `tad q row --id ID`, `--whole true`, a file past its first
    paragraph - only when your task needs more than the briefs say. Long answers: `--format csv` (the default
    box is about six times larger).
-3. **Record with `ikb`** (record-the-work): read the base's `IKB.md` once, then `ikb RECORD --option value` - never SQL,
+3. **Record with `ikb`** (record-the-work): `ikb --help`, then `ikb help RECORD` for the record you need, then `ikb RECORD --option value` - never SQL,
    never by hand; each record with `--about`, a decision and a research with `--brief` (one line, at most 200
    characters). A missing record or query is a new file in `records/` or `queries/`, in the same change. Then
    land (land-a-change).
