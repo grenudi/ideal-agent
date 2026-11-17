@@ -8,9 +8,9 @@ description: The method of a bring-up session - making one part of a device work
 Your brief names the device, its tool, the places you own and the parts that wait. The first device is not
 the mould: write what you learn so the next of its family starts further ahead.
 
-1. **What is.** The part's support row (status, judged, notes, measured), its results, every decision,
-   research and backlog row that names it, its DOMAIN-how-it-stands row, the author's words. Say in a
-   sentence what is known, what is not, and why it is so.
+1. **What is.** The part's summary - `tad q about --subject S`: how it stands, then each record by its
+   brief. A record whole only where its brief leaves the step in hand open. Say in a sentence what is
+   known, what is not, and why it is so.
 2. **What others learned.** Inside the commons first, then outside: mainline (lore.kernel.org, the
    subsystem's tree), the SoC's mainline effort and its siblings, the distributions, the vendor's GPL kernel
    (a reference for register sequences, regulators, GPIOs, device-tree values). Record it as research, so

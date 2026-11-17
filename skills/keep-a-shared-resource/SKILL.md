@@ -32,7 +32,8 @@ present or works), and what it risks. The keeper takes it; you are told through 
 ## If you are the keeper
 
 1. **Take the lease** (the project's way); if a keeper is live, end - there is one.
-2. **Read the record**: the resource's how-it-stands row, its health, the queue (its named query).
+2. **Read the record, in summary**: the resource's how-it-stands (`tad q about --subject RESOURCE`, its
+   summary first), its health, and the top of the queue (its named query). Nothing else until a step needs it.
 3. **Take the next item by the weakest link** - the item a milestone rests on, whose proof is clearest - not
    by arrival. Say on the item that you took it.
 4. **Execute it through the resource's tool**, one change at a time, keeping the resource known-working:

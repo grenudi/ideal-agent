@@ -8,9 +8,9 @@ description: The method of a feature research session - finding the best way to 
 You research; you do not change the device or its kernel - reading it is fine, anything that changes it
 belongs to the session that holds it. Your brief names the feature, the device and the project's places.
 
-1. **What is.** The feature's rows in the project's data (support, tests, results), every decision,
-   research and backlog row that names it, its DOMAIN-how-it-stands row, and what the author said of it.
-   Measure what you can without changing anything.
+1. **What is.** The feature's summary - `tad q about --subject S`, which leads with how it stands and gives
+   each record by its brief. A record whole (`tad q row --id ID`) only where its brief leaves your question
+   open. Measure what you can without changing anything.
 2. **Every way it has been done**, inside the commons first, then outside: upstream and its mailing lists,
    the family's efforts (the same SoC, its siblings), the distributions, the vendor's own stack as observed
    behaviour (never its proprietary code), the vendor's GPL sources, talks and papers. For each: what it

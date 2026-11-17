@@ -326,3 +326,28 @@ Rejected
 
 About
 : knowledge-base
+
+
+<a id="2026-11-17-read-only-when"></a>
+### 2026-11-17-read-only-when
+
+Date
+: 2026-11-17
+
+Brief
+: A session reads at its start only the practices' first sentences, its role's purpose and its task's summary; everything else only when a step needs it.
+
+Decision
+: lab-session-start says what to read at the start - the practices' first sentences, the first paragraph of the role's brief, the task's subject in summary (tad q about, or the queue's top) - and then 'read only when' for everything else: a record whole when its brief is not enough, another subject when the task reaches it, a skill's body when its step comes, a tool's help only when no command is named, the board and recent only when choosing. research-a-feature, bring-up-a-part and keep-a-shared-resource begin from the summary. keep-the-start-light measures what a started session read from its transcript (scripts/read-weight), not only the front files. Proposed to the author, not done: start roles that need no mail, web search or documents without those connectors.
+
+Why
+: The author, 2026-11-17, after the first surya keeper: an agent reads only summaries and goes into detail only when its current task needs it. Measured (what-a-started-agent-reads): 73-81k tokens before anything is read, nearly all harness and connectors' tools; the keepers' own reading before acting was 10-12k tokens, the largest part tool help and a subject read whole.
+
+Rejected
+: Cutting the briefs further first (they are 1-2k tokens of an 80k start). Turning the connectors off from here (a user setting that also becomes the default for new sessions: the author's). Measuring only the front files (the help and whole records a session reads for want of a named command are the part that grows).
+
+About
+: housekeeping
+
+Research
+: what-a-started-agent-reads

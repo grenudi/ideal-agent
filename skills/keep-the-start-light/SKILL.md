@@ -12,6 +12,12 @@ ideal-knowledge-base - never a second way of making them.
 
 ## Measure
 
+- **What a started session read**: `${CLAUDE_PLUGIN_ROOT}/scripts/read-weight TRANSCRIPT` on its Claude Code
+  transcript (`~/.claude/projects/*/SESSION.jsonl`) - the context it held at its first turn, at its first act
+  on the work and at its end, in tokens, and the largest things it read before acting. The first turn is
+  mostly Claude Code's own instructions and the tools of every connector the session carries (about 75
+  thousand tokens on the lab, 2026-11-17): a role that needs no mail, web search or documents is started
+  without those connectors - the author's setting, so proposed, not changed.
 - **The start weight**, per role: `${CLAUDE_PLUGIN_ROOT}/scripts/start-weight PLACE` on a clone of the
   project's base at its main - the session start, the skills' descriptions, lab-session-start, AGENTS.md,
   the agent folder's README, and each brief. Record it, dated, in the project's base.
