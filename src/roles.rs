@@ -19,6 +19,9 @@ pub struct Named {
     pub also: Vec<String>,
     /// the name the work is signed with (`Name: surya-keeper-5`), read by scripts/agent-env as AGENT_NAME
     pub name: Option<String>,
+    /// the domain's brief for this role (`Brief: ~/path/to/brief.md`), printed after the card so a start holds only
+    /// the head and the path
+    pub brief: Option<String>,
 }
 
 fn bare(name: &str) -> String {
@@ -97,6 +100,7 @@ pub fn named_in(prompt: &str) -> Option<Named> {
         role,
         also,
         name: name_in(prompt),
+        brief: brief_in(prompt),
     })
 }
 
@@ -115,6 +119,28 @@ pub fn name_in(prompt: &str) -> Option<String> {
                 .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-'))
         .then(|| n.to_string())
     })
+}
+
+/// The brief a prompt's head names: a line `Brief: PATH` (a path, `~` for home).
+pub fn brief_in(prompt: &str) -> Option<String> {
+    prompt.lines().take(HEAD).find_map(|l| {
+        let p = l
+            .trim()
+            .trim_start_matches(['*', '-', ' '])
+            .strip_prefix("Brief:")?;
+        let p = p
+            .trim()
+            .trim_matches(|c: char| c == '`' || c == '*' || c == ' ');
+        (!p.is_empty() && !p.contains(char::is_whitespace)).then(|| p.to_string())
+    })
+}
+
+fn expand(path: &str) -> PathBuf {
+    match path.strip_prefix("~/") {
+        Some(rest) => std::env::var_os("HOME")
+            .map_or_else(|| PathBuf::from(path), |h| PathBuf::from(h).join(rest)),
+        None => PathBuf::from(path),
+    }
 }
 
 /// A role card: its body (the frontmatter left to Claude Code) and the practice numbers it carries.
@@ -165,8 +191,12 @@ pub fn render(root: Option<&Path>, named: &Named, text: &str, source: &str) -> S
     };
     let mut keep = card.practices.clone();
     keep.extend(named.also.iter().cloned());
+    let brief = named.brief.as_deref().map_or_else(String::new, |p| match std::fs::read_to_string(expand(p)) {
+        Ok(t) => format!("\n## Your brief ({p})\n\n{}\n", t.trim()),
+        Err(_) => format!("\n## Your brief ({p})\n\nIt could not be read: tell whoever started you, and work from the card alone.\n"),
+    });
     format!(
-        "## Your role: {} (ideal-agent)\n\n{}\n\n## The practices of this role (ideal-agent)\n\n{}",
+        "## Your role: {} (ideal-agent)\n\n{}\n\n## The practices of this role (ideal-agent)\n\n{}{brief}",
         named.role,
         card.body,
         practices::render_short(text, source, Some(&keep))
@@ -217,6 +247,7 @@ pub fn recall(session: &str) -> Option<Option<Named>> {
                 .map(|a| a.split_whitespace().map(String::from).collect())
                 .unwrap_or_default(),
             name: value("name ").filter(|n| !n.is_empty()),
+            brief: value("brief ").filter(|b| !b.is_empty()),
         }
     }))
 }
@@ -249,6 +280,9 @@ pub fn remember(session: &str, named: Option<&Named>) {
             let mut t = format!("role {}\nalso {}\n{KEPT}\n", n.role, n.also.join(" "));
             if let Some(name) = &n.name {
                 t.push_str(&format!("name {name}\n"));
+            }
+            if let Some(brief) = &n.brief {
+                t.push_str(&format!("brief {brief}\n"));
             }
             t
         }
@@ -360,6 +394,31 @@ mod tests {
     }
 
     #[test]
+    fn a_brief_named_in_the_head_is_read_after_the_card() {
+        let dir = std::env::temp_dir().join(format!("ia-brief-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        let f = dir.join("patrol.md");
+        std::fs::write(&f, "# The patrol of linux-phone\nMeasure the lanes.\n").unwrap();
+        let p = format!(
+            "Role: patrol (ideal-agent)\nName: linux-phone-patrol\nBrief: {}\n",
+            f.display()
+        );
+        let n = named_in(&p).expect("named");
+        assert_eq!(n.brief.as_deref(), Some(f.to_str().unwrap()));
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let r = render(Some(root), &n, practices::BUILT_IN, "t");
+        assert!(r.contains("## Your brief") && r.contains("Measure the lanes."));
+        let missing = Named {
+            brief: Some("/no/such/brief.md".into()),
+            ..n
+        };
+        assert!(
+            render(Some(root), &missing, practices::BUILT_IN, "t").contains("could not be read")
+        );
+        let _ = std::fs::remove_dir_all(dir);
+    }
+
+    #[test]
     fn a_card_gives_its_body_and_its_practices() {
         let c = parse_card(
             "---\nname: keeper\nmodel: sonnet\n---\n\nYou keep it.\n\nPractices: 01 4 44\n",
@@ -399,6 +458,7 @@ mod tests {
             role: "keeper".into(),
             also: vec!["42".into()],
             name: None,
+            brief: None,
         };
         let r = render(Some(root), &n, practices::BUILT_IN, "test");
         assert!(r.starts_with("## Your role: keeper"));
@@ -413,6 +473,7 @@ mod tests {
             role: "nobody".into(),
             also: vec![],
             name: None,
+            brief: None,
         };
         assert!(
             render(Some(root), &none, practices::BUILT_IN, "t").contains("every practice instead")

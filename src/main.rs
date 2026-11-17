@@ -169,6 +169,7 @@ fn run() -> Result<()> {
                     role: a.to_string(),
                     also: vec![],
                     name: None,
+                    brief: None,
                 };
                 roles::remember(session, Some(&named));
                 print!(

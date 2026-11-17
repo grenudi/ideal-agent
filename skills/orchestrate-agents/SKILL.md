@@ -58,3 +58,24 @@ domain's rows (record-the-work, "Hand-over"); the next starts fresh from them.
 
 Short and plain, read off the face and the lenses: what moved, what is held back and by what, which agent
 needs his hands or eyes. Ask him only what is his to decide.
+
+## A stored start is a head and a brief
+
+Every session a project starts from a stored task - on a schedule (its patrol) or on demand (a lane's
+launchers) - is started the same way (decision 2026-11-17-a-stored-start-is-a-head-and-a-brief). The task's
+prompt holds only the head and one line:
+
+```
+Role: patrol (ideal-agent)
+Name: linux-phone-patrol
+Also practices: 42
+Brief: ~/Projects/linux-phone-oco/docs/ideal-agent-linux-phone-oco/patrol.md
+Make the writes your brief names.
+```
+
+The role hook gives the card, the role's practices and the brief itself; a change to the card or the brief
+reaches every start with no hand edit. The brief - in the domain's agent folder, or a device repository's -
+holds only what the domain adds: where the work is read, the writes it may make, its places and tools,
+checked by overlay-check. The last line answers a scheduled run's rule that it makes only the writes its
+task asks for. Nothing else goes in the task: what is restated there goes stale (linux-phone's patrol ran an
+old copy on 2026-11-17).

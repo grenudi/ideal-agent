@@ -560,3 +560,25 @@ About
 
 Material
 : research/organising-agents/2026-11-17/
+
+
+<a id="stored-starts"></a>
+### stored-starts
+
+Date
+: 2026-11-17
+
+Brief
+: Seven stored starts hold 17 KB of prompts that restate domain rules; the patrol's ran an old copy on 2026-11-17; the patrol card lacked lanes and host
+
+Question
+: How should scheduled roles (the patrol) and on-demand ones (launchers) start, so a change to a card or a brief reaches every start with no hand edit?
+
+Found
+: Stored tasks on 2026-11-17/18: linux-phone-patrol 5,201 B, lab-tools-builder 2,330, walleye-keeper 2,333, walleye-builder 1,887, walleye-research 1,813, surya-research 1,747, surya-keeper 1,658 - each a Role head then restated work queries, worktree routine and allowed writes; the patrol's ran an old copy using ocoeco and filing everything in docs, and was stopped. docs has no patrol brief. A scheduled run's wrapper says to make only the writes its task asks for. The patrol card had role health but not idle lanes, stale waits or the host.
+
+Sources
+: claude-code-subagents
+
+About
+: organising-agents
