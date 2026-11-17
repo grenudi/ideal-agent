@@ -368,31 +368,6 @@ Material
 : research/claude-code/2026-11-17/
 
 
-<a id="claude-code-how-we-use-it"></a>
-### claude-code-how-we-use-it
-
-Date
-: 2026-11-17
-
-Brief
-: Claude Code 2.1.321 (2026-11-17): the hooks, env file, role cards, session starts, waits, transcripts and skill-listing settings our method uses - nothing else
-
-Question
-: What of Claude Code does ideal-agent's method use, and how, as of now?
-
-Found
-: SessionStart and UserPromptSubmit hooks carry the role and practices (stdout is context; agent_type with --agent; no env file for UserPromptSubmit); CLAUDE_ENV_FILE is evaluated before each Bash command (agent-env); started sessions' first prompt begins with the app's reminder and the starter's Background...Task:; agents/NAME.md cards (model, effort, skills preload only); start_session is refused on a message's or event's turn; sleep before a command is refused (background, Monitor); transcripts in ~/.claude/projects; skillOverrides and skillListingMaxDescChars trim the listing, no per-agent hiding; connectors per session from the + menu; plugin updates need a restart. A lane's research within its turn: the Agent tool, subagent_type ideal-agent:researcher, model sonnet (Sonnet 5.5).
-
-Sources
-: claude-code-subagents,claude-code-skills-listing
-
-About
-: claude-code
-
-Material
-: research/claude-code/2026-11-17/
-
-
 <a id="decision-routing"></a>
 ### decision-routing
 
@@ -488,3 +463,28 @@ Sources
 
 About
 : organising-agents
+
+
+<a id="claude-code-how-we-use-it"></a>
+### claude-code-how-we-use-it
+
+Date
+: 2026-11-17
+
+Brief
+: Claude Code 2.1.321 (2026-11-17): the hooks, env file, role cards, session starts, waits, transcripts and skill-listing settings our method uses - nothing else
+
+Question
+: What of Claude Code does ideal-agent's method use, and how, as of now?
+
+Found
+: SessionStart and UserPromptSubmit hooks carry the role and practices (stdout is context; agent_type with --agent; no env file for UserPromptSubmit); CLAUDE_ENV_FILE is evaluated before each Bash command (agent-env); started sessions' first prompt begins with the app's reminder and the starter's Background...Task:; agents/NAME.md cards (model, effort, skills preload only); start_session is refused on a message's or event's turn; sleep before a command is refused (background, Monitor); transcripts in ~/.claude/projects; skillOverrides and skillListingMaxDescChars trim the listing, no per-agent hiding; connectors per session from the + menu; plugin updates need a restart. A lane's research within its turn: the Agent tool, subagent_type ideal-agent:researcher, model sonnet (Sonnet 5.5). A launcher run's end wakes its lane coordinator through update_scheduled_task notifyOnCompletion true, one subscriber per task.
+
+Sources
+: claude-code-subagents,claude-code-skills-listing
+
+About
+: claude-code
+
+Material
+: research/claude-code/2026-11-17/

@@ -91,6 +91,11 @@ A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lan
   --device D --needs phone|research|build`.
 - **The lane coordinator** writes the work into the base first - the queue item, or the question - and then
   runs the launcher, on any turn. A launcher runs once at a time, so a lane never has two keepers.
+- **A run's end wakes the lane**: a launched session is not its coordinator's child, so its end says nothing by
+  itself (surya's lane sat idle from 18:16 on 2026-11-17). At the lane's start - and after its own renewal -
+  the lane coordinator subscribes itself to each launcher's completion (one subscriber per launcher, the newest
+  replacing the last) and re-runs on the wake; and a launched session's last act, after its final landing, is
+  two lines to its lane coordinator, so the lane wakes even where a subscription was lost.
 - **Within its own turn** the lane coordinator still uses subagents for a short question (one round, a
   lighter model) or a read-only look; a launcher is for work that changes something or takes long.
 - How a launcher is made and run in your harness: ideal-agent's base, `tad q about --subject claude-code`.
