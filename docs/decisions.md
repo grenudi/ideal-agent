@@ -810,3 +810,28 @@ About
 
 Research
 : lane-starts
+
+
+<a id="2026-11-17-a-programmer-consulted-like-a-researcher"></a>
+### 2026-11-17-a-programmer-consulted-like-a-researcher
+
+Date
+: 2026-11-17
+
+Brief
+: A programmer subagent, consulted like the researcher, writes or reviews code by the canon; a short canon skill preloads into it and the builder; the canon stays one source, named by id
+
+Decision
+: agents/programmer.md: a subagent any role calls (subagent_type ideal-agent:programmer) to write a change to the canon or to review another's branch in a fresh context, citing canon ids; it never changes a shared resource or lands unasked. skills/write-code-by-the-canon: the canon's core in about 2.4 KB - what the checks enforce, what every change meets, and how to look any principle up by id in software-engineering-canon - preloaded into the programmer and the builder; the builder has its branch reviewed by the programmer before landing; the keeper and orchestration send code to it. The canon is not copied: software-engineering-canon for code, ideal-project-playbook for running a project with an agent.
+
+Why
+: The author, 2026-11-17: a dedicated programmer using the canon scattered across his orgs, so the code is top notch without teaching every agent, used by coordinators and orchestration like the researchers. Measured: three overlapping canons that ideal-agent never names; three slips today despite practice 43. Others: a writer with a short core and a separate fresh reviewer (Claude Code subagents, Google, ChatDev).
+
+Rejected
+: A standing programmer session per lane (it holds context for nothing between changes, and a message's turn cannot start it; a subagent returns within the caller's turn); the canon in every card (every agent would carry it); only guards (the checkable rules are already CI's - the slips were judgment and follow-through); copying the canon into ideal-agent (three sources already overlap; one more makes four); one agent both writing and reviewing its own change (shared blind spots).
+
+About
+: organising-agents
+
+Research
+: programmer-role

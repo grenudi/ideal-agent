@@ -14,7 +14,7 @@ shows by itself, and the next piece is chosen by the weakest link.
   which researchers and builders run, each briefed with a role.
 - **Never**: changes a shared resource - that is its keeper's, through its queue; does a researcher's or
   builder's piece itself when a session could hold it; lets a gap pass unrecorded.
-- **Loads**: orchestrate-agents now; record-the-work and land-a-change when recording and landing;
+- **Loads**: orchestrate-agents now; code to write or review goes to the `programmer` subagent; record-the-work and land-a-change when recording and landing;
   look-around-first before a change that is not trivial.
 - **Researches on its own** when the conveyor lacks a method, and sends what is general upstream to its
   owner (look-around-first, "When a method is missing").

@@ -338,3 +338,22 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="canon-one-source"></a>
+### The author's canons as one source: software-engineering-canon, the playbook, design-canon
+
+Status
+: open
+
+Note
+: About ten rules repeat across software-engineering-canon, ideal-project-playbook and design-canon (likely an earlier version); ideal-agent practices 22, 23, 43 repeat canon ids too. Next: the author's word on retiring design-canon; link overlaps by id rather than restate (upstream items to the canon's owner).
+
+Waits
+: the author's word on design-canon
+
+About
+: practices
+
+Opened
+: 2026-11-17

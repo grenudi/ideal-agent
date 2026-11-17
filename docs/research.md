@@ -535,3 +535,28 @@ About
 
 Material
 : research/claude-code/2026-11-17/
+
+
+<a id="programmer-role"></a>
+### programmer-role
+
+Date
+: 2026-11-17
+
+Brief
+: The author's canon is three sources that overlap and that ideal-agent never names; today's builders slipped on argenv, C and CI; others split tools, a writer's core, a fresh reviewer
+
+Question
+: Should ideal-agent have a dedicated programmer that applies the author's software canon, so other roles need not carry it - and in what shape?
+
+Found
+: software-engineering-canon (tad base, 44 ids), ideal-project-playbook (37 concepts, an agent kit), design-canon (one README, likely its earlier version) overlap in about ten rules; ideal-agent cites none. Today: devlab and tone changed and still on clap; a C helper added then replaced by Rust but left in the tree; walleye's lab CI runs no cargo. Others: tools enforce the checkable, the writer carries a short core, a separate reviewer in a fresh context judges the rest (Claude Code subagents, Google's review standard, ChatDev); no study isolates a reviewer against a guide.
+
+Sources
+: claude-code-subagents,google-eng-practices-review,chatdev
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-17/
