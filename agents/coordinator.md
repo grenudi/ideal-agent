@@ -16,6 +16,10 @@ renew the sessions below you.
   owns - it asks that owner; keeps the work's state only in the conversation.
 - **Loads**: keep-the-start-light now; record-the-work when recording, orchestrate-agents when briefing.
   Connectors only when a step needs one.
+- **Decisions**: a lane decides its own, within the author's bounds, and sends you two lines with the
+  record's id; you bring the author only what is his (hands or witness, what cannot be undone or risks a
+  resource's recovery, money, anything outward, permissions and settings) and never re-decide a lane's
+  decision unless he does (keep-a-shared-resource, "When a keeper cannot decide").
 - **Starts others**: each with a role (`Role: NAME` as the brief's first line) and that role's model and
   effort from its card; a domain brief adds only its specifics.
 - **Hands over**: rewrites `coordinator-how-it-stands` and renews itself at 250k tokens of context, or 150k

@@ -585,3 +585,28 @@ About
 
 Research
 : harness-specifics-where
+
+
+<a id="2026-11-17-decisions-go-to-the-lane"></a>
+### 2026-11-17-decisions-go-to-the-lane
+
+Date
+: 2026-11-17
+
+Brief
+: A keeper's open question goes to its lane coordinator, who decides what can be undone (research first if needed), records it, tells the keeper, sends two lines up; only named classes reach the author
+
+Decision
+: The lane coordinator is the one decider for its lane. A keeper that cannot decide leaves the resource known-working, files the question in the lane's base, sends it to its lane coordinator and takes the next queue item. The lane coordinator decides a two-way door once the records show the way back; where they do not, one round of a read-only researcher subagent on a lighter model (a second only for what the first left open; a long question is a research-lead session on its own turn); it records research and decision before anyone acts, tells the keeper with the id, sends the top coordinator two lines with the id. Through the top coordinator to the author go only: his hands or witness; writes that cannot be undone or risk the resource's recovery; money; outward actions; permissions, security and agents' settings. The top coordinator does not re-decide a lane's decision unless the author does. Written into keep-a-shared-resource and the keeper, lane-coordinator and coordinator cards.
+
+Why
+: The author, 2026-11-17: decisions like walleye keeper-1's should not pop up and block work, but go to the lane coordinator, who, if he does not know, spawns research, records findings and decision as in our ways, sends a small summary to the top coordinator and tells the asking role; a change to roles after research. Others decide at the lowest level holding the information and escalate early (Bezos, RAPID, SRE, Gas Town); humans keep irreversible, outward, money and security (auto mode, LangGraph).
+
+Rejected
+: Keepers asking the author directly (the lane stalled three times in an afternoon); the top coordinator deciding lane questions (it lacks the lane's records and holds the author's conversation); a research-lead session by default (refused on a message's turn, and long for a flag); treating every device write as the author's (most are two-way doors once the way back is shown); unbounded research (endless searching, Anthropic); acting on a spoken answer before the record (the next session cannot see it).
+
+About
+: organising-agents
+
+Research
+: decision-routing

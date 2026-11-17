@@ -46,3 +46,24 @@ present or works), and what it risks. The keeper takes it; you are told through 
 
 A question about the resource is answered from its record first, then by the live keeper directly, and the
 answer is written back as a row.
+
+## When a keeper cannot decide
+
+One decider per lane: its coordinator, who holds the records and the lane's knowledge (decision
+2026-11-17-decisions-go-to-the-lane).
+
+1. **The keeper** leaves the resource known-working - nothing half-done - writes the question as a backlog
+   item of the lane (what it saw, the ways it could go, the way back of each), sends it to the lane
+   coordinator, and takes the next queue item that waits on nothing. It never waits on the author itself.
+2. **The lane coordinator decides** what can be undone - a two-way door - once the records show the way back
+   (for a bootloader slot: the other slot still boots and fastboot is reachable). Where the records do not
+   say, it asks a read-only researcher subagent on a lighter model, briefed with the question, the answer's
+   form and a bound (one round; a second only for what the first left open); a question too long for that
+   is a research-lead session, started on its own turn or proposed. Then it records the research and the
+   decision in the lane's base - before anyone acts on it - tells the keeper what to do with the decision's
+   id, and sends the top coordinator two lines with the id. What the research cannot settle goes up.
+3. **Up to the author**, through the top coordinator, go only: what needs his hands or his witness; a write
+   that cannot be undone or that risks the resource's recovery (a partition flashed with no known way back,
+   an unlock, efuses, erasing what cannot be restored); money; anything outward (publishing, messages,
+   accounts); and changes to permissions, security or an agent's own settings. The rest is the lane's,
+   recorded either way.
