@@ -39,6 +39,7 @@ for brief in "$place/$folder"/*.md; do
     b=$(size "$brief")
     role=$(sed -n 's/^[*#> -]*Role:[* ]*`\{0,1\}\(ideal-agent:\)\{0,1\}\([a-z-]*\).*/\2/p' "$brief" | head -n 1)
     also=$(sed -n 's/^[*#> -]*Also practices:/Also practices:/p' "$brief" | head -n 1)
+    hook start "{\"session_id\":\"w-$name\",\"source\":\"startup\"}" > /dev/null
     p=$(hook role "$(jq -cn --arg p "Role: ${role:-none}
 $also" --arg s "w-$name" '{session_id: $s, prompt: (if $p | startswith("Role: none") then "" else $p end)}')")
     printf 'role\t%s\t%s\t(brief %s, %s %s)\n' "$name" "$((common + b + p))" "$b" "${role:-no role}" "$p"

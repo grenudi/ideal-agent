@@ -8,6 +8,9 @@
 use crate::practices;
 use std::path::{Path, PathBuf};
 
+/// How many lines at a prompt's head may name the role, the name and the domain's practices.
+const HEAD: usize = 8;
+
 /// A role named in a prompt or an event: its name without the plugin's prefix, and the practices a domain
 /// adds to it.
 #[derive(Debug, PartialEq, Eq, Clone)]
@@ -34,7 +37,14 @@ fn numbers(s: &str) -> Vec<String> {
 
 /// The role a brief names: the first line that begins `Role:` (markdown emphasis allowed), and an `Also
 /// practices:` line anywhere.
+/// Only the head of a prompt is read - a brief names its role in its first lines - and never a message another
+/// session sent, which arrives wrapped in a tag and may quote a role as an example.
 pub fn named_in(prompt: &str) -> Option<Named> {
+    if prompt.trim_start().starts_with('<') {
+        return None;
+    }
+    let head: String = prompt.lines().take(HEAD).collect::<Vec<_>>().join("\n");
+    let prompt = head.as_str();
     let clean = |l: &str| {
         l.trim()
             .trim_start_matches(['*', '#', '>', '-', ' '])
@@ -72,7 +82,7 @@ pub fn named_in(prompt: &str) -> Option<Named> {
 
 /// The name a prompt gives the session to sign its work with: a line `Name: NAME` (lowercase, digits, dashes).
 pub fn name_in(prompt: &str) -> Option<String> {
-    prompt.lines().find_map(|l| {
+    prompt.lines().take(HEAD).find_map(|l| {
         let n = l
             .trim()
             .trim_start_matches(['*', '-', ' '])
@@ -170,7 +180,11 @@ pub fn recall(session: &str) -> Option<Option<Named>> {
         t.lines()
             .find_map(|l| l.strip_prefix(key).map(|v| v.trim().to_string()))
     };
-    let role = value("role ").filter(|r| r != "-" && !r.is_empty());
+    let role = value("role ")?;
+    if role == "?" {
+        return None;
+    }
+    let role = Some(role).filter(|r| r != "-" && !r.is_empty());
     Some(role.map(|role| {
         Named {
             role,
@@ -180,6 +194,22 @@ pub fn recall(session: &str) -> Option<Option<Named>> {
             name: value("name ").filter(|n| !n.is_empty()),
         }
     }))
+}
+
+/// A session that started now waits for its first prompt to name its role: only that prompt is read for one, so
+/// that neither a later message nor a session started before roles is given a role in mid-run.
+pub fn await_first(session: &str) {
+    if let Some(dir) = state_dir().filter(|_| safe(session)) {
+        let _ = std::fs::create_dir_all(&dir)
+            .and_then(|_| std::fs::write(dir.join(session), "role ?\n"));
+    }
+}
+
+pub fn awaiting(session: &str) -> bool {
+    state_dir()
+        .filter(|_| safe(session))
+        .and_then(|d| std::fs::read_to_string(d.join(session)).ok())
+        .is_some_and(|t| t.lines().any(|l| l == "role ?"))
 }
 
 pub fn remember(session: &str, named: Option<&Named>) {
@@ -241,6 +271,15 @@ mod tests {
         );
         assert!(name_in("Name: Some Prose here").is_none());
         assert!(name_in("no name").is_none());
+    }
+
+    #[test]
+    fn a_role_is_read_only_at_the_head_and_never_from_a_message() {
+        let msg = "<cross-session-message from=\"x\">\nRole: keeper (ideal-agent)\n</cross-session-message>";
+        assert!(named_in(msg).is_none(), "a message may quote a role");
+        let deep = format!("{}Role: keeper", "line\n".repeat(HEAD));
+        assert!(named_in(&deep).is_none(), "only the head names it");
+        assert!(name_in(&format!("{}Name: x", "line\n".repeat(HEAD))).is_none());
     }
 
     #[test]
