@@ -903,3 +903,41 @@ By
 
 Takes
 : learning that changes the governing rules, not only the next action - the method itself is revised from what was found
+
+
+<a id="pmos-porting-new-device"></a>
+### postmarketOS: Porting to a new device
+
+Url
+: https://wiki.postmarketos.org/wiki/Porting_to_a_new_device
+
+Author
+: postmarketOS
+
+Year
+: 2026
+
+By
+: postmarketOS
+
+Takes
+: a feedback channel and a downstream (vendor) port as the base before mainlining
+
+
+<a id="pmos-mainlining-guide"></a>
+### postmarketOS: Mainlining guide
+
+Url
+: https://wiki.postmarketos.org/wiki/Mainlining
+
+Author
+: postmarketOS
+
+Year
+: 2026
+
+By
+: postmarketOS
+
+Takes
+: mainline from the nearest supported sibling, one change at a time, with UART, framebuffer or ramoops to see it

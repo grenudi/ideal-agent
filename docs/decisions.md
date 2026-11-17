@@ -735,3 +735,28 @@ About
 
 Research
 : lane-starts
+
+
+<a id="2026-11-17-a-device-from-nothing"></a>
+### 2026-11-17-a-device-from-nothing
+
+Date
+: 2026-11-17
+
+Brief
+: bring-up-a-part gains 'A device from nothing': a way back, a feedback channel, a known-good boot, then mainline; and the one-part-at-a-time swap from an accepted stock image
+
+Decision
+: Taken from linux-phone's upstream item, changed to speak of any device: the order a way back, a feedback channel, a known-good boot (the vendor kernel, or the accepted stock image itself, with our initramfs, read-only), then mainline from the nearest sibling; and when stock is accepted and ours is not, swap one part of ours into the accepted image at a time. The walleye specifics stay in docs.
+
+Why
+: Its research (14 sources) and the walleye lane's afternoon: mainline images accepted and silent taught nothing; one swap into the stock image found the difference. Every sibling port had a channel or a known-good first.
+
+Rejected
+: The vendor kernel as the only known-good (no MSM8998 sibling had one; the stock image serves); phone words in the general skill (UART stays an example among channels); leaving it in docs (it holds for every device the commons brings up).
+
+About
+: skills
+
+Research
+: device-from-nothing

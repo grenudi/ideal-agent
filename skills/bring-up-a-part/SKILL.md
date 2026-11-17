@@ -33,3 +33,19 @@ the mould: write what you learn so the next of its family starts further ahead.
 9. **Recorded as you go**, in the project's data: decisions with what was rejected, research, the backlog
    item's next step, the session log, the DOMAIN-how-it-stands row. Where the ecosystem itself shows a gap,
    refine it first and record the refinement.
+
+## A device from nothing
+
+Before the first part, the device itself - in this order (decision 2026-11-17-a-device-from-nothing):
+
+1. **A way back.** Keep the stock image and a way to restore it; read the image's own facts from it (header,
+   offsets, command line, ids).
+2. **A feedback channel first**: what tells you the kernel ran - a serial console, a display the bootloader
+   left on, a USB gadget shell where there is no display, a persistent log (pstore, ramoops) read on the next
+   boot. Nothing is learned from an image that is accepted and then says nothing.
+3. **A known-good boot**: the vendor's kernel - or the accepted stock image itself - with your own initramfs,
+   reached over that channel: it proves the image format and offsets, and lets you read, read-only, what
+   mainline needs (the command line, ids, reserved memory, regulators).
+4. **Then mainline**, from the nearest supported sibling, one change at a time.
+- **When stock is accepted and yours is not**: start from the accepted image and swap one part of yours in at a
+  time - ramdisk, then kernel, then device tree, then header fields - until it fails; the last swap names it.
