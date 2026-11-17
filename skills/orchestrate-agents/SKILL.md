@@ -39,6 +39,10 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
    it are queued, not raced. Say when a lighter model fits (patrols, routine checks, a consult from the
    rows) and when a turning point needs the most capable one; check what the models are before saying so.
 
+7. **How agents are brought up.** Now and then, `scripts/read-weight` on the transcripts of the sessions
+   started since the last look (keep-the-start-light, "How well agents are brought up"); and renew yourself
+   when your own context calls for it ("Renew a long-lived role").
+
 ## Sessions, one machine
 
 Each place has one owner at a time; every session works in clones or worktrees of its own. Talk to sessions

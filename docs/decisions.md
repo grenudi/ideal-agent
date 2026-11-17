@@ -376,3 +376,28 @@ About
 
 Research
 : what-a-started-agent-reads
+
+
+<a id="2026-11-17-hold-little-and-renew"></a>
+### 2026-11-17-hold-little-and-renew
+
+Date
+: 2026-11-17
+
+Brief
+: Every role minds what it holds: small outputs, subagents for heavy reading; long-lived roles hand over and restart fresh at 250k, at 150k after a batch or an idle hour.
+
+Decision
+: keep-the-start-light extends to the whole of an agent's context. Hold little while working: name the exact command and limit its output, never a bare --help or a whole table; heavy reading goes to a subagent that returns a summary; skills and connectors only when needed; model and effort by role. Orchestration and the coordinator check how agents are brought up with read-weight on recent transcripts. A long-lived role renews itself: when its context passes 250k tokens, or a batch has landed with over 150k, or before resuming after an idle hour with over 150k, it writes ROLE-how-it-stands in its base (superseding the last), lands it, and says how the fresh session starts - the role brief's first paragraph and that row; the author starts it and archives the old. Applied first to the linux-phone coordinator (docs #195: coordinator.md and coordinator-how-it-stands).
+
+Why
+: The author, 2026-11-17: snappy bring-ups and every role aware of its own context; long-lived roles compact what they no longer need into summaries and restart fresh. Measured (long-lived-roles-renewed): the coordinator at 840k tokens after 1,222 turns, re-reading 574M; a fresh one starts at about 83k.
+
+Rejected
+: Relying on Claude Code's automatic compaction (it keeps the session and whatever its summary chose, written nowhere another session reads; none of today's sessions had compacted even at 926k). A new skill or practice beside keep-the-start-light (the same nature - what an agent holds - extended in its place, as the author asked). Renewing on a fixed timer (an idle session costs nothing until it resumes; the cold cache at resumption is what costs). A hand-over in a notes folder outside the base (not read by a fresh session; the role's record is).
+
+About
+: housekeeping
+
+Research
+: long-lived-roles-renewed

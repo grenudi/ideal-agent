@@ -1,6 +1,6 @@
 ---
 name: keep-the-start-light
-description: Housekeeping of what a fresh agent must read before its first useful action - the session start, the skills' descriptions, the project's AGENTS.md, its agent folder and the role's brief - measured, held to a budget, and simplified by moving detail behind the latest summaries. Use when a patrol or orchestration run checks a project, when the start weight is over budget, or before adding text to anything every session reads.
+description: An agent's awareness of its own context - what a fresh agent reads before acting (measured, budgeted, simplified behind summaries), what a working agent holds (small outputs, subagents for heavy reading, skills and connectors only when needed), and when a long-lived role hands over and restarts fresh. Use at the start of a session, before a command whose output may be large, when a patrol or orchestration checks how agents are brought up, and when a session's context passes 150 thousand tokens, a batch of its work has landed, or it resumes after an idle hour.
 ---
 
 # Keeping the start light
@@ -58,3 +58,49 @@ ideal-knowledge-base - never a second way of making them.
   (it condenses; nothing is removed), and mark research superseded where a newer row says so.
 - **It only proposes**: taking text out of a brief, AGENTS.md, a skill or the session start; moving a file;
   and any change to a practice's words - the practices are the author's.
+
+## Hold little while you work
+
+A session already holds about 75 thousand tokens before it reads anything (research
+what-a-started-agent-reads), and every turn re-reads all it holds. So:
+
+- **Name the exact command, and limit its output**: `--format csv`, `| head -40`, `tad q row --id` rather than
+  a table; never a bare `--help` (surya's second keeper spent 12 KB on one) and never a whole table or log.
+- **Heavy reading goes to a subagent** that returns only what you asked for, in so many characters: a long
+  transcript, a vendor tree, a set of papers. Its reading never enters your context.
+- **Skills and connectors only when needed**: a skill's body when you reach its step; a connector (Gmail,
+  Claude Docs) only when the task asks for it - ask the author to turn it on.
+- **Model and effort by role**: a keeper, a patrol or a waker on a lighter model at medium or low effort; a
+  research turning point or a design decision on the most capable; check what the models are before saying so.
+
+## How well agents are brought up
+
+Orchestration and the coordinator check it now and then (each patrol run measures the start weight):
+`scripts/read-weight` on the transcripts of the sessions started since the last look - the tokens at the
+first turn, at the first act, and the largest reads before it. What was read and not needed is a sign: a
+brief that does not name a command, a subject without a summary, a skill that loads more than its step needs.
+File it where its owner keeps work, as for the start weight.
+
+## Renew a long-lived role
+
+A coordinator, an orchestration session or a keeper lives for hours; its context grows with every turn and
+is re-read in full each time (on 2026-11-17 the coordinator held 840k tokens after 1,222 turns and had
+re-read 574 million). Compaction keeps the session but summarises it blindly; a hand-over keeps what
+matters, written where the next session reads it. Any session does this to itself:
+
+**When** - the first of:
+- its context passes **250 thousand tokens** (about three times a fresh start);
+- a batch of its work has landed and its context is over **150 thousand**;
+- it is about to resume after **an idle hour** with over 150 thousand (the cache has gone cold: the next turn
+  pays for all of it again).
+
+**How**:
+1. **Write the hand-over** into the role's record in its base: a research row `ROLE-how-it-stands`, with a
+   brief, superseding the previous one - its role in two lines, the sessions it relies on, what is in flight
+   and its next step, what waits on the author, the author's standing words, what not to repeat. Land it and
+   read it back. Records of decisions and work stay where they are; the hand-over names them by id.
+2. **Say how the role starts fresh**: one line the author (or the session, with start_session) gives a new
+   session - read the first paragraph of the role's brief and `tad q row --id ROLE-how-it-stands`, nothing
+   else until a step needs it.
+3. **Hand the conversation over**: tell the author it is written and where; the old session ends when the new
+   one has taken up the work (the author archives it).
