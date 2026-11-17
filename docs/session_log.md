@@ -415,3 +415,24 @@ Rejected
 
 About
 : housekeeping
+
+---
+
+
+<a id="2026-11-17-overlay-check-extra"></a>
+### overlay-check takes a domain's own text too
+
+Entry date
+: 2026-11-17
+
+Done
+: From ikb-cli's proposal: overlay-check FOLDER [N] [LIMIT] [EXTRA] - EXTRA is a file of the domain's own text (its principles, from tad q principles) a brief must not restate either. Measured on docs f7b0d1c with linux-phone's five principles: every brief still passes (bring-up 11% the highest).
+
+Considered
+: An environment variable OVERLAY_EXTRA (as proposed).
+
+Rejected
+: The environment variable: a fourth argument keeps the whole surface in the usage line (practice 43).
+
+About
+: organising-agents
