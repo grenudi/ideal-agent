@@ -221,3 +221,25 @@ About
 
 Research
 : look-around-habit-world
+
+
+<a id="2026-11-17-keep-the-start-light"></a>
+### 2026-11-17-keep-the-start-light
+
+Date
+: 2026-11-17
+
+Decision
+: Housekeeping of the start is practice 45-keep-the-start-light and the skill keep-the-start-light, the upkeep of idealkb's summary and dated-research layers. Measured: the start weight per role (scripts/start-weight: the session start, skill descriptions, lab-session-start, AGENTS.md, the agent folder's README, the brief) and the base's fixed questions (idealkb's the-measure). Budget: 32 KB a role or a fifth more than last time; 3 KB a front file; 8 KB a brief; a summary due by idealkb's rule. Who: measuring is a duty of each project's patrol, every run (linux-phone: the linux-phone-patrol scheduled task); over budget it files one backlog item; the owner of the file simplifies. By itself: measure, record, file, write a due summary, mark research superseded; only proposed: removing words from a brief, a front file, a skill or the start, moving files, and any change to a practice. Applied first to ideal-agent's own part: the session start prints the practices without their reasons (22.5 KB to 13.9 KB), the reasons one command away.
+
+Why
+: The author, 2026-11-17, asked for it, built on what exists: the canon's cold read, the playbook's findability test, idealkb's kb-navigation-measured and its summary layer, the backlog item session-start-size. Measured on linux-phone-oco (research housekeeping-the-start): 35-46 KB before acting, half of it the practices' reasons.
+
+Rejected
+: A scheduled task of its own (a second waker looking at the same project beside the patrol: one look, two names - measuring is cheap and fits the patrol's round). Housekeeping writing its own digests of a subject (a second way of making summaries beside idealkb's summary record). Letting it cut text by itself (a cut hides what comes after it, practice 03; words are taken out only by their owner, the practices only by the author). Tokens as the measure (they depend on the model; bytes are what the files are, about four to a token). A budget per file for every file (only what every session reads is paid every time; a skill's body or a record is read when needed).
+
+About
+: housekeeping
+
+Research
+: housekeeping-the-start

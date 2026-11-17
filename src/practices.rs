@@ -45,6 +45,26 @@ fn live() -> Option<String> {
     (out.status.success() && text.contains("\"practice\"")).then_some(text)
 }
 
+/// The practices as a session start reads them: numbered, each practice's own words alone - its reason and
+/// whom it is for are one command away (`ideal-agent practices`), so the start stays light (practice
+/// 45-keep-the-start-light: half of what a fresh session read before acting was the reasons).
+pub fn render_short(text: &str, source: &str) -> String {
+    let mut out = format!("How to work in the open-commons ecosystem ({source})\n\n");
+    let mut n = 0;
+    for line in text.lines() {
+        let Ok(v) = serde_json::from_str::<serde_json::Value>(line) else {
+            continue;
+        };
+        let Some(practice) = v["practice"].as_str() else {
+            continue;
+        };
+        n += 1;
+        out.push_str(&format!("{n}. {practice}\n"));
+    }
+    out.push_str("\nWhy each holds, and for whom: `lab-agent guide` on the lab, or the plugin's `scripts/ideal-agent practices`.\n");
+    out
+}
+
 /// The practices, numbered, each with why and for whom; lines that are not practices are skipped.
 pub fn render(text: &str, source: &str) -> String {
     let mut out = format!("How to work in the open-commons ecosystem ({source})\n\n");
@@ -83,6 +103,18 @@ mod tests {
             r.contains("2. Land it."),
             "the bad line is skipped, the numbering goes on"
         );
+    }
+
+    #[test]
+    fn the_start_reads_the_practices_without_their_reasons() {
+        let t = "{\"id\":\"a\",\"practice\":\"Record it.\",\"why\":\"Memory fails.\",\"for\":\"agents\"}\n";
+        let r = render_short(t, "test");
+        assert!(r.contains("1. Record it.\n"));
+        assert!(
+            !r.contains("Memory fails."),
+            "the reason is one command away"
+        );
+        assert!(r.contains("ideal-agent practices"));
     }
 
     #[test]

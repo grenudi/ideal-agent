@@ -6,3 +6,4 @@
 {"id":"keeper","name":"The keeper of a shared resource","what":"One owner per resource only one may change at a time, serving a queue."}
 {"id":"knowledge-base","name":"Knowledge bases","what":"How an agent finds its way in a tad base, and how this one follows ideal-knowledge-base."}
 {"id":"records","name":"Recording the work","what":"Where and how records are kept: tad, land, the commit as the record."}
+{"id":"housekeeping","name":"Housekeeping the start","what":"What a fresh agent must read before acting: measured, held to a budget, simplified behind summaries."}

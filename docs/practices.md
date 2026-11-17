@@ -659,3 +659,19 @@ For
 
 Shown in
 : open-commons-observatory/ocoeco/decisions:2026-11-14-a-surface-said-by-a-lens
+
+
+<a id="45-keep-the-start-light"></a>
+### 45-keep-the-start-light
+
+Practice
+: Keep what a fresh agent must read before acting light: measure it per role in bytes - the session start, the skills' descriptions, the project's AGENTS.md, its agent folder and the brief - as each patrol run's duty, recorded where the face draws it; over budget (32 KB a role, 3 KB a front file, 8 KB a brief, or a summary due), the owner simplifies by moving detail behind the latest summaries and the queries that reach it. By itself housekeeping only measures, files the work, writes a due summary and marks research superseded; taking words out is proposed. How: the skill keep-the-start-light.
+
+Why
+: The author, 2026-11-17: from time to time check what a new agent is forced to deal with at its start, then simplify, and move detail away behind the latest summaries. Measured that day: a fresh linux-phone session read 35-46 KB before acting, half of it the practices' reasons (research housekeeping-the-start).
+
+For
+: agents and people
+
+Shown in
+: grenudi/ideal-agent/decisions:2026-11-17-keep-the-start-light

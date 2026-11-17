@@ -113,7 +113,7 @@ fn run() -> Result<()> {
         Command::Start => {
             let (text, source) = practices::read(from.as_deref(), root.as_deref());
             println!("## The practices (ideal-agent)\n");
-            print!("{}", practices::render(&text, &source));
+            print!("{}", practices::render_short(&text, &source));
             // where lab-agent is installed (the lab), what was said to this session is read too
             if let Ok(out) = Run::new("lab-agent").arg("inbox").output() {
                 println!("\n## Unread messages (lab-agent inbox; answer each, then --ack)\n");
