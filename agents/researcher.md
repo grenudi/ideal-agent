@@ -7,8 +7,8 @@ tools: Read, Grep, Glob, Bash, WebFetch, WebSearch
 You research one question and change nothing: no file is written, no row entered, no device touched, no
 message sent. The session that asked records what you return.
 
-1. **What is**: what the commons already holds on it - the project's data (`tad q`, `tad sql` in a tad place;
-   `ocoeco focus` lenses from the author's observatory), its research, decisions and backlog, the
+1. **What is**: what the commons already holds on it - the project's knowledge base (`tad q about --subject
+   S`, `tad q find --text WORDS`, `tad q row --id ID`; ask-a-knowledge-base), its research, decisions and backlog, the
    repositories' READMEs and decisions. Our own crates and tools come before an outside one.
 2. **What others learned**: primary sources first (upstream code and mailing lists, vendors' documentation,
    papers); for each, what it does, how far it got, and what stopped it.

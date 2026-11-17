@@ -1,33 +1,34 @@
 ---
 name: record-the-work
-description: Where thinking, decisions, research, backlog, milestones, hand-overs and the author's words are recorded in the open-commons ecosystem, and how. Use whenever you decide, learn, start or finish something, hand a domain over, or the author says something.
+description: Where thinking, decisions, research, backlog, hand-overs and the author's words are recorded in the open-commons ecosystem, and how - through the project's tad knowledge base and its named records. Use whenever you decide, learn, start or finish something, hand a domain over, or the author says something.
 ---
 
 # Recording the work
 
-Nothing may depend on anyone remembering: it goes into the owning project's own data, in the same change
-as the work, and propagates to the observatory by itself. General know-how - how agents work - goes to
-grenudi/ideal-agent; what is one project's domain goes to that project.
+Nothing may depend on anyone remembering: it goes into the owning project's own knowledge base, in the same
+change as the work. General know-how - how agents work - goes to grenudi/ideal-agent; what is one project's
+domain goes to that project (for every linux-phone place: linux-phone-oco/docs, each record naming its
+place with `--project`).
 
-**A tad place** (one database, `tables.toml` + `data/`: linux-phone-oco/docs for every linux-phone place,
-grenudi/ideal-agent for itself): data through tad, landing through land, nothing of ocoeco by hand. Write
-with its named records - `tad statements` lists them with their parameters (`tad r decision ...`,
-`tad r research`, `tad r source`, `tad r backlog`, `tad r backlog-status`, `tad r session-log`, ...); read
-with `tad q NAME`. In linux-phone-oco each record names its place (`--project surya-lab`). A missing record
-is a new file in `records/` in the same change. `tad canon && tad render`, then `land`.
+A base is kept by tad and follows grenudi/ideal-knowledge-base (ask-a-knowledge-base). Write only through
+its named records - `tad statements` lists them with their parameters:
 
-**An ocoeco place** (oco/ tables, glimpses), everywhere else:
+- **Decisions**: `tad r decision --id DATE-slug --decision ... --why ... --rejected ... --about S` - always
+  with what was rejected and why.
+- **Research**: `tad r research --id ... --question ... --found ... --sources a,b --about S`, each source
+  `tad r source --id ... --title ... --url ...`.
+- **Backlog**: `tad r backlog --id ... --title ... --note ... --about S` - one row per piece of work, its
+  note saying where it stands and the next step; done only when what landed is read back from main.
+- **Session log**: `tad r session-log --id DATE-slug --title ... --done ... --about S`.
+- **What it is about**: every record names its subject in `--about` (`tad q about` lists them), so that
+  `tad q about --subject S` gives the subject's whole knowledge.
+- **A missing record or query** is a new file in the base's `records/` or `queries/`, in the same change.
 
-- **Decisions**: `ocoeco note decisions --id DATE-slug --set date=... --set decision=... --set why=...
-  --set rejected=...` - always with what was rejected and why; `about=` what it is about.
-- **Research**: `ocoeco note research --id ... --set question=... --set found=...`.
-- **Backlog**: one row per piece of work; its note says where it stands and the next step; `status` done
-  only when what landed is read back from main. Say that you take an item up before working on it.
-- **Session log**: `ocoeco note session_log --id DATE-slug --set entry_date=... --set title=... --set done=...`.
-- **Links**: ask `ocoeco fits` for an id; a link that points nowhere is refused.
-- **Hand-work**: `ocoeco manual "ACTION"` in the place that keeps it; a third time by hand asks for a tool.
-- **A gap or overlap in the ecosystem itself** is a sign: recorded where the tool is kept, answered by
-  refining the whole.
+Then `tad canon && tad render`, and land (land-a-change): the commit and its pull request are the record of
+the work, signed by your OCOECO_BY. Hand-work done a third time asks for a tool: record it on the backlog.
+
+A place still kept the older way, with ocoeco (oco/ tables, glimpses), is another project's legacy: follow
+its own AGENTS.md there.
 
 **The author's words**: every turn of his, as said, with its moment - `turn ID AFTER AT TEXT SAID` (a word of
 oco-work) into marshall-oco/conversation.

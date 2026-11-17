@@ -180,3 +180,22 @@ Rejected
 
 About
 : knowledge-base
+
+
+<a id="2026-11-17-nothing-of-ocoeco"></a>
+### 2026-11-17-nothing-of-ocoeco
+
+Date
+: 2026-11-17
+
+Decision
+: ideal-agent depends on nothing of ocoeco and teaches nothing of it: its skills and its researcher look and record through the project's tad knowledge base and idealkb's queries and records only (about, next, find, row, recent, the named records); a place still kept with ocoeco is mentioned in one line as another project's legacy. landit checks a tad place with tad check and make verify, never ocoeco check, and makes no glimpse there (lab-agent #219). What remains is passive: the mark (oco.toml) and gather.yml, by which the author's observatory reads these tables; OCOECO_BY, the name oco-work signs commits with; and the practices' own text, which still names ocoeco in 22 of 44 practices - the author's words, reported to him, not rewritten here.
+
+Why
+: The author, 2026-11-17, sharply: our systems must not depend on ocoeco. Measured on main: orchestrate-agents and lab-session-start taught ocoeco focus, record-the-work taught ocoeco note, the researcher ocoeco focus; landit ran ocoeco check in every place, so ocoeco's reasoning lens decided what ideal-agent's about may name (ocoeco #458 was landed only to pass it).
+
+Rejected
+: Rewriting the practices that name ocoeco here, on the agent's own reading (they are the author's practices: what replaces each is his to say). Removing gather.yml and the mark (the author's observatory reads them; his to remove). Reverting ocoeco #458 (harmless to ocoeco, and nothing here needs it any more).
+
+About
+: ideal-agent
