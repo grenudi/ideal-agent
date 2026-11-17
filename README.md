@@ -41,10 +41,14 @@ JSON object per line in `data/`, every row checked, pages rendered into `docs/`.
 | [research](docs/research.md), [sources](docs/sources.md) | what was learned, and from where |
 | [landscape](docs/landscape.md) | how others organise agents, and what we take from it |
 | [backlog](docs/backlog.md), [session_log](docs/session_log.md) | the work ahead, and how it went |
+| [subjects](docs/subjects.md) | what each record is about: `tad q about --subject S` gives a subject's whole knowledge |
+
+The base follows [ideal-knowledge-base](https://github.com/grenudi/ideal-knowledge-base) (`idealkb.toml`
+pins its release): ask it with `tad q about`, `next`, `find`, `row`, `recent` - see AGENTS.md.
 
 ```
 make setup     # tad from its pinned release
-tad q practices
+tad q practices; tad q about --subject keeper; tad q next
 tad r practice --id NN-a-name --practice ... --why ... --for agents   # tad statements lists every record
 make verify    # what CI runs
 ```

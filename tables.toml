@@ -45,6 +45,165 @@ required = true
 name = "shown_in"
 type = "string"
 
+# How others organise agents: what they do, and what we take from it.
+[tables.landscape]
+key = ["id"]
+
+[[tables.landscape.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.landscape.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "project"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "what"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "for_us"
+type = "string"
+required = true
+
+[[tables.landscape.fields]]
+name = "link"
+type = "string"
+required = true
+starts_with = "https://"
+
+[[tables.landscape.fields]]
+name = "checked"
+type = "date"
+required = true
+
+# What a record is about: the subjects of an agent's know-how. Every record of the standing tables below
+# names one in about (or a backlog item), so that tad q about --subject S gives a subject's whole knowledge.
+[tables.subjects]
+key = ["id"]
+
+[[tables.subjects.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.subjects.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.subjects.fields]]
+name = "what"
+type = "string"
+required = true
+
+[[rules.references]]
+field = "decisions.research"
+to = ["research"]
+
+[[rules.references]]
+field = "decisions.about"
+to = ["subjects", "backlog"]
+
+[[rules.references]]
+field = "research.about"
+to = ["subjects", "backlog"]
+
+[[rules.references]]
+field = "backlog.about"
+to = ["subjects", "backlog"]
+
+[[rules.references]]
+field = "session_log.about"
+to = ["subjects", "backlog"]
+
+
+# idealkb:begin - the standing tables of a knowledge base, kept by grenudi/ideal-knowledge-base at the
+# release idealkb.toml names (change them there). Every record names what it is about in about; the base
+# says what about may name in its own [[rules.references]] (field = "TABLE.about", to = its subject tables).
+[tables.backlog]
+key = ["id"]
+
+[[tables.backlog.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.backlog.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.backlog.fields]]
+name = "status"
+type = "string"
+required = true
+enum = ["open", "in-progress", "done"]
+
+[[tables.backlog.fields]]
+name = "note"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "waits"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "about"
+type = "string"
+
+[[tables.backlog.fields]]
+name = "opened"
+type = "date"
+required = true
+
+[tables.session_log]
+key = ["id"]
+
+[[tables.session_log.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.session_log.fields]]
+name = "entry_date"
+type = "date"
+required = true
+
+[[tables.session_log.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "done"
+type = "string"
+required = true
+
+[[tables.session_log.fields]]
+name = "considered"
+type = "string"
+
+[[tables.session_log.fields]]
+name = "rejected"
+type = "string"
+
+[[tables.session_log.fields]]
+name = "about"
+type = "string"
+
 [tables.decisions]
 key = ["id"]
 
@@ -93,6 +252,7 @@ pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
 [[tables.research.fields]]
 name = "date"
 type = "date"
+required = true
 
 [[tables.research.fields]]
 name = "question"
@@ -106,6 +266,10 @@ required = true
 
 [[tables.research.fields]]
 name = "sources"
+type = "string"
+
+[[tables.research.fields]]
+name = "about"
 type = "string"
 
 [tables.sources]
@@ -137,119 +301,6 @@ name = "year"
 type = "integer"
 
 [[tables.sources.fields]]
-name = "by"
-type = "string"
-
-[[tables.sources.fields]]
 name = "takes"
 type = "string"
-
-# How others organise agents: what they do, and what we take from it.
-[tables.landscape]
-key = ["id"]
-
-[[tables.landscape.fields]]
-name = "id"
-type = "string"
-required = true
-pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
-
-[[tables.landscape.fields]]
-name = "name"
-type = "string"
-required = true
-
-[[tables.landscape.fields]]
-name = "project"
-type = "string"
-required = true
-
-[[tables.landscape.fields]]
-name = "what"
-type = "string"
-required = true
-
-[[tables.landscape.fields]]
-name = "for_us"
-type = "string"
-required = true
-
-[[tables.landscape.fields]]
-name = "link"
-type = "string"
-required = true
-starts_with = "https://"
-
-[[tables.landscape.fields]]
-name = "checked"
-type = "date"
-required = true
-
-[tables.backlog]
-key = ["id"]
-
-[[tables.backlog.fields]]
-name = "id"
-type = "string"
-required = true
-pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
-
-[[tables.backlog.fields]]
-name = "title"
-type = "string"
-required = true
-
-[[tables.backlog.fields]]
-name = "status"
-type = "string"
-required = true
-enum = ["open", "in-progress", "done"]
-
-[[tables.backlog.fields]]
-name = "note"
-type = "string"
-
-[[tables.backlog.fields]]
-name = "opened"
-type = "date"
-required = true
-
-[[tables.backlog.fields]]
-name = "waits"
-type = "string"
-
-[tables.session_log]
-key = ["id"]
-
-[[tables.session_log.fields]]
-name = "id"
-type = "string"
-required = true
-pattern = "^[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9]+(-[a-z0-9]+)*$"
-
-[[tables.session_log.fields]]
-name = "entry_date"
-type = "date"
-required = true
-
-[[tables.session_log.fields]]
-name = "title"
-type = "string"
-required = true
-
-[[tables.session_log.fields]]
-name = "done"
-type = "string"
-required = true
-
-[[tables.session_log.fields]]
-name = "considered"
-type = "string"
-
-[[tables.session_log.fields]]
-name = "rejected"
-type = "string"
-
-[[rules.references]]
-field = "decisions.research"
-to = ["research"]
+# idealkb:end

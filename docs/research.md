@@ -17,6 +17,9 @@ Found
 Sources
 : anthropic-context-engineering,anthropic-long-running-harness,claude-code-agent-teams,claude-code-subagent-memory,cognition-multi-agents-working,langchain-multi-agent-benchmark,ace-context-collapse,mast-mas-failures,chroma-context-rot,blackboard-llm-mas,letta-sleep-time
 
+About
+: organising-agents
+
 
 <a id="keeper-of-a-shared-resource"></a>
 ### keeper-of-a-shared-resource
@@ -32,3 +35,6 @@ Found
 
 Sources
 : lava-scheduler,mesa-lava-ci,ci-tron-introduction,pmos-hw-ci-status,gastown-refinery,actor-model
+
+About
+: keeper
