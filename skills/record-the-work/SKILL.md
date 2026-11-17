@@ -27,6 +27,9 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
   `tad q about --subject S` gives the subject's whole knowledge.
 - **A summary**: when `tad q about` says one is due for a subject you recorded into, renew it in the same
   change - `ikb summary --about S --says ...`, how it stands now, naming the records that carry it.
+- **A change to a row no record covers** (a status, a wait, a field of a decision, a source taken away):
+  `ikb set TABLE --key K --field NAME=VALUE`, `ikb remove TABLE --key K` - checked; never `tad sql`, which the
+  guard refuses for writes.
 - **A missing record or query** is a new file in the base's `records/` or `queries/`, in the same change.
 - **Work for others** - a patch, a finding, a correction or a question for a project, a list, a wiki, a standard, a
   person or another base (an improvement made in a domain base that is general goes to idealkb the same way) is an

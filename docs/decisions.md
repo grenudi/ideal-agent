@@ -660,3 +660,28 @@ About
 
 Research
 : reading-is-not-acting
+
+
+<a id="2026-11-17-the-guard-refuses-tad-sql-writes"></a>
+### 2026-11-17-the-guard-refuses-tad-sql-writes
+
+Date
+: 2026-11-17
+
+Brief
+: The guard refuses tad sql that writes and names ikb set and ikb remove; record-the-work says so; a one-time migration says TAD_SQL_WRITE_OK=1
+
+Decision
+: ideal-agent's PreToolUse guard refuses a Bash command whose tad sql holds an INSERT, UPDATE, DELETE, ALTER, DROP, CREATE, REPLACE or TRUNCATE statement, wherever it runs (sh -c included), and answers with ikb set and ikb remove (ikb 0.5.1, ideal-knowledge-base decision 2026-11-17-ikb-set-and-remove); reads pass; TAD_SQL_WRITE_OK=1 in the command lets a one-time migration through, recorded with it. record-the-work names ikb set and ikb remove for a row no record covers.
+
+Why
+: 56 tad sql writes by hand in 13 sessions on 2026-11-17 (research work-struggles), past the named records; ikb now covers them with a checked set and remove; the ikb session proposed the guard (its backlog tad-sql-guard).
+
+Rejected
+: A skill line alone (the writes happened with record-the-work already saying named records); refusing every tad sql (reads are how agents look); no override (a schema change needs a one-time fill, as docs #260 did).
+
+About
+: hooks
+
+Research
+: work-struggles

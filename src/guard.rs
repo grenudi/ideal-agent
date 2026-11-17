@@ -68,6 +68,18 @@ pub fn refused(
                  table tad or duckdb."
             ));
         }
+        if program == "tad"
+            && args.first().is_some_and(|a| a == "sql")
+            && args[1..].iter().any(|a| writes(a))
+            && !command.contains("TAD_SQL_WRITE_OK=1")
+        {
+            return Some(
+                "`tad sql` that writes is refused: a change to a row goes through its named record, or, where none \
+                 covers it, `ikb set TABLE --key K --field NAME=VALUE` or `ikb remove TABLE --key K` - checked, \
+                 listing the tables and fields (a one-time migration says TAD_SQL_WRITE_OK=1 and is recorded)."
+                    .to_string(),
+            );
+        }
         if program == "git" {
             if let Some(why) = git_push_to_main(args, cwd, branch_of) {
                 return Some(why);
@@ -75,6 +87,18 @@ pub fn refused(
         }
     }
     None
+}
+
+/// SQL that changes rows or tables, in any of the statements it holds.
+fn writes(sql: &str) -> bool {
+    sql.split(';').any(|s| {
+        let s = s.trim_start().to_ascii_uppercase();
+        [
+            "INSERT", "UPDATE", "DELETE", "ALTER", "DROP", "CREATE", "REPLACE", "TRUNCATE",
+        ]
+        .iter()
+        .any(|w| s.starts_with(w))
+    })
 }
 
 fn is_python(program: &str) -> bool {
@@ -199,6 +223,28 @@ mod tests {
             "echo git push origin main",
             "git log main && git status",
             "land",
+        ] {
+            assert!(says(c, "feat").is_none(), "allowed: {c}");
+        }
+    }
+
+    #[test]
+    fn tad_sql_that_writes_is_refused() {
+        for c in [
+            "tad sql \"UPDATE backlog SET status = 'done' WHERE id = 'x'\"",
+            "cd docs && tad sql 'insert into sources values (1)'",
+            "tad sql \"SELECT 1; DELETE FROM research WHERE id = 'y'\"",
+            "sh -c \"tad sql 'DROP TABLE t'\"",
+        ] {
+            let why = says(c, "feat").unwrap_or_default();
+            assert!(why.contains("ikb set"), "refused with the way: {c}");
+        }
+        for c in [
+            "tad sql \"SELECT * FROM backlog\"",
+            "tad sql 'select id from research where note like \"%update%\"'",
+            "TAD_SQL_WRITE_OK=1 tad sql \"UPDATE backlog SET device = 'x'\"",
+            "tad r backlog --id x --title y",
+            "ikb set backlog --key x --field status=done",
         ] {
             assert!(says(c, "feat").is_none(), "allowed: {c}");
         }

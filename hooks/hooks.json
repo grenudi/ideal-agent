@@ -1,5 +1,5 @@
 {
-  "description": "The ways held when they are tried: no git push to main, no Python; the inbox at every session start; at the first prompt the role its brief names - its card and only its practices - or every practice.",
+  "description": "The ways held when they are tried: no git push to main, no tad sql that writes, no Python; the inbox at every session start; at the first prompt the role its brief names - its card and only its practices - or every practice.",
   "hooks": {
     "SessionStart": [
       {
