@@ -134,3 +134,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="measure-start-without-connectors"></a>
+### Measure the next keeper's first turn without Gmail and Claude Docs
+
+Status
+: open
+
+Note
+: Before: 73-81k tokens at the first turn (what-a-started-agent-reads). Next: scripts/read-weight on the next keeper's transcript (orchestration runs it); record the first-turn tokens and the saving.
+
+About
+: housekeeping
+
+Opened
+: 2026-11-17

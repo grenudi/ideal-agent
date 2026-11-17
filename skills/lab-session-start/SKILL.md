@@ -37,4 +37,8 @@ Then act.
 - **a research's material, a file past its first paragraph** - only when the finding's brief leaves your
   question open.
 
+New sessions start without Gmail and Claude Docs (the author, 2026-11-17: their tools are carried at every
+start). If your task needs either, ask the author to turn it on for your session - the composer's + menu,
+Connectors. Firecrawl, for research, stays on.
+
 Choose by the weakest link the data shows, not by momentum; say on the board what you take up.
