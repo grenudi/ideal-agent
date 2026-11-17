@@ -71,10 +71,13 @@ Opened
 ### ideal-agent follows grenudi/ideal-knowledge-base, as its second follower
 
 Status
-: open
+: done
 
 Note
-: Asked by idealkb (its backlog second-follower). ideal-agent is a single-place tad base, the closest fit. Needs: an about field on its record tables (decisions, research, backlog, session_log, sources) and a references rule, then bin/follow.sh . 0.1.0 from an idealkb clone - which lays idealkb's queries, records, AGENTS.md's and tables.toml's generic parts and an idealkb.toml pin; ideal-agent's own records (practice, practice-shown-in, landscape, backlog-status) stay its own.
+: Done by summary-and-research-layers on 2026-11-17: follows idealkb 0.2.0 (decision 2026-11-17-ideal-agent-follows-idealkb). The lab's weekly pin job moves it once ideal-agent is in idealkb's consumers.
+
+About
+: 01-record-in-tad
 
 Opened
 : 2026-11-17

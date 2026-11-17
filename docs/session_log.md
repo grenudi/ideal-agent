@@ -40,3 +40,21 @@ Entry date
 
 Done
 : How an agent finds its way in a tad knowledge base - read AGENTS.md, ask the five queries, never read data/ or docs/, record with --about - is ideal-agent's skill ask-a-knowledge-base, pointing to grenudi/ideal-knowledge-base for what a base is (idealkb's backlog navigation-skill). Plugin 0.1.3.
+
+About
+: 01-record-in-tad
+
+---
+
+
+<a id="2026-11-17-look-around-and-follow-idealkb"></a>
+### Look around first, as a skill; ideal-agent follows idealkb
+
+Entry date
+: 2026-11-17
+
+Done
+: Practice 22 extended to the author's own proposals and to where research is kept; skill look-around-first; ask-a-knowledge-base and record-the-work say the summary and the material. ideal-agent follows idealkb 0.2.0 (about on every record table, references to practices and backlog, sources.by folded into takes). Research look-around-habit-world with its material in research/22-look-around-first/2026-11-17/.
+
+About
+: 22-look-around-first

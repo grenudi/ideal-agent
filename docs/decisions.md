@@ -52,6 +52,9 @@ Why
 Rejected
 : Standing expert sessions per domain (idle hours lose the cache, so each question re-reads a thousand-message context at full price; the expertise still vanishes at compaction; their context rots with length). Orchestration as the router of every question (a bottleneck and a game of telephone, and it fills orchestration's own context). Claude Code subagent memory or agent teams as the home (a second store beside the project's database; teams do not survive a resume). A Markdown expert-notes file per domain (a second place for what rows already hold). A vector or memory service such as Letta (outside the commons and opaque to the face). Forking a finished expert's whole session to consult it (kept as an exception for a session a few hours old whose tacit context is not yet written).
 
+About
+: 01-record-in-tad
+
 Research
 : expert-agents-written-not-standing
 
@@ -103,6 +106,9 @@ Why
 Rejected
 : Leaving them in the observatory and pointing to them (the one home would not hold the one thing every session reads). Copying them (two lists drift - the copy was taken from the observatory's main on the day of the move, and the observatory's file is retired, not kept).
 
+About
+: 02-perfecting
+
 
 <a id="2026-11-17-one-database-no-glimpses"></a>
 ### 2026-11-17-one-database-no-glimpses
@@ -118,6 +124,9 @@ Why
 
 Rejected
 : ocoeco's oco/ tables beside a tad database (two tools writing rows in one place); glimpses (a second record of what the commit already says).
+
+About
+: 01-record-in-tad
 
 
 <a id="2026-11-17-one-keeper-per-shared-resource"></a>
@@ -135,5 +144,49 @@ Why
 Rejected
 : A standing keeper session kept alive (its context rots and is re-read at full price; the knowledge vanishes at compaction - decision 2026-11-17-experts-written-not-standing). Every session changing the resource when it needs to, guarded only by the tool's lock (safe but not flowing: changes race for the device and nobody chooses by the weakest link). A queue kept as its own list or tracker (a second record beside the backlog; a named query reads it off the backlog). The keeper as the lock (the tool already holds it; a keeper that crashes must not strand the resource).
 
+About
+: 44-one-keeper-per-shared-resource
+
 Research
 : keeper-of-a-shared-resource
+
+
+<a id="2026-11-17-look-around-first-skill"></a>
+### 2026-11-17-look-around-first-skill
+
+Date
+: 2026-11-17
+
+Decision
+: Practice 22 is extended, not doubled: a proposal - the author's too - is met by looking at where things stand and how others do it and reconsidering it before acting; the finding is a research row with its sources and its material in a dated folder, and a subject's summary is renewed when due. The how is a skill, look-around-first: where things stand by the base's queries, how others do it (the researcher agent may take it), reconsider, keep the finding as a row plus a dated folder, renew the summary. ask-a-knowledge-base and record-the-work say the summary and the material.
+
+Why
+: The author, 2026-11-17: before acting on a proposal, his own included, look around, research a little, reconsider, and record the condensed finding with its research kept out of the way. Proposal processes elsewhere build the look in (research look-around-habit-world).
+
+Rejected
+: A new practice beside 22: one nature under two names. A hook forcing a look before every edit: most edits need none, and a hook cannot tell a proposal from a typo. Folding the method into research-a-feature: that is a session's whole method for a hard feature; this is minutes before any change.
+
+About
+: 22-look-around-first
+
+Research
+: look-around-habit-world
+
+
+<a id="2026-11-17-ideal-agent-follows-idealkb"></a>
+### 2026-11-17-ideal-agent-follows-idealkb
+
+Date
+: 2026-11-17
+
+Decision
+: ideal-agent is idealkb's second follower, pinned at 0.2.0 in idealkb.toml with nothing of its own among the generic files: the standing tables, the five queries, the records and AGENTS.md's part are idealkb's; its own are practices, landscape and their records. about names a practice or an item of work; the existing records were given one where it was plain. sources' by was folded into takes, the one field idealkb's sources did not have.
+
+Why
+: The author, 2026-11-17: the agent know-how itself follows the layers it teaches. idealkb's backlog second-follower and ideal-agent's follow-ideal-knowledge-base asked for it.
+
+Rejected
+: Keeping tables.toml as ideal-agent's own, as docs does: docs needs project and proof on its standing tables; ideal-agent needed only sources.by, and a follower with nothing of its own takes every release without a hand.
+
+About
+: 01-record-in-tad

@@ -39,7 +39,8 @@ An expert is a domain written down, not a session kept alive (ideal-agent decisi
 
 1. Add to the domain's `DOMAIN-how-it-stands` research row, item by item, never rewriting it whole: where
    it stands, the dead ends, where experiments live (patches, switches, logs), what must never be done again.
-2. Put the next step on its backlog item.
+2. Put the next step on its backlog item, and renew the domain's summary if `tad q about` says one is due
+   (`tad r summary`): the short how-it-stands the next session reads first.
 3. Then end the session; the next one starts fresh from the rows. Notes outside a repository (a side
    session's notes folder) are a pointer at most, never the only copy.
 

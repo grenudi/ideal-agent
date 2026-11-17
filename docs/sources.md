@@ -187,11 +187,8 @@ Url
 Author
 : Linaro
 
-By
-: LAVA (Linaro Automated Validation Architecture)
-
 Takes
-: A single scheduler on the server assigns devices to submitted test jobs; dispatchers run them, one job per device at a time. Jobs queue; nobody touches a board outside the scheduler.
+: By LAVA (Linaro Automated Validation Architecture). A single scheduler on the server assigns devices to submitted test jobs; dispatchers run them, one job per device at a time. Jobs queue; nobody touches a board outside the scheduler.
 
 
 <a id="mesa-lava-ci"></a>
@@ -213,11 +210,8 @@ Takes
 Url
 : https://docs.ci-tron.dev/introduction.html
 
-By
-: CI-tron (freedesktop)
-
 Takes
-: A CI gateway service that orchestrates and manages the devices under test: one gateway owns its devices and serves the jobs that come for them.
+: By CI-tron (freedesktop). A CI gateway service that orchestrates and manages the devices under test: one gateway owns its devices and serves the jobs that come for them.
 
 
 <a id="pmos-hw-ci-status"></a>
@@ -229,11 +223,8 @@ Url
 Year
 : 2025
 
-By
-: postmarketOS
-
 Takes
-: postmarketOS's hardware CI runs phones behind a CI-tron gateway - the precedent nearest to a Linux-phone lab.
+: By postmarketOS. postmarketOS's hardware CI runs phones behind a CI-tron gateway - the precedent nearest to a Linux-phone lab.
 
 
 <a id="gastown-refinery"></a>
@@ -263,3 +254,55 @@ Year
 
 Takes
 : An actor owns its state alone and others reach it only by messages it takes one at a time: the single-writer principle that keeps shared state free of races.
+
+
+<a id="rust-rfc-template"></a>
+### Rust RFC template
+
+Url
+: https://github.com/rust-lang/rfcs/blob/master/0000-template.md
+
+Author
+: The Rust project
+
+Takes
+: Every proposal discusses prior art, good and bad, and the alternatives - set against what others did before it is taken.
+
+
+<a id="pep-12"></a>
+### PEP 12 - Sample reStructuredText PEP Template
+
+Url
+: https://peps.python.org/pep-0012/
+
+Author
+: Python
+
+Takes
+: A Rejected Ideas section kept with the proposal; PEP 1's Superseded-By and Replaces for a redo.
+
+
+<a id="madr"></a>
+### MADR: Markdown Architectural Decision Records 4.0
+
+Url
+: https://adr.github.io/madr/
+
+Takes
+: Considered options with pros and cons beside every decision; a status that says superseded by which.
+
+
+<a id="claude-code-skills"></a>
+### Extend Claude with skills
+
+Url
+: https://code.claude.com/docs/en/skills
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+Takes
+: The description always in context, the body loaded when used; SKILL.md under 500 lines, reference in files read only when needed.

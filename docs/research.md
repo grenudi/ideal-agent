@@ -17,6 +17,9 @@ Found
 Sources
 : anthropic-context-engineering,anthropic-long-running-harness,claude-code-agent-teams,claude-code-subagent-memory,cognition-multi-agents-working,langchain-multi-agent-benchmark,ace-context-collapse,mast-mas-failures,chroma-context-rot,blackboard-llm-mas,letta-sleep-time
 
+About
+: 01-record-in-tad
+
 
 <a id="keeper-of-a-shared-resource"></a>
 ### keeper-of-a-shared-resource
@@ -32,3 +35,28 @@ Found
 
 Sources
 : lava-scheduler,mesa-lava-ci,ci-tron-introduction,pmos-hw-ci-status,gastown-refinery,actor-model
+
+About
+: 44-one-keeper-per-shared-resource
+
+
+<a id="look-around-habit-world"></a>
+### look-around-habit-world
+
+Date
+: 2026-11-17
+
+Question
+: How do others make looking around - where things stand, how others do it - part of acting on a proposal, and keep what was found without loading every later reader?
+
+Found
+: Proposal processes build it in as a section: Rust RFCs ask for prior art and alternatives, PEPs keep rejected ideas, MADR lists considered options - a small bounded look, written beside the choice, not a study. A redo supersedes, never deletes (PEP Replaces). Agents load such know-how just in time: a skill costs a line until used, research a row until questioned (Anthropic's context engineering, Claude Code skills). In the commons, practice 22 already holds the habit; it lacked the author's own proposals and a place for the material, which idealkb 0.2.0 gives (research row with material in research/SUBJECT/YYYY-MM-DD/, supersedes, a summary per subject).
+
+Sources
+: rust-rfc-template,pep-12,madr,anthropic-context-engineering,claude-code-skills
+
+About
+: 22-look-around-first
+
+Material
+: research/22-look-around-first/2026-11-17/
