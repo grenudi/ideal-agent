@@ -8,6 +8,9 @@
 Date
 : 2026-11-17
 
+Brief
+: Everyone who keeps experts across time keeps the expertise outside the session; standing expert sessions cost most and recall worst.
+
 Question
 : Should linux-phone-oco keep standing expert sessions, one per hard domain (audio, modem, sleep...), with the orchestrator routing questions to them - or keep expertise somewhere else?
 
@@ -27,6 +30,9 @@ About
 Date
 : 2026-11-17
 
+Brief
+: Test farms, merge queues and the actor model all give a shared resource one owner that serves a queue.
+
 Question
 : How should many agent sessions share one resource that only one may change at a time - a test device, a lab machine, a release or merge queue - so that work flows without races and without a session kept alive forever?
 
@@ -45,6 +51,9 @@ About
 
 Date
 : 2026-11-17
+
+Brief
+: Proposal processes build a small look around in - prior art, alternatives, rejected ideas - written beside the choice; agents load it just in time.
 
 Question
 : How do others make looking around - where things stand, how others do it - part of acting on a proposal, and keep what was found without loading every later reader?
@@ -67,6 +76,9 @@ Material
 
 Date
 : 2026-11-17
+
+Brief
+: A fresh linux-phone session read 35-46 KB before acting, half of it the practices' reasons; measure per role, budget it, patrol measures.
 
 Question
 : How should ideal-agent and each project's agent folder and knowledge base be kept so that what a fresh agent must read before acting stays small - what is measured, what calls for housekeeping, who does it and how often, and what it may change by itself?

@@ -94,3 +94,18 @@ Done
 
 About
 : practices
+
+---
+
+
+<a id="2026-11-17-briefs-first"></a>
+### Briefs first
+
+Entry date
+: 2026-11-17
+
+Done
+: idealkb 0.4.0 (idealkb #11, released): brief on decisions and research, answers by briefs. ideal-agent follows it, its records have briefs, its skills say so. Plugin 0.2.3.
+
+About
+: knowledge-base
