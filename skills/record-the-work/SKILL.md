@@ -28,6 +28,14 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
 - **A summary**: when `tad q about` says one is due for a subject you recorded into, renew it in the same
   change - `ikb summary --about S --says ...`, how it stands now, naming the records that carry it.
 - **A missing record or query** is a new file in the base's `records/` or `queries/`, in the same change.
+- **Work for others** - a patch, a finding, a correction or a question for a project, a list, a wiki, a standard, a
+  person or another base (an improvement made in a domain base that is general goes to idealkb the same way) is an
+  upstream item. Find and choose where first: `tad q upstreams` lists the places this base knows; for a new one
+  look at how the place takes contributions (its contributing page, list rules, maintainers file), record what
+  you found as research the dated way (`ikb research --material auto`, each source `ikb source`) and the place
+  `ikb upstream` with its `--how`. Then `ikb upstream-item --upstream U --from-work ID --form F` - a patch or long
+  message in its `--file auto` folder - and `ikb upstream-state` as it moves. A draft becomes `ready` only on the
+  person's word; sending in their name is theirs to say. `tad q upstream` shows what waits.
 
 Then land (land-a-change): the commit and its pull request are the record of
 the work, signed by your AGENT_NAME. Hand-work done a third time asks for a tool: record it on the backlog.

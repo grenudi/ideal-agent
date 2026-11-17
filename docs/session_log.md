@@ -235,3 +235,21 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-record-the-work-says-how-to-find-and-choose-an"></a>
+### record-the-work says how to find and choose an upstream
+
+Entry date
+: 2026-11-17
+
+Done
+: The skill now has a Work for others paragraph: tad q upstreams first, a new place looked at and recorded as research the dated way, ikb upstream / upstream-item / upstream-state, a draft ready only on the person's word. Description unchanged.
+
+Rejected
+: A new skill (another description every session reads)
+
+About
+: knowledge-base
