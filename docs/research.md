@@ -316,3 +316,53 @@ About
 
 Material
 : research/organising-agents/2026-11-17/
+
+
+<a id="claude-code-how-we-use-it"></a>
+### claude-code-how-we-use-it
+
+Date
+: 2026-11-17
+
+Brief
+: Claude Code 2.1.321 (2026-11-17): the hooks, env file, role cards, session starts, waits, transcripts and skill-listing settings our method uses - nothing else
+
+Question
+: What of Claude Code does ideal-agent's method use, and how, as of now?
+
+Found
+: SessionStart and UserPromptSubmit hooks carry the role and practices (stdout is context; agent_type with --agent; no env file for UserPromptSubmit); CLAUDE_ENV_FILE is evaluated before each Bash command (agent-env); started sessions' first prompt begins with the app's reminder and the starter's Background...Task:; agents/NAME.md cards (model, effort, skills preload only); start_session is refused on a message's or event's turn; sleep before a command is refused (background, Monitor); transcripts in ~/.claude/projects; skillOverrides and skillListingMaxDescChars trim the listing, no per-agent hiding; connectors per session from the + menu; plugin updates need a restart.
+
+Sources
+: claude-code-subagents,claude-code-skills-listing
+
+About
+: claude-code
+
+Material
+: research/claude-code/2026-11-17/
+
+
+<a id="harness-specifics-where"></a>
+### harness-specifics-where
+
+Date
+: 2026-11-17
+
+Brief
+: Others keep the method in open formats (AGENTS.md, SKILL.md, md roles) and a thin dated layer per harness; our base already has dated, sourced, superseded research per subject
+
+Question
+: Where do harness and model specifics live, so the practices, roles and skills stay agent-agnostic and each specific is dated, sourced and superseded, without tracking the model industry?
+
+Found
+: AGENTS.md (most harnesses), SKILL.md under the Agent Skills spec (Claude Code, Codex, Gemini CLI, Cursor, ~40 more) and markdown roles converge; each harness adds its own keys, paths and manifest. ruler and rulesync generate one source into ~20 harnesses and keep an end-of-life list. Dated last-reviewed records and staleness checks (Optimism, Microsoft hve-core). ideal-agent's skills use only name and description; its base has research with date, sources and supersedes, and a summary per subject.
+
+Sources
+: agent-skills-spec,agents-md,rulesync,claude-code-skills-listing
+
+About
+: practices
+
+Material
+: research/claude-code/2026-11-17/

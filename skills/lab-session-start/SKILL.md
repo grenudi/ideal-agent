@@ -22,7 +22,7 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
    enough to act.
 4. **Your shell is ready** - the session's start sources scripts/agent-env before every Bash command: the
    token, the PATH, `branch` and `land`, and your work signed as AGENT_NAME (the brief's `Name:` line, else
-   your role). A job outside Claude Code sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **The inbox** - `lab-agent inbox`:
+   your role). A job outside the harness sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **The inbox** - `lab-agent inbox`:
    answer each unread message, then `--ack`.
 
 Then act.
@@ -40,8 +40,8 @@ Then act.
 - **a research's material, a file past its first paragraph** - only when the finding's brief leaves your
   question open.
 
-New sessions start without Gmail and Claude Docs (the author, 2026-11-17: their tools are carried at every
-start). If your task needs either, ask the author to turn it on for your session - the composer's + menu,
-Connectors. Firecrawl, for research, stays on.
+New sessions start without mail and document connectors (the author, 2026-11-17: their tools are carried at
+every start). If your task needs one, ask the author to turn it on for your session (how, in your harness:
+`tad q about --subject claude-code` in ideal-agent's base). Web research stays on.
 
 Choose by the weakest link the data shows, not by momentum; say on the board what you take up.

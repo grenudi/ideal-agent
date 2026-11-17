@@ -560,3 +560,28 @@ About
 
 Research
 : lab-agent-what-it-is-2026-11-17
+
+
+<a id="2026-11-17-a-harness-is-a-subject"></a>
+### 2026-11-17-a-harness-is-a-subject
+
+Date
+: 2026-11-17
+
+Brief
+: The method stays agnostic; each harness we run is a subject whose how-to is dated, sourced research, superseded when it moves; nothing is kept for a harness we do not run
+
+Decision
+: Practices, role cards' bodies and skills speak of the method only, and skills keep to the open SKILL.md fields (name, description). Each harness the agents run is a subject of ideal-agent's base (claude-code today; records/subject.sql adds one); what the method uses of it is a research row about that subject - dated, with its sources and the version checked - and one summary on top; when the harness moves, a new row supersedes the old, which leaves the subject's answer and stays findable. A skill points to the harness's subject instead of naming its features. A role card's frontmatter (model, effort, skills) is the harness's reading of the card, its body the method. Only what a skill, role or script uses is kept; a harness we do not run, or a model's ranking, is not tracked. Moved now: the waiting, connector, transcript and session-start specifics out of change-a-device, keep-the-start-light and lab-session-start into claude-code-how-we-use-it.
+
+Why
+: The author, 2026-11-17: ideal-agent stays agent agnostic, so Claude or GPT or Qwen or whatever comes are just specifics on how to do it for the model; a small research on how ideal-agent's base is organised, so that latest records supersede old info or show they are old, point to where it was taken, and we do not housekeep records on the ever-changing LLM industry. Others: open formats for the method, a thin layer per harness, dated reviews.
+
+Rejected
+: A new table for harness notes (research with date, sources and supersedes already does it); a last-reviewed field and a staleness script now (the row's date and the subject's summary-due show age; added if a second harness comes); ruler or rulesync as a generator (Node, ~20 harnesses we do not run); our own generator to AGENTS.md and .agents/skills now (only one harness runs; when a second does, the skills are already portable); tracking models and their rankings (practice 35 says to check what the models are when choosing, not to keep a list).
+
+About
+: practices
+
+Research
+: harness-specifics-where

@@ -675,3 +675,60 @@ By
 
 Takes
 : what ran, when, what depends on it
+
+
+<a id="agent-skills-spec"></a>
+### Agent Skills specification
+
+Url
+: https://agentskills.io/specification
+
+Author
+: Anthropic, then open
+
+Year
+: 2026
+
+By
+: agentskills.io
+
+Takes
+: SKILL.md with name and description is read by Claude Code, Codex, Gemini CLI, Cursor and some 40 others; harness-only keys are not portable
+
+
+<a id="agents-md"></a>
+### AGENTS.md
+
+Url
+: https://agents.md
+
+Author
+: Agentic AI Foundation
+
+Year
+: 2026
+
+By
+: Linux Foundation
+
+Takes
+: one instructions file most harnesses read; Claude Code reads it where no CLAUDE.md is
+
+
+<a id="rulesync"></a>
+### rulesync
+
+Url
+: https://github.com/dyoshikawa/rulesync
+
+Author
+: dyoshikawa
+
+Year
+: 2026
+
+By
+: dyoshikawa
+
+Takes
+: one source generated into many harnesses; its end-of-life list of targets shows what tracking every harness costs
