@@ -64,7 +64,8 @@ pub fn refused(
         if is_python(program) {
             return Some(format!(
                 "`{program}` is refused: no new Python, not even for one-offs - shell to orchestrate, \
-                 Rust for logic (rust-script for a single file)."
+                 Rust for logic (rust-script for a single file). For JSON reach for jq, for text awk or sed, for a
+                 table tad or duckdb."
             ));
         }
         if program == "git" {

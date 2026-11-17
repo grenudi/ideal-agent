@@ -501,3 +501,28 @@ About
 
 Research
 : start-health
+
+
+<a id="2026-11-17-role-health-is-the-patrols"></a>
+### 2026-11-17-role-health-is-the-patrols
+
+Date
+: 2026-11-17
+
+Brief
+: One shape, no new role: role health - at start (given, not used) and at work (struggled with) - is read-weight per role, run by the patrol, sent to the top coordinator as a short list
+
+Decision
+: agents-healthkeeper and role-work-simplification are one method - reading a role's transcripts - and become one duty of the patrol, not one or two roles. read-weight prints both sections; the patrol runs it on each role's sessions since its last round and, where a cluster needs reading, gives those transcripts to a read-only researcher subagent; it sends the top coordinator a short list, each item with its evidence, its owner and a proposed fix; the author and the owners decide. What ideal-agent owns from today's list is fixed now: the guard names jq, awk, sed or tad for what Python was reached for; change-a-device says how to wait without sleep; the lane-coordinator card starts sessions on its own turn.
+
+Why
+: The author, 2026-11-17: a role that finds where agents waste time and tokens, weighed with agents-healthkeeper, one shape if they share a method. Measured: 301 of 5,375 calls failed and 56 writes by hand went past named records on one day; ikb-cli's one-off reading of 31 transcripts led to ikb. Others: detection is a script, clustering recurs now and then, owners fix (Anthropic, Microsoft, Langfuse, SRE, paper cuts); no source keeps a standing role.
+
+Rejected
+: Two roles, healthkeeper and work-simplification (one method under two names, two cards in every listing); one standing role-health session (holds ~80k tokens to run a script; no analogue keeps one); /insights per role (per user and machine, no split by role); PostToolUseFailure hooks as the measure (they miss schema and permission failures, which the transcript holds); the patrol fixing what it finds (fixes are the owners').
+
+About
+: housekeeping
+
+Research
+: work-struggles

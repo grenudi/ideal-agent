@@ -43,7 +43,7 @@ jq -rs --arg act "$act" '
 
 # What the session was given at its start and never used in its whole run - the skills listed, the agents
 # listed, the deferred tools and connectors, the first prompt's hook - so that a role's card and its
-# settings can be trimmed to what the role uses (decision 2026-11-17-start-health-folds-into-housekeeping).
+# settings can be trimmed to what the role uses (decision 2026-11-17-start-health-folds-into-housekeeping, 2026-11-17-role-health-is-the-patrols).
 jq -rs '
   def sized: if type == "string" then length else (tostring | length) end;
   . as $all
@@ -66,4 +66,30 @@ jq -rs '
     "agents listed\t\($agentb) B\tused: \(if $agents == [] then "none" else $agents | join(", ") end)",
     "deferred tools\t\($deferredb) B\tsearched \($searched) times; connectors used: \(if $servers == [] then "none" else $servers | join(", ") end)",
     "first prompt\t\($role) B\tthe role card and its practices, or every practice"
+' "$t"
+
+# What the session struggled with while working - the calls that failed (grouped by what they said), the
+# hook refusals among them, the commands run again unchanged, and SQL written by hand where a named record or
+# query was meant - so that a better tool, a skill or a removed step can be proposed (decision
+# 2026-11-17-role-health-is-the-patrols).
+jq -rs '
+  def text: if type == "string" then . elif type == "array" then map(.text? // "") | join("\n") else tostring end;
+  def said: (text | split("\n") | map(select(test("^Exit code [0-9]+$") | not) | select(length > 0))) as $l
+      | (([$l[] | select(test("error|refus|not (a|one|found|allowed|declared)|fail|denied|unknown|invalid|cannot|no such"; "i"))][0]) // $l[0] // "")
+      | gsub("[0-9]+"; "N") | gsub("/tmp/[^ ]*"; "/tmp/...") | .[0:90];
+  . as $all
+  | ([$all[] | select(.type == "assistant") | .message.content[]? | select(.type == "tool_use")
+      | {key: .id, value: {name, cmd: ((.input.command // .input.file_path // .input.skill // "") | tostring)}}] | from_entries) as $use
+  | [$all[] | select(.type == "user") | .message.content | arrays | .[] | select(.type == "tool_result")
+      | {id: .tool_use_id, err: (.is_error == true), said: (.content | said)}] as $results
+  | ($results | map(select(.err))) as $failed
+  | ([$use[] | select(.name == "Bash") | .cmd] | group_by(.) | map(select(length > 1) | {cmd: .[0], n: length})) as $again
+  | ([$use[] | select(.name == "Bash") | .cmd
+      | select(test("tad sql .?(INSERT|UPDATE|DELETE)|(duckdb|sqlite3|psql) [^|]*(INSERT|UPDATE|DELETE)"; "i"))] | length) as $sql
+  | "struggled with",
+    "calls\t\($results | length) results, \($failed | length) failed (\(if ($results | length) > 0 then (100 * ($failed | length) / ($results | length) | floor) else 0 end)%)\t\($failed | map(select(.said | test("hook|refused"; "i"))) | length) refused by a hook",
+    ($failed | group_by(($use[.id].name // "?") + "\t" + .said) | map({k: .[0], n: length}) | sort_by(-.n) | .[0:8][]
+      | "  \(.n)x\t\($use[.k.id].name // "?")\t\(.k.said)"),
+    "run again unchanged\t\($again | map(.n - 1) | add // 0) times\t\($again | sort_by(-.n) | .[0:3] | map("\(.n)x \(.cmd | gsub("\n"; " ") | .[0:50])") | join("; "))",
+    "SQL by hand\t\($sql) commands\twhere a named record or query was meant"
 ' "$t"

@@ -204,3 +204,28 @@ About
 
 Material
 : research/housekeeping/2026-11-17/
+
+
+<a id="work-struggles"></a>
+### work-struggles
+
+Date
+: 2026-11-17
+
+Brief
+: 5.6% of 5,375 tool calls failed on 2026-11-17; Python refusals, land's --manual, SQL past named records, sleep and session starts lead; others detect by script, cluster now and then, owners fix
+
+Question
+: Is a role needed that finds what a role's agents struggle with while working, and is it one with the start-health measure?
+
+Found
+: read-weight's struggled-with over 41 transcripts: 301 of 5,375 calls failed - Python refused 27, land's --manual and --help 21, sleep refused 17, checks failed 11, start_session refused 8, ssh to the phone refused 7, oco-work turn failed 5; 56 tad sql writes past named records in 13 sessions (backlog fields 22). Anthropic, Microsoft, Langfuse: read transcripts for tool errors and first wrong calls, cluster, owners fix; SRE and paper cuts: owners decide. Detection shares one pass with start health.
+
+Sources
+: anthropic-writing-tools,microsoft-agent-trajectories,langfuse-error-analysis,mast-mas-failures,sre-eliminating-toil,swarmia-paper-cuts
+
+About
+: housekeeping
+
+Material
+: research/housekeeping/2026-11-17/
