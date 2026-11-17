@@ -543,7 +543,7 @@ For
 ### 37-say-where-it-is-shown
 
 Practice
-: When a decision follows a principle, an architecture or a practice, say so where the guideline is kept: enter where it is shown - ocoeco glimpse principles, architectures or practices, with the guideline's id and shown_in, a link to the decision; what fits offers both. What is said to govern is then seen where it does.
+: When a decision follows a principle, an architecture or a practice, say so where the guideline is kept: enter where it is shown, with the guideline's id and shown_in, a link to the decision - a principle or an architecture with ocoeco glimpse principles or architectures in the canon (what fits offers both); a practice with tad r practice-shown-in --id ... --shown_in ... in grenudi/ideal-agent, where the practices are kept. What is said to govern is then seen where it does.
 
 Why
 : Looked at on 2026-11-14, all 20 principles and all 10 architectures of the canon, and 35 of 39 practices, were pointed at by nothing: the guidelines shaped the work and nothing showed where.
@@ -643,3 +643,19 @@ Why
 
 For
 : agents and people
+
+
+<a id="44-one-keeper-per-shared-resource"></a>
+### 44-one-keeper-per-shared-resource
+
+Practice
+: A resource only one may change at a time - a test device, a lab machine, a release queue - has one keeper: a lasting role, not an immortal session. Others prepare in parallel without touching it and put what needs it on its queue, each item with its proof; the keeper takes them by the weakest link, works until its piece lands or its context grows large, writes its hand-over into the resource's how-it-stands record, and ends - the next keeper starts fresh from that record and the queue. The resource's own tool still holds the lock for every change. How: the skill keep-a-shared-resource.
+
+Why
+: The author, 2026-11-17, for the lab's phone. Every place that shares such a resource gives it one owner serving a queue - LAVA's scheduler and CI-tron's gateway for test boards, Gas Town's Refinery for the merge queue, the actor model for state (research keeper-of-a-shared-resource) - and expertise kept in a standing session is lost and costly (decision 2026-11-17-experts-written-not-standing).
+
+For
+: agents
+
+Shown in
+: grenudi/ideal-agent/decisions:2026-11-17-one-keeper-per-shared-resource

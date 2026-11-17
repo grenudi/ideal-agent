@@ -16,3 +16,19 @@ Found
 
 Sources
 : anthropic-context-engineering,anthropic-long-running-harness,claude-code-agent-teams,claude-code-subagent-memory,cognition-multi-agents-working,langchain-multi-agent-benchmark,ace-context-collapse,mast-mas-failures,chroma-context-rot,blackboard-llm-mas,letta-sleep-time
+
+
+<a id="keeper-of-a-shared-resource"></a>
+### keeper-of-a-shared-resource
+
+Date
+: 2026-11-17
+
+Question
+: How should many agent sessions share one resource that only one may change at a time - a test device, a lab machine, a release or merge queue - so that work flows without races and without a session kept alive forever?
+
+Found
+: Everyone who shares such a resource gives it one owner that serves a queue. Hardware test farms: LAVA has a single scheduler that assigns devices to submitted jobs (Mesa reaches its boards only through it); CI-tron puts one gateway in charge of its devices under test, and postmarketOS runs its phones behind one. Gas Town gives the merge queue to one role, the Refinery, which merges every change to main one at a time; the role outlives any session - a new session for it takes up the next step, nudged by patrols. The actor model and the single-writer principle say the same for state: one owner, reached only by messages it takes one at a time. Anthropic's research system parallelises only what is independent. Put with this commons' own finding that experts are written down, not standing (decision 2026-11-17-experts-written-not-standing): the keeper is a lasting role whose sessions are disposable - each works until its piece lands or its context grows large, writes its hand-over into the resource's how-it-stands record and ends; others prepare in parallel and queue items with their proofs; a named query over the backlog is the queue; a schedule or patrol wakes the role when the queue has work and no keeper is live; and the resource's own tool still holds the lock for every change, so the keeper adds flow, not safety. Raised by the author on 2026-11-17 for the lab's phone.
+
+Sources
+: lava-scheduler,mesa-lava-ci,ci-tron-introduction,pmos-hw-ci-status,gastown-refinery,actor-model

@@ -32,7 +32,8 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
    what it must not touch, propose it to the author. Research reads; what it decides goes to the queue of
    the session that changes the device.
 6. **Mind the cost.** Many agents spend many tokens (multi-agent work costs about 15 times one agent).
-   Run in parallel only what is truly independent: research parallelises; one device does not - changes to
+   Run in parallel only what is truly independent: research parallelises; a shared device does not - it has
+   one keeper (keep-a-shared-resource), whose waker you set up and whose queue you keep fed; changes to
    it are queued, not raced. Say when a lighter model fits (patrols, routine checks, a consult from the
    rows) and when a turning point needs the most capable one; check what the models are before saying so.
 
