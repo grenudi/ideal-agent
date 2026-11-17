@@ -457,3 +457,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-brief-from-main"></a>
+### A brief is read from its repository's main (0.3.28)
+
+Entry date
+: 2026-11-17
+
+Done
+: Sign from the coordinator: Brief: paths point into the shared docs clone, which sat detached at an old commit twice on 2026-11-17 - a start would print a stale brief. The role hook now fetches and reads origin/main:PATH when the brief is in a git clone, says 'from its repository's main', and falls back to the file on disk (said so) with no clone, no network or a brief not on main. Tried: the patrol brief equals docs' origin/main; a brief outside any clone reads from disk.
+
+Considered
+: Keeping the shared clones at main from the host (another owner's, and it fights the sessions that work in them).
+
+Rejected
+: Reading the working tree as it stands (what drifted).
+
+About
+: organising-agents

@@ -135,6 +135,42 @@ pub fn brief_in(prompt: &str) -> Option<String> {
     })
 }
 
+/// A brief as its repository's main has it - fetched, then read from origin/main - so that a shared clone left on
+/// a branch or an old commit never gives a stale brief; else the file on disk, said so (no clone, no network,
+/// or a brief not on main yet).
+fn read_brief(path: &Path) -> Option<(String, &'static str)> {
+    use std::process::Command;
+    let dir = path.parent()?;
+    let git = |args: &[&str]| {
+        Command::new("timeout")
+            .arg("8")
+            .arg("git")
+            .arg("-C")
+            .arg(dir)
+            .args(args)
+            .output()
+            .ok()
+            .filter(|o| o.status.success())
+            .map(|o| String::from_utf8_lossy(&o.stdout).into_owned())
+    };
+    if let Some(top) = git(&["rev-parse", "--show-toplevel"]) {
+        let top = PathBuf::from(top.trim());
+        if let Ok(rel) = path
+            .canonicalize()
+            .unwrap_or_else(|_| path.to_path_buf())
+            .strip_prefix(&top)
+        {
+            let _ = git(&["fetch", "-q", "origin", "main"]);
+            if let Some(t) = git(&["show", &format!("origin/main:{}", rel.display())]) {
+                return Some((t, "from its repository's main"));
+            }
+        }
+    }
+    std::fs::read_to_string(path)
+        .ok()
+        .map(|t| (t, "from the file on disk - not on its repository's main"))
+}
+
 fn expand(path: &str) -> PathBuf {
     match path.strip_prefix("~/") {
         Some(rest) => std::env::var_os("HOME")
@@ -191,9 +227,9 @@ pub fn render(root: Option<&Path>, named: &Named, text: &str, source: &str) -> S
     };
     let mut keep = card.practices.clone();
     keep.extend(named.also.iter().cloned());
-    let brief = named.brief.as_deref().map_or_else(String::new, |p| match std::fs::read_to_string(expand(p)) {
-        Ok(t) => format!("\n## Your brief ({p})\n\n{}\n", t.trim()),
-        Err(_) => format!("\n## Your brief ({p})\n\nIt could not be read: tell whoever started you, and work from the card alone.\n"),
+    let brief = named.brief.as_deref().map_or_else(String::new, |p| match read_brief(&expand(p)) {
+        Some((t, from)) => format!("\n## Your brief ({p}, {from})\n\n{}\n", t.trim()),
+        None => format!("\n## Your brief ({p})\n\nIt could not be read: tell whoever started you, and work from the card alone.\n"),
     });
     format!(
         "## Your role: {} (ideal-agent)\n\n{}\n\n## The practices of this role (ideal-agent)\n\n{}{brief}",
