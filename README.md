@@ -23,7 +23,7 @@ seconds) into the plugin's data folder; until then nothing is refused.
 |---|---|
 | **SessionStart hook** | the practices, live from this repository's main (`data/practices.json`), and - where `lab-agent` is installed - the unread messages |
 | **PreToolUse hook** (Bash) | refuses a `git push` that reaches main, and Python (`python`, `pip` and their kin) - in every simple command of a line, `sh -c` and `$(...)` included - and says why |
-| **skills/** | `lab-session-start`, `land-a-change`, `record-the-work`, `change-a-device`; the methods of the roles: `orchestrate-agents`, `research-a-feature`, `bring-up-a-part` |
+| **skills/** | `lab-session-start`, `land-a-change`, `record-the-work`, `change-a-device`; the methods of the roles: `orchestrate-agents`, `research-a-feature`, `bring-up-a-part`, `keep-a-shared-resource` |
 | **agents/** | `researcher`: read-only research on one question, returned with its sources |
 
 A project's brief (its `prompts/`) keeps only its domain - what a role owns, its device's tool, its places -

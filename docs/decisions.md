@@ -118,3 +118,22 @@ Why
 
 Rejected
 : ocoeco's oco/ tables beside a tad database (two tools writing rows in one place); glimpses (a second record of what the commit already says).
+
+
+<a id="2026-11-17-one-keeper-per-shared-resource"></a>
+### 2026-11-17-one-keeper-per-shared-resource
+
+Date
+: 2026-11-17
+
+Decision
+: The general pattern of a keeper of a shared resource is ideal-agent's: practice 44-one-keeper-per-shared-resource and the role skill keep-a-shared-resource. One owner per resource; a lasting role whose sessions are disposable (hand-over into the resource's how-it-stands record, then end); others prepare and queue items with their proofs, the keeper executes by the weakest link; the queue is a named query over the project's backlog, shown on its face; a scheduled run or the patrol starts the next keeper session when the queue has work and no keeper is live, and a lease keeps two keepers from running; the resource's own tool still holds the lock. A project keeps only its specifics - the resource, its tool, its queue's query, its lease, its schedule (linux-phone-oco: surya's phone keeper, in docs' ideal-agent-linux-phone-oco/, extending this).
+
+Why
+: The author, 2026-11-17: the general part goes upstream to ideal-agent, the linux-phone part to its orchestration session, which references it. Precedents: LAVA, CI-tron (postmarketOS's hardware CI), Gas Town's Refinery, the actor model (research keeper-of-a-shared-resource).
+
+Rejected
+: A standing keeper session kept alive (its context rots and is re-read at full price; the knowledge vanishes at compaction - decision 2026-11-17-experts-written-not-standing). Every session changing the resource when it needs to, guarded only by the tool's lock (safe but not flowing: changes race for the device and nobody chooses by the weakest link). A queue kept as its own list or tracker (a second record beside the backlog; a named query reads it off the backlog). The keeper as the lock (the tool already holds it; a keeper that crashes must not strand the resource).
+
+Research
+: keeper-of-a-shared-resource

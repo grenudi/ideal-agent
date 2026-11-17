@@ -176,3 +176,90 @@ Year
 
 Takes
 : Stateful agents keep editable memory blocks; a separate agent rewrites them between tasks into clean, concise learned context, so the working agent need not re-derive it.
+
+
+<a id="lava-scheduler"></a>
+### LAVA glossary: the scheduler
+
+Url
+: https://lava.readthedocs.io/en/latest/introduction/glossary.html
+
+Author
+: Linaro
+
+By
+: LAVA (Linaro Automated Validation Architecture)
+
+Takes
+: A single scheduler on the server assigns devices to submitted test jobs; dispatchers run them, one job per device at a time. Jobs queue; nobody touches a board outside the scheduler.
+
+
+<a id="mesa-lava-ci"></a>
+### LAVA CI - The Mesa 3D Graphics Library
+
+Url
+: https://docs.mesa3d.org/ci/LAVA.html
+
+Author
+: Mesa
+
+Takes
+: Mesa's merge requests reach real boards only through the LAVA instance, which schedules jobs onto the boards present.
+
+
+<a id="ci-tron-introduction"></a>
+### Introduction to CI-tron
+
+Url
+: https://docs.ci-tron.dev/introduction.html
+
+By
+: CI-tron (freedesktop)
+
+Takes
+: A CI gateway service that orchestrates and manages the devices under test: one gateway owns its devices and serves the jobs that come for them.
+
+
+<a id="pmos-hw-ci-status"></a>
+### Hardware testing automation: a status update - postmarketOS
+
+Url
+: https://nura.eco/blog/2025/05/13/hw-ci-status/
+
+Year
+: 2025
+
+By
+: postmarketOS
+
+Takes
+: postmarketOS's hardware CI runs phones behind a CI-tron gateway - the precedent nearest to a Linux-phone lab.
+
+
+<a id="gastown-refinery"></a>
+### Gas Town: project roles (Refinery: merge queue processor)
+
+Url
+: https://github.com/gastownhall/gastown
+
+Author
+: Steve Yegge
+
+Takes
+: The Refinery is the one agent that merges all changes to main, one at a time; a role, not a session - when a session for the role starts it takes up the next step, nudged by patrols.
+
+
+<a id="actor-model"></a>
+### A Universal Modular ACTOR Formalism for Artificial Intelligence
+
+Url
+: https://dl.acm.org/doi/10.5555/1624775.1624804
+
+Author
+: Carl Hewitt, Peter Bishop, Richard Steiger
+
+Year
+: 1973
+
+Takes
+: An actor owns its state alone and others reach it only by messages it takes one at a time: the single-writer principle that keeps shared state free of races.
