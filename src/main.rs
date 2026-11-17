@@ -190,6 +190,7 @@ fn run() -> Result<()> {
             } else if session.is_empty() {
                 print_all(&text, &from_where);
             } else {
+                roles::await_first(session);
                 println!("## The practices (ideal-agent)\n");
                 println!("They come with your first prompt: your role's card and only its practices when the brief names a role (`Role: NAME` - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol), else every practice.");
             }
@@ -205,7 +206,8 @@ fn run() -> Result<()> {
         Command::Role => {
             let event = read_event();
             let session = event["session_id"].as_str().unwrap_or("");
-            if session.is_empty() || roles::recall(session).is_some() {
+            // only the first prompt of a session that started with roles: never a later one, never a message
+            if !roles::awaiting(session) {
                 return Ok(());
             }
             let (text, from_where) = practices::read(from.as_deref(), root.as_deref());

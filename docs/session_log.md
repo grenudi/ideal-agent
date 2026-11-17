@@ -214,3 +214,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-role-first-prompt-only"></a>
+### A role is read only from a new session's first prompt (plugin 0.3.2)
+
+Entry date
+: 2026-11-17
+
+Done
+: Sign from orchestration: on 0.3.x, a running session started before roles was given the keeper card when a message to it quoted Role: keeper - the hook took any prompt of a session without state as its first, and read the whole prompt. Now the start marks a new session as waiting (role ?), the hook reads only that session's first prompt, only its first 8 lines, and never a prompt that begins with a tag (a cross-session message). Tried: old session 0 B, wrapped message every practice, brief its role, later message 0 B.
+
+Considered
+: Counting earlier user turns in the transcript (depends on when Claude Code writes it); stripping quoted text (a message can quote without tags).
+
+Rejected
+: Reading Role anywhere in the prompt: an example in a message re-roles a session.
+
+About
+: organising-agents
