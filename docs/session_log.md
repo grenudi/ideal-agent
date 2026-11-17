@@ -394,3 +394,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-land-plain"></a>
+### land asks no manual record and refuses a revert
+
+Entry date
+: 2026-11-17
+
+Done
+: lab-machine #30 (the lab-agent-retires session): --manual optional, --help answered, a change that puts back lines main changed is refused. land-a-change says plain land and names the refusal.
+
+Considered
+: Keeping --no-manual in the skill (accepted, but noise).
+
+Rejected
+: Nothing else.
+
+About
+: housekeeping

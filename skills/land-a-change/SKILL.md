@@ -20,8 +20,9 @@ description: How a change reaches main: its own branch, checks, a record, land, 
 - **Read your diff against main before landing.** `git fetch && git rebase origin/main`, then
   `git diff --stat origin/main...HEAD`: every file in it is one you meant to change. A branch cut before
   another landing, carrying whole files from its base, puts that landing back when it merges (docs #226 undid
-  #230's eight briefs on 2026-11-17).
-- **Land.** Commit (one commit per branch, a conventional title), then `land --no-manual`. It waits for every check and refuses on a
+  #230's eight briefs on 2026-11-17); land refuses such a change and names the files (LAND_REVERT_OK=1 when
+  the revert is meant).
+- **Land.** Commit (one commit per branch, a conventional title), then `land` (`land --help` for the rest). It waits for every check and refuses on a
   failing one. If it stops, the branch is often already pushed: read `gh pr checks BRANCH` and the failing
   run's log (`gh run view ID --log-failed`), fix on that branch, push, then `land --no-manual`. The plugin's
   hook refuses any `git push` that reaches main.
