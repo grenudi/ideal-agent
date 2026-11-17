@@ -488,3 +488,25 @@ About
 
 Material
 : research/claude-code/2026-11-17/
+
+
+<a id="device-from-nothing"></a>
+### device-from-nothing
+
+Date
+: 2026-11-17
+
+Brief
+: linux-phone's walleye lane: a device is brought up feedback channel first, then a known-good boot, then mainline; and stock-vs-ours is bisected one part at a time
+
+Question
+: Is there a general order for bringing a device up from nothing, before its first part, that bring-up-a-part should carry?
+
+Found
+: Upstream item from linux-phone-oco/docs (walleye-coordinator, research walleye-bootstrap-method-how-it-stands, decision 2026-11-17-walleye-vendor-kernel-first, docs #307; 14 sources: postmarketOS porting and mainlining guides, Qualcomm mainline porting, Halium early-init, MSM8998 ports, ramoops, the debug cable): every sibling port had a channel or a known-good first; walleye went straight to mainline images the bootloader accepted and that never started, and learned nothing until the accepted stock image was repacked with only the ramdisk swapped.
+
+Sources
+: pmos-porting-new-device,pmos-mainlining-guide
+
+About
+: skills
