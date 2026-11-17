@@ -216,7 +216,10 @@ Status
 : open
 
 Note
-: surya-keeper-6 (2026-11-17, read-weight): the skill listing was 22,468 B of its first turn, ideal-agent's 11 about 4.3 KB of it, the rest other plugins' and Anthropic's skills; it had no Role line, so every practice came at its first prompt (8,375 B), as designed. Next: measure the listing by source, and see whether a role's card or the project's settings can keep only the skills it loads.
+: Measured (read-weight given, not used; keeper-7, surya lane, research lead): Anthropic's 16 skills (9,976 B) and Claude Code's 17 (8,079 B) are used by none. ideal-agent's descriptions cut to 2,287 B (0.3.7). Next: the author's word on skillOverrides name-only for the unused ones, or skillListingMaxDescChars ~250 (about 3-4k tokens off every session).
+
+Waits
+: the author's word on his settings
 
 About
 : housekeeping

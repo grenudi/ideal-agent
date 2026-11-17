@@ -1,6 +1,6 @@
 ---
 name: record-the-work
-description: Where thinking, decisions, research, backlog, hand-overs and the author's words are recorded in the open-commons ecosystem, and how - through the project's tad knowledge base and its named records. Use whenever you decide, learn, start or finish something, hand a domain over, or the author says something.
+description: Where and how thinking, decisions, research, backlog, hand-overs and the author's words are recorded - the project's tad base, through ikb. Use whenever you decide, learn, start or finish something, or hand over.
 ---
 
 # Recording the work

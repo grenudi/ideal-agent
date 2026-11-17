@@ -1,6 +1,6 @@
 ---
 name: research-a-feature
-description: The method of a feature research session - finding the best way to make one hard feature work (one that will not come by a fix or two), choosing among vectors, and handing the chosen way over as decision, backlog and a failing test. Use when your brief makes you research one feature, or before taking up a feature nobody has made work.
+description: The feature research method: the best way to make one hard feature work, chosen among vectors, handed over as decision, backlog and a failing test. Use as a research lead, or before a feature nobody has made work.
 ---
 
 # Researching a feature

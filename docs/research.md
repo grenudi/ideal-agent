@@ -179,3 +179,28 @@ Found
 
 About
 : ideal-agent
+
+
+<a id="start-health"></a>
+### start-health
+
+Date
+: 2026-11-17
+
+Brief
+: Every role's start lists ~18 KB of skills no session of any role used; measuring it is a rule (read-weight: given, not used), trimming is each owner's - no analogue keeps a standing role
+
+Question
+: Should a role (agents-healthkeeper) look at each role's bring-up and perfect the role cards, or does that fold into existing housekeeping?
+
+Found
+: Today's keeper, lane coordinator and research lead each held ~80k tokens at the first turn: 22.5 KB of skills listed (Anthropic's 16 and Claude Code's 17, ~18 KB, used by none), 6.5 KB of agents (none used), 9.7 KB of deferred tools (session connectors only). The concept existed before roles: decision keep-the-start-light (patrol measures, owner simplifies). Gas Town's patrols watch liveness, not priming; SRE measures toil by survey and cap, owners fix; friction logs are written by newcomers; Claude Code gives /context, /skill-doctor, skillOverrides and skillListingMaxDescChars but no per-agent hiding.
+
+Sources
+: claude-code-skills-listing,claude-code-subagents,anthropic-context-engineering,gastown-roles,sre-eliminating-toil,resend-friction-logs
+
+About
+: housekeeping
+
+Material
+: research/housekeeping/2026-11-17/

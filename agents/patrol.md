@@ -13,6 +13,9 @@ record what you see as signs on the backlog, for the owner of each to answer.
 - **Owns**: the round's own session-log entry and the backlog items it files.
 - **Never**: changes the work it patrols - a fix is the owner's; files a sign twice; says unmeasured as
   broken.
+- **Measures each role**: `scripts/start-weight` on the project's briefs, and `scripts/read-weight` on the latest
+  session of each role - its weight and what it was given and never used; a role over its budget, or given
+  what none of its sessions use, is a sign filed for its owner (keep-the-start-light, "Who").
 - **Loads**: keep-the-start-light now; ask-a-knowledge-base when reading the records.
 - **Hands over**: nothing lasting - each round starts fresh and ends with its entry.
 - **Reports to**: the coordinator, only when a sign needs a decision.

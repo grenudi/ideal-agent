@@ -1,6 +1,6 @@
 ---
 name: keep-the-start-light
-description: An agent's awareness of its own context - what a fresh agent reads before acting (measured, budgeted, simplified behind summaries), what a working agent holds (small outputs, subagents for heavy reading, skills and connectors only when needed), and when a long-lived role hands over and restarts fresh. Use at the start of a session, before a command whose output may be large, when a patrol or orchestration checks how agents are brought up, and when a session's context passes 150 thousand tokens, a batch of its work has landed, or it resumes after an idle hour.
+description: What a fresh agent reads and what a working one holds - measured (start-weight, read-weight: given, not used), budgeted, trimmed by its owner; renewing a long-lived role. Use at a start, before a large output, past 150k tokens.
 ---
 
 # Keeping the start light
@@ -53,7 +53,9 @@ ideal-knowledge-base - never a second way of making them.
   recorded where the face can draw it. Over budget, the patrol files one backlog item, about the agent
   folder, with the numbers.
 - **The simplifying is the owner's**: the session that owns the file takes the item (orchestration for a
-  project's agent folder and front files; ideal-agent's own work for what the plugin prints).
+  project's agent folder and front files; ideal-agent's owner for what the plugin prints and the role cards;
+  the author for his settings - the skills and connectors every session lists). No standing role does it
+  (decision 2026-11-17-start-health-folds-into-housekeeping).
 - **By itself** housekeeping may: measure, record the numbers, file the item, write a summary that is due
   (it condenses; nothing is removed), and mark research superseded where a newer row says so.
 - **It only proposes**: taking text out of a brief, AGENTS.md, a skill or the session start; moving a file;
@@ -77,9 +79,12 @@ what-a-started-agent-reads), and every turn re-reads all it holds. So:
 
 Orchestration and the coordinator check it now and then (each patrol run measures the start weight):
 `scripts/read-weight` on the transcripts of the sessions started since the last look - the tokens at the
-first turn, at the first act, and the largest reads before it. What was read and not needed is a sign: a
-brief that does not name a command, a subject without a summary, a skill that loads more than its step needs.
-File it where its owner keeps work, as for the start weight.
+first turn, at the first act, and the largest reads before it. Then "given, not used": the skills, agents,
+deferred tools and connectors listed and never used in the whole run, and the first prompt's role and
+practices - by source, in bytes. What a role is given or reads and does not need is a sign: a skill or
+connector no session of that role used, a brief that does not name a command or its own path, a subject
+without a summary, a practice the role never meets. File it, naming the role, where its owner keeps work, as
+for the start weight; over a role's budget, the patrol files it at once.
 
 ## Renew a long-lived role
 

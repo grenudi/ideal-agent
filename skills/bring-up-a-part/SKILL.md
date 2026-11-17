@@ -1,6 +1,6 @@
 ---
 name: bring-up-a-part
-description: The method of a bring-up session - making one part of a device work on mainline, as well as on its stock system, and proving it by the device's own tests: what is, what others learned, clean-room reverse engineering, test first, the change, through the conveyor, proven, upstream, recorded. Use when your brief makes you bring a device's parts up.
+description: The bring-up method: make one part of a device work on mainline, proven by the device's tests - what is, others' work, clean-room, test first, the change, upstream. Use when your brief makes you bring a part up.
 ---
 
 # Bringing up a part
