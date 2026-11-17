@@ -436,3 +436,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-resume-trusts-only-kept-state"></a>
+### A resume trusts only state kept under the first-prompt rule (0.3.26)
+
+Entry date
+: 2026-11-17
+
+Done
+: Sign from orchestration: its session, started 13:03 with no Role line, was given the keeper card on resume - 0.3.1 had read Role: keeper off a later message of mine and kept it. The state now carries 'kept first-prompt'; a resume trusts only state with it; a resume with none gets every practice and is marked as having no role, so no later prompt names one. Tried: a 0.3.1 state on resume (every practice, then a Role prompt read: 0 B), no state on resume (the same), a new session's first prompt and its resume (the card both times).
+
+Considered
+: Distrusting state older than 0.3.2's landing by file time (hidden, clock-bound).
+
+Rejected
+: Awaiting the next prompt on a resume without state: that is how a later message re-roles a session.
+
+About
+: organising-agents

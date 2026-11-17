@@ -196,6 +196,11 @@ pub fn recall(session: &str) -> Option<Option<Named>> {
         return None;
     }
     let t = std::fs::read_to_string(state_dir()?.join(session)).ok()?;
+    // only a state written under the first-prompt rule is trusted: one from before it may hold a role read off a
+    // later message (0.3.0 and 0.3.1 read any prompt)
+    if !t.lines().any(|l| l == KEPT) {
+        return None;
+    }
     let value = |key: &str| {
         t.lines()
             .find_map(|l| l.strip_prefix(key).map(|v| v.trim().to_string()))
@@ -218,10 +223,13 @@ pub fn recall(session: &str) -> Option<Option<Named>> {
 
 /// A session that started now waits for its first prompt to name its role: only that prompt is read for one, so
 /// that neither a later message nor a session started before roles is given a role in mid-run.
+/// The line that marks a state as written under the first-prompt rule (0.3.2 on).
+pub const KEPT: &str = "kept first-prompt";
+
 pub fn await_first(session: &str) {
     if let Some(dir) = state_dir().filter(|_| safe(session)) {
         let _ = std::fs::create_dir_all(&dir)
-            .and_then(|_| std::fs::write(dir.join(session), "role ?\n"));
+            .and_then(|_| std::fs::write(dir.join(session), format!("role ?\n{KEPT}\n")));
     }
 }
 
@@ -238,13 +246,13 @@ pub fn remember(session: &str, named: Option<&Named>) {
     };
     let text = match named {
         Some(n) => {
-            let mut t = format!("role {}\nalso {}\n", n.role, n.also.join(" "));
+            let mut t = format!("role {}\nalso {}\n{KEPT}\n", n.role, n.also.join(" "));
             if let Some(name) = &n.name {
                 t.push_str(&format!("name {name}\n"));
             }
             t
         }
-        None => "role -\n".to_string(),
+        None => format!("role -\n{KEPT}\n"),
     };
     let _ = std::fs::create_dir_all(&dir).and_then(|_| std::fs::write(dir.join(session), text));
 }
@@ -326,6 +334,29 @@ mod tests {
             (n.role.as_str(), n.name.as_deref()),
             ("keeper", Some("surya-keeper"))
         );
+    }
+
+    #[test]
+    fn a_state_from_before_the_first_prompt_rule_is_not_trusted() {
+        let dir = std::env::temp_dir().join(format!("ia-state-{}", std::process::id()));
+        std::fs::create_dir_all(dir.join("ideal-agent/sessions")).unwrap();
+        std::fs::write(
+            dir.join("ideal-agent/sessions/old"),
+            "role keeper\nalso 42\n",
+        )
+        .unwrap();
+        std::fs::write(
+            dir.join("ideal-agent/sessions/new"),
+            format!("role keeper\nalso 42\n{KEPT}\n"),
+        )
+        .unwrap();
+        let read = |s: &str| {
+            let t = std::fs::read_to_string(dir.join("ideal-agent/sessions").join(s)).unwrap();
+            t.lines().any(|l| l == KEPT)
+        };
+        assert!(!read("old"), "0.3.1's state carries no mark");
+        assert!(read("new"));
+        let _ = std::fs::remove_dir_all(dir);
     }
 
     #[test]
