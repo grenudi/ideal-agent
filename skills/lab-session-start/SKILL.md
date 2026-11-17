@@ -20,8 +20,9 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
 3. **Your task's subject, in summary** - `tad q about --subject S` (it leads with the summary and gives each
    record by its brief), or the top of your queue (`tad q next --about S`, a role's queue query). That is
    enough to act.
-4. **Sign your work** - `export OCOECO_BY=<your role>` then `. oco-work` in every shell that works on the
-   ecosystem (it makes your name the git author; never `land` without it). **The inbox** - `lab-agent inbox`:
+4. **Your shell is ready** - the session's start sources scripts/agent-env before every Bash command: the
+   token, the PATH, `branch` and `land`, and your work signed as AGENT_NAME (the brief's `Name:` line, else
+   your role). A job outside Claude Code sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **The inbox** - `lab-agent inbox`:
    answer each unread message, then `--ack`.
 
 Then act.

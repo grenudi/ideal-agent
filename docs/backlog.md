@@ -188,3 +188,22 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="briefs-drop-oco-work"></a>
+### linux-phone's briefs drop . oco-work and OCOECO_BY for Role and Name lines
+
+Status
+: open
+
+Note
+: With briefs-name-their-role, through orchestration (owner of docs): the start line export OCOECO_BY=X && . oco-work becomes Role: R (ideal-agent) / Name: X.
+
+Waits
+: orchestration's word
+
+About
+: organising-agents
+
+Opened
+: 2026-11-17

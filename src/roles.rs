@@ -14,6 +14,8 @@ use std::path::{Path, PathBuf};
 pub struct Named {
     pub role: String,
     pub also: Vec<String>,
+    /// the name the work is signed with (`Name: surya-keeper-5`), read by scripts/agent-env as AGENT_NAME
+    pub name: Option<String>,
 }
 
 fn bare(name: &str) -> String {
@@ -61,7 +63,28 @@ pub fn named_in(prompt: &str) -> Option<Named> {
             also.extend(numbers(a));
         }
     }
-    role.map(|role| Named { role, also })
+    role.map(|role| Named {
+        role,
+        also,
+        name: name_in(prompt),
+    })
+}
+
+/// The name a prompt gives the session to sign its work with: a line `Name: NAME` (lowercase, digits, dashes).
+pub fn name_in(prompt: &str) -> Option<String> {
+    prompt.lines().find_map(|l| {
+        let n = l
+            .trim()
+            .trim_start_matches(['*', '-', ' '])
+            .strip_prefix("Name:")?;
+        let n = n
+            .trim()
+            .trim_matches(|c: char| c == '*' || c == '`' || c == ' ');
+        (!n.is_empty()
+            && n.chars()
+                .all(|c| c.is_ascii_lowercase() || c.is_ascii_digit() || c == '-'))
+        .then(|| n.to_string())
+    })
 }
 
 /// A role card: its body (the frontmatter left to Claude Code) and the practice numbers it carries.
@@ -136,30 +159,44 @@ fn safe(id: &str) -> bool {
 }
 
 /// What a session was given: `Some(Some(named))` a role, `Some(None)` every practice, `None` nothing yet.
+/// The state is one line per key - `role R` (or `role -`), `also N...`, `name N` - so that scripts/agent-env
+/// reads the name with sed.
 pub fn recall(session: &str) -> Option<Option<Named>> {
     if !safe(session) {
         return None;
     }
     let t = std::fs::read_to_string(state_dir()?.join(session)).ok()?;
-    let mut words = t.split_whitespace();
-    Some(match words.next() {
-        Some("-") | None => None,
-        Some(r) => Some(Named {
-            role: r.to_string(),
-            also: words.map(String::from).collect(),
-        }),
-    })
+    let value = |key: &str| {
+        t.lines()
+            .find_map(|l| l.strip_prefix(key).map(|v| v.trim().to_string()))
+    };
+    let role = value("role ").filter(|r| r != "-" && !r.is_empty());
+    Some(role.map(|role| {
+        Named {
+            role,
+            also: value("also ")
+                .map(|a| a.split_whitespace().map(String::from).collect())
+                .unwrap_or_default(),
+            name: value("name ").filter(|n| !n.is_empty()),
+        }
+    }))
 }
 
 pub fn remember(session: &str, named: Option<&Named>) {
     let Some(dir) = state_dir().filter(|_| safe(session)) else {
         return;
     };
-    let line = match named {
-        Some(n) => format!("{} {}\n", n.role, n.also.join(" ")),
-        None => "-\n".to_string(),
+    let text = match named {
+        Some(n) => {
+            let mut t = format!("role {}\nalso {}\n", n.role, n.also.join(" "));
+            if let Some(name) = &n.name {
+                t.push_str(&format!("name {name}\n"));
+            }
+            t
+        }
+        None => "role -\n".to_string(),
     };
-    let _ = std::fs::create_dir_all(&dir).and_then(|_| std::fs::write(dir.join(session), line));
+    let _ = std::fs::create_dir_all(&dir).and_then(|_| std::fs::write(dir.join(session), text));
 }
 
 #[cfg(test)]
@@ -189,6 +226,21 @@ mod tests {
             named_in("Role: Keeper of all things").is_none(),
             "a name, not prose"
         );
+    }
+
+    #[test]
+    fn a_prompt_names_who_signs() {
+        let p = "Role: keeper (ideal-agent)\nName: surya-keeper-6\n";
+        assert_eq!(
+            named_in(p).and_then(|n| n.name).as_deref(),
+            Some("surya-keeper-6")
+        );
+        assert_eq!(
+            name_in("**Name:** `walleye-lane`").as_deref(),
+            Some("walleye-lane")
+        );
+        assert!(name_in("Name: Some Prose here").is_none());
+        assert!(name_in("no name").is_none());
     }
 
     #[test]
@@ -230,6 +282,7 @@ mod tests {
         let n = Named {
             role: "keeper".into(),
             also: vec!["42".into()],
+            name: None,
         };
         let r = render(Some(root), &n, practices::BUILT_IN, "test");
         assert!(r.starts_with("## Your role: keeper"));
@@ -243,6 +296,7 @@ mod tests {
         let none = Named {
             role: "nobody".into(),
             also: vec![],
+            name: None,
         };
         assert!(
             render(Some(root), &none, practices::BUILT_IN, "t").contains("every practice instead")

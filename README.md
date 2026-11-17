@@ -21,7 +21,7 @@ seconds) into the plugin's data folder; until then nothing is refused.
 
 | | |
 |---|---|
-| **SessionStart hook** | where `lab-agent` is installed, the unread messages; on a resume or a compaction, the session's role and practices again |
+| **SessionStart hook** | names `scripts/agent-env` in the session's environment file, so every Bash command has the token, the PATH, `branch`, `land` and the work signed as AGENT_NAME - nothing of ocoeco; where `lab-agent` is installed, the unread messages; on a resume or a compaction, the session's role and practices again |
 | **UserPromptSubmit hook** | at a session's first prompt, the role it names (`Role: keeper`) - its card and only its practices, live from this repository's main (`data/practices.json`) - or every practice when it names none |
 | **PreToolUse hook** (Bash) | refuses a `git push` that reaches main, and Python (`python`, `pip` and their kin) - in every simple command of a line, `sh -c` and `$(...)` included - and says why |
 | **skills/** | `lab-session-start`, `land-a-change`, `record-the-work`, `change-a-device`; the methods of the roles: `orchestrate-agents`, `research-a-feature`, `bring-up-a-part`, `keep-a-shared-resource`; finding your way in a tad knowledge base: `ask-a-knowledge-base`; before acting on a proposal: `look-around-first`; keeping what a fresh agent reads light: `keep-the-start-light` (measured by `scripts/start-weight` and, from a transcript, `scripts/read-weight`) |
@@ -31,7 +31,8 @@ A project keeps only its domain - what a role owns there, its device's tool, its
 (`ideal-agent-PROJECT/`, or the folder its AGENTS.md names). Each brief names its role on a line under its
 title - `Role: keeper (ideal-agent)`, and `Also practices: 42` for a domain's own - and the prompt that
 starts a session begins with that line; the card is the role, the brief only what the project adds to it.
-A session can also be started as the role itself: `claude --agent ideal-agent:keeper`.
+A `Name: surya-keeper-6` line names who signs the work (AGENT_NAME; else the role). A session can also be
+started as the role itself: `claude --agent ideal-agent:keeper`.
 
 ## The database
 

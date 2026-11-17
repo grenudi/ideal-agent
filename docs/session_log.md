@@ -193,3 +193,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-neutral-start"></a>
+### A neutral start: agent-env instead of . oco-work (plugin 0.3.1)
+
+Entry date
+: 2026-11-17
+
+Done
+: scripts/agent-env; the start names it in CLAUDE_ENV_FILE; the role hook keeps a Name: line; land-a-change, lab-session-start, record-the-work, orchestrate-agents, AGENTS.md and README drop oco-work, fresh, landit and OCOECO_BY; tried end to end (name, token, PATH, branch refusing a dirty clone, OCOECO_BY honoured).
+
+Considered
+: Where the name comes from: an export in the brief (does not outlive a Bash call), the UserPromptSubmit hook (no env file), the session's role state read by agent-env (chosen).
+
+Rejected
+: See decision 2026-11-17-a-neutral-start.
+
+About
+: organising-agents
