@@ -10,24 +10,26 @@ change as the work. General know-how - how agents work - goes to grenudi/ideal-a
 domain goes to that project (for every linux-phone place: linux-phone-oco/docs, each record naming its
 place with `--project`).
 
-A base is kept by tad and follows grenudi/ideal-knowledge-base (ask-a-knowledge-base). Write only through
-its named records - `tad statements` lists them with their parameters:
+A base is kept by tad and follows grenudi/ideal-knowledge-base (ask-a-knowledge-base). Record with
+`ikb` (grenudi/ideal-knowledge-base; `sh bin/install-ikb.sh` in the base installs it): read the base's own
+`IKB.md` once - every record with its options, written from its `records/*.sql` - then
+`ikb RECORD --option value`. Long text goes in from a file or stdin (`--found @-`), the id is made from the
+brief, canon and render run after; never SQL, never by hand. What to say in each:
 
-- **Decisions**: `tad r decision --id DATE-slug --brief ONE-LINE --decision ... --why ... --rejected ... --about S` - always
-  with what was rejected and why.
-- **Research**: `tad r research --id ... --brief ONE-LINE --question ... --found ... --sources a,b --about S`, each source
-  `tad r source --id ... --title ... --url ...`. Its own material, if more than fits a row, in a dated folder
-  it names (`--material research/SUBJECT/YYYY-MM-DD/`); research redone is a new row `--supersedes` the old.
-- **Backlog**: `tad r backlog --id ... --title ... --note ... --about S` - one row per piece of work, its
-  note saying where it stands and the next step; done only when what landed is read back from main.
-- **Session log**: `tad r session-log --id DATE-slug --title ... --done ... --about S`.
+- **Decisions** - always with what was rejected and why; a decision and a research carry a one-line `--brief`
+  (at most 200 characters; answers read briefs first).
+- **Research** - its finding is the row; its own material, if more than fits a row, in a dated folder:
+  `--material auto` makes `research/SUBJECT/YYYY-MM-DD/`. Redone, a new row `--supersedes` the old.
+- **Backlog** - one row per piece of work, its note saying where it stands and the next step; done only when
+  what landed is read back from main.
+- **Session log** and **sources** - what was done, considered, rejected; each source a row.
 - **What it is about**: every record names its subject in `--about` (`tad q about` lists them), so that
   `tad q about --subject S` gives the subject's whole knowledge.
 - **A summary**: when `tad q about` says one is due for a subject you recorded into, renew it in the same
-  change - `tad r summary --about S --says ...`, how it stands now, naming the records that carry it.
+  change - `ikb summary --about S --says ...`, how it stands now, naming the records that carry it.
 - **A missing record or query** is a new file in the base's `records/` or `queries/`, in the same change.
 
-Then `tad canon && tad render`, and land (land-a-change): the commit and its pull request are the record of
+Then land (land-a-change): the commit and its pull request are the record of
 the work, signed by your OCOECO_BY. Hand-work done a third time asks for a tool: record it on the backlog.
 
 A place still kept the older way, with ocoeco (oco/ tables, glimpses), is another project's legacy: follow

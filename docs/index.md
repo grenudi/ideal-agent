@@ -9,7 +9,7 @@ How an agent works in the open commons, written once: the practices every sessio
 - [Landscape](landscape.md): 4
 - [Practices](practices.md): 45
 - [Research](research.md): 7
-- [Session Log](session_log.md): 10
+- [Session Log](session_log.md): 11
 - [Sources](sources.md): 27
 - [Subjects](subjects.md): 9
 - [Summaries](summaries.md): 0

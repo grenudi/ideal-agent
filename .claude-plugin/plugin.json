@@ -1,6 +1,6 @@
 {
   "name": "ideal-agent",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "How an agent works in the open commons, written once: the practices at every session start, the ways held by hooks (no push to main, no Python), the shared procedures and role methods as skills, and a read-only researcher.",
   "author": { "name": "grenudi", "url": "https://github.com/grenudi" },
   "homepage": "https://github.com/grenudi/ideal-agent",
