@@ -441,3 +441,28 @@ About
 
 Material
 : research/organising-agents/2026-11-17/
+
+
+<a id="reading-is-not-acting"></a>
+### reading-is-not-acting
+
+Date
+: 2026-11-17
+
+Brief
+: Two official, checksummed image downloads reached the author on 2026-11-17 as 'outward'; others gate what is done with bytes, not reading them
+
+Question
+: Which technical asks reach the author though they need not, and how should the bounds be worded so reading from the world is the lane's?
+
+Found
+: Today's asks to the author were mostly his by right (design, hands and witness, acting in his name, his settings, a key); the technical ones were device writes and session starts, now settled, and two downloads of LineageOS's official walleye images the lane read as 'anything outward'. Claude Code auto mode passes reads and does not block downloads, only running external code and sending data out; Copilot's firewall allows official sources; SLSA verifies against a separately published hash.
+
+Sources
+: claude-code-auto-mode,copilot-agent-firewall,slsa-verifying-artifacts
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-17/

@@ -62,11 +62,20 @@ One decider per lane: its coordinator, who holds the records and the lane's know
    is a research-lead session, started on its own turn or proposed. Then it records the research and the
    decision in the lane's base - before anyone acts on it - tells the keeper what to do with the decision's
    id, and sends the top coordinator two lines with the id. What the research cannot settle goes up.
-3. **Up to the author**, through the top coordinator, go only: what needs his hands or his witness; a write
-   that cannot be undone or that risks the resource's recovery (a partition flashed with no known way back,
-   an unlock, efuses, erasing what cannot be restored); money; anything outward (publishing, messages,
-   accounts); and changes to permissions, security or an agent's own settings. The rest is the lane's,
-   recorded either way.
+3. **Up to the author**, through the top coordinator, go only:
+   - what needs his hands or his witness;
+   - a write to a resource that cannot be undone or risks its recovery (a partition flashed with no known way
+     back, an unlock, efuses, erasing what cannot be restored);
+   - acting on the world in his name: sending a message or mail, posting, publishing, a call, a pull request or
+     patch to someone else's project, an account made, terms accepted (a licence to download a blob), anything bought or paid;
+   - his settings, and the agents' permissions, credentials and keys.
+4. **The lane's own, asking no one** - recorded either way: everything technical that is not on that list.
+   Reading from the world is not acting on it: a public file from a project's own release site (an official
+   image, a vendor's published firmware), its checksum or signature checked against what the site publishes,
+   kept in the work's own folder with its source and checksum recorded, and used without being run on the lab
+   host (a device may boot it from memory) needs no one's word. A file without a published checksum or
+   signature, from a mirror, or a program to run on the host is the lane coordinator's decision - research
+   first if needed - not the author's.
 
 ## Starting the lane's sessions
 

@@ -17,8 +17,9 @@ renew the sessions below you.
 - **Loads**: keep-the-start-light now; record-the-work when recording, orchestrate-agents when briefing.
   Connectors only when a step needs one.
 - **Decisions**: a lane decides its own, within the author's bounds, and sends you two lines with the
-  record's id; you bring the author only what is his (hands or witness, what cannot be undone or risks a
-  resource's recovery, money, anything outward, permissions and settings) and never re-decide a lane's
+  record's id; you bring the author only what is his (hands or witness, a write that cannot be undone or risks a
+  resource's recovery, acting on the world in his name - sending, posting, publishing, buying - and his
+  settings, permissions and keys; reading from the world, a checked download included, is the lane's) and never re-decide a lane's
   decision unless he does (keep-a-shared-resource, "When a keeper cannot decide").
 - **Starts others**: each with a role (`Role: NAME` as the brief's first line) and that role's model and
   effort from its card; a domain brief adds only its specifics.
