@@ -79,3 +79,18 @@ Done
 
 About
 : ideal-agent
+
+---
+
+
+<a id="2026-11-17-look-around-first"></a>
+### Look around first, as a skill; ideal-agent at idealkb 0.3.0
+
+Entry date
+: 2026-11-17
+
+Done
+: Practice 22 extended to the author's own proposals and to where research is kept; skill look-around-first; ask-a-knowledge-base and record-the-work say the summary and the material. The pin moves to idealkb 0.3.0 (summaries, research material and supersedes). Research look-around-habit-world with its material in research/22-look-around-first/2026-11-17/.
+
+About
+: practices

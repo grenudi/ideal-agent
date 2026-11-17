@@ -254,3 +254,55 @@ Year
 
 Takes
 : An actor owns its state alone and others reach it only by messages it takes one at a time: the single-writer principle that keeps shared state free of races.
+
+
+<a id="rust-rfc-template"></a>
+### Rust RFC template
+
+Url
+: https://github.com/rust-lang/rfcs/blob/master/0000-template.md
+
+Author
+: The Rust project
+
+Takes
+: Every proposal discusses prior art, good and bad, and the alternatives - set against what others did before it is taken.
+
+
+<a id="pep-12"></a>
+### PEP 12 - Sample reStructuredText PEP Template
+
+Url
+: https://peps.python.org/pep-0012/
+
+Author
+: Python
+
+Takes
+: A Rejected Ideas section kept with the proposal; PEP 1's Superseded-By and Replaces for a redo.
+
+
+<a id="madr"></a>
+### MADR: Markdown Architectural Decision Records 4.0
+
+Url
+: https://adr.github.io/madr/
+
+Takes
+: Considered options with pros and cons beside every decision; a status that says superseded by which.
+
+
+<a id="claude-code-skills"></a>
+### Extend Claude with skills
+
+Url
+: https://code.claude.com/docs/en/skills
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+Takes
+: The description always in context, the body loaded when used; SKILL.md under 500 lines, reference in files read only when needed.

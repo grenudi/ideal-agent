@@ -16,12 +16,15 @@ its named records - `tad statements` lists them with their parameters:
 - **Decisions**: `tad r decision --id DATE-slug --decision ... --why ... --rejected ... --about S` - always
   with what was rejected and why.
 - **Research**: `tad r research --id ... --question ... --found ... --sources a,b --about S`, each source
-  `tad r source --id ... --title ... --url ...`.
+  `tad r source --id ... --title ... --url ...`. Its own material, if more than fits a row, in a dated folder
+  it names (`--material research/SUBJECT/YYYY-MM-DD/`); research redone is a new row `--supersedes` the old.
 - **Backlog**: `tad r backlog --id ... --title ... --note ... --about S` - one row per piece of work, its
   note saying where it stands and the next step; done only when what landed is read back from main.
 - **Session log**: `tad r session-log --id DATE-slug --title ... --done ... --about S`.
 - **What it is about**: every record names its subject in `--about` (`tad q about` lists them), so that
   `tad q about --subject S` gives the subject's whole knowledge.
+- **A summary**: when `tad q about` says one is due for a subject you recorded into, renew it in the same
+  change - `tad r summary --about S --says ...`, how it stands now, naming the records that carry it.
 - **A missing record or query** is a new file in the base's `records/` or `queries/`, in the same change.
 
 Then `tad canon && tad render`, and land (land-a-change): the commit and its pull request are the record of
@@ -40,7 +43,8 @@ An expert is a domain written down, not a session kept alive (ideal-agent decisi
 
 1. Add to the domain's `DOMAIN-how-it-stands` research row, item by item, never rewriting it whole: where
    it stands, the dead ends, where experiments live (patches, switches, logs), what must never be done again.
-2. Put the next step on its backlog item.
+2. Put the next step on its backlog item, and renew the domain's summary if `tad q about` says one is due:
+   the short how-it-stands the next session reads first.
 3. Then end the session; the next one starts fresh from the rows. Notes outside a repository (a side
    session's notes folder) are a pointer at most, never the only copy.
 
