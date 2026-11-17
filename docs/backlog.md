@@ -38,13 +38,13 @@ Opened
 ### The session start says less: its output is about 20 KB
 
 Status
-: open
+: done
 
 Note
-: Seen by orchestration on 2026-11-17: whether Claude Code keeps all of it in context is unverified. Next: look at a new session's context, and if it is cut, print the practices' sentences without their reasons (the reasons stay one command away).
+: Done 2026-11-17: the session start prints each practice's words without its reason (22.5 KB to 13.9 KB, measured on main with scripts/start-weight); the reasons are one command away (lab-agent guide, scripts/ideal-agent practices). Kept by practice 45-keep-the-start-light.
 
 About
-: hooks
+: housekeeping
 
 Opened
 : 2026-11-17
@@ -112,6 +112,25 @@ Waits
 
 About
 : knowledge-base
+
+Opened
+: 2026-11-17
+
+
+<a id="practices-short-at-the-start"></a>
+### Proposed to the author: the session start shows each practice's first sentence only
+
+Status
+: open
+
+Note
+: The practices' own words are 13.7 KB of the 13.9 KB session start; their first sentences are 7.9 KB, and five practices run past 590 characters (one 1268). Proposed, not done: the practices are the author's words (practice 45: only proposed). Ways: the start prints first sentences, the whole one command away; or the author shortens the longest practices himself.
+
+Waits
+: the author
+
+About
+: housekeeping
 
 Opened
 : 2026-11-17

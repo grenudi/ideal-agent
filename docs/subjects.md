@@ -56,3 +56,10 @@ What
 
 What
 : Where and how records are kept: tad, land, the commit as the record.
+
+
+<a id="housekeeping"></a>
+### Housekeeping the start
+
+What
+: What a fresh agent must read before acting: measured, held to a budget, simplified behind summaries.

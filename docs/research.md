@@ -60,3 +60,22 @@ About
 
 Material
 : research/22-look-around-first/2026-11-17/
+
+
+<a id="housekeeping-the-start"></a>
+### housekeeping-the-start
+
+Date
+: 2026-11-17
+
+Question
+: How should ideal-agent and each project's agent folder and knowledge base be kept so that what a fresh agent must read before acting stays small - what is measured, what calls for housekeeping, who does it and how often, and what it may change by itself?
+
+Found
+: Measured on linux-phone-oco, main, 2026-11-17 (scripts/start-weight): a fresh session read 35-46 KB before its first useful action (bring-up 45.8, orchestration 38.7, phone-keeper 37.2, feature-research 35.0): the session start 22.5 (the 44 practices with their reasons - half of everything), skill descriptions 3.3-3.6, lab-session-start 2.0, docs' AGENTS.md 2.1, the agent folder's README 2.3, and the brief (bring-up 13.2, orchestration 6.1, phone-keeper 4.6, feature-research 2.4). Printing the practices without their reasons at the start cut the session start to 13.9 KB (bring-up 37.2); the practices' own words are 13.7 KB, their first sentences 7.9. In the commons: the canon's cold read (give only the front files and ask what the program does) and the playbook's findability test (real questions, each answered near the top) test a start by asking it; idealkb measured the bytes an answer costs (kb-navigation-measured: 206 KB of pages against 9.4 KB of rows) and made a summary layer that says itself when a summary is due (over 8 KB with none, or 4 KB since). Outside: Wikipedia keeps upkeep as a standing backlog - a tag proposes, anyone fixes and removes it; Claude Code keeps what is loaded every session under 200 lines and moves the rest where it loads only when touched; context engineering keeps identifiers (paths, stored queries) in context and loads content just in time; freshness for agents is metadata and verification, since an agent trusts what it reads; Gas Town's patrols are scheduled rounds that look and file work rather than do it. So: measure the start (bytes per role) and the answers (the base's fixed questions); a budget calls for housekeeping; the patrol measures, the owner simplifies; by itself only what adds or condenses, never what removes words.
+
+Sources
+: wikipedia-maintenance,claude-code-memory,docs-freshness-for-agents,anthropic-context-engineering,gastown-refinery
+
+About
+: housekeeping

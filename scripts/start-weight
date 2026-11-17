@@ -1,0 +1,36 @@
+#!/bin/sh
+# What a fresh session of a project must read before its first useful action, in bytes, per role
+# (practice 45-keep-the-start-light): the plugin's session start, the skills' and agents' descriptions, the
+# lab-session-start skill, the project's AGENTS.md, its agent folder's README, and each role's brief.
+# Read from the place as it stands on disk - give a clone at its main to measure main.
+#
+#   start-weight PLACE [FOLDER]   PLACE: the project's knowledge base (a clone); FOLDER: its agent folder,
+#                                 relative to PLACE (default: the one ideal-agent-* folder in it)
+# Prints one line per part, then one line per role with its total, tab-separated. Ends 2 on a wrong call.
+set -eu
+[ $# -ge 1 ] && [ $# -le 2 ] || { echo "usage: start-weight PLACE [FOLDER]" >&2; exit 2; }
+place=$(cd "$1" && pwd)
+root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
+folder=${2:-$(cd "$place" && ls -d ideal-agent-*/ 2>/dev/null | head -n 1)}
+folder=${folder%/}
+[ -n "$folder" ] && [ -d "$place/$folder" ] || { echo "start-weight: no agent folder in $place" >&2; exit 2; }
+
+size() { [ -f "$1" ] && wc -c < "$1" | tr -d ' ' || echo 0; }
+start=$(CLAUDE_PLUGIN_ROOT="$root" "$root/scripts/ideal-agent" start 2>/dev/null | wc -c | tr -d ' ')
+descriptions=$(for f in "$root"/skills/*/SKILL.md "$root"/agents/*.md; do sed -n 's/^description: //p' "$f"; done | wc -c | tr -d ' ')
+skill=$(size "$root/skills/lab-session-start/SKILL.md")
+agents=$(size "$place/AGENTS.md")
+readme=$(size "$place/$folder/README.md")
+common=$((start + descriptions + skill + agents + readme))
+
+printf 'part\tsession-start\t%s\n' "$start"
+printf 'part\tskill-descriptions\t%s\n' "$descriptions"
+printf 'part\tlab-session-start\t%s\n' "$skill"
+printf 'part\tAGENTS.md\t%s\n' "$agents"
+printf 'part\t%s/README.md\t%s\n' "$folder" "$readme"
+for brief in "$place/$folder"/*.md; do
+    name=$(basename "$brief" .md)
+    [ "$name" = README ] && continue
+    b=$(size "$brief")
+    printf 'role\t%s\t%s\t(brief %s)\n' "$name" "$((common + b))" "$b"
+done

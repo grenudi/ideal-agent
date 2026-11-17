@@ -306,3 +306,42 @@ Year
 
 Takes
 : The description always in context, the body loaded when used; SKILL.md under 500 lines, reference in files read only when needed.
+
+
+<a id="wikipedia-maintenance"></a>
+### Wikipedia:Maintenance
+
+Url
+: https://en.wikipedia.org/wiki/Wikipedia:Maintenance
+
+Author
+: Wikipedia
+
+Takes
+: Upkeep is a standing backlog, not a campaign: a page that needs work is tagged (a cleanup template), the tags gather into backlog categories by kind, and anyone takes one and removes the tag when it is fixed - the tag proposes, the fix is the edit.
+
+
+<a id="claude-code-memory"></a>
+### How Claude remembers your project - Claude Code Docs
+
+Url
+: https://code.claude.com/docs/en/memory
+
+Author
+: Anthropic
+
+Takes
+: What is loaded every session is kept small: target under 200 lines per CLAUDE.md, since longer files consume context and reduce adherence; move what matters for only part of the work to rules that load when it is touched; imports organise a file but do not reduce its cost.
+
+
+<a id="docs-freshness-for-agents"></a>
+### Tools That Stop AI Agents Using Stale Documentation
+
+Url
+: https://getunblocked.com/blog/stop-agents-using-stale-documentation/
+
+Author
+: Unblocked
+
+Takes
+: Agents trust whatever they read: keep them off stale documentation by verification workflows, freshness metadata (when a page was last checked), documentation generated from the code, and weighting by authority.
