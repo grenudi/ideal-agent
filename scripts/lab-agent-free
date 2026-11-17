@@ -1,0 +1,18 @@
+#!/bin/sh
+# Shows broken until nothing the lab depends on needs lab-agent (decision 2026-11-17-lab-agent-retires-by-parts).
+# Counts live uses, not words in records: the plugin's code, the lab's units and tools, the token path.
+# Usage: scripts/lab-agent-free   (exit 0 when none is left, 1 while any is)
+set -u
+here=$(cd "$(dirname "$0")/.." && pwd)
+P="${PROJECTS:-$HOME/Projects}"
+n=0
+for f in "$here/src" "$here/hooks" "$here/scripts/agent-env" "$here/skills" \
+         "$P/lab-machine/bin" "$P/lab-machine/systemd" "$P/lab-machine/setup" \
+         "$P/linux-phone-oco/lab-tools/devlab/src"; do
+  [ -e "$f" ] || { echo "not known yet: $f is not here"; continue; }
+  c=$(grep -rIn 'lab-agent' "$f" 2>/dev/null | wc -l)
+  [ "$c" -eq 0 ] || echo "$c  $f"
+  n=$((n + c))
+done
+echo "lab-agent is still named $n times by what the lab runs"
+[ "$n" -eq 0 ]

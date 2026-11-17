@@ -526,3 +526,37 @@ About
 
 Research
 : work-struggles
+
+
+<a id="2026-11-17-lab-agent-retires-by-parts"></a>
+### 2026-11-17-lab-agent-retires-by-parts
+
+Date
+: 2026-11-17
+
+Brief
+: lab-agent retires by parts (token, timers, jobs, board/notify, inbox, root-exec, daemon); oco-agent is not its successor; notify and root-exec become shell
+
+Decision
+: lab-agent retires part by part, in this order, and oco-agent does not become its successor. Every part has an owner today that is not lab-agent, except two things nothing else gives: a phone push from an unattended unit (notify) and passwordless root for devlab (root-exec); those two move to a few lines of shell each, not to a program.
+1 token: the token file moves to a neutral path (~/.config/ideal-agent/token, mode 600), the old path a symlink until land, agent-env, tad/idealkb-update-pins and oco-agent read the new one; cost ~1 h, lost nothing.
+2 timers: oco-ask-to-observe (about 44 GitHub requests per 15 min), oco-say-what-is-new, oco-agent-shadow stop with ocoeco's legacy; cost minutes; lost: ocoeco's lenses of the lab (declared dead).
+3 jobs: a long build that must outlive a session is `systemd-run --user --unit=NAME COMMAND` (journal is its log, a unit name is claimed once, `systemctl --user status/stop` is standing/stop); walleye-builder's six jobs today are the only use; lab-agent run, oco-agent run and the lab-agent-jobs polling every 5 s retire after one walleye build is proven this way; cost ~2 h; lost: submission from a sandbox that cannot reach the lab (no such driver since 2026-11-15), the replay measure of the 2026-11-11 stall (kept as a concept), and the two inhibit-idle units (the lab sleeps unless a session asks for keep-awake - the author decides).
+4 board and notify: devlab watch pushes its alert with `curl` to the ntfy topic from a mode-600 file (notify, 3 lines) and files the standing alert as a backlog row; the board's 40 stale items go to their projects' backlogs or are closed; cost ~3 h; lost: the 5-minute board push on the phone.
+5 inbox/guide: the plugin's session start stops running `lab-agent inbox`; practice 04 names the app's session messages; guide is `scripts/ideal-agent practices`. Needs the author's word first: does he still write to the lab from the ntfy app (older traffic NOT KNOWN; empty over the last 12 h)? cost ~1 h.
+6 root-exec: devlab and the setup scripts call a root-owned wrapper in lab-machine (`lab-root`, exec argv) granted by one sudoers line - the same power as today, renamed - or, as the author may prefer, a narrower grant per command (fastboot, ufw, nix, pacman) which ends ad hoc root for sessions; the grant is the author's and root's to write, never mine; cost ~3 h plus the author's sudo.
+7 self-update, then the daemon and its units, the sudoers line and the package go; cost minutes once 1-6 are done.
+Check: `scripts/lab-agent-free` (shows 34 live uses now, must reach 0).
+Resolving 2026-11-12-oco-agent ("oco-agent replaces lab-agent, tied to ocoeco by design"): it was decided when ocoeco was the system; 2026-11-17-nothing-of-ocoeco and the author's direction of the same day remove its premise, so it is superseded, not reinterpreted: oco-agent's ideas (the journal as the only truth, a job claimed once, leases, replay as a measure) stay as concepts in its own repository; its program is not extended, and its half-built switch steps 2, 3 and 5 are dropped. A row in that repository's own decisions says so when its owner lands part 3.
+
+Why
+: Measured 2026-11-17: no job through lab-agent since 2026-11-12 (1165 ever, 2 probes since); oco-agent's traffic was ocoeco speaking and walleye-builder's six builds today; live uses left are the token file, root-exec, board/notify for devlab watch, and the inbox call in the plugin's session start. Sessions on the lab, the plugin, ikb and land already do the rest. The author, 2026-11-17: tools of oco became too bloated, make better autonomous independent tools.
+
+Rejected
+: Keep lab-agent as is (a polling daemon, two inhibit units and 44 requests per 15 min for no job); finish oco-agent as the successor (its own premise, ocoeco, is retired; a second runner beside systemd); one big removal now (root-exec and the token are live: devlab flash and every land would break); rewrite lab-agent smaller in Rust (a new program for what systemd-run, curl and a sudoers line do); a Python or Claude-scheduled-task runner (no new Python; sessions end).
+
+About
+: organising-agents
+
+Research
+: lab-agent-what-it-is-2026-11-17

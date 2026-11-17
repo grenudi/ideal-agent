@@ -331,3 +331,24 @@ Rejected
 
 About
 : housekeeping
+
+---
+
+
+<a id="2026-11-17-lab-agent-research"></a>
+### Researched lab-agent: use, dependents, successors
+
+Entry date
+: 2026-11-17
+
+Done
+: Measured jobs history, journal, units, ntfy caches, today's transcripts; grepped dependents; recorded research, decision, six backlog items and scripts/lab-agent-free. Changed nothing on the lab.
+
+Considered
+: oco-agent as successor; systemd-run; curl for ntfy; a wrapper or narrow grants for root
+
+Rejected
+: Stopping any unit to see what breaks: not mine to do on the lab.
+
+About
+: organising-agents
