@@ -13,7 +13,7 @@ place with `--project`).
 A base is kept by tad and follows grenudi/ideal-knowledge-base (ask-a-knowledge-base). Record with
 `ikb` (grenudi/ideal-knowledge-base; `sh bin/install-ikb.sh` in the base installs it): `ikb --help` lists the base's records
 (one line each), `ikb help RECORD` gives the one you need - its options, written from its `records/*.sql` - then
-`ikb RECORD --option value` (`IKB.md` is the same page for people). Long text goes in from a file or stdin (`--found @-`), the id is made from the
+`ikb RECORD --option value` (`ikb page` prints the whole on one page, for people). Long text goes in from a file or stdin (`--found @-`), the id is made from the
 brief, canon and render run after; never SQL, never by hand. What to say in each:
 
 - **Decisions** - always with what was rejected and why; a decision and a research carry a one-line `--brief`
