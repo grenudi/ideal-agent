@@ -26,12 +26,10 @@ base is, and why, is kept there; this is how to use one.
    by its brief, its one line. Go deeper - `tad q row --id ID`, `--whole true`, a file past its first
    paragraph - only when your task needs more than the briefs say. Long answers: `--format csv` (the default
    box is about six times larger).
-3. **Record through the named records**, never by hand: `tad r decision` (with what was rejected),
-   `tad r research`, `tad r source`, `tad r backlog`, `tad r session-log` - each with `--about`, what it is
-   about, so that `tad q about` finds it; a decision and a research with `--brief`, the record in one line
-   of at most 200 characters (the title is the brief of the rest) - and renew the subject's summary when `tad q about` says one is due
-   (record-the-work). A missing record or query is a new file in `records/` or
-   `queries/`, in the same change. Then `tad canon && tad render`, and land (land-a-change).
+3. **Record with `ikb`** (record-the-work): read the base's `IKB.md` once, then `ikb RECORD --option value` - never SQL,
+   never by hand; each record with `--about`, a decision and a research with `--brief` (one line, at most 200
+   characters). A missing record or query is a new file in `records/` or `queries/`, in the same change. Then
+   land (land-a-change).
 4. **Where a row ends and a file begins**: a thing there are many of with one shape is a row; prose read
    once in order (a README, a brief, a long essay cited by a row) is a file, and opens with its own brief:
    its first paragraph says what it holds.

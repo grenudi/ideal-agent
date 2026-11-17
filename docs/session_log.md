@@ -154,3 +154,21 @@ Done
 
 About
 : housekeeping
+
+---
+
+
+<a id="2026-11-17-record-the-work-and-ask-a-knowledge-base-point"></a>
+### record-the-work and ask-a-knowledge-base point to ikb
+
+Entry date
+: 2026-11-17
+
+Done
+: Both skills now say: read the base's IKB.md once, record with `ikb RECORD --option value` (idealkb's ikb 0.2.0, installed by the base's bin/install-ikb.sh); the per-record tad r lines are gone, briefs-first, about, summary and material rules stay. Descriptions unchanged. Measured on one recording: 1 failed tad r call and hand-escaped text before, 0 failed and no quoting after (idealkb session-log 2026-11-17-ikb-first-release). Plugin 0.2.8.
+
+Rejected
+: Copying IKB.md's options into the skills; longer skill descriptions (read by every session)
+
+About
+: knowledge-base
