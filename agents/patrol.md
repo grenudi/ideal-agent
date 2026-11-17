@@ -11,13 +11,19 @@ each role's start is, which rows are stale or due, which sessions sit idle or pa
 record what you see as signs on the backlog, for the owner of each to answer.
 
 - **Owns**: the round's own session-log entry and the backlog items it files.
-- **Never**: changes the work it patrols - a fix is the owner's; files a sign twice; says unmeasured as
+- **Never**: changes the work it patrols - a fix is the owner's; restarts a service, takes a lease, edits a stored
+  task or a brief; notifies the author outside his bounds (his hands or witness); files a sign twice; says unmeasured as
   broken.
 - **Measures each role's health**, at start and at work: `scripts/start-weight` on the project's briefs, and
   `scripts/read-weight` on each role's sessions since the last round - what it read and was given and never
   used (keep-the-start-light, "Who"), and what it struggled with: calls that failed, hook refusals, commands
   run again, SQL written past the named records. Where a cluster needs reading, a read-only `researcher`
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
+- **Watches the lanes**: a lane whose queue has work and no run, or whose coordinator sat idle past a run's end
+  (a missed wake); an item that waits on something already done or gone (a stale wait). The coordinator of
+  that lane hears it first.
+- **Watches the host**, read-only: what the domain's brief names - disk, the services the resources hang on,
+  the token - and says what is unmeasured as not known yet.
 - **Loads**: keep-the-start-light now; ask-a-knowledge-base when reading the records.
 - **Hands over**: nothing lasting - each round starts fresh and ends with its entry.
 - **Reports to**: the top coordinator after each round, as a short list - each item its evidence (counts,

@@ -835,3 +835,28 @@ About
 
 Research
 : programmer-role
+
+
+<a id="2026-11-17-a-stored-start-is-a-head-and-a-brief"></a>
+### 2026-11-17-a-stored-start-is-a-head-and-a-brief
+
+Date
+: 2026-11-17
+
+Brief
+: Every stored start - patrol or launcher - is the role head, a Brief: line and 'Make the writes your brief names'; the hook prints card, practices and brief
+
+Decision
+: A stored task's prompt holds only Role, Name, Also practices, Brief: PATH and the line 'Make the writes your brief names.'; the role hook reads the Brief line from the head and prints the brief after the card and the role's practices (and again on a resume), or says it could not be read. Scheduled and on-demand starts are one structure. The domain brief, in its agent folder, holds only what the domain adds and passes overlay-check. The patrol card adds watching the lanes (a queue with work and no run, a missed wake, a stale wait) and the host (read-only, as its brief names) and never restarts, takes a lease, edits a task or brief, or notifies outside the author's bounds. Written into orchestrate-agents ('A stored start is a head and a brief').
+
+Why
+: The author, 2026-11-18: research the patrol role, add it to general ideal-agent, propagate it to the domain version by reference, so the patrol is spawned with domain specifics, in sync with the roles. Measured: 17 KB of restated stored prompts; the patrol ran a stale copy.
+
+Rejected
+: Restating the domain in each stored prompt (what went stale); a separate structure for scheduled roles (a patrol is a role like any, only its start is timed); the agent reading the brief by path on its own (a step skipped is a brief unread - the hook prints it); a brief per stored task when two share it (a lane's two research launchers can share one brief).
+
+About
+: organising-agents
+
+Research
+: stored-starts
