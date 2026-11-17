@@ -67,3 +67,18 @@ One decider per lane: its coordinator, who holds the records and the lane's know
    an unlock, efuses, erasing what cannot be restored); money; anything outward (publishing, messages,
    accounts); and changes to permissions, security or an agent's own settings. The rest is the lane's,
    recorded either way.
+
+## Starting the lane's sessions
+
+A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lane-starts-its-own).
+
+- **Launchers**: one stored, on-demand task per role of the lane - its keeper, its research lead, its
+  builder - set up once by the author, so that it runs with his permission mode. Its prompt never changes:
+  the role's head (`Role:`, `Name:`, `Also practices:`), the brief's path, and where its work is read - the
+  top of the lane's queue, or the lane's open question in its base. It says plainly the writes it may make
+  (land, records, the resource through its tool), since a launched run is told to make no other.
+- **The lane coordinator** writes the work into the base first - the queue item, or the question - and then
+  runs the launcher, on any turn. A launcher runs once at a time, so a lane never has two keepers.
+- **Within its own turn** the lane coordinator still uses subagents for a short question (one round, a
+  lighter model) or a read-only look; a launcher is for work that changes something or takes long.
+- How a launcher is made and run in your harness: ideal-agent's base, `tad q about --subject claude-code`.

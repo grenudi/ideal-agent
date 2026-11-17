@@ -610,3 +610,28 @@ About
 
 Research
 : decision-routing
+
+
+<a id="2026-11-17-a-lane-starts-its-own"></a>
+### 2026-11-17-a-lane-starts-its-own
+
+Date
+: 2026-11-17
+
+Brief
+: A lane starts its own sessions through launchers - on-demand tasks the author sets up once - run on any turn, its work written into the base first; subagents stay for short questions
+
+Decision
+: Each lane has launchers: one on-demand stored task per role it starts (keeper, research lead, builder), created once by the author so it keeps his permission mode, with a fixed prompt - the role's head, the brief's path, where its work is read (the queue's top, the lane's open question) and the writes it may make. The lane coordinator writes the work into the base and runs the launcher, on any turn; a launcher runs once at a time, so one keeper per lane holds by itself. Short questions and read-only looks stay subagents within the turn. The role hook reads a role past a scheduled run's wrapper. Written into keep-a-shared-resource ('Starting the lane's sessions') and the lane-coordinator card; the harness's how-to into claude-code-how-we-use-it.
+
+Why
+: The author, 2026-11-17: research and do something about these pauses, so they do not occur in areas he is not competent in and can be done with proper research instead. Measured: seven cards, 4-40 minutes each, all start refusals on a message's turn. Probed: run_scheduled_task starts a session on such a turn.
+
+Rejected
+: A standing keeper per lane fed by messages (it grows without end, and renewing it with clear_session asks the author each time); the keeper starting its successor (its turns are messages' turns too, and a stranded keeper starts none); a cron waker as the starter (a scheduled run's own start_session is refused the same way; it stays a nudge); a headless run under systemd-run (not logged in on the lab; not seen, steered or archived); launchers created by a session (no permission mode saved, so runs stop to ask); a new launcher per question (prompts vary; one fixed prompt reading its work from the base keeps the board read off the work).
+
+About
+: organising-agents
+
+Research
+: lane-starts
