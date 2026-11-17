@@ -710,3 +710,28 @@ About
 
 Research
 : research-on-own-initiative
+
+
+<a id="2026-11-17-a-run-end-wakes-the-lane"></a>
+### 2026-11-17-a-run-end-wakes-the-lane
+
+Date
+: 2026-11-17
+
+Brief
+: A lane coordinator subscribes to its launchers' completion at its start and re-runs on the wake; a launched session's last act is two lines to it
+
+Decision
+: keep-a-shared-resource ('Starting the lane's sessions') and the lane-coordinator card: at the lane's start and after its renewal, the lane coordinator subscribes itself to each launcher's completion and re-runs on the wake; the keeper card: its last act, after the hand-over and the lease released, is two lines to its lane coordinator - a backstop where a subscription was lost (one subscriber per task, the newest replacing).
+
+Why
+: Surya's lane sat idle from 18:16 on 2026-11-17 until the author asked why: a launched run is not its coordinator's child, so its end sent no note. Both lane coordinators subscribed (surya 2, walleye 3 launchers) and the app accepted every one on a message's turn; the first wake is still to be seen.
+
+Rejected
+: Polling the runs (a turn spent per look); a cron nudge alone (up to an hour idle); the keeper's last message alone (a keeper that ends abruptly sends none); the subscription alone (a renewed coordinator or another subscriber replaces it).
+
+About
+: organising-agents
+
+Research
+: lane-starts
