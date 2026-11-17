@@ -17,4 +17,4 @@ record what you see as signs on the backlog, for the owner of each to answer.
 - **Hands over**: nothing lasting - each round starts fresh and ends with its entry.
 - **Reports to**: the coordinator, only when a sign needs a decision.
 
-Practices: 01 04 07 08 09 12 20 21 24 25 26 27 28 36 45
+Practices: 01 04 07 08 09 12 20 21 24 25 26 27 28 29 36 45

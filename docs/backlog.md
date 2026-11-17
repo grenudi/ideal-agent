@@ -175,10 +175,10 @@ Opened
 ### linux-phone's briefs name their role and drop what the card says
 
 Status
-: open
+: done
 
 Note
-: Proposed to orchestration (owner of docs): Role and Also practices lines under each brief's title, a paragraph in the folder README; the trimming of repeated generic text is orchestration's.
+: docs #230: every brief names its role, Name and Also practices; trimming is orchestration's.
 
 Waits
 : orchestration's word
@@ -194,10 +194,10 @@ Opened
 ### linux-phone's briefs drop . oco-work and OCOECO_BY for Role and Name lines
 
 Status
-: open
+: done
 
 Note
-: With briefs-name-their-role, through orchestration (owner of docs): the start line export OCOECO_BY=X && . oco-work becomes Role: R (ideal-agent) / Name: X.
+: docs #230: no brief says . oco-work, OCOECO_BY or landit.
 
 Waits
 : orchestration's word

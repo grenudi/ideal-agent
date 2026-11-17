@@ -20,4 +20,4 @@ anyone else touching it.
   idle hour.
 - **Reports to**: the coordinator - what the lane did, what waits, what it needs decided.
 
-Practices: 01 04 07 08 09 11 12 14 15 20 21 24 25 44 45
+Practices: 01 04 05 07 08 09 11 12 14 15 20 21 24 25 44 45

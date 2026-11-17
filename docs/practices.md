@@ -15,83 +15,6 @@ For
 : agents and people
 
 
-<a id="02-perfecting"></a>
-### 02-perfecting
-
-Practice
-: Treat everything as still being perfected: when a better way emerges, improve the tool, the data, this guide and your own memory and preferences - and record the improvement on the observatory's backlog.
-
-Why
-: The system improves itself only if every improvement is carried back into it.
-
-For
-: agents and people
-
-Shown in
-: creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own
-
-
-<a id="03-adjust-memory"></a>
-### 03-adjust-memory
-
-Practice
-: At the start of a session look through how work is done, the whole one step up, and what is still showing - ocoeco focus practices; ocoeco fulldome --surface as-outline; ocoeco focus still-showing, from the author's observatory - and keep your memory and preferences in line with these practices; when they change, change yours. A look is read whole, or one step up (--surface as-outline): never cut short by hand - a cut hides what comes after it.
-
-Why
-: An agent that forgets the practices undoes them.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ecosystem/reflections:2026-11-15-what-looking-showed, open-commons-observatory/ocoeco/decisions:2026-11-15-the-way-up-is-a-surface
-
-
-<a id="04-inbox"></a>
-### 04-inbox
-
-Practice
-: Read what was said to you at every natural pause and between jobs - oco-agent inbox; print every unread message before acknowledging any; answer every message, if only with 'got it'.
-
-Why
-: Acknowledging blind once hid a message.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-15-taken-back-only-when-nothing-in-view-points-at-it
-
-
-<a id="05-board"></a>
-### 05-board
-
-Practice
-: The board is read off the work: do the work through ocoeco, standing on what it is about, and what is in progress, what waits and what is ahead show themselves. Say by hand only an intention - what is next, what is dropped - and look at what the board shows as drifting: said to be waiting though nothing holds it back. A next step is words: look at it when you take the item up, for nothing reads off whether it has been taken.
-
-Why
-: The board must show what is actually being done. Kept true by hand, it was found out of date each time it was looked at on 2026-11-13 and 14 - an item waiting on a token it did not wait on; a next step naming a trial already made.
-
-For
-: agents
-
-
-<a id="06-lab-machine"></a>
-### 06-lab-machine
-
-Practice
-: Do the work - builds, tests, repository work - on the lab machine through oco-agent: submit a job and wait for it; not in your own sandbox. A fresh workspace gets there by itself: clone the lab-agent repository and run oco-agent/tools/driver-setup. A driver needs only to read the jobs repository and push to it; no token of the lab's is copied into a sandbox.
-
-Why
-: Better quality, fewer tokens, one place where state lives.
-
-For
-: agents
-
-Shown in
-: creation-guidelines/lab-agent/decisions:2026-11-15-a-driver-speaks-with-git-alone
-
-
 <a id="07-land"></a>
 ### 07-land
 
@@ -218,19 +141,6 @@ Shown in
 : creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own
 
 
-<a id="16-reflect-where-you-work"></a>
-### 16-reflect-where-you-work
-
-Practice
-: Reflect progress in every project you touch, in the same change as the work: its own backlog, milestones and session log, in its own repository - not only the observatory's.
-
-Why
-: A project whose records lag its work shows a false path; the picture is only as true as each project's own data.
-
-For
-: agents and people
-
-
 <a id="17-look-at-it"></a>
 ### 17-look-at-it
 
@@ -271,22 +181,6 @@ Why
 
 For
 : agents
-
-
-<a id="20-the-whole-first"></a>
-### 20-the-whole-first
-
-Practice
-: Finish a connected piece - landed, recorded, checked - then choose the next by the weakest link of the whole, read from the observatory, not by momentum. Count hand-work as you go (ocoeco manual, in the place that keeps the record): an action past three asks for a tool - build it. Work as if any turn could be cut off: small steps, each landed with its glimpse; the item in progress always says where we are and the next step; a fresh session starts by reading them - never from memory of the conversation.
-
-Why
-: A microphone hunt ran many boots before anyone stepped back; records were hand-written by a new script in every job.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ecosystem/reflections:2026-11-15-what-the-thing-showed-of-itself
 
 
 <a id="21-no-new-python"></a>
@@ -353,22 +247,6 @@ Shown in
 : open-commons-observatory/ecosystem/reflections:2026-11-14-a-sign-written-from-an-impression
 
 
-<a id="26-refining-first"></a>
-### 26-refining-first
-
-Practice
-: When using the ecosystem shows a gap, an overlap or something that does not click, refining it comes first - before the work that was in hand - and the refining is itself recorded through ocoeco: what was seen, what it rests on, what was decided.
-
-Why
-: The author, 2026-11-13: whatever we do refining and clarifying is our first priority when we see such an opportunity, and especially when we see it by using OCO and ocoeco - that is how we know we are on the right track, with clarity, and not making another software with excuses on how to use it. And a number, a word or a field is looked up before it is read: readiness was read as a share done for days, when it is a rung.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-15-added-to-a-lens
-
-
 <a id="27-signs-not-problems"></a>
 ### 27-signs-not-problems
 
@@ -401,54 +279,6 @@ Shown in
 : open-commons-observatory/ecosystem/decisions:2026-11-13-states-are-read-off-the-act, open-commons-observatory/ocoeco/decisions:2026-11-14-where-the-work-happens
 
 
-<a id="29-through-a-lens"></a>
-### 29-through-a-lens
-
-Practice
-: Say what is showing, what is wanted and how things stand by reading it off a lens or a sheet composed for it - not as prose from your own head. Where a lens cannot say it yet, that is a gap in the language: compose the lens or the part.
-
-Why
-: The author, 2026-11-14. The first sheet made this way replaced a list written from memory that was not so: it said two items waited on the token; the data showed one.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-14-what-each-sign-waits-on, marshall-oco/marshall-oco.github.io/lenses:still-showing
-
-
-<a id="30-stand-on-what-you-work-on"></a>
-### 30-stand-on-what-you-work-on
-
-Practice
-: Do the work standing on what it is about - look through a lens from the thing, lens@thing - so that the record of work says where it was made. Do not type what a record advances.
-
-Why
-: The author, 2026-11-14: work is seen when it happens, through the ecosystem, not by what was planned. What a record advanced had been typed in every job.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-14-where-the-work-happens, open-commons-observatory/ocoeco/decisions:2026-11-14-a-lens-looked-through-from-a-thing
-
-
-<a id="31-ask-what-fits"></a>
-### 31-ask-what-fits
-
-Practice
-: For a link, a value or an entry, ask what fits - ocoeco fits - and take what it offers; do not type an id from memory.
-
-Why
-: Links typed from memory pointed nowhere several times on 2026-11-13 and 14 - a decision recorded in one place and named in another. The reader refuses a link pointing nowhere, and what fits knows where each thing is held.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-14-what-fits-here
-
-
 <a id="32-the-whole-is-discovered"></a>
 ### 32-the-whole-is-discovered
 
@@ -463,38 +293,6 @@ For
 
 Shown in
 : open-commons-observatory/ocoeco/decisions:2026-11-14-one-thing-by-two-routes, open-commons-observatory/ocoeco/decisions:2026-11-14-the-nature-of-a-pointing, open-commons-observatory/ecosystem/reflections:2026-11-14-the-whole-looked-at
-
-
-<a id="33-a-guard-where-it-is-not-yet-seen"></a>
-### 33-a-guard-where-it-is-not-yet-seen
-
-Practice
-: What is said in a lens is seen, not tested: look at what it shows, before and after. Write a guard only for what is still behind the lens - the program that reads it - and let it go when that comes into view.
-
-Why
-: The author, 2026-11-14: no separate test is needed where the whole is traversable and adjustable; it was all one need, for clarity. That week the guards that caught something all guarded the program, which cannot yet be looked through.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ecosystem/reflections:2026-11-14-no-tests-no-boundaries, open-commons-observatory/ocoeco/decisions:2026-11-14-what-is-kept-out
-
-
-<a id="34-a-turn-as-it-is-said"></a>
-### 34-a-turn-as-it-is-said
-
-Practice
-: Enter the author's turn into the conversation as it is said, with the moment it was said - turn ID AFTER AT TEXT, a word of oco-work, in marshall-oco/conversation - and record his thoughts as reflections in his own words, touching the turn they came from.
-
-Why
-: The author, 2026-11-14: all of it; all means all. Until then only what the agent chose to record had reached a place.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ecosystem/reflections:2026-11-14-all-means-all, marshall-oco/conversation/lenses:conversation, creation-guidelines/lab-agent/decisions:2026-11-15-a-turn-with-its-moment-a-run-waited-for
 
 
 <a id="35-say-which-model-fits"></a>
@@ -523,54 +321,6 @@ For
 : agents
 
 
-<a id="37-say-where-it-is-shown"></a>
-### 37-say-where-it-is-shown
-
-Practice
-: When a decision follows a principle, an architecture or a practice, say so where the guideline is kept: enter where it is shown, with the guideline's id and shown_in, a link to the decision - a principle or an architecture with ocoeco glimpse principles or architectures in the canon (what fits offers both); a practice with tad r practice-shown-in --id ... --shown_in ... in grenudi/ideal-agent, where the practices are kept. What is said to govern is then seen where it does.
-
-Why
-: Looked at on 2026-11-14, all 20 principles and all 10 architectures of the canon, and 35 of 39 practices, were pointed at by nothing: the guidelines shaped the work and nothing showed where.
-
-For
-: agents
-
-Shown in
-: creation-guidelines/software-engineering-canon/lenses:canon
-
-
-<a id="38-a-job-says-only-what-is-its-own"></a>
-### 38-a-job-says-only-what-is-its-own
-
-Practice
-: A job that works on the ecosystem begins with oco-work and says only what is its own: what every job does - bring a place to a branch, change an exact text, stand, enter, check, try, compare, land - is a word there. Send the text that changes, never the whole file. When a job does a second time what the next will do too, make it a word.
-
-Why
-: Through 2026-11-11 to 15 every job said again what every job does, and sent whole files to change a few lines - one job 63 thousand bytes, 50 thousand of them files; what was got right by care was got wrong by hand, five times each for a summary too long and a comparison moved by the work.
-
-For
-: agents
-
-Shown in
-: creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own
-
-
-<a id="39-what-followed-is-looked-at"></a>
-### 39-what-followed-is-looked-at
-
-Practice
-: At the end of a turn, what followed is looked at, not written: ocoeco focus what-followed, from the author's observatory, says what was done, seen, learned, entered and released since the author spoke - and his own page opens on it. What is said back to him is what it shows, with judgment beside it: never an overview drawn from memory in a chat. Where a look cannot say what is wanted, the language is made to say it - a lens, a part, an ability of the program - and not written around by hand.
-
-Why
-: The author, 2026-11-15: after an update the agent had begun again to draw its overviews by hand, as text in a chat - a dead surface, where a projection is neither as intelligible nor as reasonable as one made in the ecosystem, from the ecosystem, and worked with there.
-
-For
-: agents
-
-Shown in
-: marshall-oco/conversation/decisions:2026-11-15-what-followed-is-read-off-a-lens, marshall-oco/marshall-oco.github.io/decisions:2026-11-15-the-front-opens-on-what-followed, marshall-oco/marshall-oco.github.io/decisions:2026-11-15-every-line-leads-somewhere
-
-
 <a id="40-work-from-within"></a>
 ### 40-work-from-within
 
@@ -585,6 +335,9 @@ For
 
 Shown in
 : open-commons-observatory/ecosystem/reflections:2026-11-15-what-standing-in-the-window-showed
+
+Retired
+: 2026-11-17: retired with ocoeco's window; the author: everything related to oco tools became too bloated and we are detaching from it. That a tool presents itself from within lives on as asking the data (29) instead of reading its files (decision 2026-11-17-practices-without-oco-tools).
 
 
 <a id="41-a-lens-of-the-language-is-changed-in-its-place"></a>
@@ -601,6 +354,9 @@ For
 
 Shown in
 : ocoeco/decisions:2026-11-16-the-language-is-kept-by-its-place ocoeco/decisions:2026-11-16-entering-is-said-by-a-lens ocoeco/decisions:2026-11-16-an-entry-writes-where-the-row-is-kept
+
+Retired
+: 2026-11-17: retired with ocoeco's lenses; the author: everything related to oco tools became too bloated. A query is changed in its own file, landed like any change (decision 2026-11-17-practices-without-oco-tools).
 
 
 <a id="42-linux-phone-through-tad"></a>
@@ -675,3 +431,214 @@ For
 
 Shown in
 : grenudi/ideal-agent/decisions:2026-11-17-roles-as-agent-cards
+
+
+<a id="02-perfecting"></a>
+### 02-perfecting
+
+Practice
+: Treat everything as still being perfected: when a better way emerges, improve the tool, the data, this guide and your own memory and preferences - and record the improvement on the owning project's backlog (ideal-agent's, for how agents work).
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+Shown in
+: grenudi/ideal-agent/decisions:2026-11-17-practices-without-oco-tools
+
+
+<a id="03-adjust-memory"></a>
+### 03-adjust-memory
+
+Practice
+: At the start of a session read the practices your role carries and where the whole stands, one step up - your project's how-it-stands row and tad q next, briefs first - and keep your memory and preferences in line with these practices; when they change, change yours. A look is read whole, or one step up: never cut short by hand - a cut hides what comes after it.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="04-inbox"></a>
+### 04-inbox
+
+Practice
+: Read what was said to you at every natural pause and between jobs - lab-agent inbox, and the messages other sessions send; print every unread message before acknowledging any; answer every message, if only with 'got it'.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="05-board"></a>
+### 05-board
+
+Practice
+: The board is read off the work: record the work through the project's named records, each naming what it is about (--about), and what is in progress, what waits and what is ahead show themselves in tad q next and tad q about. Say by hand only an intention - what is next, what is dropped - and look at what the board shows as drifting: said to be waiting though nothing holds it back. A next step is words: look at it when you take the item up, for nothing reads off whether it has been taken.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="06-lab-machine"></a>
+### 06-lab-machine
+
+Practice
+: Do the work - builds, tests, repository work - on the lab machine, where state lives: in a session there, or from elsewhere through a lab job; not in a sandbox copy. No token of the lab's is copied anywhere.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="16-reflect-where-you-work"></a>
+### 16-reflect-where-you-work
+
+Practice
+: Reflect progress in every project you touch, in the same change as the work: its own backlog, milestones and session log, in its own repository.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="20-the-whole-first"></a>
+### 20-the-whole-first
+
+Practice
+: Finish a connected piece - landed, recorded, checked - then choose the next by the weakest link of the whole, read from the data (tad q next, the subjects' how-it-stands), not by momentum. Count hand-work as you go, on the backlog of the place that keeps the record: an action past three asks for a tool - build it. Work as if any turn could be cut off: small steps, each landed with its record; the item in progress always says where we are and the next step; a fresh session starts by reading them - never from memory of the conversation.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="26-refining-first"></a>
+### 26-refining-first
+
+Practice
+: When using the ecosystem shows a gap, an overlap or something that does not click, refining it comes first - before the work that was in hand - and the refining is itself recorded in the owning project's data: what was seen, what it rests on, what was decided.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="29-through-a-lens"></a>
+### 29-through-a-lens
+
+Practice
+: Say what is showing, what is wanted and how things stand by reading it off a named query (tad q ...) - not as prose from your own head. Where no query can say it yet, that is a gap in the base: write the query.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="30-stand-on-what-you-work-on"></a>
+### 30-stand-on-what-you-work-on
+
+Practice
+: Name what the work is about in every record of it (--about: a subject, a component, a backlog item), so that the record says where it was made. Do not type what a record advances.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="31-ask-what-fits"></a>
+### 31-ask-what-fits
+
+Practice
+: For a link, a value or an entry, look it up - tad q find, tad q about, tad q row - and take the id it gives; do not type an id from memory.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="33-a-guard-where-it-is-not-yet-seen"></a>
+### 33-a-guard-where-it-is-not-yet-seen
+
+Practice
+: What a query shows is seen, not tested: look at what it shows, before and after a change. Write a test only for what is behind the query - the program that computes it - and let it go when that comes into view.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="34-a-turn-as-it-is-said"></a>
+### 34-a-turn-as-it-is-said
+
+Practice
+: Record the author's turn as it is said, with the moment it was said, in the place that keeps his words (marshall-oco/conversation), and his thoughts as reflections in his own words, touching the turn they came from.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="37-say-where-it-is-shown"></a>
+### 37-say-where-it-is-shown
+
+Practice
+: When a decision follows a principle, an architecture or a practice, say so where the guideline is kept: a practice with ikb practice-shown-in --id ... --shown_in owner/repo/decisions:id in grenudi/ideal-agent, a principle or an architecture where its canon keeps it. What is said to govern is then seen where it does.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="38-a-job-says-only-what-is-its-own"></a>
+### 38-a-job-says-only-what-is-its-own
+
+Practice
+: A session or a job says only what is its own: what every one does - branch first, check, record, land, sign - is ideal-agent's start (scripts/agent-env) and skills. Send the text that changes, never the whole file. When a job does a second time what the next will do too, make it a word of the start or a tool.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null
+
+
+<a id="39-what-followed-is-looked-at"></a>
+### 39-what-followed-is-looked-at
+
+Practice
+: At the end of a turn, what followed is read off, not written: what was done, recorded and released since the author spoke comes from the data - tad q recent in each place touched, the pull requests landed - with judgment beside it; never an overview drawn from memory in a chat. Where no query says what is wanted, write the query.
+
+Why
+: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
+
+For
+: null

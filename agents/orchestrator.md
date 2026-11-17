@@ -20,4 +20,4 @@ shows by itself, and the next piece is chosen by the weakest link.
   or an idle hour.
 - **Reports to**: the coordinator; turning points of design come back to it.
 
-Practices: 01 02 04 07 08 09 12 13 15 16 18 19 20 21 22 23 24 25 26 27 32 35 36 44 45
+Practices: 01 02 04 05 07 08 09 12 13 15 16 18 19 20 21 22 23 24 25 26 27 29 31 32 35 36 38 44 45
