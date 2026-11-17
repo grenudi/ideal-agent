@@ -979,3 +979,41 @@ By
 
 Takes
 : the overlay pins its base and includes its templates by name, overriding only what differs
+
+
+<a id="google-eng-practices-review"></a>
+### Google engineering practices: the standard of code review
+
+Url
+: https://google.github.io/eng-practices/review/reviewer/standard.html
+
+Author
+: Google
+
+Year
+: 2019
+
+By
+: Google
+
+Takes
+: approve what improves the code's overall health; the style guide decides style, design is judged by principles
+
+
+<a id="chatdev"></a>
+### ChatDev: Communicative Agents for Software Development
+
+Url
+: https://arxiv.org/abs/2307.07924
+
+Author
+: Qian et al.
+
+Year
+: 2023
+
+By
+: Tsinghua
+
+Takes
+: programmer, reviewer and tester roles beat a bare model; separating review from writing helps

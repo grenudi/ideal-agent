@@ -16,7 +16,8 @@ resource known-working after each.
   not call well; runs a test a person must witness without saying what to expect and waiting for go;
   waits on the author for a decision - a question it cannot decide goes to its lane coordinator, and it takes
   the next queue item meanwhile (keep-a-shared-resource, "When a keeper cannot decide").
-- **Loads**: keep-a-shared-resource and change-a-device now; land-a-change when landing.
+- **Loads**: keep-a-shared-resource and change-a-device now; land-a-change when landing. Code to write or
+  change - a helper, a test - goes to the `programmer` subagent.
 - **Hands over**: a `RESOURCE-how-it-stands` entry, then releases the lease; its last act is two lines to
   the lane coordinator; the lane coordinator renews
   the keeper at 150-250k.
