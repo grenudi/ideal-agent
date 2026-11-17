@@ -1,0 +1,41 @@
+#!/bin/sh
+# What a started session actually read, from its Claude Code transcript (a .jsonl file): the context the
+# model held at its first turn (system prompt, skills listed, the session start, the brief), at its first act
+# on the work, and at its end - in tokens, as the transcript's own usage says - and the largest things it
+# read before that act: each skill loaded, file opened and command's output, in bytes (practice
+# 45-keep-the-start-light: measure what is read, not only what lies at the front).
+#
+#   read-weight TRANSCRIPT [ACT]   ACT: an extended regular expression a Bash command matches when it acts
+#                                  on the work (default: a change through devlab, an edit, a record, a landing)
+# A session's transcript is ~/.claude/projects/PROJECT/SESSION.jsonl (the newest for a session started now:
+# ls -t ~/.claude/projects/-home-mll/*.jsonl | head). Needs jq. Ends 2 on a wrong call.
+set -eu
+[ $# -ge 1 ] && [ $# -le 2 ] || { echo "usage: read-weight TRANSCRIPT [ACT]" >&2; exit 2; }
+t=$1
+act=${2:-'devlab (phone (sh|root|put|reboot)|kernel|suite run|suspend|hear)|tad r |landit|git commit'}
+command -v jq > /dev/null || { echo "read-weight: needs jq" >&2; exit 2; }
+
+jq -rs --arg act "$act" '
+  def ctx: (.message.usage // {}) | ((.input_tokens // 0) + (.cache_read_input_tokens // 0) + (.cache_creation_input_tokens // 0));
+  def acts: .type == "assistant" and ([.message.content[]? | select(.type == "tool_use")
+      | select(.name == "Edit" or .name == "Write" or (.name == "Bash" and (.input.command | test($act))))] | length > 0);
+  def sized: if type == "string" then length else (tostring | length) end;
+  def ts: .timestamp | sub("\\.[0-9]+Z$"; "Z") | fromdate;
+  . as $all
+  | ([$all[] | select(.type == "assistant" and ctx > 0)]) as $turns
+  | ([range(0; $all | length) | select($all[.] | acts)] | first) as $at
+  | ($all[0:($at // ($all | length))]) as $before
+  | ([$before[] | select(.type == "assistant") | .message.content[]? | select(.type == "tool_use")
+      | {key: .id, value: (.name + " " + ((.input.skill // .input.file_path // .input.command // .input.query // "") | tostring | gsub("\n"; " ") | .[0:70]))}]
+      | from_entries) as $calls
+  | ([$before[] | select(.type == "user") | .message.content | arrays | .[] | select(.type == "tool_result")
+      | {what: ($calls[.tool_use_id] // "?"), bytes: (.content | sized)}]) as $reads
+  | ([$all[] | select(.type == "attachment" and .attachment.hookEvent == "SessionStart") | .attachment.content | sized] | add // 0) as $start
+  | ([$all[] | select(.type == "user" and (.message.content | type) == "string")][0].message.content | length) as $prompt
+  | ([$all[] | select(.timestamp != null)][0] | ts) as $began
+  | "first turn\t\($turns[0] | ctx) tokens\t(system prompt, skills listed, session start \($start) B, the brief \($prompt) B)",
+    "first act\t\(if $at then ([$before[] | select(.type == "assistant" and ctx > 0)] | last | ctx | tostring) + " tokens" else "none" end)\t\(if $at then ($all[$at].timestamp[11:19]) + ", " + (((($all[$at] | ts) - $began) / 60 | floor) | tostring) + " min after the start" else "" end)",
+    "read before it\t\($reads | map(.bytes) | add // 0) B in \($reads | length) results",
+    "at the end\t\($turns | last | ctx) tokens\tmost \($turns | map(ctx) | max) tokens, \($turns | length) turns",
+    ($reads | sort_by(-.bytes) | .[0:12][] | "  \(.bytes) B\t\(.what)")
+' "$t"
