@@ -143,7 +143,7 @@ Status
 : open
 
 Note
-: Before (surya-keeper-2, transcript 3060e909, started by hand before the lean keeper brief, the waker change and connectors off): first turn 81,280 tokens, first act 92,176, 33.5 KB read before it (tad --help 12.1 KB, deep-sleep whole 9.4, oco-work 4.6, a mistyped about 4.0), peak 118,468 in 84 turns. After: the linux-phone patrol runs read-weight on every transcript of its last 6 hours (its item 6); its first round after the next keeper gives the number. Next: record it here and close.
+: Before: surya-keeper-2 (started by hand) first turn 81,280 tokens, 33.5 KB read before acting. A first 'after' (waker run 45833ff5, 12:33 UTC): first turn 75,649, 39.1 KB read before acting (devlab start 10.8 KB, the phone queue asked 5 times ~13 KB, a tad sql 5.1 KB), first act 26 min in (a permission prompt). Not yet comparable: that run began before Gmail and Claude Docs were turned off, and the scheduled runs measured earlier started at 73.5-75.6k too - a scheduled run's system part is smaller than a hand-started session's. Next: a keeper started after the connector change, by the same route as its before, measured with read-weight.
 
 About
 : housekeeping
