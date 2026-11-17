@@ -91,3 +91,25 @@ Sources
 
 About
 : housekeeping
+
+
+<a id="what-a-started-agent-reads"></a>
+### what-a-started-agent-reads
+
+Date
+: 2026-11-17
+
+Brief
+: A started session holds 73-81k tokens before reading anything, nearly all Claude Code and its connectors' tools; our start is about 4-6k; keepers read 10-12k more before acting.
+
+Question
+: What does a started agent actually read before and while it works - per role, from its transcript - and where is the weight?
+
+Found
+: Measured 2026-11-17 with scripts/read-weight on the transcripts. First turn, before anything is read: 80.0k tokens (surya keeper 1), 81.3k (keeper 2), 79.7k (ideal-agent), 73.5k and 75.6k (two scheduled keeper-waker runs) - Claude Code's own instructions and the tools of every connector the session carries (Gmail 31 tools, Firecrawl 18, Claude Docs 8, the browser, the artifact tool); of it ours is about 4-6k: the session start 2-9 KB (the practices; 8.6 KB since first sentences), the skills' descriptions 4 KB, the brief 2.6-5.9 KB. Keeper 1 (session 8b8368b4, brief 4.4 KB): read its brief, the queue and devlab's help and touched the phone 22 seconds after it began, at 90k tokens; over its whole run it read 24 KB of briefs, records and help in 13 results against 91 KB of phone output in 59, wrote 98k output tokens and ended at 189k - its context went to the work and its own reasoning, and most of what it held at the start was the harness. Keeper 2 (session 3060e909, lean brief 2.6 KB): 33.5 KB read before its first act - 12.1 KB of it tad's --help, explored because no command was named, 9.4 KB the deep-sleep subject whole, 4 KB a mistyped about - then 92k tokens at the act. So: what can be cut at the start is small beside the harness, and the reading that grows is help and whole records read for want of a named command or a brief; the larger lever is starting a role without connectors it does not use (the author's setting).
+
+Sources
+: anthropic-context-engineering,claude-code-memory
+
+About
+: housekeeping

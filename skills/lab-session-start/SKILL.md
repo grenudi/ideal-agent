@@ -1,26 +1,40 @@
 ---
 name: lab-session-start
-description: Start of every session in the open-commons ecosystem (on the lab machine or anywhere) - read the practices, sign your work, read the inbox and the lenses before choosing anything. Use at the very beginning of a session, and again after a long pause.
+description: Start of every session in the open-commons ecosystem (on the lab machine or anywhere) - read only what the current task needs - the practices' first sentences, your role's purpose, the summary of your task's subject - sign your work, read the inbox, then act; everything else is read only when the task asks for it. Use at the very beginning of a session, and again after a long pause.
 ---
 
 # Starting a session
 
-1. **The practices.** The plugin's SessionStart hook prints them (`ideal-agent start`); read them whole -
-   they outrank any brief. Again at any time: `lab-agent guide` on the lab, or
-   `${CLAUDE_PLUGIN_ROOT}/scripts/ideal-agent practices` anywhere.
-2. **Sign your work.** In every shell that works on the ecosystem: `export OCOECO_BY=<your role>`
-   (bring-up, orchestration, research-<feature>, ...) then `. oco-work`. Your name goes on every record and
-   signs every commit (oco-work makes it the git author), so the face shows where each session stands. Never
-   call `land` from a shell that has not sourced `oco-work` (without it `land` also merges pending release PRs).
-3. **The inbox.** `lab-agent inbox` - print every unread message, answer each, then `lab-agent inbox --ack`.
-   The hook prints them at the start, read but not acknowledged.
-4. **Look before choosing**, in the project's knowledge base (ask-a-knowledge-base): `tad q next` (the work
-   ahead), `tad q recent` (what was recorded lately), `tad q about --subject S` (one subject whole); then its
-   face and the board (`lab-agent board show`). Your brief - the
-   domain part of your role - is in the project's agent folder (`ideal-agent-PROJECT/`, or the folder its
-   AGENTS.md names); the method of the role is a skill here
-   (orchestrate-agents, research-a-feature, bring-up-a-part).
-5. **A domain you take up** is its rows: read its DOMAIN-how-it-stands research row and the rest of its
-   research, decisions and backlog before anything else - that is how you become its expert (record-the-work,
-   "Hand-over").
-6. Choose by the weakest link the data shows, not by momentum; say on the board what you take up.
+Your context is for the work, not for briefings: a session already holds tens of thousands of tokens before
+it reads anything. Read at the start only what your current task needs; everything else stays one query or
+one file away, named but not read (practice 45-keep-the-start-light; ideal-knowledge-base's brief-first).
+
+## Read at the start - only this
+
+1. **The practices' first sentences** - the session start prints them. Each whole, with its reason, only
+   when one bears on a choice you are making: `lab-agent guide` (or `scripts/ideal-agent practices`).
+2. **Your role's purpose** - the first paragraph of your brief (the project's agent folder,
+   `ideal-agent-PROJECT/`). The rest of the brief only when a step of yours needs it.
+3. **Your task's subject, in summary** - `tad q about --subject S` (it leads with the summary and gives each
+   record by its brief), or the top of your queue (`tad q next --about S`, a role's queue query). That is
+   enough to act.
+4. **Sign your work** - `export OCOECO_BY=<your role>` then `. oco-work` in every shell that works on the
+   ecosystem (it makes your name the git author; never `land` without it). **The inbox** - `lab-agent inbox`:
+   answer each unread message, then `--ack`.
+
+Then act.
+
+## Read only when
+
+- **a record's whole** - only when its brief is not enough for the step in hand: `tad q row --id ID`, or
+  `tad q about --subject S --whole true`;
+- **another subject** - only when your task reaches it: `tad q about --subject OTHER`;
+- **the rest of your brief, a skill's body** - only when you come to the step it is for (land-a-change when
+  you land, change-a-device before you change a device, record-the-work when you record);
+- **a tool's help** - only when the brief or skill does not name the command you need;
+- **what was recorded lately, the board, the face** - only when choosing what to take up next, not to start
+  a task already given;
+- **a research's material, a file past its first paragraph** - only when the finding's brief leaves your
+  question open.
+
+Choose by the weakest link the data shows, not by momentum; say on the board what you take up.

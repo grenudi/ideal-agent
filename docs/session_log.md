@@ -109,3 +109,18 @@ Done
 
 About
 : knowledge-base
+
+---
+
+
+<a id="2026-11-17-read-only-when"></a>
+### Read only when
+
+Entry date
+: 2026-11-17
+
+Done
+: Measured both surya keepers from their transcripts (scripts/read-weight); lab-session-start says what to read at the start and 'read only when' for the rest; role skills begin from the summary; plugin 0.2.4.
+
+About
+: housekeeping
