@@ -366,3 +366,28 @@ About
 
 Material
 : research/claude-code/2026-11-17/
+
+
+<a id="claude-code-skill-overrides"></a>
+### claude-code-skill-overrides
+
+Date
+: 2026-11-17
+
+Brief
+: 2026-11-17: the 33 skills no role used are name-only in the author's settings; before, every start listed 44 skills in 22,455 B; the after is measured on the next fresh session
+
+Question
+: How much of every session's start does skillOverrides name-only take away, for the skills no role uses?
+
+Found
+: The author chose it (his words, through the coordinator, and his yes in ideal-agent-roles' session): ~/.claude/settings.json skillOverrides name-only for Anthropic's 16 skills and Claude Code's 17 built-ins - documents, slides, spreadsheets, PDF, Google Workspace, browsers, computer use, morning, deep research, dataviz, artifacts, code review, the Claude API, schedule, loop and the rest - all still callable by name; ideal-agent's 11 untouched. Before: 44 skills listed in 22,455 B at every start (read-weight, 2026-11-17). After: not known yet - the next fresh session's read-weight.
+
+Sources
+: claude-code-skills-listing
+
+About
+: claude-code
+
+Material
+: research/claude-code/2026-11-17/

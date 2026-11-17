@@ -213,10 +213,10 @@ Opened
 ### Which skills and plugins a role's session lists at its start
 
 Status
-: open
+: done
 
 Note
-: Measured (read-weight given, not used; keeper-7, surya lane, research lead): Anthropic's 16 skills (9,976 B) and Claude Code's 17 (8,079 B) are used by none. ideal-agent's descriptions cut to 2,287 B (0.3.7). Next: the author's word on skillOverrides name-only for the unused ones, or skillListingMaxDescChars ~250 (about 3-4k tokens off every session).
+: The author chose skillOverrides name-only for the 33 unused skills (research claude-code-skill-overrides); the after is backlog measure-skill-overrides.
 
 Waits
 : the author's word on his settings
@@ -319,6 +319,22 @@ Note
 
 About
 : organising-agents
+
+Opened
+: 2026-11-17
+
+
+<a id="measure-skill-overrides"></a>
+### Measure a fresh session's skill listing after the name-only overrides
+
+Status
+: open
+
+Note
+: read-weight on the first session started after 2026-11-17 17:00 UTC: skills listed, bytes, first-turn tokens; compare with 44 skills, 22,455 B, ~80k tokens. Then supersede claude-code-skill-overrides with the number.
+
+About
+: claude-code
 
 Opened
 : 2026-11-17
