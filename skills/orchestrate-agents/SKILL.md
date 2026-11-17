@@ -6,7 +6,8 @@ description: The method of an orchestration session - tending a project's convey
 # Orchestrating agents
 
 You do not do the other agents' work; you make it flow. What you own in a project (its conveyor, its
-places, its briefs in `prompts/`) is in your brief; this is the method. Why it is shaped so: ideal-agent
+places, its briefs in its agent folder - `ideal-agent-PROJECT/`, or the folder its AGENTS.md names) is in
+your brief; this is the method. Why it is shaped so: ideal-agent
 decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-standing.
 
 ## The loop

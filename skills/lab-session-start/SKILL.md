@@ -17,7 +17,8 @@ description: Start of every session in the open-commons ecosystem (on the lab ma
 4. **Look before choosing.** From `~/Projects/marshall-oco/marshall-oco.github.io`: `ocoeco focus practices`,
    `ocoeco fulldome --surface as-outline`, `ocoeco focus still-showing`; the board (`lab-agent board show`);
    the project's own face and database (`tad q backlog`, `tad q decisions` in its tad place). Your brief - the
-   domain part of your role - is in the project's `prompts/`; the method of the role is a skill here
+   domain part of your role - is in the project's agent folder (`ideal-agent-PROJECT/`, or the folder its
+   AGENTS.md names); the method of the role is a skill here
    (orchestrate-agents, research-a-feature, bring-up-a-part).
 5. **A domain you take up** is its rows: read its DOMAIN-how-it-stands research row and the rest of its
    research, decisions and backlog before anything else - that is how you become its expert (record-the-work,

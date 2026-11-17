@@ -16,3 +16,15 @@ Considered
 
 Rejected
 : A shell guard (fragile reading of shell lines); prebuilt binaries first (backlog release-binaries).
+
+---
+
+
+<a id="2026-11-17-agent-folder"></a>
+### Briefs live in a project's agent folder, not prompts/
+
+Entry date
+: 2026-11-17
+
+Done
+: linux-phone-oco/docs moved its briefs into ideal-agent-linux-phone-oco/ (docs #171, decision 2026-11-17-ideal-knowledge-base). The README, lab-session-start and orchestrate-agents now say a project keeps its domain in its agent folder (ideal-agent-PROJECT/, or the folder its AGENTS.md names); practice 42 keeps its rule and points to that folder's README for the domain detail. Plugin 0.1.2.

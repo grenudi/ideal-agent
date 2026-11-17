@@ -623,7 +623,7 @@ Shown in
 ### 42-linux-phone-through-tad
 
 Practice
-: In linux-phone-oco: data through tad, landing through land, nothing of ocoeco by hand. Every record of every linux-phone place - decision, research, backlog, session log, concept, source, milestone - goes into linux-phone-oco/docs' one database through its named records, naming the place (tad r decision --project surya-lab ...; tad statements lists them; a missing one is a file in docs' records/ in the same change). The commit and its pull request are the record of the work, signed by the name you work under; land with land (or landit, which makes no glimpse where none is exported). No ocoeco note, no glimpse, no oco/ tables there; the observatory's lenses are still how the whole is read.
+: In linux-phone-oco: data through tad, landing through land, nothing of ocoeco by hand - every record of every linux-phone place goes into linux-phone-oco/docs' one database through its named records, naming the place, and the commit and its pull request are the record of the work. The domain detail - which records, what --about names, the phone and its queue - is in docs' ideal-agent-linux-phone-oco/README.md.
 
 Why
 : The author, 2026-11-17: for linux-phone everything goes through tad in one database, and the record of work is git itself. Measured: the turn commit-title limit failed 4 times, link refusals ordered the work 3 times, and two tools wrote rows in one place. ocoeco stays as it is for the rest of the commons (docs' decision 2026-11-17-one-database).
