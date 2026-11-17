@@ -38,13 +38,17 @@ fn numbers(s: &str) -> Vec<String> {
 /// The role a brief names: the first line that begins `Role:` (markdown emphasis allowed), and an `Also
 /// practices:` line anywhere.
 /// Where the brief begins in a first prompt: past the reminders the app puts in front of it (`<system-reminder>`
-/// blocks, such as the linked sessions), and past the background a starting session gives (`Background (from the
+/// blocks, such as the linked sessions), past a scheduled run's `<scheduled-task ...>` opening, and past the background a starting session gives (`Background (from the
 /// session that started this one):` ... `Task:`). A prompt that then begins with another tag - a message from
 /// another session - names no role.
 pub fn brief_of(prompt: &str) -> Option<&str> {
     let mut s = prompt.trim_start();
     while let Some(rest) = s.strip_prefix("<system-reminder>") {
         s = rest.split_once("</system-reminder>")?.1.trim_start();
+    }
+    // a scheduled run: its prompt is wrapped in <scheduled-task ...>, with one line of the harness's own first
+    if s.starts_with("<scheduled-task") {
+        s = s.split_once('\n')?.1.trim_start();
     }
     if s.starts_with('<') {
         return None;
@@ -312,6 +316,16 @@ mod tests {
             "a message behind a reminder names none"
         );
         assert!(named_in("<system-reminder>\nunclosed\nRole: keeper").is_none());
+    }
+
+    #[test]
+    fn a_scheduled_run_names_its_role_past_the_task_wrapper() {
+        let p = "<scheduled-task name=\"surya-keeper\" file=\"/x/SKILL.md\">\nThis is an automated run of a scheduled task. The user is not present.\n\nRole: keeper (ideal-agent)\nName: surya-keeper\nAlso practices: 42\n\nThe work.\n</scheduled-task>";
+        let n = named_in(p).expect("named past the wrapper");
+        assert_eq!(
+            (n.role.as_str(), n.name.as_deref()),
+            ("keeper", Some("surya-keeper"))
+        );
     }
 
     #[test]

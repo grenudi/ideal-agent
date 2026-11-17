@@ -416,3 +416,28 @@ About
 
 Material
 : research/organising-agents/2026-11-17/
+
+
+<a id="lane-starts"></a>
+### lane-starts
+
+Date
+: 2026-11-17
+
+Brief
+: Seven lane pauses on 2026-11-17 waited 4-40 min for the author's click; run_scheduled_task starts a session on a message's turn where start_session is refused
+
+Question
+: How can a lane coordinator start its keeper, research and builder sessions on its own, so the author is stopped only by his bounds?
+
+Found
+: Seven start refusals on the surya and walleye lanes (13:08-16:58) became cards that waited about 4 to 40 minutes for the author's click; a lane coordinator wakes on its keepers' reports, so nearly every turn of its is a message's, where start_session is refused. A probe showed run_scheduled_task starts a new session from such a turn; it runs once at a time per task, keeps a permission mode only when the author created the task, and wraps the prompt in <scheduled-task>. SendMessage to a standing session works but its renewal (clear_session) asks the author; subagents work within the turn; a headless run is not logged in and not seen.
+
+Sources
+: gastown-escalation,claude-code-skills-listing
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-17/
