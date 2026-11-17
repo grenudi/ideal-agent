@@ -30,7 +30,8 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
    them, gaps drawn as gaps, each feature's path (research, vectors, decision, tests), where each agent
    stands. What cannot be seen is a lens or view to compose, never a page written by hand.
 5. **Choose and start the work** by the weakest link, read off the data. A feature that will not come onto
-   the conveyor by a fix or two gets a research session first (research-a-feature): write its brief, name
+   the conveyor by a fix or two gets a research session first (research-a-feature): write its brief, its first line
+   `Role: research-lead`, name
    what it must not touch, propose it to the author. Research reads; what it decides goes to the queue of
    the session that changes the device.
 6. **Mind the cost.** Many agents spend many tokens (multi-agent work costs about 15 times one agent).
@@ -38,7 +39,10 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
    one keeper (keep-a-shared-resource), whose waker you set up and whose queue you keep fed; changes to
    it are queued, not raced. Say when a lighter model fits (patrols, routine checks, a consult from the
    rows) and when a turning point needs the most capable one; check what the models are before saying so.
-
+   Every session you start gets a role: `Role: NAME` as its brief's first line (coordinator,
+   lane-coordinator, orchestrator, keeper, research-lead, builder, patrol - the cards in the plugin's agents/),
+   started with the model and effort its card names; the brief adds only the domain's specifics and never
+   repeats the card.
 7. **How agents are brought up.** Now and then, `scripts/read-weight` on the transcripts of the sessions
    started since the last look (keep-the-start-light, "How well agents are brought up"); and renew yourself
    when your own context calls for it ("Renew a long-lived role").

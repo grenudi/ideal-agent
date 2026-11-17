@@ -34,22 +34,6 @@ Takes
 : Compaction alone was not enough: each fresh session gets up to speed from a progress file, the git log and a feature list, works one item, commits and writes its progress. Whether specialised agents beat one general agent is left open.
 
 
-<a id="claude-code-agent-teams"></a>
-### Orchestrate teams of Claude Code sessions
-
-Url
-: https://code.claude.com/docs/en/agent-teams
-
-Author
-: Anthropic
-
-Year
-: 2026
-
-Takes
-: Teammates message each other directly, not only through the lead; 3-5 teammates; each starts from project context and a spawn prompt, never the lead's history; in-process teammates are not restored on resume; for routine or sequential work one session is cheaper.
-
-
 <a id="claude-code-subagent-memory"></a>
 ### Claude Code agent memory frontmatter
 
@@ -396,3 +380,117 @@ Year
 
 Takes
 : Use gt handoff liberally after every task, in every worker: sessions are cattle, the role's identity and its hook carry the work to the next session.
+
+
+<a id="claude-code-subagents"></a>
+### Claude Code: create custom subagents
+
+Url
+: https://code.claude.com/docs/en/sub-agents
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+By
+: Anthropic
+
+Takes
+: agents/NAME.md is the role card: model, effort, skills in frontmatter; claude --agent NAME starts a main session as it; plugin agents ignore hooks, mcpServers, permissionMode
+
+
+<a id="claude-code-agent-teams"></a>
+### Claude Code: agent teams
+
+Url
+: https://code.claude.com/docs/en/agent-teams
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+By
+: Anthropic
+
+Takes
+: teammates may be agent definitions, but their skills are not applied and the lead cannot hand over - not the route for lasting roles yet
+
+
+<a id="anthropic-multi-agent-research"></a>
+### How we built our multi-agent research system
+
+Url
+: https://www.anthropic.com/engineering/multi-agent-research-system
+
+Author
+: Anthropic
+
+Year
+: 2025
+
+By
+: Anthropic
+
+Takes
+: a lead writes each brief (objective, output, tools, boundaries); strong lead, lighter workers: model per role
+
+
+<a id="gastown-roles"></a>
+### Gas Town: role definitions and gt prime
+
+Url
+: https://github.com/steveyegge/gastown
+
+Author
+: Steve Yegge
+
+Year
+: 2026
+
+By
+: Steve Yegge
+
+Takes
+: each role a small definition plus a template, primed at SessionStart with its work and mail, lighter after compaction
+
+
+<a id="crewai-agents"></a>
+### CrewAI: agents (role, goal, backstory)
+
+Url
+: https://docs.crewai.com/concepts/agents
+
+Author
+: CrewAI
+
+Year
+: 2025
+
+By
+: CrewAI
+
+Takes
+: a role is a few fields; we keep purpose and leave the backstory out
+
+
+<a id="team-topologies"></a>
+### Team Topologies
+
+Url
+: https://teamtopologies.com
+
+Author
+: Matthew Skelton, Manuel Pais
+
+Year
+: 2019
+
+By
+: Skelton and Pais
+
+Takes
+: a team is its type, owned scope and interaction modes; with RACI's one accountable, the card's owns, never and reports to

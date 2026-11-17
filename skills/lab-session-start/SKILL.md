@@ -1,6 +1,6 @@
 ---
 name: lab-session-start
-description: Start of every session in the open-commons ecosystem (on the lab machine or anywhere) - read only what the current task needs - the practices' first sentences, your role's purpose, the summary of your task's subject - sign your work, read the inbox, then act; everything else is read only when the task asks for it. Use at the very beginning of a session, and again after a long pause.
+description: Start of every session in the open-commons ecosystem (on the lab machine or anywhere) - read only what the current task needs - your role's card and its practices, your brief's first paragraph, the summary of your task's subject - sign your work, read the inbox, then act; everything else is read only when the task asks for it. Use at the very beginning of a session, and again after a long pause.
 ---
 
 # Starting a session
@@ -11,9 +11,11 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
 
 ## Read at the start - only this
 
-1. **The practices' first sentences** - the session start prints them. Each whole, with its reason, only
+1. **Your role and its practices** - the first prompt brings them: the role your brief names (`Role: NAME`, a
+   card in the plugin's agents/ - purpose, owns, never, loads, hand-over, reports to) and only that role's
+   practices, each its first sentence; with no role named, every practice. Each whole, with its reason, only
    when one bears on a choice you are making: `lab-agent guide` (or `scripts/ideal-agent practices`).
-2. **Your role's purpose** - the first paragraph of your brief (the project's agent folder,
+2. **Your brief's first paragraph** - what the project adds to the role (its agent folder,
    `ideal-agent-PROJECT/`). The rest of the brief only when a step of yours needs it.
 3. **Your task's subject, in summary** - `tad q about --subject S` (it leads with the summary and gives each
    record by its brief), or the top of your queue (`tad q next --about S`, a role's queue query). That is

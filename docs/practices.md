@@ -674,4 +674,4 @@ For
 : agents and people
 
 Shown in
-: grenudi/ideal-agent/decisions:2026-11-17-keep-the-start-light
+: grenudi/ideal-agent/decisions:2026-11-17-roles-as-agent-cards

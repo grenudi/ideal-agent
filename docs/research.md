@@ -154,3 +154,28 @@ Found
 
 About
 : ideal-agent
+
+
+<a id="agent-roles"></a>
+### agent-roles
+
+Date
+: 2026-11-17
+
+Brief
+: Roles already exist in practice (seven); Claude Code's agent card fits them, but desktop sessions start from a prompt, so the role is read from the first prompt
+
+Question
+: What roles have emerged, how do others define a role and load only it, and how can a started session receive only its role's part of the general instructions?
+
+Found
+: Seven roles worked on 2026-11-17: coordinator, lane coordinator, orchestration, keeper, research lead, builder, patrol; their briefs repeat generic text and every session read all 45 practices (8.6 KB). Claude Code's agents/NAME.md carries model, effort, skills and a body, and claude --agent starts a session as it; start_session cannot, so a UserPromptSubmit hook reads Role: NAME from the first prompt. Gas Town primes each role at start; CrewAI, AG2, OpenAI SDK keep a role to a few fields; RACI and Team Topologies give owns, never and reports to.
+
+Sources
+: claude-code-subagents,claude-code-agent-teams,anthropic-multi-agent-research,gastown-roles,crewai-agents,team-topologies,anthropic-context-engineering
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-17/

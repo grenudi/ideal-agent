@@ -401,3 +401,28 @@ About
 
 Research
 : long-lived-roles-renewed
+
+
+<a id="2026-11-17-roles-as-agent-cards"></a>
+### 2026-11-17-roles-as-agent-cards
+
+Date
+: 2026-11-17
+
+Brief
+: A role is a card in ideal-agent's agents/; a brief names it (Role: NAME); the first prompt brings the card and only its practices
+
+Decision
+: Seven generic roles - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol - each a Claude Code agent card in ideal-agent's agents/: frontmatter model, effort, skills; a body of purpose, owns, never, loads, hands over, reports to; a Practices line. A project's brief names its role under its title (Role: keeper (ideal-agent), Also practices: 42 for a domain's own) and keeps only the domain; the prompt that starts a session begins with that line. A UserPromptSubmit hook (ideal-agent role) gives the card and only those practices at the first prompt, every practice when none is named, and remembers it for a resume or compaction; the SessionStart no longer prints the practices. claude --agent ideal-agent:ROLE starts a session as the role too. What replaces what: the card replaces a brief's generic part and the whole practice list; the role skills stay the methods the cards load; briefs stay the domain.
+
+Why
+: The author's task of 2026-11-17: a session gets a role and loads only what it needs. Claude Code's native card is the shape others already read (Gas Town primes a role at start; RACI and Team Topologies give owns and reports to); start_session cannot pass --agent, so the role is read from the prompt. Measured: start-weight on docs' main falls 1.4-3.6 KB per role with the Role line alone; the session start from 8.6 KB to 0.5 KB plus a 3.5-5.7 KB role.
+
+Rejected
+: A role table in tad with ideal-agent start --role (a parallel layer beside the agent cards Claude Code already loads, and the start cannot see the prompt); role-filtered practices by their for field (it says agents or people, not roles); new role skills such as coordinate-a-lane (would add to the skill descriptions every session reads, and repeat keep-a-shared-resource); agent teams (experimental, skills not applied, the lead not handed over); generated .claude/agents per project for connectors and hooks (a second copy to keep in sync; connectors stay off by default already); renaming the researcher subagent (in use; the session role is research-lead, Anthropic's word for the one holding a research).
+
+About
+: organising-agents
+
+Research
+: agent-roles

@@ -1,6 +1,7 @@
 #!/bin/sh
 # What a fresh session of a project must read before its first useful action, in bytes, per role
-# (practice 45-keep-the-start-light): the plugin's session start, the skills' and agents' descriptions, the
+# (practice 45-keep-the-start-light): the plugin's session start and what its first prompt brings (the role the
+# brief names - its card and practices - or every practice), the skills' and agents' descriptions, the
 # lab-session-start skill, the project's AGENTS.md, its agent folder's README, and each role's brief.
 # Read from the place as it stands on disk - give a clone at its main to measure main.
 #
@@ -16,7 +17,11 @@ folder=${folder%/}
 [ -n "$folder" ] && [ -d "$place/$folder" ] || { echo "start-weight: no agent folder in $place" >&2; exit 2; }
 
 size() { [ -f "$1" ] && wc -c < "$1" | tr -d ' ' || echo 0; }
-start=$(CLAUDE_PLUGIN_ROOT="$root" "$root/scripts/ideal-agent" start 2>/dev/null | wc -c | tr -d ' ')
+# a new session: the start, then at its first prompt the role its brief names (its card and only its
+# practices) or every practice; each in a throwaway state, so that no real session's role is touched
+state=$(mktemp -d); trap 'rm -rf "$state"' EXIT
+hook() { printf '%s' "$2" | XDG_STATE_HOME="$state" CLAUDE_PLUGIN_ROOT="$root" "$root/scripts/ideal-agent" "$1" 2>/dev/null | wc -c | tr -d ' '; }
+start=$(hook start '{"session_id":"weight","source":"startup"}')
 descriptions=$(for f in "$root"/skills/*/SKILL.md "$root"/agents/*.md; do sed -n 's/^description: //p' "$f"; done | wc -c | tr -d ' ')
 skill=$(size "$root/skills/lab-session-start/SKILL.md")
 agents=$(size "$place/AGENTS.md")
@@ -32,5 +37,9 @@ for brief in "$place/$folder"/*.md; do
     name=$(basename "$brief" .md)
     [ "$name" = README ] && continue
     b=$(size "$brief")
-    printf 'role\t%s\t%s\t(brief %s)\n' "$name" "$((common + b))" "$b"
+    role=$(sed -n 's/^[*#> -]*Role:[* ]*`\{0,1\}\(ideal-agent:\)\{0,1\}\([a-z-]*\).*/\2/p' "$brief" | head -n 1)
+    also=$(sed -n 's/^[*#> -]*Also practices:/Also practices:/p' "$brief" | head -n 1)
+    p=$(hook role "$(jq -cn --arg p "Role: ${role:-none}
+$also" --arg s "w-$name" '{session_id: $s, prompt: (if $p | startswith("Role: none") then "" else $p end)}')")
+    printf 'role\t%s\t%s\t(brief %s, %s %s)\n' "$name" "$((common + b + p))" "$b" "${role:-no role}" "$p"
 done
