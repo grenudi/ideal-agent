@@ -7,7 +7,7 @@ use std::process::Command;
 
 pub const LIVE: &str =
     "https://raw.githubusercontent.com/grenudi/ideal-agent/main/data/practices.json";
-const BUILT_IN: &str = include_str!("../data/practices.json");
+pub const BUILT_IN: &str = include_str!("../data/practices.json");
 const HOME: &str = "https://github.com/grenudi/ideal-agent (data/practices.json)";
 
 /// The practices' text and where it came from: the file given; else live; else the plugin's copy; else
@@ -79,9 +79,13 @@ pub fn first_sentence(practice: &str) -> &str {
 /// The practices as a session start reads them: numbered, each its first sentence alone - the rest of its
 /// words, its reason and whom it is for are one command away (`ideal-agent practices`), so the start stays
 /// light (practice 45-keep-the-start-light; the author chose first sentences on 2026-11-17).
-pub fn render_short(text: &str, source: &str) -> String {
+pub fn render_short(text: &str, source: &str, only: Option<&[String]>) -> String {
     let mut out = format!("How to work in the open-commons ecosystem ({source})\n\n");
     for (n, v) in in_order(text) {
+        let id = v["id"].as_str().unwrap_or("");
+        if only.is_some_and(|keep| !keep.iter().any(|k| id.starts_with(k.as_str()))) {
+            continue;
+        }
         let practice = v["practice"].as_str().unwrap_or("");
         out.push_str(&format!("{n}. {}\n", first_sentence(practice)));
     }
@@ -125,7 +129,7 @@ mod tests {
     #[test]
     fn the_start_reads_the_practices_without_their_reasons() {
         let t = "{\"id\":\"a\",\"practice\":\"Record it.\",\"why\":\"Memory fails.\",\"for\":\"agents\"}\n";
-        let r = render_short(t, "test");
+        let r = render_short(t, "test", None);
         assert!(r.contains("1. Record it.\n"));
         assert!(
             !r.contains("Memory fails."),
@@ -137,7 +141,7 @@ mod tests {
     #[test]
     fn the_start_reads_first_sentences_in_the_order_of_the_ids() {
         let t = "{\"id\":\"22-look\",\"practice\":\"Look first. Then say what is.\",\"why\":\"w\",\"for\":\"agents\"}\n{\"id\":\"03-memory\",\"practice\":\"Adjust your memory.\",\"why\":\"w\",\"for\":\"agents\"}\n";
-        let r = render_short(t, "test");
+        let r = render_short(t, "test", None);
         let three = r
             .find("3. Adjust your memory.\n")
             .expect("numbered by its id");

@@ -172,3 +172,24 @@ Rejected
 
 About
 : knowledge-base
+
+---
+
+
+<a id="2026-11-17-roles"></a>
+### Agent roles: cards, a first-prompt hook, plugin 0.3.0
+
+Entry date
+: 2026-11-17
+
+Done
+: Looked around (research agent-roles, six sources); seven role cards in agents/; ideal-agent role (UserPromptSubmit) and a lighter start; start-weight reads a brief's Role line; lab-session-start and orchestrate-agents point at roles; README; measured before and after on docs' main.
+
+Considered
+: A tad role table; filtering practices by their for field; role skills; agent teams; per-project generated agents; a probe session for read-weight (refused: this session cannot start sessions; headless claude is not logged in).
+
+Rejected
+: See decision 2026-11-17-roles-as-agent-cards.
+
+About
+: organising-agents

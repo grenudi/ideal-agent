@@ -2,7 +2,7 @@
 use anyhow::{Context, Result};
 use argenv_resolve::generate::{self, Program, Shell};
 use argenv_resolve::*;
-use ideal_agent::{guard, practices};
+use ideal_agent::{guard, practices, roles};
 use std::io::Read;
 use std::path::PathBuf;
 use std::process::Command as Run;
@@ -48,6 +48,21 @@ fn program<'a>(commands: &'a [generate::Command<'a>], date: &'a str) -> Program<
         date,
         asked: &[],
     }
+}
+
+/// The hook's event, from standard input when it is not a terminal; an empty object otherwise.
+fn read_event() -> serde_json::Value {
+    use std::io::IsTerminal;
+    let mut input = String::new();
+    if !std::io::stdin().is_terminal() {
+        let _ = std::io::stdin().read_to_string(&mut input);
+    }
+    serde_json::from_str(&input).unwrap_or(serde_json::Value::Null)
+}
+
+fn print_all(text: &str, source: &str) {
+    println!("## The practices (ideal-agent)\n");
+    print!("{}", practices::render_short(text, source, None));
 }
 
 fn main() {
@@ -111,9 +126,46 @@ fn run() -> Result<()> {
             print!("{}", practices::render(&text, &source));
         }
         Command::Start => {
-            let (text, source) = practices::read(from.as_deref(), root.as_deref());
-            println!("## The practices (ideal-agent)\n");
-            print!("{}", practices::render_short(&text, &source));
+            let event = read_event();
+            let session = event["session_id"].as_str().unwrap_or("");
+            let source = event["source"].as_str().unwrap_or("");
+            let agent = event["agent_type"]
+                .as_str()
+                .map(|a| a.trim_start_matches("ideal-agent:"));
+            let card = |r: &str| {
+                root.as_deref()
+                    .is_some_and(|p| roles::card_path(p, r).is_file())
+            };
+            let (text, from_where) = practices::read(from.as_deref(), root.as_deref());
+            if let Some(a) = agent.filter(|a| card(a)) {
+                // started as a role (claude --agent ideal-agent:ROLE): its card is the system prompt already
+                let named = roles::Named {
+                    role: a.to_string(),
+                    also: vec![],
+                };
+                roles::remember(session, Some(&named));
+                print!(
+                    "{}",
+                    roles::render(root.as_deref(), &named, &text, &from_where)
+                );
+            } else if let Some(given) = (source != "startup")
+                .then(|| roles::recall(session))
+                .flatten()
+            {
+                // a resume, a compaction or a clear reads again what this session was given
+                match given {
+                    Some(named) => print!(
+                        "{}",
+                        roles::render(root.as_deref(), &named, &text, &from_where)
+                    ),
+                    None => print_all(&text, &from_where),
+                }
+            } else if session.is_empty() {
+                print_all(&text, &from_where);
+            } else {
+                println!("## The practices (ideal-agent)\n");
+                println!("They come with your first prompt: your role's card and only its practices when the brief names a role (`Role: NAME` - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol), else every practice.");
+            }
             // where lab-agent is installed (the lab), what was said to this session is read too
             if let Ok(out) = Run::new("lab-agent").arg("inbox").output() {
                 println!("\n## Unread messages (lab-agent inbox; answer each, then --ack)\n");
@@ -122,6 +174,27 @@ fn run() -> Result<()> {
             println!(
                 "\nThe ideal agent's hooks refuse git push to main and python/pip (ideal-agent guard); its skills say how to start, land, record and change shared hardware."
             );
+        }
+        Command::Role => {
+            let event = read_event();
+            let session = event["session_id"].as_str().unwrap_or("");
+            if session.is_empty() || roles::recall(session).is_some() {
+                return Ok(());
+            }
+            let (text, from_where) = practices::read(from.as_deref(), root.as_deref());
+            match roles::named_in(event["prompt"].as_str().unwrap_or("")) {
+                Some(named) => {
+                    roles::remember(session, Some(&named));
+                    print!(
+                        "{}",
+                        roles::render(root.as_deref(), &named, &text, &from_where)
+                    );
+                }
+                None => {
+                    roles::remember(session, None);
+                    print_all(&text, &from_where);
+                }
+            }
         }
         Command::Completions => {
             let shell = get(&Contract::SHELL)

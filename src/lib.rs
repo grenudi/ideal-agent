@@ -2,4 +2,5 @@
 //! refused when it is tried (guard), and the practices read at the start of every session (practices).
 pub mod guard;
 pub mod practices;
+pub mod roles;
 pub mod shell;

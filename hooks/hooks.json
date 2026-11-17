@@ -1,10 +1,17 @@
 {
-  "description": "The ways held when they are tried: no git push to main, no Python; the practices and the inbox at every session start.",
+  "description": "The ways held when they are tried: no git push to main, no Python; the inbox at every session start; at the first prompt the role its brief names - its card and only its practices - or every practice.",
   "hooks": {
     "SessionStart": [
       {
         "hooks": [
           { "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ideal-agent\" start", "timeout": 600 }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ideal-agent\" role", "timeout": 60 }
         ]
       }
     ],
