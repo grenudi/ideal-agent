@@ -187,11 +187,8 @@ Url
 Author
 : Linaro
 
-By
-: LAVA (Linaro Automated Validation Architecture)
-
 Takes
-: A single scheduler on the server assigns devices to submitted test jobs; dispatchers run them, one job per device at a time. Jobs queue; nobody touches a board outside the scheduler.
+: Made by LAVA (Linaro Automated Validation Architecture). A single scheduler on the server assigns devices to submitted test jobs; dispatchers run them, one job per device at a time. Jobs queue; nobody touches a board outside the scheduler.
 
 
 <a id="mesa-lava-ci"></a>
@@ -213,11 +210,8 @@ Takes
 Url
 : https://docs.ci-tron.dev/introduction.html
 
-By
-: CI-tron (freedesktop)
-
 Takes
-: A CI gateway service that orchestrates and manages the devices under test: one gateway owns its devices and serves the jobs that come for them.
+: Made by CI-tron (freedesktop). A CI gateway service that orchestrates and manages the devices under test: one gateway owns its devices and serves the jobs that come for them.
 
 
 <a id="pmos-hw-ci-status"></a>
@@ -229,11 +223,8 @@ Url
 Year
 : 2025
 
-By
-: postmarketOS
-
 Takes
-: postmarketOS's hardware CI runs phones behind a CI-tron gateway - the precedent nearest to a Linux-phone lab.
+: Made by postmarketOS. postmarketOS's hardware CI runs phones behind a CI-tron gateway - the precedent nearest to a Linux-phone lab.
 
 
 <a id="gastown-refinery"></a>

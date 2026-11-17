@@ -17,6 +17,9 @@ Why
 Rejected
 : A fifth place beside the four (one nature under five names: each would drift from the others - the move is done only when every old place points here). Keeping it under creation-guidelines (the author chose his own account, grenudi: the know-how is his way of working with agents, not one guideline among others). Skills and hooks kept only on the lab (symlinks into ~/.claude/skills and hooks in ~/.claude/settings.json reach no other machine, project or cloud session, and are versioned nowhere). Domain knowledge moved here too (it would rot away from the data it is about: linux-phone's records stay in its docs database).
 
+About
+: ideal-agent
+
 Research
 : expert-agents-written-not-standing
 
@@ -36,6 +39,9 @@ Why
 Rejected
 : A tracker beside ocoeco such as Beads (two records of one work); an always-on watching agent (tokens without end - patrols on a schedule and hooks do it cheaper); one agent per feature implementing in parallel on one device (changes race); an agents-orchestration repository beside lab-agent then (one nature under three names - superseded by ideal-agent, the one home: 2026-11-17-one-home-for-agent-know-how).
 
+About
+: organising-agents
+
 
 <a id="2026-11-17-experts-written-not-standing"></a>
 ### 2026-11-17-experts-written-not-standing
@@ -51,6 +57,9 @@ Why
 
 Rejected
 : Standing expert sessions per domain (idle hours lose the cache, so each question re-reads a thousand-message context at full price; the expertise still vanishes at compaction; their context rots with length). Orchestration as the router of every question (a bottleneck and a game of telephone, and it fills orchestration's own context). Claude Code subagent memory or agent teams as the home (a second store beside the project's database; teams do not survive a resume). A Markdown expert-notes file per domain (a second place for what rows already hold). A vector or memory service such as Letta (outside the commons and opaque to the face). Forking a finished expert's whole session to consult it (kept as an exception for a session a few hours old whose tacit context is not yet written).
+
+About
+: organising-agents
 
 Research
 : expert-agents-written-not-standing
@@ -71,6 +80,9 @@ Why
 Rejected
 : Each brief repeating the procedures (copies drift, and a brief is read once at the start). Symlinks from a clone on the lab (one machine only). Role methods as subagents in agents/ (a role is a session of its own that lives for hours and owns places; a subagent works inside one session and returns - kept for the read-only researcher). Role briefs as template files to copy (a copy drifts; a skill is read where it is kept).
 
+About
+: skills
+
 
 <a id="2026-11-17-hooks-in-the-plugin"></a>
 ### 2026-11-17-hooks-in-the-plugin
@@ -86,6 +98,9 @@ Why
 
 Rejected
 : The rules written in shell (a shell line read by shell is the fragile thing the Rust reader exists to avoid: quotes, sh -c, substitutions, sudo and env wrappers). Python (refused by the very rule). A prebuilt binary downloaded at install, first (needs a release pipeline; kept on the backlog as release-binaries for machines without cargo). Leaving devlab's copy of the rules in place beside the plugin's (two guards saying the same thing, drifting apart; devlab keeps only the phone's rule).
+
+About
+: hooks
 
 
 <a id="2026-11-17-practices-kept-here"></a>
@@ -103,6 +118,9 @@ Why
 Rejected
 : Leaving them in the observatory and pointing to them (the one home would not hold the one thing every session reads). Copying them (two lists drift - the copy was taken from the observatory's main on the day of the move, and the observatory's file is retired, not kept).
 
+About
+: practices
+
 
 <a id="2026-11-17-one-database-no-glimpses"></a>
 ### 2026-11-17-one-database-no-glimpses
@@ -118,6 +136,9 @@ Why
 
 Rejected
 : ocoeco's oco/ tables beside a tad database (two tools writing rows in one place); glimpses (a second record of what the commit already says).
+
+About
+: records
 
 
 <a id="2026-11-17-one-keeper-per-shared-resource"></a>
@@ -135,5 +156,27 @@ Why
 Rejected
 : A standing keeper session kept alive (its context rots and is re-read at full price; the knowledge vanishes at compaction - decision 2026-11-17-experts-written-not-standing). Every session changing the resource when it needs to, guarded only by the tool's lock (safe but not flowing: changes race for the device and nobody chooses by the weakest link). A queue kept as its own list or tracker (a second record beside the backlog; a named query reads it off the backlog). The keeper as the lock (the tool already holds it; a keeper that crashes must not strand the resource).
 
+About
+: keeper
+
 Research
 : keeper-of-a-shared-resource
+
+
+<a id="2026-11-17-follows-ideal-knowledge-base"></a>
+### 2026-11-17-follows-ideal-knowledge-base
+
+Date
+: 2026-11-17
+
+Decision
+: ideal-agent follows grenudi/ideal-knowledge-base at 0.1.0, its second follower after linux-phone-oco/docs: idealkb's generic queries (about, next, find, row, recent), records (decision, research, backlog, session-log, source) and the generic parts of AGENTS.md and tables.toml, pinned in idealkb.toml. Every record of the standing tables names its subject in about - a row of the new subjects table (ideal-agent, practices, skills, hooks, organising-agents, keeper, knowledge-base, records) or a backlog item - checked by references rules. ideal-agent's own tables (practices, landscape, subjects, about) and records (practice, practice-shown-in, landscape, backlog-status) stay its own. queries/backlog.sql gives way to next. ocoeco's reasoning lens lets a decision be about a subject (ocoeco #458).
+
+Why
+: The author, 2026-11-17: yes to following it here, offered after idealkb asked (its backlog second-follower). ideal-agent is a single-place tad base, the closest fit to the generic shape; following makes an agent answer here the way it answers in any base (skill ask-a-knowledge-base).
+
+Rejected
+: Keeping its own records and naming them own in idealkb.toml (they differed only by lacking about: following is the point). Keeping the sources' by field (the generic sources table has none; the three values were folded into takes as Made by ...). Subjects as practice ids (44 numbered ids are a poor list of what the know-how is about; a short subjects table says it).
+
+About
+: knowledge-base
