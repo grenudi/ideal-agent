@@ -785,3 +785,28 @@ About
 
 Research
 : domain-layer
+
+
+<a id="2026-11-17-a-lane-retries-a-closing-run"></a>
+### 2026-11-17-a-lane-retries-a-closing-run
+
+Date
+: 2026-11-17
+
+Brief
+: When a launcher refuses because its run is still closing, the lane coordinator waits a bounded minute or two itself and runs again, at most three times, then tells the top coordinator
+
+Decision
+: keep-a-shared-resource ('A run's end wakes the lane') and the lane-coordinator card: neither the keeper's last message nor the subscription is trusted alone; on a refusal for a run in progress, a bounded wait the coordinator's own harness wakes it from, then run again, at most three tries, then two lines to the top coordinator. How, in Claude Code: claude-code-how-we-use-it.
+
+Why
+: The night of 2026-11-17: the walleye keeper's last message came while its run was still closing; the re-run was refused; the completion wake never came though the run shows succeeded; the lane sat idle about 15 minutes until the top coordinator nudged it, and surya's lane waited the same way.
+
+Rejected
+: Polling the runs every few minutes (turns spent on nothing); trusting the subscription (seen to miss); the keeper ending its own run before messaging (its last message is its run's last act; the app closes the run after it); a longer cron nudge (up to an hour idle).
+
+About
+: organising-agents
+
+Research
+: lane-starts
