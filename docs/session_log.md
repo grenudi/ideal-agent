@@ -310,3 +310,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-17-land-reads-its-diff"></a>
+### Landing reads its diff against main
+
+Entry date
+: 2026-11-17
+
+Done
+: Sign from orchestration: docs #226, cut before #230, carried the eight briefs as they were and put #230 back when it merged; nothing caught it. land-a-change now says: rebase on origin/main and read git diff --stat origin/main...HEAD before land. A check in land itself (refuse a diff that reverts lines changed on main since its base) is lab-agent's - proposed to the coordinator.
+
+Considered
+: A check in land (its owner's).
+
+Rejected
+: Nothing: a skill line alone does not stop a careless landing, so the land check is proposed too.
+
+About
+: housekeeping

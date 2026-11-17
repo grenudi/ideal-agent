@@ -17,6 +17,10 @@ description: How a change reaches main: its own branch, checks, a record, land, 
 - **Record in the same change.** Decisions (with what was rejected), the backlog item's next step and the
   session log go in the owning place's own data (record-the-work). The commit and its pull request are the
   record of the work, signed by your AGENT_NAME (the session's start sets it as the commits' author).
+- **Read your diff against main before landing.** `git fetch && git rebase origin/main`, then
+  `git diff --stat origin/main...HEAD`: every file in it is one you meant to change. A branch cut before
+  another landing, carrying whole files from its base, puts that landing back when it merges (docs #226 undid
+  #230's eight briefs on 2026-11-17).
 - **Land.** Commit (one commit per branch, a conventional title), then `land --no-manual`. It waits for every check and refuses on a
   failing one. If it stops, the branch is often already pushed: read `gh pr checks BRANCH` and the failing
   run's log (`gh run view ID --log-failed`), fix on that branch, push, then `land --no-manual`. The plugin's
