@@ -143,7 +143,7 @@ Status
 : open
 
 Note
-: Before: 73-81k tokens at the first turn (what-a-started-agent-reads). Next: scripts/read-weight on the next keeper's transcript (orchestration runs it); record the first-turn tokens and the saving.
+: Before (surya-keeper-2, transcript 3060e909, started by hand before the lean keeper brief, the waker change and connectors off): first turn 81,280 tokens, first act 92,176, 33.5 KB read before it (tad --help 12.1 KB, deep-sleep whole 9.4, oco-work 4.6, a mistyped about 4.0), peak 118,468 in 84 turns. After: the linux-phone patrol runs read-weight on every transcript of its last 6 hours (its item 6); its first round after the next keeper gives the number. Next: record it here and close.
 
 About
 : housekeeping
