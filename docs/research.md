@@ -318,31 +318,6 @@ Material
 : research/organising-agents/2026-11-17/
 
 
-<a id="claude-code-how-we-use-it"></a>
-### claude-code-how-we-use-it
-
-Date
-: 2026-11-17
-
-Brief
-: Claude Code 2.1.321 (2026-11-17): the hooks, env file, role cards, session starts, waits, transcripts and skill-listing settings our method uses - nothing else
-
-Question
-: What of Claude Code does ideal-agent's method use, and how, as of now?
-
-Found
-: SessionStart and UserPromptSubmit hooks carry the role and practices (stdout is context; agent_type with --agent; no env file for UserPromptSubmit); CLAUDE_ENV_FILE is evaluated before each Bash command (agent-env); started sessions' first prompt begins with the app's reminder and the starter's Background...Task:; agents/NAME.md cards (model, effort, skills preload only); start_session is refused on a message's or event's turn; sleep before a command is refused (background, Monitor); transcripts in ~/.claude/projects; skillOverrides and skillListingMaxDescChars trim the listing, no per-agent hiding; connectors per session from the + menu; plugin updates need a restart.
-
-Sources
-: claude-code-subagents,claude-code-skills-listing
-
-About
-: claude-code
-
-Material
-: research/claude-code/2026-11-17/
-
-
 <a id="harness-specifics-where"></a>
 ### harness-specifics-where
 
@@ -391,3 +366,53 @@ About
 
 Material
 : research/claude-code/2026-11-17/
+
+
+<a id="claude-code-how-we-use-it"></a>
+### claude-code-how-we-use-it
+
+Date
+: 2026-11-17
+
+Brief
+: Claude Code 2.1.321 (2026-11-17): the hooks, env file, role cards, session starts, waits, transcripts and skill-listing settings our method uses - nothing else
+
+Question
+: What of Claude Code does ideal-agent's method use, and how, as of now?
+
+Found
+: SessionStart and UserPromptSubmit hooks carry the role and practices (stdout is context; agent_type with --agent; no env file for UserPromptSubmit); CLAUDE_ENV_FILE is evaluated before each Bash command (agent-env); started sessions' first prompt begins with the app's reminder and the starter's Background...Task:; agents/NAME.md cards (model, effort, skills preload only); start_session is refused on a message's or event's turn; sleep before a command is refused (background, Monitor); transcripts in ~/.claude/projects; skillOverrides and skillListingMaxDescChars trim the listing, no per-agent hiding; connectors per session from the + menu; plugin updates need a restart. A lane's research within its turn: the Agent tool, subagent_type ideal-agent:researcher, model sonnet (Sonnet 5.5).
+
+Sources
+: claude-code-subagents,claude-code-skills-listing
+
+About
+: claude-code
+
+Material
+: research/claude-code/2026-11-17/
+
+
+<a id="decision-routing"></a>
+### decision-routing
+
+Date
+: 2026-11-17
+
+Brief
+: Others decide at the lowest level holding the information: reversible decisions fast, the worker escalates and goes on, research bounded, recorded first; a small set of classes reaches the human
+
+Question
+: Who should decide a question a keeper cannot, so that a reversible choice does not wait on the author, and what must still reach him?
+
+Found
+: The walleye lane waited on the author three times on 2026-11-17 (a boot go, a session start, keeper-1's set_active a, a reversible flag change); no card named a decider for a lane's question. Bezos: two-way doors fast, escalate at once; RAPID: one decider; SRE: the commander holds what is not delegated; Anthropic: the lead decides on more research, bound it; Gas Town: escalate, do not wait, keep working, track every escalation; auto mode and LangGraph: humans for irreversible, outward, money, security. Reversible holds only where the way back is shown.
+
+Sources
+: bezos-2016-letter,bain-rapid,sre-managing-incidents,anthropic-multi-agent-research,gastown-escalation,claude-code-auto-mode
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-17/

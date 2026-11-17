@@ -14,11 +14,15 @@ anyone else touching it.
   and a lean brief (on your own turn: a turn that a message or an event began cannot start a session -
   propose it, or start it when the author's word or the waker's own turn comes), renew it after its hand-over, archive the finished ones; the lane's waker (a nudge, never
   a second keeper).
+- **Decides** for the lane: a question its keeper cannot decide, from the records, or after a researcher
+  subagent's round; records the decision, tells the keeper, sends the top coordinator two lines; only the
+  author's bounds go up (keep-a-shared-resource, "When a keeper cannot decide").
 - **Never**: changes the resource itself - not a command on it, not a reboot; runs two keepers at once;
   takes work the queue does not show.
 - **Loads**: keep-a-shared-resource now; keep-the-start-light when renewing a keeper.
 - **Hands over**: the lane's `LANE-how-it-stands` row; renews itself at 250k, or 150k after a batch or an
   idle hour.
-- **Reports to**: the coordinator - what the lane did, what waits, what it needs decided.
+- **Reports to**: the top coordinator - what the lane did and decided (by its records' ids), what waits, and
+  only what is the author's to decide.
 
 Practices: 01 04 05 07 08 09 11 12 14 15 20 21 24 25 44 45

@@ -732,3 +732,98 @@ By
 
 Takes
 : one source generated into many harnesses; its end-of-life list of targets shows what tracking every harness costs
+
+
+<a id="bezos-2016-letter"></a>
+### 2016 Letter to Shareholders (one-way and two-way doors, disagree and commit)
+
+Url
+: https://www.aboutamazon.com/news/company-news/2016-letter-to-shareholders
+
+Author
+: Jeff Bezos
+
+Year
+: 2017
+
+By
+: Amazon
+
+Takes
+: two-way doors decided fast near the work; escalate at once, never by exhaustion; disagree and commit
+
+
+<a id="bain-rapid"></a>
+### RAPID decision making
+
+Url
+: https://www.bain.com/insights/rapid-decision-making/
+
+Author
+: Bain
+
+Year
+: 2023
+
+By
+: Bain
+
+Takes
+: one decider for each decision, who holds the accountability; input is not the decision
+
+
+<a id="sre-managing-incidents"></a>
+### Site Reliability Engineering: Managing Incidents
+
+Url
+: https://sre.google/sre-book/managing-incidents/
+
+Author
+: Google
+
+Year
+: 2016
+
+By
+: Google SRE
+
+Takes
+: the commander holds every role not delegated; declare early; handoffs are acknowledged
+
+
+<a id="gastown-escalation"></a>
+### Gas Town: escalation design
+
+Url
+: https://github.com/steveyegge/gastown
+
+Author
+: Steve Yegge
+
+Year
+: 2026
+
+By
+: Steve Yegge
+
+Takes
+: a blocked worker escalates and goes on; each tier resolves or forwards; every escalation tracked, re-escalated when stale
+
+
+<a id="claude-code-auto-mode"></a>
+### Claude Code auto mode
+
+Url
+: https://www.anthropic.com/engineering/claude-code-auto-mode
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+By
+: Anthropic
+
+Takes
+: what still reaches a human: destroying or exfiltrating, weakening security, crossing trust boundaries, affecting others
