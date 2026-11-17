@@ -1,0 +1,41 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  data:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: tad, from its pinned release
+        run: TAD_DEST="$HOME/.local/bin" ./scripts/install-tad.sh && echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Data valid, canonical, pages fresh
+        run: make verify
+  rust:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: cargo fmt --check
+      - run: cargo clippy --all-targets --locked -- -D warnings
+      - run: cargo test --locked
+  plugin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Manifests are JSON, and the plugin's version is the program's
+        run: |
+          for f in .claude-plugin/plugin.json .claude-plugin/marketplace.json hooks/hooks.json; do jq -e . "$f" > /dev/null; done
+          plugin=$(jq -r .version .claude-plugin/plugin.json)
+          program=$(sed -n 's/^version = "\(.*\)"$/\1/p' Cargo.toml | head -n 1)
+          [ "$plugin" = "$program" ] || { echo "plugin.json says $plugin, Cargo.toml $program"; exit 1; }
+      - name: Every skill and agent has a name and a description
+        run: |
+          for f in skills/*/SKILL.md agents/*.md; do
+            head -n 5 "$f" | grep -q '^name: ' && head -n 5 "$f" | grep -q '^description: ' || { echo "$f"; exit 1; }
+          done
+      - name: Scripts are sound
+        run: sh -n scripts/ideal-agent && sh -n scripts/install-tad.sh && shellcheck scripts/ideal-agent scripts/install-tad.sh

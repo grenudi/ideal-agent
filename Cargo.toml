@@ -1,0 +1,19 @@
+[package]
+name = "ideal-agent"
+version = "0.1.0"
+edition = "2021"
+description = "The ideal agent's hooks: the ways held when they are tried - no push to main, no Python - and the practices at the start of every session"
+license = "MIT"
+repository = "https://github.com/grenudi/ideal-agent"
+include = ["src/**", "data/practices.json", "Cargo.toml", "Cargo.lock", "LICENSE", "README.md"]
+
+[[bin]]
+name = "ideal-agent"
+path = "src/main.rs"
+
+[dependencies]
+anyhow = "1"
+argenv = "0.4"
+argenv-resolve = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
