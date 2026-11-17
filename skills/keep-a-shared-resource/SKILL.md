@@ -96,6 +96,10 @@ A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lan
   the lane coordinator subscribes itself to each launcher's completion (one subscriber per launcher, the newest
   replacing the last) and re-runs on the wake; and a launched session's last act, after its final landing, is
   two lines to its lane coordinator, so the lane wakes even where a subscription was lost.
+- **Trust neither alone**: the last message comes while the run is still closing, and a subscription's wake may
+  not come at all (both lanes, 2026-11-17 night: 15 minutes idle each). When the launcher refuses because its
+  run is still in progress, wait a bounded minute or two yourself - a wait your own harness wakes you from -
+  and run it again; after three refusals, tell the top coordinator.
 - **Within its own turn** the lane coordinator still uses subagents for a short question (one round, a
   lighter model) or a read-only look; a launcher is for work that changes something or takes long.
 - How a launcher is made and run in your harness: ideal-agent's base, `tad q about --subject claude-code`.
