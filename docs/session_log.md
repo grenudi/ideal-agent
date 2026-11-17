@@ -139,3 +139,18 @@ Done
 
 About
 : housekeeping
+
+---
+
+
+<a id="2026-11-17-read-weight-lands"></a>
+### read-weight lands
+
+Entry date
+: 2026-11-17
+
+Done
+: scripts/read-weight was written and measured with before fresh cleaned it away untracked; it lands now (plugin 0.2.7). A sign for land-a-change's first rule: branch first, then write.
+
+About
+: housekeeping
