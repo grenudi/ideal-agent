@@ -189,6 +189,11 @@ fn run() -> Result<()> {
                 }
             } else if session.is_empty() {
                 print_all(&text, &from_where);
+            } else if source != "startup" && !roles::awaiting(session) {
+                // a resumed session with no state kept under the first-prompt rule - started before roles, or
+                // re-roled by a message under 0.3.1: every practice, and no later prompt names its role
+                roles::remember(session, None);
+                print_all(&text, &from_where);
             } else {
                 roles::await_first(session);
                 println!("## The practices (ideal-agent)\n");
