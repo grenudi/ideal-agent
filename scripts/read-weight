@@ -7,7 +7,8 @@
 #
 #   read-weight TRANSCRIPT [ACT]   ACT: an extended regular expression a Bash command matches when it acts
 #                                  on the work (default: a change through devlab, an edit, a record, a landing)
-# A session's transcript is ~/.claude/projects/PROJECT/SESSION.jsonl (the newest for a session started now:
+# Then what it was given and never used: the skills, agents, deferred tools and connectors listed, the first
+# prompt's hook. A session's transcript is ~/.claude/projects/PROJECT/SESSION.jsonl (the newest for a session started now:
 # ls -t ~/.claude/projects/-home-mll/*.jsonl | head). Needs jq. Ends 2 on a wrong call.
 set -eu
 [ $# -ge 1 ] && [ $# -le 2 ] || { echo "usage: read-weight TRANSCRIPT [ACT]" >&2; exit 2; }
@@ -38,4 +39,31 @@ jq -rs --arg act "$act" '
     "read before it\t\($reads | map(.bytes) | add // 0) B in \($reads | length) results",
     "at the end\t\($turns | last | ctx) tokens\tmost \($turns | map(ctx) | max) tokens, \($turns | length) turns",
     ($reads | sort_by(-.bytes) | .[0:12][] | "  \(.bytes) B\t\(.what)")
+' "$t"
+
+# What the session was given at its start and never used in its whole run - the skills listed, the agents
+# listed, the deferred tools and connectors, the first prompt's hook - so that a role's card and its
+# settings can be trimmed to what the role uses (decision 2026-11-17-start-health-folds-into-housekeeping).
+jq -rs '
+  def sized: if type == "string" then length else (tostring | length) end;
+  . as $all
+  | [$all[] | select(.type == "assistant") | .message.content[]? | select(.type == "tool_use")] as $uses
+  | ($uses | map(select(.name == "Skill") | .input.skill) | unique) as $skills
+  | ($uses | map(select(.name == "Agent") | (.input.subagent_type // "general-purpose")) | unique) as $agents
+  | ($uses | map(select(.name | startswith("mcp__")) | .name | split("__")[1]) | unique) as $servers
+  | ($uses | map(select(.name == "ToolSearch")) | length) as $searched
+  | ([$all[] | select(.attachment.type == "skill_listing")][0].attachment.content // "") as $listing
+  | ([$listing | split("\n- ")[] | capture("^-? ?(?<n>\\S+?):(\\s|$)") as $m | {n: $m.n, b: (length + 3)}]) as $entries
+  | ([$all[] | select(.attachment.type == "agent_listing_delta") | .attachment | sized] | add // 0) as $agentb
+  | ([$all[] | select(.attachment.type == "deferred_tools_delta") | .attachment | sized] | add // 0) as $deferredb
+  | ([$all[] | select(.type == "attachment" and .attachment.hookEvent == "UserPromptSubmit") | .attachment.content | sized] | .[0] // 0) as $role
+  | ($entries | map(select(.n as $n | $skills | index($n) | not))) as $unused
+  | "given, not used",
+    "skills listed\t\($entries | length) skills, \($listing | length) B\tused: \(if $skills == [] then "none" else $skills | join(", ") end)",
+    ($unused | group_by(.n | if test(":") then split(":")[0] else "(Claude Code)" end)
+      | map({src: (.[0].n | if test(":") then split(":")[0] else "(Claude Code)" end), b: (map(.b) | add), k: length})
+      | sort_by(-.b)[] | "  unused \(.b) B\t\(.src), \(.k) skills"),
+    "agents listed\t\($agentb) B\tused: \(if $agents == [] then "none" else $agents | join(", ") end)",
+    "deferred tools\t\($deferredb) B\tsearched \($searched) times; connectors used: \(if $servers == [] then "none" else $servers | join(", ") end)",
+    "first prompt\t\($role) B\tthe role card and its practices, or every practice"
 ' "$t"

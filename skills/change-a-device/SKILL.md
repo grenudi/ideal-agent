@@ -1,6 +1,6 @@
 ---
 name: change-a-device
-description: How to change a shared test device (a phone, a board) safely - only through the tool that holds it, one change at a time, tests first, every change ending in the device's own health report. Use before any action that changes a device's state (reboot, kernel, flash, packages, config) and when adding a test. The device's own tool and its words are in the project's brief.
+description: Changing a shared test device safely: only through the tool that holds it, one change at a time, tests first, each change ending in its health report. Use before any reboot, kernel, flash, package or config change.
 ---
 
 # Changing a shared device

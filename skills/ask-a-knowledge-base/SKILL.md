@@ -1,6 +1,6 @@
 ---
 name: ask-a-knowledge-base
-description: How to find your way in a knowledge base kept with tad (a repository with tables.toml and data/, such as linux-phone-oco/docs or grenudi/ideal-agent) - read its AGENTS.md, answer by asking a named query, never by reading data/ or docs/, and record through its named records with what each is about. Use before answering any question from a project's data, and whenever you record into one.
+description: Finding your way in a tad knowledge base (tables.toml, data/): ask a named query, never read data/; record through its named records with ikb. Use before answering from a project's data, and when recording.
 ---
 
 # Asking a knowledge base

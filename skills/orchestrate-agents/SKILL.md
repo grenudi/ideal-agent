@@ -1,6 +1,6 @@
 ---
 name: orchestrate-agents
-description: The method of an orchestration session - tending a project's conveyor and the agents working on it, so that they follow the ways, their work shows by itself, and the next piece is chosen by the weakest link. Use when your brief makes you a project's orchestration session, or when deciding which sessions to start and how to brief them.
+description: The orchestration method: tend a project's conveyor and its agents, choose the next piece by the weakest link, start sessions with a role. Use as orchestration, or deciding which sessions to start and how to brief them.
 ---
 
 # Orchestrating agents

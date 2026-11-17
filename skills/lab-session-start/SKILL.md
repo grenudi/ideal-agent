@@ -1,6 +1,6 @@
 ---
 name: lab-session-start
-description: Start of every session in the open-commons ecosystem (on the lab machine or anywhere) - read only what the current task needs - your role's card and its practices, your brief's first paragraph, the summary of your task's subject - sign your work, read the inbox, then act; everything else is read only when the task asks for it. Use at the very beginning of a session, and again after a long pause.
+description: The start of every session: your role's card and practices, your brief's first paragraph, your task's subject in summary, the inbox - then act; read the rest only when a step needs it.
 ---
 
 # Starting a session

@@ -494,3 +494,60 @@ By
 
 Takes
 : a team is its type, owned scope and interaction modes; with RACI's one accountable, the card's owns, never and reports to
+
+
+<a id="claude-code-skills-listing"></a>
+### Claude Code: skills (the skill listing and its budget)
+
+Url
+: https://code.claude.com/docs/en/skills
+
+Author
+: Anthropic
+
+Year
+: 2026
+
+By
+: Anthropic
+
+Takes
+: every listed skill costs context each turn; skillOverrides off/name-only, skillListingMaxDescChars and disableBundledSkills trim the listing; an agent's skills field only preloads
+
+
+<a id="sre-eliminating-toil"></a>
+### Site Reliability Engineering, ch. 5: Eliminating Toil
+
+Url
+: https://sre.google/sre-book/eliminating-toil/
+
+Author
+: Google
+
+Year
+: 2016
+
+By
+: Google SRE
+
+Takes
+: measure by a rule against a cap; the owners turn what is found into engineering - no standing toil-keeper
+
+
+<a id="resend-friction-logs"></a>
+### How we use friction logs to improve the product
+
+Url
+: https://resend.com/blog/how-we-use-friction-logs-to-improve-the-product
+
+Author
+: Resend
+
+Year
+: 2024
+
+By
+: Resend
+
+Takes
+: the newcomer's own log of friction is cheap signal; the owning team fixes

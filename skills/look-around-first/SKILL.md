@@ -1,6 +1,6 @@
 ---
 name: look-around-first
-description: The small look-around before acting on a proposal - the author's too - or before any change that is not trivial - where things stand, how others do it, reconsidered, and the finding kept as a research row with its sources and its material in a dated folder. Use before you build, change or adopt something someone proposed, and when a brief says "look around first".
+description: Before acting on a proposal or a change that is not trivial: where things stand, how others do it, reconsidered - kept as a research row with sources. Use before building, changing or adopting something.
 ---
 
 # Looking around first

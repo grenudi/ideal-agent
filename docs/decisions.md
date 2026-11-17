@@ -476,3 +476,28 @@ About
 
 Research
 : agent-roles
+
+
+<a id="2026-11-17-start-health-folds-into-housekeeping"></a>
+### 2026-11-17-start-health-folds-into-housekeeping
+
+Date
+: 2026-11-17
+
+Brief
+: No agents-healthkeeper role: read-weight measures what each role was given and never used, the patrol runs it per role, each owner trims - cards, briefs, the author's settings
+
+Decision
+: Start health folds into housekeeping. read-weight prints 'given, not used' (skills, agents, deferred tools and connectors listed and never used; the first prompt's role and practices). The patrol runs start-weight and read-weight on each role's latest session and files, naming the role, what is over budget or never used. Trimming stays with the owner: ideal-agent's owner for the role cards and what the plugin lists (its 11 skill descriptions cut from 4,080 to 2,287 B now); a project's owner for its briefs; the author for his settings (the skills and connectors every session lists - proposed, not changed). keep-the-start-light and the patrol card say so by reference.
+
+Why
+: The author, 2026-11-17: an agents-healthkeeper that looks at each role's bring-up and perfects the cards; research first, design only if research says so. Measured: ~18 KB of skills listed and unused by every role. Others: no analogue keeps a standing role - Gas Town's patrols watch liveness, SRE measures by rule and owners fix, friction logs are the newcomer's. Context engineering: smallest high-signal set.
+
+Rejected
+: A standing agents-healthkeeper role (it would add a card to every session's listing and a start of its own to do what a script and the patrol already do; it would trim what others own); a subagent the patrol spawns (the same read-weight run, with a start of ~80k tokens); per-role skill hiding through the role card (Claude Code has none for app-started sessions; the skills field only preloads); changing the author's skill settings here (his, like connectors: proposed); moving the role cards out of agents/ to save their 1.1 KB listing (kept for claude --agent until a measure shows no use).
+
+About
+: housekeeping
+
+Research
+: start-health

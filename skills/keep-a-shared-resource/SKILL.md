@@ -1,6 +1,6 @@
 ---
 name: keep-a-shared-resource
-description: The method of a keeper session - the one role that changes a shared resource only one may change at a time (a test device, a lab machine, a release or merge queue), serving a queue that others prepare. Use when your brief makes you a resource's keeper, when you need a shared resource changed (queue it, do not change it), or when setting up a keeper for a project (its queue query, lease and waker).
+description: The keeper's method: the one session that changes a shared resource (a device, a lab machine, a queue), serving a queue others prepare. Use as a keeper, when you need such a resource changed, or setting a keeper up.
 ---
 
 # Keeping a shared resource

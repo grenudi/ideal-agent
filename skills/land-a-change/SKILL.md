@@ -1,6 +1,6 @@
 ---
 name: land-a-change
-description: How a change reaches main in the open-commons ecosystem - its own branch, checks, a record, land, main read back. Use whenever you are about to edit a repository under ~/Projects or land a change, including data-only changes.
+description: How a change reaches main: its own branch, checks, a record, land, main read back. Use before editing a repository under ~/Projects or landing a change, data-only ones too.
 ---
 
 # Landing a change
