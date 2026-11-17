@@ -865,3 +865,41 @@ By
 
 Takes
 : check a file's hash or provenance against an expectation from a separate trusted channel before use
+
+
+<a id="sre-postmortem-culture"></a>
+### Site Reliability Engineering: Postmortem Culture
+
+Url
+: https://sre.google/sre-book/postmortem-culture/
+
+Author
+: Google
+
+Year
+: 2016
+
+By
+: Google SRE
+
+Takes
+: a finding becomes an owned, tracked action item in the owner's system - not a note in the incident
+
+
+<a id="argyris-double-loop"></a>
+### Double Loop Learning in Organizations
+
+Url
+: https://hbr.org/1977/09/double-loop-learning-in-organizations
+
+Author
+: Chris Argyris
+
+Year
+: 1977
+
+By
+: Harvard Business Review
+
+Takes
+: learning that changes the governing rules, not only the next action - the method itself is revised from what was found

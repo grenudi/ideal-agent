@@ -24,4 +24,4 @@ record what you see as signs on the backlog, for the owner of each to answer.
   sessions), its owner (a role card, a brief, a tool, a setting) and a proposed fix (a better tool, a skill
   line, a removed step); the decisions stay with the author and the owners. Nothing found, nothing sent.
 
-Practices: 01 04 07 08 09 12 20 21 24 25 26 27 28 29 36 45
+Practices: 01 04 07 08 09 12 20 21 22 24 25 26 27 28 29 36 45

@@ -21,7 +21,8 @@ anyone else touching it.
 - **Loads**: keep-a-shared-resource now; keep-the-start-light when renewing a keeper.
 - **Hands over**: the lane's `LANE-how-it-stands` row; renews itself at 250k, or 150k after a batch or an
   idle hour.
+- **Researches on its own** when its lane lacks a method (look-around-first, "When a method is missing").
 - **Reports to**: the top coordinator - what the lane did and decided (by its records' ids), what waits, and
   only what is the author's to decide.
 
-Practices: 01 04 05 07 08 09 11 12 14 15 20 21 24 25 44 45
+Practices: 01 04 05 07 08 09 11 12 14 15 20 21 22 24 25 44 45

@@ -685,3 +685,28 @@ About
 
 Research
 : work-struggles
+
+
+<a id="2026-11-17-research-on-own-initiative"></a>
+### 2026-11-17-research-on-own-initiative
+
+Date
+: 2026-11-17
+
+Brief
+: Coordinators research on their own when a method is missing, bounded; what is general goes to ideal-agent as an upstream item its owner decides; every card carries practice 22
+
+Decision
+: look-around-first gains 'When a method is missing': a coordinator (top, lane, orchestration) starts research itself on a sign - work no record or skill covers, a question asked twice, a struggle cluster - bounded: the commons first, then one researcher-subagent round, a research-lead launcher only for a long question; one research per sign, recorded, two lines up. A finding about how agents work or how any device is brought up flows back to its owner: an upstream item naming grenudi/ideal-agent in the domain's base and a message to ideal-agent's owner, who looks around, decides, lands and reads back; no domain changes a general practice, skill or card. Every card carries practice 22; the coordinator, lane-coordinator and orchestrator cards point to the section; lab-session-start says the brief and the author's words are a starting point. The linux-phone briefs and ideal-agent as docs' upstream go through orchestration.
+
+Why
+: The author, 2026-11-17: a coordinator should decide to start research on its own and adjust ideal-agent from the results - not take his word for it, but research, look around and decide. The walleye lane lacked the general bring-up method nobody had asked for. Others: the lead decides on more research (Anthropic); findings become owned items in the owner's system (SRE postmortems); the rules themselves are revised (double loop).
+
+Rejected
+: Research only on a keeper's ask (the missing method was nobody's question); a domain session editing ideal-agent directly (two writers collided on 2026-11-17; the owner keeps one home and one judgment); unbounded initiative (a research per thought; one per sign, the commons first); a new role for it (the coordinators see the signs; a role adds a card to every listing).
+
+About
+: organising-agents
+
+Research
+: research-on-own-initiative

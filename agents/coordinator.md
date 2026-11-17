@@ -21,6 +21,8 @@ renew the sessions below you.
   resource's recovery, acting on the world in his name - sending, posting, publishing, buying - and his
   settings, permissions and keys; reading from the world, a checked download included, is the lane's) and never re-decide a lane's
   decision unless he does (keep-a-shared-resource, "When a keeper cannot decide").
+- **Researches on its own** when it sees a method missing, bounded, and sends what is general to its owner
+  (look-around-first, "When a method is missing").
 - **Starts others**: each with a role (`Role: NAME` as the brief's first line) and that role's model and
   effort from its card; a domain brief adds only its specifics.
 - **Hands over**: rewrites `coordinator-how-it-stands` and renews itself at 250k tokens of context, or 150k

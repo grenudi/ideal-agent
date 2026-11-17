@@ -466,3 +466,25 @@ About
 
 Material
 : research/organising-agents/2026-11-17/
+
+
+<a id="research-on-own-initiative"></a>
+### research-on-own-initiative
+
+Date
+: 2026-11-17
+
+Brief
+: Research starts only when a keeper asks; practice 22 is on 4 of 7 cards and in no domain brief; docs has upstream records but not ideal-agent as an upstream
+
+Question
+: Should coordinators start research on their own when a method is missing, how should a general finding flow back into ideal-agent, and should every role treat the author's words as a starting point?
+
+Found
+: Inside: decision decisions-go-to-the-lane starts research only when a keeper cannot decide; the walleye lane researched walleye but not the general method of bringing a phone up from nothing; practice 22 and look-around-first ('a proposal is a starting point, the author's too') are on the coordinator, orchestrator, research-lead and builder cards, not keeper, lane coordinator or patrol, and no linux-phone brief points to them; docs keeps upstreams and upstream_items, without grenudi/ideal-agent. Outside: Anthropic's lead decides itself whether more research is needed; SRE postmortems turn findings into owned action items in the owner's system; Argyris's double loop revises the rules from what was found; Gas Town tracks every escalation.
+
+Sources
+: anthropic-multi-agent-research,sre-postmortem-culture,argyris-double-loop,gastown-escalation
+
+About
+: organising-agents
