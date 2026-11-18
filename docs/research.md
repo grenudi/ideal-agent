@@ -736,3 +736,25 @@ Sources
 
 About
 : organising-agents
+
+
+<a id="fork-or-workaround"></a>
+### fork-or-workaround
+
+Date
+: 2026-11-18
+
+Brief
+: Workarounds for upstream faults stood in our tools with no tie to an upstream item; others fix upstream first and tie each carried patch or hack to its item
+
+Question
+: When a role meets an upstream fault, how does it choose between a local workaround and a fix in our fork sent upstream, and how is a workaround tied to its item so it goes when the fix lands?
+
+Found
+: Cases on 2026-11-18: lpoco-health's keep-awake and the try scripts worked around sxmo's autosuspend loop and its 3-year rtcwake before the sxmo fork existed; fw_devlink=permissive on walleye works around a missing supplier link; lpoco-health awake holds a wake lock against sxmo. docs' upstream_items already carries DEP-3's shape (forwarded, bug, applied_upstream, carried_in) - 17 drafts, 2 landed - but no workaround names its item. Others: upstream first (Fedora, Debian, kernel, Chromium); DEP-3 fields on every carried patch; Android and Chromium subject tags (UPSTREAM, BACKPORT, FROMGIT, FROMLIST, ANDROID) say how far a patch travelled; the kernel takes a quirk with a comment, not a driver-wide hack; todocheck fails when a TODO's issue closes.
+
+Sources
+: debian-dep3,todocheck,sre-postmortem-culture
+
+About
+: practices

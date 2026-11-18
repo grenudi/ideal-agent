@@ -1188,3 +1188,41 @@ By
 
 Takes
 : CI never writes in a shared checkout: each job checks out its own, clean, at the ref it builds
+
+
+<a id="debian-dep3"></a>
+### DEP-3: Patch Tagging Guidelines
+
+Url
+: https://dep-team.pages.debian.net/deps/dep3/
+
+Author
+: Debian
+
+Year
+: 2009
+
+By
+: Debian
+
+Takes
+: every carried patch names its origin, its upstream bug, whether it was forwarded and when it was applied upstream
+
+
+<a id="todocheck"></a>
+### todocheck
+
+Url
+: https://github.com/preslavmihaylov/todocheck
+
+Author
+: Preslav Mihaylov
+
+Year
+: 2020
+
+By
+: todocheck
+
+Takes
+: a TODO names its issue, and a check fails when that issue is closed - a workaround dies with its reason

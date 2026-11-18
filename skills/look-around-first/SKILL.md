@@ -64,7 +64,11 @@ Then, in the same change that lands the fix, three answers - each a line in the 
 2. **Where else**: the other places it can bite - the commons' other devices and lanes, upstream - each
    looked up, not guessed: "also here", "not here", or "not known yet".
 3. **The root**: what would make the class impossible or seen at once - a tool, a check, a source of truth,
-   an upstream change - or "nothing cheaper than the fix".
+   an upstream change - or "nothing cheaper than the fix". Where the root is an upstream's fault (a bug, a missing
+   feature, a design gap), the fix goes into our fork of that upstream and is sent upstream as an item - not
+   a workaround in our own tools. A workaround stands only until the fork's fix can be had, and only narrow
+   (a quirk, not a broad hack); it names its item where it stands, `WORKAROUND(ITEM-ID): what it stands in
+   for`, and goes when the item lands (`scripts/workarounds` finds the ones whose item has).
 
 Who acts on them, by decision 2026-11-17-decisions-go-to-the-lane: a keeper sends the three lines to its lane
 coordinator; the lane coordinator files "where else" and "the root" as items for their owners, and starts a

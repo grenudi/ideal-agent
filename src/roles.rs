@@ -641,6 +641,25 @@ mod tests {
     }
 
     #[test]
+    fn workarounds_finds_each_marker_with_its_item() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let dir = std::env::temp_dir().join(format!("ia-wa-{}", std::process::id()));
+        std::fs::create_dir_all(&dir).unwrap();
+        std::fs::write(
+            dir.join("a.sh"),
+            "# WORKAROUND(sxmo-autosuspend-loop): suspends in a loop\n",
+        )
+        .unwrap();
+        let out = std::process::Command::new(root.join("scripts/workarounds"))
+            .arg(&dir)
+            .output()
+            .unwrap();
+        let said = String::from_utf8_lossy(&out.stdout);
+        assert!(said.contains("a.sh:1: sxmo-autosuspend-loop"), "{said}");
+        let _ = std::fs::remove_dir_all(dir);
+    }
+
+    #[test]
     fn a_card_gives_its_body_and_its_practices() {
         let c = parse_card(
             "---\nname: keeper\nmodel: sonnet\n---\n\nYou keep it.\n\nPractices: 01 4 44\n",
