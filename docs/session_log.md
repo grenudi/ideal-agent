@@ -520,3 +520,24 @@ Rejected
 
 About
 : practices
+
+---
+
+
+<a id="2026-11-18-ideal-agent-follows-idealkb-0-14"></a>
+### ideal-agent follows idealkb 0.14.0 (it was 0.5.0)
+
+Entry date
+: 2026-11-18
+
+Done
+: bin/follow.sh from idealkb v0.14.0 into ideal-agent: generic queries and records (decided, carried, upstreams, backlog-blocked), AGENTS.md's and tables.toml's generic parts, bin/install-ikb.sh; no generic file of ours was changed (follow ended 0). tad check and make verify pass; tad q decided answers. THE CLASS: a follower's pin drifted behind its source while the source released fast - a drifted copy. WHERE ELSE (looked up on each main): linux-phone-oco/docs 0.14.0, current; device-template, surya-lab and google-walleye-lab 0.9.1, five releases behind, and not in idealkb's consumers list, so the job never moves them. THE ROOT: the pin job is weekly (Mondays 07:00; last ran 2026-11-17 12:12, the next 2026-11-23) while idealkb released nine times in two days, and its consumers list is kept by hand. Proposed to its owner: run update-pins on each idealkb release, and derive the followers from each base's idealkb.toml (or an upstreams row naming idealkb) rather than a list.
+
+Considered
+: update-pins.sh on the shared clone (it resets the clone hard; a worktree with follow.sh is safe).
+
+Rejected
+: Leaving the pin for Monday's job (the skill already points to tad q decided).
+
+About
+: knowledge-base
