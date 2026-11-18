@@ -1,5 +1,8 @@
 # AGENTS.md - working in ideal-agent
 
+**Owner**: the session named `ideal-agent-roles` keeps this repository: another session sends it the change -
+a message, or an upstream item naming grenudi/ideal-agent - and does not land here itself.
+
 This repository is the one home of general agent know-how in the open commons (decision
 2026-11-17-one-home-for-agent-know-how). Put here only what every project shares; a project's domain stays
 in its own data. Something general found in a project - a practice, a procedure, a guard, a role's
