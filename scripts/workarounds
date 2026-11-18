@@ -1,34 +1,60 @@
 #!/bin/sh
-# The workarounds that stand in for an upstream fix (decision 2026-11-18-fork-first-workarounds-named): every
-# `WORKAROUND(ID)` marker in the given files or folders, with upstream item ID in BASE's upstream_items. A
-# marker is due once our fork carries the item (carried_in: remove it when the device runs that build), once
-# upstream has it (landed, accepted, applied), or when the item is not known (file it) (decision
-# 2026-11-18-our-fork-ships-the-fix).
+# The workarounds, read as one (decision 2026-11-18-workarounds-read-as-one, after 2026-11-18-fork-first-workarounds-named
+# and 2026-11-18-our-fork-ships-the-fix): every `WORKAROUND(ITEM)` marker where a workaround stands - a script's
+# line, a lane's rule, a kernel command line - with its item, the item's state and its way out. ITEM is an upstream
+# item (BASE's upstream_items) or a backlog item (BASE's backlog: our own work). Records and pages are not sites:
+# lines under data/, docs/ or research/ of a PATH are skipped, and so is the placeholder `item-id`.
 #
-#   workarounds [--base BASE] PATH...   BASE: a knowledge base holding upstream_items (a clone); PATH: files or
-#                                       folders to search (git-tracked text)
-# Prints file:line, the id and its state. Ends 1 when a workaround is due, 2 on a wrong call.
+#   workarounds [--base BASE] PATH...   BASE: a knowledge base holding the items (a clone); PATH: files or folders
+#                                       to search (text)
+# Prints `site: ITEM - state; way out: ...` per marker; the way out is one of
+#   way out: patch upstream (ITEM's state)       - an upstream item still travelling
+#   way out: patch carried in FORK               - our fork carries it; retire the marker once the device runs it
+#   way out: our work (backlog ITEM)             - a backlog item, open
+#   due: retire                                  - upstream has it, or the backlog item is done
+#   due: retire it, or file its item             - the item is in neither table
+# Ends 1 when a workaround is due, 2 on a wrong call.
 set -eu
 base=""
 if [ "${1:-}" = --base ]; then base=${2:?workarounds: --base needs a clone}; shift 2; fi
 [ $# -ge 1 ] || { echo "usage: workarounds [--base BASE] PATH..." >&2; exit 2; }
-due=0
-hits=$(grep -rIn -o -E 'WORKAROUND\([a-z0-9][a-z0-9.-]*\)' "$@" 2>/dev/null || true)
+
+q() { # one csv row, no header, of a query in BASE
+    (cd "$base" && tad sql "$1" --format csv 2>/dev/null) | tail -n +2 | head -n 1 | tr -d '"'
+}
+
+# The sites: each PATH searched, lines whose path below it starts with data/, docs/ or research/ dropped.
+hits=$(for p in "$@"; do
+    grep -rHIn -E 'WORKAROUND\([a-z0-9][a-z0-9.-]*\)' "$p" 2>/dev/null | while IFS= read -r h; do
+        rel=${h#"${p%/}"/}
+        case "$rel" in data/*|docs/*|research/*) continue ;; esac
+        printf '%s\n' "$h"
+    done
+done | grep -v -F 'WORKAROUND(item-id)' || true)
 [ -n "$hits" ] || { echo "no WORKAROUND markers"; exit 0; }
+
+due=$(mktemp); trap 'rm -f "$due"' EXIT
 printf '%s\n' "$hits" | while IFS= read -r h; do
-    id=$(printf '%s' "$h" | sed -n 's/.*WORKAROUND(\([^)]*\)).*/\1/p')
-    where=${h%:WORKAROUND*}
-    if [ -n "$base" ]; then
-        state=$(cd "$base" && tad sql "SELECT state || CASE WHEN carried_in IS NOT NULL THEN ', carried in ' || carried_in ELSE '' END || CASE WHEN applied_upstream IS NOT NULL THEN ', applied ' || applied_upstream ELSE '' END FROM upstream_items WHERE id = '$id'" --format csv 2>/dev/null | tail -n +2 | head -n 1 | tr -d '"')
-        state=${state:-not known}
+    id=$(printf '%s' "$h" | sed -n 's/.*WORKAROUND(\([a-z0-9][a-z0-9.-]*\)).*/\1/p')
+    where=$(printf '%s' "$h" | cut -d: -f1-2)
+    if [ -z "$base" ]; then echo "$where: $id - state not read (no --base)"; continue; fi
+    u=$(q "SELECT state, coalesce(carried_in, ''), coalesce(applied_upstream, '') FROM upstream_items WHERE id = '$id'")
+    if [ -n "$u" ]; then
+        state=${u%%,*}; rest=${u#*,}; carried=${rest%%,*}; applied=${rest#*,}
+        if [ "$state" = landed ] || [ "$state" = accepted ] || [ "$state" = applied ]; then
+            out="$state; due: retire"; echo "$id" >> "$due"
+        elif [ -n "$applied" ]; then out="$state, applied $applied; due: retire"; echo "$id" >> "$due"
+        elif [ -n "$carried" ]; then out="$state; way out: patch carried in $carried (retire once the device runs it)"
+        else out="$state; way out: patch upstream (upstream item $id)"; fi
     else
-        state="state not read (no --base)"
+        b=$(q "SELECT status FROM backlog WHERE id = '$id'")
+        case "$b" in
+            '') out="not in upstream_items nor backlog; due: retire it, or file its item"; echo "$id" >> "$due" ;;
+            done|dropped|closed) out="backlog, $b; due: retire"; echo "$id" >> "$due" ;;
+            *) out="backlog, $b; way out: our work (backlog $id)" ;;
+        esac
     fi
-    echo "$where: $id - $state"
+    echo "$where: $id - $out"
 done
-[ -n "$base" ] || exit 0
-printf '%s\n' "$hits" | sed -n 's/.*WORKAROUND(\([^)]*\)).*/\1/p' | sort -u | while IFS= read -r id; do
-    s=$(cd "$base" && tad sql "SELECT state, coalesce(applied_upstream, carried_in, '') FROM upstream_items WHERE id = '$id'" --format csv 2>/dev/null | tail -n +2 | head -n 1 | tr -d '"')
-    case "$s" in ''|landed*|accepted*|*,?*) echo "due: $id"; exit 1 ;; esac
-done || due=1
-exit $due
+[ -s "$due" ] && exit 1
+exit 0
