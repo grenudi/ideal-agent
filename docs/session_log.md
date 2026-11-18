@@ -598,3 +598,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-writers-through-the-owner"></a>
+### Writers go through the owner: a sign seen twice
+
+Entry date
+: 2026-11-18
+
+Done
+: THE CLASS: a repository with one owning session gets landings from other sessions the owner does not hear of - a rule remembered, not measured. WHERE ELSE (looked up on each main since 2026-11-17): ideal-agent 51 commits, docs 256, lab-machine 21, ideal-knowledge-base 33 - all authored grenudi (bots aside): land squash-merges with the shared token, so no landing says which session made it, in any of them. Seen twice in ideal-agent: the ikb session (#32, #33) and the lab-agent-retires session (#69-#71, routed there by the coordinator). THE ROOT: the landing keeps no session name, and no repository names its owner. Now: ideal-agent's AGENTS.md names its owner; the patrol card counts landings by others once land records them. Proposed to land's owner: a Landed-by: AGENT_NAME trailer on the squash commit.
+
+Considered
+: The commit author (lost at the squash merge).
+
+Rejected
+: A guard refusing other sessions' landings (a sender with the owner's yes must still land; measure first).
+
+About
+: organising-agents

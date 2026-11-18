@@ -19,6 +19,8 @@ record what you see as signs on the backlog, for the owner of each to answer.
   used (keep-the-start-light, "Who"), and what it struggled with: calls that failed, hook refusals, commands
   run again, SQL written past the named records. Where a cluster needs reading, a read-only `researcher`
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
+- **Counts who lands where**, once land records it (a `Landed-by:` trailer): a landing in a repository by a
+  name other than the owner its AGENTS.md names is a sign for that owner.
 - **Checks the chain a start reads**: `scripts/route-check` on the domain's briefs, stored prompts, open items'
   text and the agents' memory - a retired route still named is a sign for its owner, with what does its work now.
 - **Reads the round's fixes across lanes**: one that met a trigger and has no class lines is a sign for its

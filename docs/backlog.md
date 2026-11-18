@@ -411,3 +411,22 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="landed-by-trailer"></a>
+### land keeps who landed: a Landed-by: trailer
+
+Status
+: open
+
+Note
+: Every landing on main is authored grenudi; the session name (AGENT_NAME) is lost at the squash merge. Proposed to land's owner (lab-machine): append 'Landed-by: $AGENT_NAME' to the squash commit's message. Then the patrol counts landings by names other than a repository's owner.
+
+Waits
+: land's owner
+
+About
+: organising-agents
+
+Opened
+: 2026-11-18
