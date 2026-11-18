@@ -660,6 +660,45 @@ mod tests {
     }
 
     #[test]
+    fn overlay_check_against_a_base_flags_a_restated_text() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let dir = std::env::temp_dir().join(format!("ia-oc-{}", std::process::id()));
+        std::fs::create_dir_all(dir.join("briefs")).unwrap();
+        std::fs::write(
+            dir.join("base.txt"),
+            "a tool run again with nothing changed changes nothing and asks nothing\n",
+        )
+        .unwrap();
+        std::fs::write(
+            dir.join("briefs/copied.md"),
+            "A tool run again with nothing changed changes nothing and asks nothing.\n",
+        )
+        .unwrap();
+        std::fs::write(
+            dir.join("briefs/named.md"),
+            "Follow the canon principle converge-and-ask-only-on-change.\n",
+        )
+        .unwrap();
+        let out = std::process::Command::new(root.join("scripts/overlay-check"))
+            .arg("--against")
+            .arg(dir.join("base.txt"))
+            .arg(dir.join("briefs"))
+            .output()
+            .unwrap();
+        let said = String::from_utf8_lossy(&out.stdout);
+        assert!(
+            said.contains("copied.md") && said.contains("100% restated"),
+            "{said}"
+        );
+        assert!(
+            said.contains("named.md") && said.contains("0% restated"),
+            "{said}"
+        );
+        assert_eq!(out.status.code(), Some(1), "a copy fails");
+        let _ = std::fs::remove_dir_all(dir);
+    }
+
+    #[test]
     fn a_card_gives_its_body_and_its_practices() {
         let c = parse_card(
             "---\nname: keeper\nmodel: sonnet\n---\n\nYou keep it.\n\nPractices: 01 4 44\n",

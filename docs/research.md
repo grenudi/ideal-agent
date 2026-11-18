@@ -758,3 +758,25 @@ Sources
 
 About
 : practices
+
+
+<a id="where-not-what"></a>
+### where-not-what
+
+Date
+: 2026-11-18
+
+Brief
+: Verbatim, ideal-agent's text repeats the bases in few places - ask-a-knowledge-base 33% (idealkb's lookup table), record-the-work 10%, the rest under 6%
+
+Question
+: How much of ideal-agent's cards and skills restates what a knowledge base holds, what must stay inline, and what does an agent do when a pointer cannot be followed?
+
+Found
+: Six-word runs of ideal-agent's 13 skills and cards against the canon's principles and practices and idealkb's AGENTS.md and README (13.9 KB): ask-a-knowledge-base 33% (idealkb's 'Finding what is known' table copied), record-the-work 10% (pointers to ikb help - intended), researcher 6%, all others 0-3%; write-code-by-the-canon 0% - it names canon ids. Paraphrase is not counted, so this is a floor. Must stay inline: the bootstrap (how to look up), safety rules that hold when a lookup fails (the guard enforces them anyway), and what keeps the start light. Others: Diátaxis keeps reference apart from how-to; DITA conref pulls content from one source; context engineering loads just in time; agents.md is the nearest instructions file.
+
+Sources
+: diataxis,dita-conref,anthropic-context-engineering,agents-md
+
+About
+: practices

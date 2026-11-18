@@ -11,21 +11,11 @@ base is, and why, is kept there; this is how to use one.
 1. **Read its AGENTS.md first** (under 3 KB): its orientation table says what it holds and which query
    answers what. A base may add its own rows to that table.
 2. **Ask; never read the files.** `data/` is the database's own files and `docs/` the pages for people -
-   reading them to answer costs many times the tokens and misses what the queries join:
-
-   | To know | Ask |
-   |---|---|
-   | how a subject stands, then all that is known of it | `tad q about --subject S` - its summary first, the condensed records by id (`--whole true` for all); `tad q about` lists the subjects and where a summary is due |
-   | the work ahead | `tad q next` (`--about S` for one subject) |
-   | where something is said | `tad q find --text WORDS` |
-   | one record whole | `tad q row --id ID` |
-   | what was recorded lately | `tad q recent` (`--days N`) |
-   | anything else | `tad statements`: every query and record, with its parameters |
-
-   **Briefs first, the whole on demand** (idealkb's concept brief-first): every answer gives each record
-   by its brief, its one line. Go deeper - `tad q row --id ID`, `--whole true`, a file past its first
-   paragraph - only when your task needs more than the briefs say. Long answers: `--format csv` (the default
-   box is about six times larger).
+   reading them to answer costs many times the tokens and misses what the queries join. Which query answers
+   what is the base's own: its AGENTS.md, "Finding what is known" (idealkb lays that table in every base, so
+   it is current there and not repeated here); `tad statements` lists every query and record with its
+   parameters. Briefs first, the whole on demand: each answer gives a record by its brief; go deeper only
+   when your task needs more. Long answers: `--format csv`.
 3. **Record with `ikb`** (record-the-work): `ikb --help`, then `ikb help RECORD` for the record you need, then `ikb RECORD --option value` - never SQL,
    never by hand; each record with `--about`, a decision and a research with `--brief` (one line, at most 200
    characters). A missing record or query is a new file in `records/` or `queries/`, in the same change. Then
