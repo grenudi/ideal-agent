@@ -2,7 +2,7 @@
 # Whether an instruction still names a retired route (decision 2026-11-18-instructions-name-intents): each
 # line of the given files - role cards, skills, briefs, stored prompts, memory - that names a route in
 # ideal-agent's routes table, with what does its work now. A line that says the route is retired, or forbids
-# it (retired, never, nothing of, no longer), is not counted.
+# it (retired, never, nothing of, no, not), is not counted.
 #
 #   route-check FILE...   files or folders (their *.md files)
 # Prints file:line: route - instead. Ends 1 when one is found, 2 on a wrong call. Needs jq.
@@ -16,7 +16,7 @@ files=$(for p in "$@"; do if [ -d "$p" ]; then find "$p" -name '*.md' -type f; e
 for f in $files; do
     [ -r "$f" ] || { echo "route-check: cannot read $f" >&2; exit 2; }
     while IFS="$(printf '\t')" read -r id instead; do
-        grep -n -w -F -- "$id" "$f" 2>/dev/null | grep -v -i -E 'retired|never|nothing of|no longer' |
+        grep -n -w -F -- "$id" "$f" 2>/dev/null | grep -v -i -E 'retired|never|nothing of|no longer|\bno\b|\bnot\b' |
         while IFS= read -r hit; do
             echo "$f:${hit%%:*}: $id - instead: $instead"
         done | grep . && found=1 || true

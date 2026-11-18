@@ -179,6 +179,12 @@ pub fn retired_named(root: &Path, text: &str) -> String {
         return String::new();
     };
     let quiet = ["retired", "never", "nothing of", "no longer"];
+    let forbids = |low: &str| {
+        quiet.iter().any(|q| low.contains(q))
+            || low
+                .split(|c: char| !c.is_alphanumeric())
+                .any(|w| w == "no" || w == "not")
+    };
     let mut out = String::new();
     for r in routes
         .lines()
@@ -191,7 +197,7 @@ pub fn retired_named(root: &Path, text: &str) -> String {
             let low = l.to_lowercase();
             l.split(|c: char| !(c.is_alphanumeric() || c == '-' || c == '_'))
                 .any(|w| w == id)
-                && !quiet.iter().any(|q| low.contains(q))
+                && !forbids(&low)
         });
         if named {
             out.push_str(&format!("- `{id}` is retired - instead: {instead}\n"));
