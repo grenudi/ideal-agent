@@ -661,3 +661,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-ready-named"></a>
+### The picking query is tad q ready
+
+Entry date
+: 2026-11-18
+
+Done
+: idealkb v0.15.0 ships tad q ready --for keeper|builder|research (--show ready|skipped|all), followed by every base; keep-a-shared-resource names it in place of linux-phone's lane-next, and the patrol reads its skipped items with their why. device bases keep phone-next and lane-next until idealkb's bases-retire-lane-next.
+
+Considered
+: Naming lane-next beside it (two names for one pick).
+
+Rejected
+: Keeping a domain query in the general skill.
+
+About
+: organising-agents
