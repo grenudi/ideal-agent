@@ -478,3 +478,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-launched-runs-message-their-report"></a>
+### A launched builder or research lead sends its report as a message
+
+Entry date
+: 2026-11-18
+
+Done
+: Sign from the coordinator: two lab-tools-builder runs (lab-tools #103, #104) landed and never reported; orchestration found them through the lanes-waker. The builder and research-lead cards now say their last act, after the final landing, is two lines sent as a message to whom they report - as the keeper card has said since #55 - since a launched run's closing words reach no one.
+
+Considered
+: A line in docs' builder.md alone (the rule holds for every domain: the card).
+
+Rejected
+: Leaving 'report' unsaid as a message (it was read as closing words).
+
+About
+: organising-agents
