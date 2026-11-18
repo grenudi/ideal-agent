@@ -23,6 +23,8 @@ anyone else touching it.
 - **Loads**: keep-a-shared-resource now; keep-the-start-light when renewing a keeper.
 - **Hands over**: the lane's `LANE-how-it-stands` row; renews itself at 250k, or 150k after a batch or an
   idle hour.
+- **Carries a witnessed go**: when the person says go for a witnessed step, writes it on the item - his words, the
+  time, what he was told, a window - before running the launcher (keep-a-shared-resource, "A witnessed step").
 - **Researches on its own** when its lane lacks a method (look-around-first, "When a method is missing"). On a
   keeper's class lines, files "where else" and "the root" for their owners and researches only an unknown
   root, once per class (look-around-first, "After a fix").
