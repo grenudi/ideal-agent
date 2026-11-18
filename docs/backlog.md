@@ -296,10 +296,10 @@ Opened
 ### lab-agent retires 6: root for devlab and setup without lab-agent
 
 Status
-: open
+: in-progress
 
 Note
-: Redone from lpoco's roof 2026-11-18 (the author: not in general; research 2026-11-18-lpoco-root-from-one-roof): direction 1 = no standing passwordless root (sudo prepare typed by the author, a udev-started network unit, rootfs built without mount) or 2 = one helper restricted to a RootNeed enum. Waits on the author's word on 1 or 2; sudoers untouched. First step either way, in lab-tools: the RootNeed enum and LPOCO_ROOT as the only surface. Then two probes (mkfs.ext4 -d reproduces the bake; udev starts the network unit).
+: Built, not proven (from lab-agent-token-path, 2026-11-18, after the author's word "1, no standing root", turn-2026-11-18-lab-agent-root-no-standing-root): no standing grant; lpoco-host prepare now runs each root command behind sudo with the author's typed password, installing lpoco-share@.service, /usr/local/libexec/lpoco-share and a polkit rule so the lab user starts and stops exactly that unit (a unit started on demand through polkit, narrower than research 2026-11-18-lpoco-root-from-one-roof 3.1's udev start, since provision shares the connection only while installing); the image bake needs no root. Released as lpoco family 0.13.0, pinned in lab.toml. Proof, by the author: run lpoco-host prepare now in a terminal, then systemctl start lpoco-share@IFACE--UPLINK.service as the user with no password. Then sudo rm /etc/sudoers.d/lab-agent goes to him as a step; after it, ideal-agent drops the guard's unwrap of lab-agent root-exec (src/shell.rs) - kept until then so a command wrapped in the grant is still checked.
 
 About
 : organising-agents

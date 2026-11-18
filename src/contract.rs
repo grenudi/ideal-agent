@@ -39,7 +39,7 @@ impl Command {
     pub const fn summary(self) -> &'static str {
         match self {
             Command::Guard => "PreToolUse hook: read the event on standard input; refuse (exit 2, the reason on standard error) a Bash command that pushes to main, writes through tad sql or runs Python",
-            Command::Start => "SessionStart hook (the event on standard input): a resumed or compacted session's role and practices again, or a role given by --agent; at a new start only where they come from - then the unread messages where lab-agent is installed (read, not acknowledged)",
+            Command::Start => "SessionStart hook (the event on standard input): a resumed or compacted session's role and practices again, or a role given by --agent; at a new start only where they come from",
             Command::Role => "UserPromptSubmit hook (the event on standard input): at a session's first prompt, the role its brief names (Role: NAME) - its card and only its practices - or every practice when none is named",
             Command::Practices => "The practices, numbered, each with why and for whom - live from ideal-agent's main, else the installed copy",
             Command::Completions => "Print shell completions: bash, zsh, fish or nushell",
