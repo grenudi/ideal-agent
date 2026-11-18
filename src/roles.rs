@@ -583,6 +583,64 @@ mod tests {
     }
 
     #[test]
+    fn who_lands_reads_landed_by_then_co_authors() {
+        use std::process::Command;
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let repo = std::env::temp_dir().join(format!("ia-who-{}", std::process::id()));
+        let _ = std::fs::remove_dir_all(&repo);
+        std::fs::create_dir_all(&repo).unwrap();
+        let git = |args: &[&str]| {
+            let ok = Command::new("git")
+                .arg("-C")
+                .arg(&repo)
+                .args(args)
+                .env("GIT_AUTHOR_NAME", "owner")
+                .env("GIT_AUTHOR_EMAIL", "o@x")
+                .env("GIT_COMMITTER_NAME", "owner")
+                .env("GIT_COMMITTER_EMAIL", "o@x")
+                .status()
+                .unwrap()
+                .success();
+            assert!(ok, "git {args:?}");
+        };
+        git(&["init", "-q"]);
+        std::fs::write(
+            repo.join("AGENTS.md"),
+            "# x\n\n**Owner**: `ideal-agent-builder` - the role.\n",
+        )
+        .unwrap();
+        git(&["add", "."]);
+        git(&[
+            "commit",
+            "-q",
+            "-m",
+            "one\n\nCo-authored-by: ideal-agent-builder.3f9a2c <o+a@x>",
+        ]);
+        git(&[
+            "commit",
+            "-q",
+            "--allow-empty",
+            "-m",
+            "two\n\nCo-authored-by: someone.ab12cd <o+b@x>\nLanded-by: lab-agent-token-path.c0ffee",
+        ]);
+        git(&["update-ref", "refs/remotes/origin/main", "HEAD"]);
+        let out = Command::new(root.join("scripts/who-lands"))
+            .arg(&repo)
+            .arg("1 day ago")
+            .output()
+            .unwrap();
+        let said = String::from_utf8_lossy(&out.stdout);
+        assert!(said.contains("1\tideal-agent-builder\towner"), "{said}");
+        assert!(
+            said.contains("1\tlab-agent-token-path\tother"),
+            "Landed-by wins over the co-author: {said}"
+        );
+        assert!(!said.contains("someone"), "{said}");
+        assert_eq!(out.status.code(), Some(1), "another role landed");
+        let _ = std::fs::remove_dir_all(repo);
+    }
+
+    #[test]
     fn a_card_gives_its_body_and_its_practices() {
         let c = parse_card(
             "---\nname: keeper\nmodel: sonnet\n---\n\nYou keep it.\n\nPractices: 01 4 44\n",
