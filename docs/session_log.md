@@ -619,3 +619,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-who-lands-reads-landed-by"></a>
+### who-lands reads Landed-by first
+
+Entry date
+: 2026-11-18
+
+Done
+: land writes 'Landed-by: $AGENT_NAME' on every squash (lab-machine #50, pinned in lab.toml by #52, installed at the next lpoco-host prepare). who-lands now reads it first and falls back to the Co-authored-by trailers for older landings; a test builds a throwaway repository with one of each. The withdrawal of the proposal had crossed with its landing; both records are kept: Landed-by is written by land itself, the co-author line depends on GitHub's squash.
+
+Considered
+: Dropping Landed-by again (it does not depend on GitHub keeping a co-author line).
+
+Rejected
+: Reading only one of the two.
+
+About
+: organising-agents
