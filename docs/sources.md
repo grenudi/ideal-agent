@@ -1017,3 +1017,60 @@ By
 
 Takes
 : programmer, reviewer and tester roles beat a bare model; separating review from writing helps
+
+
+<a id="lean-jidoka"></a>
+### Lean Enterprise Institute lexicon: jidoka
+
+Url
+: https://www.lean.org/lexicon-terms/jidoka/
+
+Author
+: Lean Enterprise Institute
+
+Year
+: 2024
+
+By
+: LEI
+
+Takes
+: stop at the first abnormality so its cause shows and is fixed at the root
+
+
+<a id="postmortem-trigger-criteria"></a>
+### Which incidents need a postmortem?
+
+Url
+: https://oneuptime.com/blog/post/2026-07-30-postmortem-trigger-criteria/view
+
+Author
+: OneUptime
+
+Year
+: 2026
+
+By
+: OneUptime
+
+Takes
+: choose reviews by impact and learning value; a repeat of a class or a cluster of minor events is a trigger
+
+
+<a id="rootly-postmortem-template"></a>
+### Incident postmortem template
+
+Url
+: https://rootly.com/incident-postmortems/template
+
+Author
+: Rootly
+
+Year
+: 2026
+
+By
+: Rootly
+
+Takes
+: a light note for minor incidents, a review for a recurring one; the exposed team does not waive its own review

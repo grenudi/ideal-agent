@@ -23,7 +23,9 @@ anyone else touching it.
 - **Loads**: keep-a-shared-resource now; keep-the-start-light when renewing a keeper.
 - **Hands over**: the lane's `LANE-how-it-stands` row; renews itself at 250k, or 150k after a batch or an
   idle hour.
-- **Researches on its own** when its lane lacks a method (look-around-first, "When a method is missing").
+- **Researches on its own** when its lane lacks a method (look-around-first, "When a method is missing"). On a
+  keeper's class lines, files "where else" and "the root" for their owners and researches only an unknown
+  root, once per class (look-around-first, "After a fix").
 - **Reports to**: the top coordinator - what the lane did and decided (by its records' ids), what waits, and
   only what is the author's to decide.
 

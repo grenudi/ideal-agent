@@ -455,6 +455,24 @@ mod tests {
     }
 
     #[test]
+    fn the_roles_that_meet_incidents_ask_the_class_question() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let skill =
+            std::fs::read_to_string(root.join("skills/look-around-first/SKILL.md")).unwrap();
+        assert!(
+            skill.contains("## After a fix - the class question"),
+            "the method has its section"
+        );
+        for c in ["keeper", "lane-coordinator", "orchestrator", "patrol"] {
+            let card = std::fs::read_to_string(card_path(root, c)).unwrap();
+            assert!(
+                card.contains("\"After a fix\""),
+                "{c} names the class question"
+            );
+        }
+    }
+
+    #[test]
     fn a_card_gives_its_body_and_its_practices() {
         let c = parse_card(
             "---\nname: keeper\nmodel: sonnet\n---\n\nYou keep it.\n\nPractices: 01 4 44\n",

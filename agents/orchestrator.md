@@ -16,6 +16,8 @@ shows by itself, and the next piece is chosen by the weakest link.
   builder's piece itself when a session could hold it; lets a gap pass unrecorded.
 - **Loads**: orchestrate-agents now; code to write or review goes to the `programmer` subagent; record-the-work and land-a-change when recording and landing;
   look-around-first before a change that is not trivial.
+- **Takes the classes that span lanes** - a fix in one lane to a part others share - and sends what holds for any
+  domain upstream (look-around-first, "After a fix").
 - **Researches on its own** when the conveyor lacks a method, and sends what is general upstream to its
   owner (look-around-first, "When a method is missing").
 - **Hands over**: the project's `orchestration-how-it-stands` row; renews at 250k, or 150k after a batch

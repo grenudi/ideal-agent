@@ -882,3 +882,28 @@ Rejected
 
 About
 : practices
+
+
+<a id="2026-11-18-after-a-fix-the-class-question"></a>
+### 2026-11-18-after-a-fix-the-class-question
+
+Date
+: 2026-11-18
+
+Brief
+: After a fix that met a trigger, its role writes three lines - the class, where else, the root; the lane coordinator files them and researches only an unknown root, once per class
+
+Decision
+: look-around-first gains 'After a fix - the class question'. Triggers: unplanned hands or witness, a resource left not known-working or a fallback that did not catch it, a copy drifted from its source, the same sign twice, a part fixed in one place that others share. In the same change as the fix: the class, where else (looked up: also here, not here, not known yet), the root (a tool, a check, a source of truth, upstream). The keeper sends them to its lane coordinator, which files where-else and root items for their owners and researches only an unknown root, one research per class (a new instance joins the open one); spanning lanes, orchestration; any domain, upstream to ideal-agent. The patrol files the question where a fix met a trigger and no one asked it. The keeper, lane-coordinator, orchestrator and patrol cards point to it; a test keeps them so.
+
+Why
+: The author, 2026-11-18: roles should suggest such researches themselves instead of him. Three of his asks were the same missing step. Others: postmortems on triggers, not every incident (SRE); stop at the first abnormality and fix the root (jidoka); one review per recurring class; the exposed team does not waive its own review (the patrol checks).
+
+Rejected
+: A review after every fix (a flood; most fixes are the class already known); a standing postmortem role (the fixer knows the incident, the coordinator the lane, the patrol the whole); research for every class (filing where-else and root items is enough when the root is known); five whys verbatim (three questions fit one log entry).
+
+About
+: organising-agents
+
+Research
+: after-a-fix

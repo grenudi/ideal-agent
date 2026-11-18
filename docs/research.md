@@ -582,3 +582,25 @@ Sources
 
 About
 : organising-agents
+
+
+<a id="after-a-fix"></a>
+### after-a-fix
+
+Date
+: 2026-11-18
+
+Brief
+: Three of the author's asks on 2026-11-17/18 were the same missing step: after a local fix, nobody asked what class it was, where else it bites, and what at the root would prevent it
+
+Question
+: How can roles notice that a fixed incident points at a wider gap, and propose or start the research themselves, without a flood?
+
+Found
+: Cases: surya's suspend loop ran a hand-copied devlab-usb-awake for a week after main changed (surya-lab #195-207) - the author asked whether the fix reaches other phones and upstream; device declarations as typed Rust rather than drifting config; coordinators researching on their own and a patrol. ideal-agent had research on a missing method, not after an incident. Others: SRE postmortems on triggers (on-call intervention, a monitoring failure, data loss, a repeat), shared and reviewed; jidoka stops at the first abnormality to fix the root; vendors: a light note for minor incidents, one review per recurring class, the exposed team not waiving its own.
+
+Sources
+: sre-postmortem-culture,lean-jidoka,postmortem-trigger-criteria,rootly-postmortem-template
+
+About
+: organising-agents
