@@ -559,3 +559,21 @@ Considered
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-lab-agent-parts-4-and-5-root-from-the-roof"></a>
+### lab-agent: parts 4 and 5, root from the roof
+
+Entry date
+: 2026-11-18
+
+Done
+: Recorded the author's three answers as turns (marshall-oco/conversation). Part 5: the plugin's session start no longer runs lab-agent inbox or names lab-agent guide (PR 70). Part 4: devlab watch drops the board task, the LAB_AGENT input and the alert (lab-tools PR 152). Root: researched from lpoco's roof, direction and options in research 2026-11-18-lpoco-root-from-one-roof.
+
+Rejected
+: A curl notify and backlog rows for the alert: the author does not carry the concept. A general lab-root wrapper: the author asked for the roof's view.
+
+About
+: organising-agents

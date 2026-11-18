@@ -299,7 +299,7 @@ Status
 : open
 
 Note
-: Waits on the author and root: wrapper or narrower grant (decision text). Proof: devlab flash dry-run and provision pass with DEVLAB_ROOT set to the new one; scripts/lab-agent-free reaches 0.
+: Redone from lpoco's roof 2026-11-18 (the author: not in general; research 2026-11-18-lpoco-root-from-one-roof): direction 1 = no standing passwordless root (sudo prepare typed by the author, a udev-started network unit, rootfs built without mount) or 2 = one helper restricted to a RootNeed enum. Waits on the author's word on 1 or 2; sudoers untouched. First step either way, in lab-tools: the RootNeed enum and LPOCO_ROOT as the only surface. Then two probes (mkfs.ext4 -d reproduces the bake; udev starts the network unit).
 
 About
 : organising-agents
@@ -312,10 +312,10 @@ Opened
 ### lab-agent retires 4: devlab watch to curl and a backlog row
 
 Status
-: open
+: done
 
 Note
-: Proof: a test alert pushed from the watch unit reaches the author's phone (he confirms); devlab names no lab-agent board; the 40 stale board items closed or moved to their backlogs.
+: Done 2026-11-18, by the author's word (turn-2026-11-18-lab-agent-board-alerts-not-needed: not needed, nothing replaces it, the concept is not carried): devlab watch files no board task and sends no alert, its verdict is a journal line (lab-tools PR 152, merged; in use after the next lpoco release and prepare). The board's 40 stale items are left to die with the daemon. Replaces the curl-and-backlog-row plan.
 
 About
 : organising-agents
