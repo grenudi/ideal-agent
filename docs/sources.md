@@ -1112,3 +1112,22 @@ By
 
 Takes
 : Co-authored-by trailers; credit links only to an account's email - the run's name rides the trailer, the account stays the author
+
+
+<a id="ansible-idempotency"></a>
+### Ansible glossary: idempotency
+
+Url
+: https://docs.ansible.com/ansible/latest/reference_appendices/glossary.html
+
+Author
+: Red Hat
+
+Year
+: 2026
+
+By
+: Ansible
+
+Takes
+: a task reports changed or ok; run again on a system already in the wanted state, it changes nothing

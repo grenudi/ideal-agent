@@ -26,6 +26,10 @@ cite the id when you choose (decision 2026-11-17-a-programmer-consulted-like-a-r
 - **A functional core and an imperative shell** (`functional-core-imperative-shell`); the top of each layer
   decides which, not how (`top-layers-decide-which-not-how`).
 - **Debts only shrink** (`ratchet`): a change leaves the code it touched better by the canon, not worse.
+- **A person's attention is spent only where it must be**: a tool converges - run again with nothing changed, it
+  changes nothing and asks nothing - knows what it did (a record or hash of what it installed), and asks for a
+  password, hands or a decision only when something actually changed and only for what is the person's
+  (Ansible's changed/ok, Nix and Puppet convergence, the rule of silence; no canon id yet).
 - **The smallest change that does it** (`kiss`, `yagni`); remove what the change made unused.
 
 **Look up any other** - read-only, by id:

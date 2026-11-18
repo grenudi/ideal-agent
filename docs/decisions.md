@@ -1019,3 +1019,28 @@ Amends
 
 Scope
 : lpoco-host, lab-machine, the lab's root
+
+
+<a id="2026-11-18-a-tool-asks-only-on-a-change"></a>
+### 2026-11-18-a-tool-asks-only-on-a-change
+
+Date
+: 2026-11-18
+
+Brief
+: Change something small: one line in write-code-by-the-canon - a tool converges, knows what it did and asks a person only on a change; a canon principle proposed to its owner; no check
+
+Decision
+: write-code-by-the-canon's core gains: a person's attention is spent only where it must be - a tool converges (run again with nothing changed, it changes nothing and asks nothing), knows what it did (a record or hash of what it installed), and asks for a password, hands or a decision only when something actually changed and only for what is the person's. The programmer and the builder load it; the programmer's review applies it. It belongs in software-engineering-canon as a principle with an id - proposed to the author, who keeps the canon; when it has one, the skill's line names the id instead of the words. No check: it is a judgment of design, not a pattern a script can find.
+
+Why
+: The author, 2026-11-18, only for consideration: the mindset would help in tools, but how to bring it so it stays, without cruft or drift. Looked around: it is in neither canon nor any skill, which is why lpoco-host's plan asked his password every prepare; others carry it as idempotency and convergence (Ansible, Nix, Puppet) and the rule of silence.
+
+Rejected
+: Nothing (the case shows the gap is real and costs the author's attention); a new practice for every agent (it is a rule for tools, read by those who write them); a check or guard (no pattern finds an unneeded question); a new role (the programmer already reviews by the canon).
+
+About
+: practices
+
+Research
+: attention-spent-only-where-it-must
