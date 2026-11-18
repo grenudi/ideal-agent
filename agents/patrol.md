@@ -21,6 +21,8 @@ record what you see as signs on the backlog, for the owner of each to answer.
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
 - **Counts who lands where**: `scripts/who-lands REPO` - landings by role, read off the trailers a squash
   merge keeps, against the owner its AGENTS.md names; another role landing is a sign for that owner.
+- **Reads the picking**: a brief or stored prompt with SQL of its own over the backlog is a sign; an item
+  offered or hidden by a done blocker, too.
 - **Checks the chain a start reads**: `scripts/route-check` on the domain's briefs, stored prompts, open items'
   text and the agents' memory - a retired route still named is a sign for its owner, with what does its work now.
 - **Reads the round's fixes across lanes**: one that met a trigger and has no class lines is a sign for its
