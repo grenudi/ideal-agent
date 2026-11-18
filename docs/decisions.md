@@ -907,3 +907,37 @@ About
 
 Research
 : after-a-fix
+
+
+<a id="2026-11-18-job-route-retires-next"></a>
+### 2026-11-18-job-route-retires-next
+
+Date
+: 2026-11-18
+
+Brief
+: The job route (lab-agent and oco-agent daemons) retires next, by systemd-run --user; no more built on it; root-exec stays until the author picks the grant
+
+Decision
+: Amends the order of 2026-11-17-lab-agent-retires-by-parts: step 3 (jobs) goes first. Long jobs are 'systemd-run --user --unit=NAME COMMAND' (lingering user, journal as log, systemctl status/stop); walleye-builder's builds move to it; then lab-agent.service and oco-agent.service stop. Proof: scripts/lab-agent-route-free passes. Nothing more is added to the route: the 401 reread (0.1.54) stays, no board state, no new ntfy plumbing. The other parts wait together on one list of five words from the author (oco lenses, keep-awake in builds, ntfy and the board, inbox through ntfy, the root grant), put to him once. Root: option A first (a root-owned wrapper in lab-machine, one sudoers line, same power as today, no lab-agent), option B (a grant per fixed command) later, one command at a time - the author's decision, sudoers untouched here. linux-phone-oco's live dependence is the root prefix constant in devlab and lpoco-host (5 code lines); the briefs' 'lab-agent guide' and 'lab-agent runs' are reworded; records stay as history.
+
+Why
+: Measured 2026-11-18: the only job-route user is walleye-builder; a transient unit started from a session on the lab ran, logged and outlives it (Linger=yes); the route cost 15 h of silent 401s; GitHub runners, buildbot and LAVA exist because their controller is remote, here a session is on the machine; the other five parts each wait on an author word, so the one that needs a single word (keep-awake) goes first.
+
+Rejected
+: Keeping the route and hardening it (board state, ntfy on every failure, token rotation hooks): builds on a daemon for a driver that no longer exists. Retiring everything at once: five parts wait on the author. Narrow per-command root grants first: more lines for the author to keep before the first proof. A new Rust job runner: a unit already does it.
+
+About
+: organising-agents
+
+Research
+: 2026-11-18-lab-agent-still-involved
+
+Amends
+: 2026-11-17-lab-agent-retires-by-parts
+
+Scope
+: walleye-builder, lab-agent, oco-agent, lab-machine, devlab and lpoco-host root prefix, briefs of ideal-agent-linux-phone-oco
+
+Tracked by
+: lab-agent-3-jobs-by-systemd-run

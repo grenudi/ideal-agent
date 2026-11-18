@@ -604,3 +604,25 @@ Sources
 
 About
 : organising-agents
+
+
+<a id="2026-11-18-lab-agent-still-involved"></a>
+### 2026-11-18-lab-agent-still-involved
+
+Date
+: 2026-11-18
+
+Brief
+: linux-phone-oco names lab-agent in 5 code lines (the root prefix); the job route is replaceable by systemd-run; every other part waits on the author
+
+Question
+: How is lab-agent still involved, what is each use for, where should it live, why did the retirement stall, should the job route exist, what replaces root-exec, and is the 401 fix worth it?
+
+Found
+: Counts corrected for 83 worktree clones: root-exec 90 lines/78 files but 5 code lines; guide 54 (briefs); runs 18 (prose); inbox 0. Plan at step 1 of 6 because the five others wait on the author's words. systemd-run --user works from a session on the lab (probe run, Linger=yes), so the job route is not needed; walleye's builds are its only use. root-exec: wrapper first, per-command grants later (author's decision). Others (GitHub runners, buildbot, LAVA) all exist because the controller is remote; take their short-lived credentials and visible bad state. The 401 fix was worth its cost; extend nothing.
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-18/

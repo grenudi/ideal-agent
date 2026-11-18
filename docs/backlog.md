@@ -267,7 +267,7 @@ Status
 : open
 
 Note
-: Proof: one walleye kernel build run and read back as a user unit with its journal; then lab-agent.service and oco-agent.service stop. Waits on the author: keep-awake while a build runs.
+: Next, and first (decision 2026-11-18-job-route-retires-next). Failing test: scripts/lab-agent-route-free (fails while lab-agent.service, oco-agent.service or a 'run' poller is up; passes when long jobs are systemd-run --user units only). Proof: one walleye kernel build run and read back as a user unit with its journal; then both units stop. Probe done: systemd-run --user works from a session, Linger=yes. Waits on the author: keep-awake while a build runs (default offered: systemd-inhibit --what=idle inside the build unit only).
 
 About
 : organising-agents
@@ -370,6 +370,44 @@ Note
 
 About
 : knowledge-base
+
+Opened
+: 2026-11-18
+
+
+<a id="lab-agent-0-five-words-from-the-author"></a>
+### lab-agent retires 0: the five words only the author can give, asked once
+
+Status
+: open
+
+Note
+: One list to put to him, each with a default: (2) are ocoeco's lab lenses unwanted (default: yes, stop the oco timers); (3) keep-awake while a build runs (default: inhibit inside the build unit only); (4) is the 5-minute board push on the phone still wanted, and the 40 stale board items closed or moved (default: curl notify + backlog rows); (5) does he still write to the lab through ntfy (default: no, session start without lab-agent inbox); (6) root grant shape (default: A, a lab-machine wrapper, then per-command). Done when each has an answer recorded. Coordinator carries it.
+
+Waits
+: the author
+
+About
+: organising-agents
+
+Opened
+: 2026-11-18
+
+
+<a id="lab-agent-7-briefs-name-no-lab-agent"></a>
+### lab-agent retires 7: linux-phone-oco briefs and docs stop naming lab-agent guide and runs
+
+Status
+: open
+
+Note
+: Proof: in linux-phone-oco main checkouts 'lab-agent guide' and 'lab-agent runs' find nothing outside dated records; the root prefix constant is the only live string left until lab-agent-6.
+
+Blocked by
+: lab-agent-5-inbox-guide-out-of-the-start
+
+About
+: organising-agents
 
 Opened
 : 2026-11-18
