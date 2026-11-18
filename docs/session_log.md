@@ -577,3 +577,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-route-check-plain-no"></a>
+### route-check counts a plain 'no' or 'not' as forbidding
+
+Entry date
+: 2026-11-18
+
+Done
+: Run over docs' briefs, route-check flagged prohibitions ('No ocoeco: no oco-work'); a line with no or not as a word now counts as forbidding, in the script and the role hook alike; a test holds it.
+
+Considered
+: Rewording every prohibition (they are right as they are).
+
+Rejected
+: Dropping the check for prohibitions entirely (a mention with no forbidding word is the drift).
+
+About
+: organising-agents
