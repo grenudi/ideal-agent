@@ -1,6 +1,7 @@
 # AGENTS.md - working in ideal-agent
 
-**Owner**: the session named `ideal-agent-roles` keeps this repository: another session sends it the change -
+**Owner**: `ideal-agent-builder` - the role that keeps this repository, whichever session holds it (signing as
+`ideal-agent-builder.RUN`); another session sends it the change -
 a message, or an upstream item naming grenudi/ideal-agent - and does not land here itself.
 
 This repository is the one home of general agent know-how in the open commons (decision

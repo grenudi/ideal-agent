@@ -4,9 +4,11 @@
 # (the session start names it in CLAUDE_ENV_FILE); a job outside Claude Code sources it from a clone:
 #   . ~/Projects/grenudi/ideal-agent/scripts/agent-env
 #
-#   AGENT_NAME     the name the work is signed with - the commits' author and committer. Given, it is kept;
-#                  else the session's `Name:` line, else its role, else OCOECO_BY (places still on ocoeco),
-#                  else "agent"
+#   AGENT_NAME     who signs the work: the role name (the brief's `Name:` line, `<place>-<role>`, else the
+#                  role) and this run's id - six hex characters of the session's id - as `surya-keeper.3f9a2c`;
+#                  given, it is kept. It is the commits' author name; the email is the owner's, plus-tagged
+#                  with the name (`owner+surya-keeper.3f9a2c@host`), so mail reaches the owner and a squash
+#                  merge keeps the name as a Co-authored-by trailer (decision 2026-11-18-a-run-signs-as-role-and-run)
 #   GH_TOKEN       the GitHub token, where ~/.config/ideal-agent/token is (mode 600, never in a repository)
 #   PATH           ~/.local/bin (land, tad, ikb, devlab) and ~/.cargo/bin first
 #   branch NAME    branch first: this clone, fetched, on a new branch NAME from origin/main - refused while
@@ -25,15 +27,24 @@ if [ -z "${AGENT_NAME:-}" ]; then
         [ -n "$AGENT_NAME" ] || AGENT_NAME=$(sed -n 's/^role //p' "$_ia_state" | head -n 1)
     fi
     unset _ia_state
-    AGENT_NAME=${AGENT_NAME:-${OCOECO_BY:-agent}}
+    AGENT_NAME=${AGENT_NAME:-agent}
+    _ia_run=$(printf '%s' "${CLAUDE_CODE_SESSION_ID:-}" | tr -dc '0-9a-f' | cut -c1-6)
+    [ -z "$_ia_run" ] || AGENT_NAME="$AGENT_NAME.$_ia_run"
+    unset _ia_run
 fi
 export AGENT_NAME
 export GIT_AUTHOR_NAME="$AGENT_NAME" GIT_COMMITTER_NAME="$AGENT_NAME"
-export GIT_AUTHOR_EMAIL="${GIT_AUTHOR_EMAIL:-agent@creation-guidelines}" GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL:-agent@creation-guidelines}"
+if [ -z "${GIT_AUTHOR_EMAIL:-}" ]; then
+    _ia_owner=$(git config --global user.email 2>/dev/null || true)
+    case "$_ia_owner" in
+        *@*) GIT_AUTHOR_EMAIL="${_ia_owner%%@*}+$AGENT_NAME@${_ia_owner#*@}" ;;
+        *) GIT_AUTHOR_EMAIL="agent@creation-guidelines" ;;
+    esac
+    unset _ia_owner
+fi
+export GIT_AUTHOR_EMAIL GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL:-$GIT_AUTHOR_EMAIL}"
 # a release pull request is landed on its own (land --release), not with every change
 export LAND_RELEASE="${LAND_RELEASE:-0}"
-# places still on ocoeco read the name as OCOECO_BY until they move
-export OCOECO_BY="${OCOECO_BY:-$AGENT_NAME}"
 
 branch() {
     [ $# -eq 1 ] || { echo "usage: branch NAME" >&2; return 2; }

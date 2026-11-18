@@ -966,3 +966,28 @@ About
 
 Research
 : instructions-drift
+
+
+<a id="2026-11-18-a-run-signs-as-role-and-run"></a>
+### 2026-11-18-a-run-signs-as-role-and-run
+
+Date
+: 2026-11-18
+
+Brief
+: A run signs as its role name and run id (surya-keeper.3f9a2c) with the owner's plus-tagged mailbox; AGENTS.md names the owner by role; who-lands counts by role
+
+Decision
+: agent-env: AGENT_NAME is the role name - the brief's Name: line, <place>-<role>, else the role - and six hex characters of the session's id; the author email is the owner's (git's user.email) plus-tagged with that name, so mail reaches the owner and a squash merge keeps the name as Co-authored-by; no Signed-off-by from an agent; OCOECO_BY no longer set. An AGENTS.md names its owner by role name (ideal-agent: ideal-agent-builder). scripts/who-lands REPO counts landings by role from those trailers against that owner; the patrol card runs it. land needs no Landed-by trailer: GitHub's squash already keeps the run's name.
+
+Why
+: The author, 2026-11-18: a precise naming convention for roles, propagated, with a short unique id per run so names never collide, signing git work with that name and the owner's email - and the owner in AGENTS.md as a role that survives its session. Measured: the name already survives squash in a trailer; names lacked a run id; the owner was a session.
+
+Rejected
+: A Landed-by trailer from land (the squash already keeps the run's name); a rotating counter (needs shared state); the owner's exact email (GitHub may fold it into the account and drop the name); a name[bot] email (links to no account); the run id in the owner line (it changes with every session); Signed-off-by from the agent (only a person certifies, per the kernel).
+
+About
+: organising-agents
+
+Research
+: run-names

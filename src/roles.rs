@@ -546,6 +546,43 @@ mod tests {
     }
 
     #[test]
+    fn a_run_signs_as_its_role_and_run_with_the_owners_mailbox() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let home = std::env::temp_dir().join(format!("ia-env-{}", std::process::id()));
+        let sessions = home.join(".local/state/ideal-agent/sessions");
+        std::fs::create_dir_all(&sessions).unwrap();
+        std::fs::write(
+            home.join(".gitconfig"),
+            "[user]\n\temail = owner@example.org\n",
+        )
+        .unwrap();
+        let id = "3f9a2c11-0000-4000-8000-000000000000";
+        std::fs::write(
+            sessions.join(id),
+            format!("role keeper\nname surya-keeper\n{KEPT}\n"),
+        )
+        .unwrap();
+        let out = std::process::Command::new("sh")
+            .arg("-c")
+            .arg(format!(
+                ". {}/scripts/agent-env; echo \"$AGENT_NAME $GIT_AUTHOR_EMAIL\"",
+                root.display()
+            ))
+            .env_clear()
+            .env("HOME", &home)
+            .env("PATH", "/usr/bin:/bin")
+            .env("CLAUDE_CODE_SESSION_ID", id)
+            .output()
+            .unwrap();
+        let said = String::from_utf8_lossy(&out.stdout);
+        assert_eq!(
+            said.trim(),
+            "surya-keeper.3f9a2c owner+surya-keeper.3f9a2c@example.org"
+        );
+        let _ = std::fs::remove_dir_all(home);
+    }
+
+    #[test]
     fn a_card_gives_its_body_and_its_practices() {
         let c = parse_card(
             "---\nname: keeper\nmodel: sonnet\n---\n\nYou keep it.\n\nPractices: 01 4 44\n",

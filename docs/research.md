@@ -670,3 +670,25 @@ Sources
 
 About
 : organising-agents
+
+
+<a id="run-names"></a>
+### run-names
+
+Date
+: 2026-11-18
+
+Brief
+: Who landed is already on main as Co-authored-by trailers from the branch author; names lacked a run id and the owner was a session's title
+
+Question
+: How should a session name itself so its work is collision-free, stable in a run and counted against a repository's owner by role, with the owner's account and mailbox kept?
+
+Found
+: Every squash commit on main is authored by the token's account (grenudi) and committed by GitHub, but carries the branch author as 'Co-authored-by: NAME <agent@creation-guidelines>' - 38 ideal-agent-roles, 5 lab-agent-token-path, 4 ikb-cli, 1 research-lab-agent, 1 ideal-agent in ideal-agent since 2026-11-17. Names had no run id; AGENTS.md named a session, not a role; the email was not the owner's. Others: the kernel forbids an agent's Signed-off-by and names the tool in a trailer; GitHub links co-authors only through an account's email; Gerrit keeps the uploader apart from author and committer; no convention for run ids was found.
+
+Sources
+: kernel-coding-assistants,github-co-authors,claude-code-subagents
+
+About
+: organising-agents

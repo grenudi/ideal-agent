@@ -1074,3 +1074,41 @@ By
 
 Takes
 : a light note for minor incidents, a review for a recurring one; the exposed team does not waive its own review
+
+
+<a id="kernel-coding-assistants"></a>
+### Linux kernel: AI coding assistants
+
+Url
+: https://docs.kernel.org/process/coding-assistants.html
+
+Author
+: Linux kernel developers
+
+Year
+: 2025
+
+By
+: kernel.org
+
+Takes
+: an agent never adds Signed-off-by - only a person certifies; the tool is named in a trailer (Assisted-by)
+
+
+<a id="github-co-authors"></a>
+### GitHub: creating a commit with multiple authors
+
+Url
+: https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors
+
+Author
+: GitHub
+
+Year
+: 2026
+
+By
+: GitHub
+
+Takes
+: Co-authored-by trailers; credit links only to an account's email - the run's name rides the trailer, the account stays the author
