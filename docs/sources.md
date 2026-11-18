@@ -1131,3 +1131,22 @@ By
 
 Takes
 : a task reports changed or ok; run again on a system already in the wanted state, it changes nothing
+
+
+<a id="unix-rule-of-silence"></a>
+### The Art of Unix Programming: the Rule of Silence
+
+Url
+: https://www.catb.org/esr/writings/taoup/html/ch01s06.html
+
+Author
+: Eric S. Raymond
+
+Year
+: 2003
+
+By
+: Eric S. Raymond
+
+Takes
+: when a program has nothing surprising to say, it says nothing - a person's attention is spent only on news
