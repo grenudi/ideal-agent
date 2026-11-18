@@ -6,6 +6,7 @@ How an agent works in the open commons, written once: the practices every sessio
 
 - [Backlog](backlog.md): 25
 - [Decisions](decisions.md): 40
+- [Hardware](hardware.md): 0
 - [Landscape](landscape.md): 4
 - [Practices](practices.md): 45
 - [Research](research.md): 27
