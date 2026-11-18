@@ -1,8 +1,9 @@
 #!/bin/sh
 # The workarounds that stand in for an upstream fix (decision 2026-11-18-fork-first-workarounds-named): every
-# `WORKAROUND(ID)` marker in the given files or folders, with the state of upstream item ID in BASE's
-# upstream_items. A marker whose item has landed, been accepted or applied upstream, or is not known, is due:
-# the workaround goes (or its item is filed).
+# `WORKAROUND(ID)` marker in the given files or folders, with upstream item ID in BASE's upstream_items. A
+# marker is due once our fork carries the item (carried_in: remove it when the device runs that build), once
+# upstream has it (landed, accepted, applied), or when the item is not known (file it) (decision
+# 2026-11-18-our-fork-ships-the-fix).
 #
 #   workarounds [--base BASE] PATH...   BASE: a knowledge base holding upstream_items (a clone); PATH: files or
 #                                       folders to search (git-tracked text)
@@ -18,7 +19,7 @@ printf '%s\n' "$hits" | while IFS= read -r h; do
     id=$(printf '%s' "$h" | sed -n 's/.*WORKAROUND(\([^)]*\)).*/\1/p')
     where=${h%:WORKAROUND*}
     if [ -n "$base" ]; then
-        state=$(cd "$base" && tad sql "SELECT state || CASE WHEN applied_upstream IS NOT NULL THEN ' (applied ' || applied_upstream || ')' ELSE '' END FROM upstream_items WHERE id = '$id'" --format csv 2>/dev/null | tail -n +2 | head -n 1)
+        state=$(cd "$base" && tad sql "SELECT state || CASE WHEN carried_in IS NOT NULL THEN ', carried in ' || carried_in ELSE '' END || CASE WHEN applied_upstream IS NOT NULL THEN ', applied ' || applied_upstream ELSE '' END FROM upstream_items WHERE id = '$id'" --format csv 2>/dev/null | tail -n +2 | head -n 1 | tr -d '"')
         state=${state:-not known}
     else
         state="state not read (no --base)"
@@ -27,7 +28,7 @@ printf '%s\n' "$hits" | while IFS= read -r h; do
 done
 [ -n "$base" ] || exit 0
 printf '%s\n' "$hits" | sed -n 's/.*WORKAROUND(\([^)]*\)).*/\1/p' | sort -u | while IFS= read -r id; do
-    s=$(cd "$base" && tad sql "SELECT state, coalesce(applied_upstream,'') FROM upstream_items WHERE id = '$id'" --format csv 2>/dev/null | tail -n +2 | head -n 1)
+    s=$(cd "$base" && tad sql "SELECT state, coalesce(applied_upstream, carried_in, '') FROM upstream_items WHERE id = '$id'" --format csv 2>/dev/null | tail -n +2 | head -n 1 | tr -d '"')
     case "$s" in ''|landed*|accepted*|*,?*) echo "due: $id"; exit 1 ;; esac
 done || due=1
 exit $due
