@@ -520,9 +520,9 @@ mod tests {
         let root = Path::new(env!("CARGO_MANIFEST_DIR"));
         let w = retired_named(
             root,
-            "Run the tty reader as a lab-agent job.\nNothing of ocoeco here.\n",
+            "Run the tty reader through oco-work.\nNothing of ocoeco here.\n",
         );
-        assert!(w.contains("`lab-agent` is retired - instead:"), "{w}");
+        assert!(w.contains("`oco-work` is retired - instead:"), "{w}");
         assert!(
             !w.contains("`ocoeco`"),
             "a line that forbids it is not counted"
@@ -621,7 +621,7 @@ mod tests {
             "-q",
             "--allow-empty",
             "-m",
-            "two\n\nCo-authored-by: someone.ab12cd <o+b@x>\nLanded-by: lab-agent-token-path.c0ffee",
+            "two\n\nCo-authored-by: someone.ab12cd <o+b@x>\nLanded-by: another-role.c0ffee",
         ]);
         git(&["update-ref", "refs/remotes/origin/main", "HEAD"]);
         let out = Command::new(root.join("scripts/who-lands"))
@@ -632,7 +632,7 @@ mod tests {
         let said = String::from_utf8_lossy(&out.stdout);
         assert!(said.contains("1\tideal-agent-builder\towner"), "{said}");
         assert!(
-            said.contains("1\tlab-agent-token-path\tother"),
+            said.contains("1\tanother-role\tother"),
             "Landed-by wins over the co-author: {said}"
         );
         assert!(!said.contains("someone"), "{said}");
