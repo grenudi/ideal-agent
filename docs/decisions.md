@@ -1094,3 +1094,31 @@ About
 
 Research
 : fork-or-workaround
+
+
+<a id="2026-11-18-our-fork-ships-the-fix"></a>
+### 2026-11-18-our-fork-ships-the-fix
+
+Date
+: 2026-11-18
+
+Brief
+: We build and ship our fork while upstream decides: a workaround stands only until our fork carries the fix and the device runs it; scripts/workarounds is due once carried
+
+Decision
+: As 2026-11-18-fork-first-workarounds-named, with this change: a workaround stands only for the hours until our fork carries the fix (upstream_items.carried_in set; tad q carried tags it OURS, FROMLIST, FROMGIT or UPSTREAM) - not until upstream accepts it - and goes once the device runs that build. Where we already run a fork of the upstream (sxmo-utils, the kernel) carrying is cheaper than a workaround: the lab branch is never rebased, a daily fetch-and-test-merge job keeps it current (docs #509), and git-rhizoid's fork step makes a new one. A workaround is cheaper only where we run no fork and starting one costs more than it (a vendor blob, closed firmware). scripts/workarounds is due once the item is carried, landed, accepted or applied upstream, or is not known. The marker in place is the one record of a workaround (ikb: no worked-around field). lpoco-health awake's wake lock is not a workaround: a wake lock is the kernel's designed way to hold off suspend, so there is no upstream fault to name.
+
+Why
+: The author, 2026-11-18: what about building and shipping our fork and using it while we wait for upstream instead of workarounds - too much hassle keeping up with upstream? Looked: the keep-up is already a job (daily test-merge, an unrebased lab branch), and sxmo's lab apk is built from our fork's lab branch; four items are carried in our forks now (sxmo-autosuspend-backoff and two more on sxmo-utils, pmic-wdt-wake-in-suspend on the kernel).
+
+Rejected
+: Waiting for upstream before a workaround goes (weeks with a hack in our tools while our own fork could ship the fix); a fork of every upstream (a vendor blob or firmware costs more to fork than a narrow workaround); a worked-around field on upstream_items (the marker in place is the one record - ikb, idealkb 0.20.0).
+
+About
+: practices
+
+Research
+: fork-or-workaround
+
+Supersedes
+: 2026-11-18-fork-first-workarounds-named
