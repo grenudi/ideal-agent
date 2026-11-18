@@ -682,3 +682,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-uncommitted-work-reset-away"></a>
+### Uncommitted work reset away in a shared clone (twice)
+
+Entry date
+: 2026-11-18
+
+Done
+: From lab-agent-token-path, asked by the coordinator. THE CLASS: uncommitted edits destroyed by a state-resetting command - twice in one session: fresh after edits, then git reset --hard origin/main after a failed landit, both in the shared lab-tools main clone. WHERE ELSE: every clone sessions share (lab-machine's main held by orchestration's worktree, docs, ideal-agent): fresh and landit reset to main without asking. THE ROOT: writing into a shared main clone with uncommitted edits instead of a worktree of one's own, and a reset with no refusal on a dirty clone (agent-env's branch refuses; practice 15). Now: lab-agent-token-path commits to a branch before any reset; land-a-change already says a worktree of your own. Proposed to land's owner (lab-agent-token-path itself): land's rebase refuses while the clone holds uncommitted work. fresh and landit are retired routes (ideal-agent's routes table). Signs carried: lpoco-host check lists oco-work as not measured, pin not known yet; walleye's checkout is 153 commits behind with a differing working file.
+
+Considered
+: A guard refusing git reset --hard in the hooks (it is the right tool in one's own worktree).
+
+Rejected
+: Leaving it to care (it happened twice in one session).
+
+About
+: organising-agents

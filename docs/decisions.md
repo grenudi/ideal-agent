@@ -991,3 +991,31 @@ About
 
 Research
 : run-names
+
+
+<a id="2026-11-18-the-share-check-and-revoke-verb"></a>
+### 2026-11-18-the-share-check-and-revoke-verb
+
+Date
+: 2026-11-18
+
+Brief
+: lpoco-host's share check is part of check and of prepare now's end; revoke now is its own verb that re-runs the check; the share unit starts on demand through polkit, not udev
+
+Decision
+: The lpoco-host share check runs in check and at the end of prepare now; revoke now is a verb of its own that removes the standing grant and re-runs the check. The share unit (lpoco-share@IFACE--UPLINK) is started on demand by the lab user through a polkit rule - not by udev as research 2026-11-18-lpoco-root-from-one-roof section 3.1 said - because the share is wanted only while a phone is provisioned.
+
+Why
+: From lab-agent-token-path, 2026-11-18, after the author's word 'no standing root' and his revoke at ~14:49. Look-around: kubeadm preflight, terraform plan/apply and nixos-rebuild test/switch - none has a retirement verb gated on a check, so the verb is ours, with the check run again after it.
+
+Rejected
+: A udev-started share (it would run whenever the device appears, not only while provisioning); revoking without re-checking (a revoke that leaves a grant behind is unseen).
+
+About
+: organising-agents
+
+Amends
+: 2026-11-18-job-route-retires-next
+
+Scope
+: lpoco-host, lab-machine, the lab's root

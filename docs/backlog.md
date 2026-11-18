@@ -267,7 +267,7 @@ Status
 : in-progress
 
 Note
-: Built 2026-11-18: lpoco-lab job start|status|log|stop|list (lab-tools PR 153, released in family 0.12.2): a long job is its own lpoco-job-NAME user unit, its own process holds an idle:sleep inhibitor only while it runs (shown: systemd-inhibit lists it while running, 0 after), journal is the log, a name is claimed once. Proof so far: a real unit run, logged, finished, freed (ignored test + by hand). Next: orchestration pins the family at 0.12.2 in lab.toml and prepares; one walleye build runs through it; then lab-agent.service and oco-agent.service stop (scripts/lab-agent-route-free passes). Their keep-awake inhibitors go with them.
+: lpoco-lab job start|status|log|stop|list built and released (family 0.12.2); lab-agent.service and oco-agent.service stop after walleye's first build runs through it. scripts/lab-agent-free shows the route's parts still up (3 on 2026-11-18 15:00).
 
 About
 : organising-agents
@@ -299,7 +299,7 @@ Status
 : in-progress
 
 Note
-: Built, not proven (from lab-agent-token-path, 2026-11-18, after the author's word "1, no standing root", turn-2026-11-18-lab-agent-root-no-standing-root): no standing grant; lpoco-host prepare now runs each root command behind sudo with the author's typed password, installing lpoco-share@.service, /usr/local/libexec/lpoco-share and a polkit rule so the lab user starts and stops exactly that unit (a unit started on demand through polkit, narrower than research 2026-11-18-lpoco-root-from-one-roof 3.1's udev start, since provision shares the connection only while installing); the image bake needs no root. Released as lpoco family 0.13.0, pinned in lab.toml. Proof, by the author: run lpoco-host prepare now in a terminal, then systemctl start lpoco-share@IFACE--UPLINK.service as the user with no password. Then sudo rm /etc/sudoers.d/lab-agent goes to him as a step; after it, ideal-agent drops the guard's unwrap of lab-agent root-exec (src/shell.rs) - kept until then so a command wrapped in the grant is still checked.
+: Grant revoked 2026-11-18 ~14:49 by the author (lpoco-host revoke now): /etc/sudoers.d/lab-agent is gone and sudo -n lab-agent root-exec asks for a password (checked). No standing root: lpoco-host prepare now runs each root command behind sudo with his password. The guard no longer unwraps lab-agent root-exec (ideal-agent 0.3.43). Waits only on the author's rerun of lpoco-host prepare now for the per-device helper (lpoco 0.14.2).
 
 About
 : organising-agents
@@ -421,6 +421,25 @@ Status
 
 Note
 : Not needed: GitHub's squash keeps the run's name as Co-authored-by; who-lands reads it (decision 2026-11-18-a-run-signs-as-role-and-run).
+
+Waits
+: land's owner
+
+About
+: organising-agents
+
+Opened
+: 2026-11-18
+
+
+<a id="land-refuses-a-dirty-rebase"></a>
+### land's rebase refuses while the clone holds uncommitted work
+
+Status
+: open
+
+Note
+: From the class question 2026-11-18-uncommitted-work-reset-away: as agent-env's branch does. land is lab-machine's (lab-agent-token-path keeps it).
 
 Waits
 : land's owner

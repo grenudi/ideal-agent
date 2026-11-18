@@ -5,7 +5,7 @@
 //! (devlab's copy refused a file written through a quoted here-document whose text named pip).
 
 /// Strip what only runs another command: assignments, sudo, env, timeout, nice, nohup, exec, command,
-/// time, xargs, stdbuf, and the lab's one grant (`lab-agent root-exec --`).
+/// time, xargs, stdbuf.
 pub fn unwrapped(words: &[String]) -> Vec<String> {
     let mut w: Vec<String> = words.to_vec();
     loop {
@@ -34,9 +34,6 @@ pub fn unwrapped(words: &[String]) -> Vec<String> {
                 "nohup" | "exec" | "command" | "time" | "builtin" => flags_then(&w, 1, &[]),
                 "xargs" => flags_then(&w, 1, &["-I", "-n", "-P", "-L", "-d", "-a", "-E", "-s"]),
                 "stdbuf" => flags_then(&w, 1, &[]),
-                "lab-agent" if w.get(1).map(String::as_str) == Some("root-exec") => {
-                    w.iter().position(|a| a == "--").map_or(w.len(), |p| p + 1)
-                }
                 _ => return w,
             }
         };
