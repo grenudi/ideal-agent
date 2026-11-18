@@ -167,6 +167,13 @@ type = "string"
 [[tables.backlog.fields]]
 name = "waits"
 type = "string"
+pattern = "^(?s).+$"
+
+# what the item waits on that is another item of this base: ids, comma-separated. It is clear when each is done - read off the data. waits stays for what is outside (the author, hardware).
+[[tables.backlog.fields]]
+name = "blocked_by"
+type = "string"
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*(, ?[a-z0-9]+(-[a-z0-9]+)*)*$"
 
 [[tables.backlog.fields]]
 name = "about"
@@ -252,6 +259,26 @@ type = "string"
 
 [[tables.decisions.fields]]
 name = "research"
+type = "string"
+
+# What this decision replaces whole (the old stays, reachable by find and row, and leaves about and decided), and
+# what it changes in part (the old stays in force). Read the other way - superseded by, amended by - from these.
+[[tables.decisions.fields]]
+name = "supersedes"
+type = "string"
+
+[[tables.decisions.fields]]
+name = "amends"
+type = "string"
+
+# Who it binds or touches: the bases, roles, tools or people that must know - the informed of an ADR.
+[[tables.decisions.fields]]
+name = "scope"
+type = "string"
+
+# The backlog item that carries it out, as a tracking issue does an accepted RFC: what decided says of it is read from that item.
+[[tables.decisions.fields]]
+name = "tracked_by"
 type = "string"
 
 [tables.research]
@@ -370,4 +397,181 @@ type = "string"
 [[tables.sources.fields]]
 name = "takes"
 type = "string"
+
+# Where knowledge can flow: any external resource - a project, a mailing list, a tracker, a wiki, a standard, a
+# person or team, another knowledge base's instance. One row each; what is headed there is an upstream_items row.
+# A fork of another upstream is a row of its own that names it (fork_of): where its patches are carried until
+# the upstream takes them.
+[tables.upstreams]
+key = ["id"]
+
+[[tables.upstreams.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.upstreams.fields]]
+name = "kind"
+type = "string"
+required = true
+enum = ["code-project", "list", "tracker", "wiki", "standard", "person-team", "kb-instance", "distro"]
+
+[[tables.upstreams.fields]]
+name = "name"
+type = "string"
+required = true
+
+[[tables.upstreams.fields]]
+name = "address"
+type = "string"
+required = true
+
+[[tables.upstreams.fields]]
+name = "how"
+type = "string"
+required = true
+
+[[tables.upstreams.fields]]
+name = "contacts"
+type = "string"
+
+[[tables.upstreams.fields]]
+name = "notes"
+type = "string"
+
+[[tables.upstreams.fields]]
+name = "fork_of"
+type = "string"
+
+# What was headed to an upstream: a patch, a piece of information, a correction, a question, a finding. It
+# links back to the work here it comes from (from_work: a backlog item, decision or research id) and may be a
+# row, a file in upstream/UPSTREAM/ID/ (file), or both. The state only moves forward; the person's word that
+# a draft may go is a state (ready), never a flag an agent sets. A patch kept in a fork until the
+# upstream has it names the fork (carried_in: the fork repository and branch) - carried is a place, not a state,
+# so a patch is "sent" and "carried" at once; reviewed_by keeps the reviewers named in the replies (Reviewed-by,
+# Acked-by, Tested-by).
+[tables.upstream_items]
+key = ["id"]
+
+[[tables.upstream_items.fields]]
+name = "id"
+type = "string"
+required = true
+pattern = "^[a-z0-9]+(-[a-z0-9]+)*$"
+
+[[tables.upstream_items.fields]]
+name = "upstream"
+type = "string"
+required = true
+
+[[tables.upstream_items.fields]]
+name = "title"
+type = "string"
+required = true
+
+[[tables.upstream_items.fields]]
+name = "form"
+type = "string"
+required = true
+enum = ["patch", "information", "correction", "question", "finding"]
+
+[[tables.upstream_items.fields]]
+name = "state"
+type = "string"
+required = true
+enum = ["draft", "ready", "sent", "under-review", "changes-requested", "accepted", "landed", "held", "rejected", "superseded", "not-needed", "withdrawn"]
+
+[[tables.upstream_items.fields]]
+name = "from_work"
+type = "string"
+required = true
+
+[[tables.upstream_items.fields]]
+name = "domain"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "tags"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "about"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "local_ref"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "file"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "sent_on"
+type = "date"
+
+[[tables.upstream_items.fields]]
+name = "forwarded"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "bug"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "version"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "supersedes"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "applied_upstream"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "carried_in"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "reviewed_by"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "waits"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "note"
+type = "string"
+
+[[tables.upstream_items.fields]]
+name = "last_update"
+type = "date"
+required = true
+
+[[rules.references]]
+field = "upstream_items.upstream"
+to = ["upstreams"]
+
+[[rules.references]]
+field = "upstreams.fork_of"
+to = ["upstreams"]
+
+[[rules.references]]
+field = "upstream_items.supersedes"
+to = ["upstream_items"]
+[[rules.references]]
+field = "decisions.supersedes"
+to = ["decisions"]
+
+[[rules.references]]
+field = "decisions.amends"
+to = ["decisions"]
+
+[[rules.references]]
+field = "decisions.tracked_by"
+to = ["backlog"]
 # idealkb:end

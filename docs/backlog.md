@@ -363,10 +363,10 @@ Opened
 ### ideal-agent's base follows idealkb past 0.5.0
 
 Status
-: open
+: done
 
 Note
-: Pinned 0.5.0 while idealkb is at 0.14.0: no tad q decided, no --supersedes in ikb decision here. Next: follow the pin (idealkb's bin/follow.sh, or the weekly pin job, which has not moved it).
+: Followed 0.5.0 -> 0.14.0 (2026-11-18); the class lines are in session log 2026-11-18-ideal-agent-follows-idealkb-0-14.
 
 About
 : knowledge-base
