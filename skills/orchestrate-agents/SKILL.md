@@ -73,7 +73,8 @@ Brief: ~/Projects/linux-phone-oco/docs/ideal-agent-linux-phone-oco/patrol.md
 Make the writes your brief names.
 ```
 
-The role hook gives the card, the role's practices and the brief itself; a change to the card or the brief
+A `Name:` is the role name, `<place>-<role>` - the same name an AGENTS.md gives as its owner; each run signs as
+that name and its run id (scripts/agent-env), so the name outlives the session that holds it. The role hook gives the card, the role's practices and the brief itself; a change to the card or the brief
 reaches every start with no hand edit. The brief - in the domain's agent folder, or a device repository's -
 holds only what the domain adds: where the work is read, the writes it may make, its places and tools,
 checked by overlay-check. The last line answers a scheduled run's rule that it makes only the writes its

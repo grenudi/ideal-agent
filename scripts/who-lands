@@ -1,0 +1,20 @@
+#!/bin/sh
+# Who lands in a repository, by role name, against the owner its AGENTS.md names (decision
+# 2026-11-18-a-run-signs-as-role-and-run): each landing on origin/main since SINCE is read off the
+# Co-authored-by trailers a squash merge keeps - the run's name, `role.run`, counted by its role - beside the
+# owner (`**Owner**: \`NAME\``). A role other than the owner landing is a sign for the owner.
+#
+#   who-lands REPO [SINCE]   REPO: a clone; SINCE: a date git reads (default: 7 days ago)
+# Prints one line per role - landings, role, "owner" or "other" - then the owner. Ends 1 when another role
+# landed, 2 on a wrong call.
+set -eu
+[ $# -ge 1 ] && [ $# -le 2 ] || { echo "usage: who-lands REPO [SINCE]" >&2; exit 2; }
+repo=$1; since=${2:-7 days ago}
+git -C "$repo" rev-parse --git-dir > /dev/null 2>&1 || { echo "who-lands: not a clone: $repo" >&2; exit 2; }
+owner=$(git -C "$repo" show origin/main:AGENTS.md 2>/dev/null | sed -n 's/^\*\*Owner\*\*: `\([^`]*\)`.*/\1/p' | head -n 1)
+git -C "$repo" log --since="$since" --format='%(trailers:key=Co-authored-by,valueonly)' origin/main |
+    grep -v -i -E 'noreply@anthropic\.com|^$' | sed 's/ <.*//; s/\.[0-9a-f]\{6\}$//' | sort | uniq -c | sort -rn |
+    awk -v owner="$owner" '{ role = $2; tag = (role == owner) ? "owner" : "other"; if (tag == "other") other = 1;
+        printf "%d\t%s\t%s\n", $1, role, tag } END { exit other ? 1 : 0 }' || other=1
+echo "owner: ${owner:-not named in AGENTS.md}"
+exit ${other:-0}

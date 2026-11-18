@@ -417,10 +417,10 @@ Opened
 ### land keeps who landed: a Landed-by: trailer
 
 Status
-: open
+: done
 
 Note
-: Every landing on main is authored grenudi; the session name (AGENT_NAME) is lost at the squash merge. Proposed to land's owner (lab-machine): append 'Landed-by: $AGENT_NAME' to the squash commit's message. Then the patrol counts landings by names other than a repository's owner.
+: Not needed: GitHub's squash keeps the run's name as Co-authored-by; who-lands reads it (decision 2026-11-18-a-run-signs-as-role-and-run).
 
 Waits
 : land's owner
