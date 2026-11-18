@@ -714,3 +714,25 @@ Sources
 
 About
 : practices
+
+
+<a id="shared-clones"></a>
+### shared-clones
+
+Date
+: 2026-11-18
+
+Brief
+: Four times on 2026-11-18 a session wrote in, reset or left behind a shared clone; at 15:30, 9 of 13 commons clones were off main (docs detached 41 behind)
+
+Question
+: What is the smallest lasting fix for sessions writing in the shared clones under ~/Projects instead of a worktree of their own?
+
+Found
+: Cases: lab-tools #165 and #170 committed from a tree out of step with HEAD and reverted other landings (0.15-0.17 shipped an old share helper); the lab-agent session lost work to git reset --hard in the shared lab-tools clone; walleye's coordinator left google-walleye-lab detached 153 back; a detached docs clone gave launchers stale reads. land-a-change and practice 18 said worktrees, remembered not measured; agent-env's branch switched the shared clone itself. clones-check at 15:30: docs detached 41 behind, surya-lab 34, google-walleye-lab 16, device-template 17, ideal-knowledge-base detached. Others: CI checks out a fresh tree per job (actions/checkout); git worktree gives each branch its own checkout over one repository.
+
+Sources
+: git-worktree,actions-checkout
+
+About
+: organising-agents

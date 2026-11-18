@@ -5,6 +5,9 @@
 //! What is refused, in each simple command of a line (`sh -c` and `$(...)` included):
 //!   - `git push` that reaches main (or master): every change gets its own branch and lands through checks
 //!   - `python`, `pip` and their kin: no new Python - shell to orchestrate, Rust for logic
+//!   - `git` that changes the checkout or its history (commit, add, reset, checkout, switch, clean, rebase,
+//!     merge, stash, cherry-pick, revert, am, restore) in a shared clone's main checkout under ~/Projects:
+//!     sessions write in a worktree of their own (`branch NAME`); `SHARED_CLONE_OK=1` lets a deliberate one through
 //!
 //! What only one place's device needs (devlab's phone, say) stays with that place's own guard.
 
@@ -24,7 +27,31 @@ pub fn hook(input: &str) -> Option<String> {
         .map(std::path::PathBuf::from)
         .or_else(|| std::env::current_dir().ok())
         .unwrap_or_default();
-    refused(command, &cwd, &current_branch)
+    refused(command, &cwd, &current_branch, &shared_main)
+}
+
+/// Whether a directory is in the main checkout of a clone under ~/Projects - the one other sessions read and land
+/// from - rather than in a linked worktree of its own (a worktree's git dir differs from the common one).
+pub fn shared_main(dir: &Path) -> bool {
+    let git = |args: &[&str]| {
+        Command::new("git")
+            .arg("-C")
+            .arg(dir)
+            .args(args)
+            .output()
+            .ok()
+            .filter(|o| o.status.success())
+            .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_string())
+    };
+    let (Some(top), Some(own), Some(common)) = (
+        git(&["rev-parse", "--show-toplevel"]),
+        git(&["rev-parse", "--absolute-git-dir"]),
+        git(&["rev-parse", "--path-format=absolute", "--git-common-dir"]),
+    ) else {
+        return false;
+    };
+    let projects = std::env::var_os("HOME").map(|h| std::path::PathBuf::from(h).join("Projects"));
+    own == common && projects.is_some_and(|p| Path::new(&top).starts_with(p))
 }
 
 fn current_branch(dir: &Path) -> Option<String> {
@@ -42,19 +69,33 @@ pub fn refused(
     command: &str,
     cwd: &Path,
     branch_of: &dyn Fn(&Path) -> Option<String>,
+    shared: &dyn Fn(&Path) -> bool,
 ) -> Option<String> {
+    // where each simple command runs: a `cd` moves the ones after it
+    let mut here = cwd.to_path_buf();
     for words in simple_commands(command) {
         let words = unwrapped(&words);
         let Some(first) = words.first() else { continue };
         let program = first.rsplit('/').next().unwrap_or(first);
         let args = &words[1..];
+        if program == "cd" {
+            if let Some(d) = args.first() {
+                here = match d.strip_prefix("~/") {
+                    Some(rest) => std::env::var_os("HOME")
+                        .map_or_else(|| here.join(d), |h| std::path::PathBuf::from(h).join(rest)),
+                    None => here.join(d),
+                };
+            }
+            continue;
+        }
+        let cwd = here.as_path();
         if matches!(program, "sh" | "bash" | "zsh" | "dash" | "fish") {
             if let Some(i) = args
                 .iter()
                 .position(|a| a == "-c" || a == "-lc" || a == "-ec")
             {
                 if let Some(inner) = args.get(i + 1) {
-                    if let Some(why) = refused(inner, cwd, branch_of) {
+                    if let Some(why) = refused(inner, cwd, branch_of, shared) {
                         return Some(why);
                     }
                 }
@@ -84,6 +125,11 @@ pub fn refused(
             if let Some(why) = git_push_to_main(args, cwd, branch_of) {
                 return Some(why);
             }
+            if !command.contains("SHARED_CLONE_OK=1") {
+                if let Some(why) = git_writes_in_shared(args, cwd, shared) {
+                    return Some(why);
+                }
+            }
         }
     }
     None
@@ -104,6 +150,52 @@ fn writes(sql: &str) -> bool {
 fn is_python(program: &str) -> bool {
     let bare = program.trim_end_matches(|c: char| c.is_ascii_digit() || c == '.');
     matches!(bare, "python" | "pip" | "pipx" | "ipython" | "pypy")
+}
+
+/// A git command that changes the checkout or its history, run in a shared clone's main checkout.
+fn git_writes_in_shared(
+    args: &[String],
+    cwd: &Path,
+    shared: &dyn Fn(&Path) -> bool,
+) -> Option<String> {
+    let mut dir = cwd.to_path_buf();
+    let mut i = 0;
+    while i < args.len() && args[i].starts_with('-') {
+        match args[i].as_str() {
+            "-C" => {
+                if let Some(d) = args.get(i + 1) {
+                    dir = cwd.join(d);
+                }
+                i += 2;
+            }
+            "-c" | "--git-dir" | "--work-tree" | "--namespace" => i += 2,
+            _ => i += 1,
+        }
+    }
+    let sub = args.get(i)?.as_str();
+    let ff_only = args[i..].iter().any(|a| a == "--ff-only");
+    let writes = matches!(
+        sub,
+        "commit"
+            | "add"
+            | "reset"
+            | "checkout"
+            | "switch"
+            | "clean"
+            | "rebase"
+            | "stash"
+            | "cherry-pick"
+            | "revert"
+            | "am"
+            | "restore"
+    ) || (matches!(sub, "merge" | "pull") && !ff_only);
+    (writes && shared(&dir)).then(|| {
+        format!(
+            "`git {sub}` in a shared clone's main checkout is refused: other sessions read and land from it. \
+             Work in a worktree of your own - `branch NAME` makes one from origin/main and moves you there; \
+             `git pull --ff-only` keeps this checkout at main (SHARED_CLONE_OK=1 for a deliberate one)."
+        )
+    })
 }
 
 fn git_push_to_main(
@@ -132,7 +224,7 @@ fn git_push_to_main(
     let refuse = |what: &str| {
         Some(format!(
             "`git push` {what} is refused: every change gets its own branch and lands through its checks \
-             (`land`, from a shell that sourced oco-work, on the lab)."
+             (`land`, from a branch of a worktree of your own)."
         ))
     };
     if rest.iter().any(|a| a == "--all" || a == "--mirror") {
@@ -191,9 +283,67 @@ mod tests {
     use super::*;
 
     fn says(command: &str, branch: &'static str) -> Option<String> {
-        refused(command, Path::new("/tmp"), &move |_| {
-            Some(branch.to_string())
-        })
+        refused(
+            command,
+            Path::new("/tmp"),
+            &move |_| Some(branch.to_string()),
+            &|_| false,
+        )
+    }
+
+    /// As says, with /home/u/Projects/docs a shared clone's main checkout and every other place a worktree.
+    fn says_shared(command: &str, cwd: &str) -> Option<String> {
+        refused(
+            command,
+            Path::new(cwd),
+            &|_| Some("main".into()),
+            &|d: &Path| d.starts_with("/home/u/Projects/docs"),
+        )
+    }
+
+    #[test]
+    fn writing_in_a_shared_clone_is_refused_and_a_worktree_is_not() {
+        for c in [
+            "git commit -m x",
+            "git reset --hard origin/main",
+            "git checkout old",
+            "git clean -fd",
+            "git add -A",
+            "git stash",
+            "git pull",
+            "git merge feature",
+        ] {
+            assert!(
+                says_shared(c, "/home/u/Projects/docs").is_some_and(|w| w.contains("branch NAME")),
+                "refused: {c}"
+            );
+        }
+        assert!(
+            says_shared("cd /home/u/Projects/docs && git commit -m x", "/tmp").is_some(),
+            "a cd moves the check"
+        );
+        assert!(
+            says_shared("git -C /home/u/Projects/docs reset --hard", "/tmp").is_some(),
+            "-C too"
+        );
+        for c in [
+            "git status",
+            "git fetch -q",
+            "git log",
+            "git pull --ff-only",
+            "git worktree add ../wt -b x origin/main",
+            "SHARED_CLONE_OK=1 git reset --hard origin/main",
+            "git diff --stat",
+        ] {
+            assert!(
+                says_shared(c, "/home/u/Projects/docs").is_none(),
+                "allowed: {c}"
+            );
+        }
+        assert!(
+            says_shared("git commit -m x", "/home/u/wt/docs-branch").is_none(),
+            "a worktree of its own"
+        );
     }
 
     #[test]
