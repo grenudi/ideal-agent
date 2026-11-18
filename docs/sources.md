@@ -1137,7 +1137,7 @@ Takes
 ### The Art of Unix Programming: the Rule of Silence
 
 Url
-: https://www.catb.org/esr/writings/taoup/html/ch01s06.html
+: https://web.archive.org/web/20250102222016/http://www.catb.org/esr/writings/taoup/html/ch01s06.html
 
 Author
 : Eric S. Raymond
