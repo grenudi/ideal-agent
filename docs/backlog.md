@@ -357,3 +357,19 @@ About
 
 Opened
 : 2026-11-17
+
+
+<a id="ideal-agent-follows-idealkb"></a>
+### ideal-agent's base follows idealkb past 0.5.0
+
+Status
+: open
+
+Note
+: Pinned 0.5.0 while idealkb is at 0.14.0: no tad q decided, no --supersedes in ikb decision here. Next: follow the pin (idealkb's bin/follow.sh, or the weekly pin job, which has not moved it).
+
+About
+: knowledge-base
+
+Opened
+: 2026-11-18

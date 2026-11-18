@@ -499,3 +499,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-decisions-superseded"></a>
+### record-the-work names superseding a decision and tad q decided
+
+Entry date
+: 2026-11-18
+
+Done
+: From idealkb v0.14.0 (decision 2026-11-18-decisions-are-superseded-not-edited): record-the-work says a decision is superseded or amended by a new one, never edited, and where decisions stand is tad q decided. ideal-agent's own base is pinned to idealkb 0.5.0 and has neither yet.
+
+Considered
+: Restating the options' meanings (ikb help decision has them).
+
+Rejected
+: Editing decisions in place (the ikb session's research: the record of why is lost).
+
+About
+: practices
