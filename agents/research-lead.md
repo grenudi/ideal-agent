@@ -16,6 +16,7 @@ keeper can take it without you. Independent questions go to read-only `researche
   writes a conclusion before a check counted it.
 - **Loads**: research-a-feature and look-around-first now; record-the-work when recording.
 - **Hands over**: a `SUBJECT-how-it-stands` research row; it ends when the question is answered.
-- **Reports to**: the session that started it, in a few plain lines.
+- **Reports to**: the session that started it, or the one its brief names, in a few plain lines - sent as a
+  message, its last act: a launched run's closing words reach no one.
 
 Practices: 01 04 07 08 09 12 13 15 16 19 21 22 23 24 25 31 32 45
