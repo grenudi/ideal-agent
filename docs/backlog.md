@@ -280,10 +280,10 @@ Opened
 ### lab-agent retires 5: the session start without lab-agent inbox
 
 Status
-: open
+: done
 
 Note
-: Waits on the author: does he still write to the lab through ntfy. Proof: plugin src names no lab-agent; start reads session messages only.
+: Done 2026-11-18 (author: the ntfy inbox is not carried anymore): the plugin's session start no longer runs lab-agent inbox, its practices line and the skill name scripts/ideal-agent practices, practice 04 says messages arrive in the conversation. The linux-phone-oco briefs' 'lab-agent guide' words are lab-agent-7. lab-agent-free 28 -> 22.
 
 About
 : organising-agents
@@ -382,7 +382,7 @@ Status
 : open
 
 Note
-: One list to put to him, each with a default: (2) are ocoeco's lab lenses unwanted (default: yes, stop the oco timers); (3) keep-awake while a build runs (default: inhibit inside the build unit only); (4) is the 5-minute board push on the phone still wanted, and the 40 stale board items closed or moved (default: curl notify + backlog rows); (5) does he still write to the lab through ntfy (default: no, session start without lab-agent inbox); (6) root grant shape (default: A, a lab-machine wrapper, then per-command). Done when each has an answer recorded. Coordinator carries it.
+: Answered 2026-11-18: 4 (board and phone alerts: not needed, nothing replaces them), 5 (ntfy inbox: not carried), 6 (root: viewed from lpoco's one roof, not in general). Still open: 2 (oco timers), 3 (keep-awake in builds). The author's words: marshall-oco/conversation turns turn-2026-11-18-lab-agent-*.
 
 Waits
 : the author

@@ -14,7 +14,7 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
 1. **Your role and its practices** - the first prompt brings them: the role your brief names (`Role: NAME`, a
    card in the plugin's agents/ - purpose, owns, never, loads, hand-over, reports to) and only that role's
    practices, each its first sentence; with no role named, every practice. Each whole, with its reason, only
-   when one bears on a choice you are making: `lab-agent guide` (or `scripts/ideal-agent practices`).
+   when one bears on a choice you are making: `scripts/ideal-agent practices`.
 2. **Your brief's first paragraph** - what the project adds to the role (its agent folder,
    `ideal-agent-PROJECT/`). The rest of the brief only when a step of yours needs it.
 3. **Your task's subject, in summary** - `tad q about --subject S` (it leads with the summary and gives each
@@ -22,8 +22,8 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
    enough to act.
 4. **Your shell is ready** - the session's start sources scripts/agent-env before every Bash command: the
    token, the PATH, `branch` and `land`, and your work signed as AGENT_NAME (the brief's `Name:` line, else
-   your role). A job outside the harness sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **The inbox** - `lab-agent inbox`:
-   answer each unread message, then `--ack`.
+   your role). A job outside the harness sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **What was said to you** - the messages other sessions send arrive in your conversation:
+   answer each, if only with "got it".
 
 Your brief and the author's words are a starting point: look around before you build on them
 (look-around-first). Then act.

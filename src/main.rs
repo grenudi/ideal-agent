@@ -5,7 +5,6 @@ use argenv_resolve::*;
 use ideal_agent::{guard, practices, roles};
 use std::io::Read;
 use std::path::PathBuf;
-use std::process::Command as Run;
 
 mod contract;
 use contract::{Command, Contract};
@@ -44,7 +43,7 @@ fn program<'a>(commands: &'a [generate::Command<'a>], date: &'a str) -> Program<
             ("1", "it could not be done"),
             ("2", "guard: the command is refused, and why is on standard error; otherwise the invocation is wrong"),
         ],
-        see_also: &["claude(1)", "lab-agent(1)"],
+        see_also: &["claude(1)"],
         date,
         asked: &[],
     }
@@ -199,11 +198,6 @@ fn run() -> Result<()> {
                 roles::await_first(session);
                 println!("## The practices (ideal-agent)\n");
                 println!("They come with your first prompt: your role's card and only its practices when the brief names a role (`Role: NAME` - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol), else every practice.");
-            }
-            // where lab-agent is installed (the lab), what was said to this session is read too
-            if let Ok(out) = Run::new("lab-agent").arg("inbox").output() {
-                println!("\n## Unread messages (lab-agent inbox; answer each, then --ack)\n");
-                print!("{}", String::from_utf8_lossy(&out.stdout));
             }
             println!(
                 "\nThe ideal agent's hooks refuse git push to main and python/pip (ideal-agent guard); its skills say how to start, land, record and change shared hardware."
