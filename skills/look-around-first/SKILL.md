@@ -47,3 +47,28 @@ second time; a cluster in the patrol's "struggled with".
   the place that keeps it - for agents, ideal-agent: an upstream item in your base naming grenudi/ideal-agent,
   and a message to its owner. The owner looks around in turn, decides, lands and reads back, and the domain
   keeps a pointer. No one changes a general practice, skill or card from a domain's place.
+
+## After a fix - the class question
+
+A fix answers one incident; the role that made it also asks what the incident was an instance of
+(decision 2026-11-18-after-a-fix-the-class-question). Not after every fix - after one that met a trigger:
+
+- the author's hands or witness were needed where none was planned;
+- a resource was left not known-working, or a fallback did not catch it;
+- a copy had drifted from its source (a file by hand, a pinned tool, a stored prompt);
+- the same sign a second time, in any lane;
+- a part fixed in one place that other places share (another device, another lane, upstream).
+
+Then, in the same change that lands the fix, three answers - each a line in the fix's log entry:
+1. **The class**: what kind of thing was this, in words that would name it in another place.
+2. **Where else**: the other places it can bite - the commons' other devices and lanes, upstream - each
+   looked up, not guessed: "also here", "not here", or "not known yet".
+3. **The root**: what would make the class impossible or seen at once - a tool, a check, a source of truth,
+   an upstream change - or "nothing cheaper than the fix".
+
+Who acts on them, by decision 2026-11-17-decisions-go-to-the-lane: a keeper sends the three lines to its lane
+coordinator; the lane coordinator files "where else" and "the root" as items for their owners, and starts a
+research (bounded, as above) only when the root is not known - one research per class: a class already open
+gets the new instance added, never a second research. What spans lanes goes to orchestration; what holds for
+any domain goes upstream to ideal-agent. The patrol reads the rounds' fixes across lanes and files the class
+question where a fix met a trigger and no one asked it.

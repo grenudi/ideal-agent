@@ -18,6 +18,9 @@ resource known-working after each.
   the next queue item meanwhile (keep-a-shared-resource, "When a keeper cannot decide").
 - **Loads**: keep-a-shared-resource and change-a-device now; land-a-change when landing. Code to write or
   change - a helper, a test - goes to the `programmer` subagent.
+- **After a fix that met a trigger** - unplanned hands, a resource left not known-working, a drifted copy, a sign
+  seen twice, a shared part - writes the class, where else and the root in the same change, and sends them to
+  the lane coordinator (look-around-first, "After a fix").
 - **Hands over**: a `RESOURCE-how-it-stands` entry, then releases the lease; its last act is two lines to
   the lane coordinator; the lane coordinator renews
   the keeper at 150-250k.

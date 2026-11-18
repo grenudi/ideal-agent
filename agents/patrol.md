@@ -19,6 +19,8 @@ record what you see as signs on the backlog, for the owner of each to answer.
   used (keep-the-start-light, "Who"), and what it struggled with: calls that failed, hook refusals, commands
   run again, SQL written past the named records. Where a cluster needs reading, a read-only `researcher`
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
+- **Reads the round's fixes across lanes**: one that met a trigger and has no class lines is a sign for its
+  lane coordinator (look-around-first, "After a fix").
 - **Watches the lanes**: a lane whose queue has work and no run, or whose coordinator sat idle past a run's end
   (a missed wake); an item that waits on something already done or gone (a stale wait). The coordinator of
   that lane hears it first.
