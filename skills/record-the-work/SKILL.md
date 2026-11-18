@@ -27,6 +27,11 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
   `tad q about --subject S` gives the subject's whole knowledge.
 - **A summary**: when `tad q about` says one is due for a subject you recorded into, renew it in the same
   change - `ikb summary --about S --says ...`, how it stands now, naming the records that carry it.
+- **A lesson about how a role must act** goes where that role reads at its start, in the same change as the
+  log entry that records it: the role's brief when it is the domain's, or - when it holds for any domain - an
+  upstream item to ideal-agent for its card or skill. A lesson only in a session log never reaches a
+  launched run, which reads its card and brief, not logs (a surya keeper defused the watchdog on an
+  unattended try, 2026-11-17, though docs #272 had logged the lesson).
 - **A change to a row no record covers** (a status, a wait, a field of a decision, a source taken away):
   `ikb set TABLE --key K --field NAME=VALUE`, `ikb remove TABLE --key K` - checked; never `tad sql`, which the
   guard refuses for writes.
