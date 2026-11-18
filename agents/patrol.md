@@ -19,6 +19,8 @@ record what you see as signs on the backlog, for the owner of each to answer.
   used (keep-the-start-light, "Who"), and what it struggled with: calls that failed, hook refusals, commands
   run again, SQL written past the named records. Where a cluster needs reading, a read-only `researcher`
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
+- **Reads the shared clones**: `scripts/clones-check` - a commons clone off main, holding uncommitted changes or
+  behind is a sign for its owner (others read it as main).
 - **Counts who lands where**: `scripts/who-lands REPO` - landings by role, read off the trailers a squash
   merge keeps, against the owner its AGENTS.md names; another role landing is a sign for that owner.
 - **Reads the picking**: `tad q ready --show skipped` in each base - an item skipped for a reason that no longer

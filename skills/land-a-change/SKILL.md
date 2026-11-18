@@ -5,10 +5,10 @@ description: How a change reaches main: its own branch, checks, a record, land, 
 
 # Landing a change
 
-- **Branch first, then write.** `branch NAME` (from the session's start, scripts/agent-env) fetches and puts
-  the clone on a new branch from origin/main; it refuses while the clone holds uncommitted work and never
-  cleans it away. Where another session may work in the same clone, use a `git worktree` of your own instead
-  (`land` handles worktrees). Work only in places your brief says you own.
+- **Branch first, in a worktree of your own.** `branch NAME` (from the session's start, scripts/agent-env) makes a
+  worktree from origin/main and moves you there; the clone under ~/Projects stays at main for everyone who
+  reads it, and the guard refuses a commit, reset or checkout in it. Remove your worktree after `land`. Work only
+  in places your brief says you own.
 - **Change what you mean.** Edit the exact text that changes; rows
   through the base's named records (`tad r NAME ...`). Never copy a whole file from an older copy.
 - **Check like CI.** Rust: `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, `cargo test`. A tad place: after the last data

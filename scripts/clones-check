@@ -1,0 +1,28 @@
+#!/bin/sh
+# The shared clones as other sessions read them (decision 2026-11-18-sessions-write-in-their-own-worktree): each
+# main checkout of a commons clone under ~/Projects (one with an AGENTS.md) - on main, clean, at the origin/main it last fetched - or what it is
+# instead: detached, on another branch, holding uncommitted changes, behind. Reads only; fetches nothing.
+#
+#   clones-check [PROJECTS]   PROJECTS: where the clones are (default ~/Projects)
+# Prints one line per clone that is not as it should be, then a count. Ends 1 when any is not, 2 on a wrong call.
+set -u
+[ $# -le 1 ] || { echo "usage: clones-check [PROJECTS]" >&2; exit 2; }
+P=${1:-$HOME/Projects}
+[ -d "$P" ] || { echo "clones-check: no folder $P" >&2; exit 2; }
+bad=0; seen=0
+for g in $(find "$P" -maxdepth 4 -name .git -type d -not -path '*/target/*' 2>/dev/null | sort); do
+    top=${g%/.git}
+    [ -f "$top/AGENTS.md" ] || continue   # a commons place, read by other sessions - not an upstream tree
+    seen=$((seen + 1)); what=""
+    branch=$(git -C "$top" symbolic-ref --short -q HEAD || echo DETACHED)
+    [ "$branch" = main ] || what="$what on $branch;"
+    dirty=$(git -C "$top" status --porcelain -uno 2>/dev/null | wc -l)
+    [ "$dirty" -eq 0 ] || what="$what $dirty uncommitted;"
+    if git -C "$top" rev-parse -q --verify origin/main > /dev/null; then
+        behind=$(git -C "$top" rev-list --count HEAD..origin/main 2>/dev/null || echo 0)
+        [ "$behind" -eq 0 ] || what="$what $behind behind origin/main;"
+    fi
+    [ -z "$what" ] || { echo "${top#"$P"/}:$what"; bad=$((bad + 1)); }
+done
+echo "$bad of $seen shared clones are not on main, clean and current"
+[ "$bad" -eq 0 ]

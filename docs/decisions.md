@@ -1044,3 +1044,28 @@ About
 
 Research
 : attention-spent-only-where-it-must
+
+
+<a id="2026-11-18-sessions-write-in-their-own-worktree"></a>
+### 2026-11-18-sessions-write-in-their-own-worktree
+
+Date
+: 2026-11-18
+
+Brief
+: The guard refuses git that writes in a shared clone's main checkout; branch NAME makes a worktree of your own; clones-check lets the patrol count clones off main
+
+Decision
+: Three small parts: (1) refuse - the guard refuses commit, add, reset, checkout, switch, clean, rebase, stash, cherry-pick, revert, am, restore, and a merge or pull that is not --ff-only, in the main checkout of a clone under ~/Projects (a linked worktree passes); it follows cd and -C; SHARED_CLONE_OK=1 lets a deliberate one through. (2) make it easy - agent-env's branch NAME makes a worktree from origin/main under ~/.local/share/agent-worktrees/REPO/NAME and moves you there. (3) measure - scripts/clones-check lists each commons clone (one with an AGENTS.md) off main, holding uncommitted changes or behind; the patrol runs it and tells the owner. land-a-change says the same. The guard's push refusal no longer names oco-work.
+
+Why
+: The coordinator, 2026-11-18: seen four times today, the cause stays though land now refuses a revert. Measured: 9 of 13 commons clones off main. Others: a clean checkout per job (CI), a worktree per branch (git).
+
+Rejected
+: The patrol alone (it measures after the damage); branch alone (an agent that forgets it still writes in the clone); refusing every git command in a shared clone (status, fetch, log and a fast-forward pull keep it current); a separate clone per session (a worktree shares the objects and is git's own way); keeping shared clones at main by a timer (it fights a session that holds one).
+
+About
+: organising-agents
+
+Research
+: shared-clones

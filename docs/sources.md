@@ -1150,3 +1150,41 @@ By
 
 Takes
 : when a program has nothing surprising to say, it says nothing - a person's attention is spent only on news
+
+
+<a id="git-worktree"></a>
+### git-worktree: manage multiple working trees
+
+Url
+: https://git-scm.com/docs/git-worktree
+
+Author
+: Git project
+
+Year
+: 2026
+
+By
+: git
+
+Takes
+: a linked worktree per branch shares the repository but not the checkout: one writer per working tree
+
+
+<a id="actions-checkout"></a>
+### actions/checkout
+
+Url
+: https://github.com/actions/checkout
+
+Author
+: GitHub
+
+Year
+: 2026
+
+By
+: GitHub
+
+Takes
+: CI never writes in a shared checkout: each job checks out its own, clean, at the ref it builds

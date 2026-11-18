@@ -11,8 +11,9 @@
 #                  merge keeps the name as a Co-authored-by trailer (decision 2026-11-18-a-run-signs-as-role-and-run)
 #   GH_TOKEN       the GitHub token, where ~/.config/ideal-agent/token is (mode 600, never in a repository)
 #   PATH           ~/.local/bin (land, tad, ikb, devlab) and ~/.cargo/bin first
-#   branch NAME    branch first: this clone, fetched, on a new branch NAME from origin/main - refused while
-#                  the clone holds uncommitted work, which is never cleaned away
+#   branch NAME    branch first, in a worktree of your own: a new branch NAME from origin/main, checked out under
+#                  ~/.local/share/agent-worktrees/REPO/NAME, and you moved there - the shared clone is never
+#                  written (the guard refuses it; decision 2026-11-18-sessions-write-in-their-own-worktree)
 #   land           land the current branch: its PR, every check, the merge, main read back (lab-machine's land)
 
 case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) PATH="$HOME/.local/bin:$PATH" ;; esac
@@ -49,6 +50,9 @@ export LAND_RELEASE="${LAND_RELEASE:-0}"
 branch() {
     [ $# -eq 1 ] || { echo "usage: branch NAME" >&2; return 2; }
     git rev-parse --git-dir > /dev/null 2>&1 || { echo "branch: not in a clone" >&2; return 1; }
-    [ -z "$(git status --porcelain)" ] || { echo "branch: this clone holds uncommitted work - commit it or set it aside first" >&2; return 1; }
-    git fetch -q origin && git switch -q -c "$1" origin/main && echo "on $1, from origin/main $(git rev-parse --short HEAD)"
+    _ia_top=$(git rev-parse --path-format=absolute --git-common-dir); _ia_top=${_ia_top%/.git}
+    _ia_dir="${AGENT_WORKTREES:-$HOME/.local/share/agent-worktrees}/$(basename "$_ia_top")/$1"
+    git -C "$_ia_top" fetch -q origin && git -C "$_ia_top" worktree add -q -b "$1" "$_ia_dir" origin/main &&
+        cd "$_ia_dir" && echo "on $1 in $_ia_dir (a worktree of your own), from origin/main $(git rev-parse --short HEAD)"
+    unset _ia_top _ia_dir
 }
