@@ -626,3 +626,25 @@ About
 
 Material
 : research/organising-agents/2026-11-18/
+
+
+<a id="2026-11-18-lpoco-root-from-one-roof"></a>
+### 2026-11-18-lpoco-root-from-one-roof
+
+Date
+: 2026-11-18
+
+Brief
+: From lpoco's roof root is three fixed kinds of need (etc files, image bake, phone network); best shape: no standing passwordless root, a RootNeed enum declared once
+
+Question
+: What root do lpoco-host, lpoco-lab and lpoco-bringup actually need, how should lpoco declare it once, and what grant shape follows?
+
+Found
+: Read from lab-tools source: lpoco-host asks root for udev/modules-load files, udevadm, modprobe, link config (rare, author-present); devlab flash for a loop-mount image bake (losetup, mount, cp, install, ln, umount); devlab provision for host networking (sysctl, nft table, ufw route); bringup, health, tone none. Declare as one RootNeed enum in the manifest crate with typed params, read by plan, the sudoers fragment and the check. Shapes: 1 no standing grant (sudo prepare by the author, a udev-started root unit for the phone network, rootfs built without mount); 2 one root-owned helper restricted to the enum; 3 per-command sudoers rejected (install/mount cannot be narrowed); 4 general wrapper rejected by the author. Two probes still to run; sudoers untouched.
+
+About
+: organising-agents
+
+Material
+: research/organising-agents/2026-11-18/
