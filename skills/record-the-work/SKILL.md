@@ -32,6 +32,10 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
   upstream item to ideal-agent for its card or skill. A lesson only in a session log never reaches a
   launched run, which reads its card and brief, not logs (a surya keeper defused the watchdog on an
   unattended try, 2026-11-17, though docs #272 had logged the lesson).
+- **A decision is superseded, never edited**: a new one with `ikb decision ... --supersedes ID` (or `--amends ID`
+  for a part of it; `--scope` for whom it binds, `--tracked-by` for the item that carries it out); where
+  decisions stand - in force, carried out, superseded - is `tad q decided` (bases following idealkb 0.14 on;
+  ideal-knowledge-base decision 2026-11-18-decisions-are-superseded-not-edited).
 - **A change to a row no record covers** (a status, a wait, a field of a decision, a source taken away):
   `ikb set TABLE --key K --field NAME=VALUE`, `ikb remove TABLE --key K` - checked; never `tad sql`, which the
   guard refuses for writes.
