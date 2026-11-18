@@ -89,7 +89,7 @@ pub fn render_short(text: &str, source: &str, only: Option<&[String]>) -> String
         let practice = v["practice"].as_str().unwrap_or("");
         out.push_str(&format!("{n}. {}\n", first_sentence(practice)));
     }
-    out.push_str("\nEach practice whole, with why it holds and for whom: `lab-agent guide` on the lab, or the plugin's `scripts/ideal-agent practices`.\n");
+    out.push_str("\nEach practice whole, with why it holds and for whom: the plugin's `scripts/ideal-agent practices`.\n");
     out
 }
 

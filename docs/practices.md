@@ -462,19 +462,6 @@ For
 : null
 
 
-<a id="04-inbox"></a>
-### 04-inbox
-
-Practice
-: Read what was said to you at every natural pause and between jobs - lab-agent inbox, and the messages other sessions send; print every unread message before acknowledging any; answer every message, if only with 'got it'.
-
-Why
-: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
-
-For
-: null
-
-
 <a id="05-board"></a>
 ### 05-board
 
@@ -642,3 +629,16 @@ Why
 
 For
 : null
+
+
+<a id="04-inbox"></a>
+### 04-inbox
+
+Practice
+: Read what was said to you at every natural pause and between jobs - the messages other sessions send arrive in your conversation; answer every message, if only with 'got it'.
+
+Why
+: The author, 2026-11-18: the ntfy inbox is not carried anymore (turn-2026-11-18-lab-agent-ntfy-inbox-not-carried); the lab-agent inbox is no longer read at a session's start (decision 2026-11-17-lab-agent-retires-by-parts, part 5).
+
+For
+: agents
