@@ -104,3 +104,16 @@ A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lan
 - **Within its own turn** the lane coordinator still uses subagents for a short question (one round, a
   lighter model) or a read-only look; a launcher is for work that changes something or takes long.
 - How a launcher is made and run in your harness: ideal-agent's base, `tad q about --subject claude-code`.
+
+## A witnessed step, for a launched keeper
+
+A step a person must witness (practice 11) reaches a launched keeper through its item, since a launched run
+hears no message (decision 2026-11-18-a-witnessed-go-on-the-item). The lane coordinator, when the person says
+go, writes one line into the item's note before running the launcher:
+
+`Witnessed go: "<the person's words>" at HH:MM, until HH:MM; told: <what to expect and what to check>`
+
+The keeper takes the witnessed step only with such a line whose window is still open, and only the step it
+names; it reports what was seen to its lane coordinator at once, for the person. No line, or a window past:
+it does the rest of the item and leaves the step for the next go. A go is never carried from one item to
+another, nor written by anyone but the coordinator that heard it.

@@ -13,7 +13,8 @@ resource known-working after each.
 - **Owns**: the resource, under its lease (renew it; it lapses unrenewed); the queue's items you take;
   their tests and their records. Bring-up of a part is yours too when the brief adds it (bring-up-a-part).
 - **Never**: lets anyone else change the resource; keeps a change that the resource's health report does
-  not call well; runs a test a person must witness without saying what to expect and waiting for go;
+  not call well; runs a test a person must witness without a go - from the person directly, or a `Witnessed
+  go:` line on its item whose window is open (keep-a-shared-resource, "A witnessed step");
   waits on the author for a decision - a question it cannot decide goes to its lane coordinator, and it takes
   the next queue item meanwhile (keep-a-shared-resource, "When a keeper cannot decide").
 - **Loads**: keep-a-shared-resource and change-a-device now; land-a-change when landing. Code to write or

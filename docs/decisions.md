@@ -1147,3 +1147,28 @@ About
 
 Research
 : where-not-what
+
+
+<a id="2026-11-18-a-witnessed-go-on-the-item"></a>
+### 2026-11-18-a-witnessed-go-on-the-item
+
+Date
+: 2026-11-18
+
+Brief
+: A witnessed step reaches a launched keeper as a "Witnessed go:" line on its item - the person's words, the time, what he was told, a window
+
+Decision
+: When the person says go for a step he must witness, the lane coordinator writes one line into the item's note before running the launcher: Witnessed go: "<words>" at HH:MM, until HH:MM; told: <what to expect and check>. The keeper takes only that step, only while the window is open, and reports what was seen at once. No line or a past window: it does the rest of the item and leaves the step. A go never carries to another item, and only the coordinator that heard it writes it.
+
+Why
+: On surya (2026-11-18) a launched keeper declined a bite the author had said Go to: a launched run hears no message, so practice 11 (say what to expect, wait for go) could not be met. The item is what a launched keeper reads; a go recorded there with words, time and expiry keeps both halves of practice 11 - he was told, he said go - and keeps the launchers.
+
+Rejected
+: Witnessed steps only for a directly briefed keeper: brings back the manual start the launchers retired, and a second way to start a keeper. A schema field on the item: a note line suffices and is read the same way; a field adds a record change for one line. A go that lasts until revoked or carries across items: the person witnesses one step at one moment; an open-ended go is no longer witnessed.
+
+About
+: keeper
+
+Scope
+: keeper, lane-coordinator
