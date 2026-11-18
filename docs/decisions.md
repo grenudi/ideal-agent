@@ -860,3 +860,25 @@ About
 
 Research
 : stored-starts
+
+
+<a id="2026-11-18-a-lesson-goes-where-the-role-reads"></a>
+### 2026-11-18-a-lesson-goes-where-the-role-reads
+
+Date
+: 2026-11-18
+
+Brief
+: A lesson about how a role must act goes into its brief (domain) or, via an upstream item, its card or skill (general), in the same change as the log entry
+
+Decision
+: record-the-work says: a lesson about how a role must act goes where that role reads at its start - its brief when it is the domain's, an upstream item to ideal-agent for its card or skill when it holds for any domain - in the same change as the session-log entry. change-a-device adds the general lesson: never the device's own fallback (its watchdog, its boot counting) disabled on an unattended try.
+
+Why
+: The coordinator's sign, 2026-11-18: a surya keeper defused the phone's watchdog on an unattended try and the phone hung until the author's hands, though docs #272 had logged the lesson - only in a session log, which a launched run never reads.
+
+Rejected
+: A line in each card (record-the-work is where every role records, so one line reaches all); leaving lessons in logs (a run reads its card and brief, not logs); a guard on devlab commands here (the device's tool is its owner's; the skill names the rule for every device).
+
+About
+: practices

@@ -14,7 +14,8 @@ The device is the reference test, shared by every session; a stranded device cos
   the MCP door `devlab mcp`; its own guard refuses ssh/scp to a phone outside it).
 - **Keep it known-working.** Experiments are one-off tries that fall back by themselves - a test kernel is a
   second boot entry tried once by boot counting, falling back to stock; never an initramfs debug shell on an
-  unattended try - and are cleaned up after. A reboot, a try and a provision end with the new boot's health
+  unattended try, and never the device's own fallback - its watchdog, its boot counting -
+  disabled on one - and are cleaned up after. A reboot, a try and a provision end with the new boot's health
   report: read it.
 - **Wait on the condition, not the clock.** Wait for a boot or a result with the tool's own wait, or by watching
   until the condition holds - never a blind sleep (how, in your harness: ideal-agent's base, subject of the
