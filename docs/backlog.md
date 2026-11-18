@@ -455,10 +455,10 @@ Opened
 ### software-engineering-canon: a principle for converging tools that ask only on a change
 
 Status
-: in-progress
+: done
 
 Note
-: The author's word 2026-11-18: 'yes, to canons'. Principle converge-and-ask-only-on-change is committed and verified in software-engineering-canon (branch converge-and-ask-only-on-change, three sources opened: Ansible idempotency, the Rule of Silence (archived https copy), SRE toil). Not landed: the canon exports glimpses (oco.toml), so land asks an ocoeco glimpse - a retired route. Waits on the author: the canon stops exporting glimpses, or land drops its glimpse rule. Then write-code-by-the-canon names the id.
+: Landed 2026-11-18 in software-engineering-canon #36: principle converge-and-ask-only-on-change, three sources opened; the canon no longer exports ocoeco glimpses (which made land ask a retired route). write-code-by-the-canon names the id.
 
 Waits
 : the author, who keeps the canon

@@ -31,7 +31,7 @@ dependencies = [
 
 [[package]]
 name = "ideal-agent"
-version = "0.3.48"
+version = "0.3.49"
 dependencies = [
  "anyhow",
  "argenv",
