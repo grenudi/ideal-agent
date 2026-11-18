@@ -941,3 +941,28 @@ Scope
 
 Tracked by
 : lab-agent-3-jobs-by-systemd-run
+
+
+<a id="2026-11-18-instructions-name-intents"></a>
+### 2026-11-18-instructions-name-intents
+
+Date
+: 2026-11-18
+
+Brief
+: Instructions name intents; retired routes are data (routes table); route-check fails where one is still named, and the role hook warns at the start when a brief names one
+
+Decision
+: A routes table holds each retired route with what does its work now (lab-agent, oco-agent, oco-work, ocoeco, landit, OCOECO_BY), recorded with ikb route-retired. scripts/route-check flags a card, skill, brief, stored prompt, item text or memory line that still names one (a line saying it is retired or forbidding it does not count); a test runs it on ideal-agent's cards and skills. The role hook appends 'Retired routes your brief still names' with each replacement when it prints a brief. record-the-work: an item or decision names what to achieve, not the route. The patrol card runs route-check over the domain's chain each round. It is the text side of lab-agent-route-free (#69), which checks the host. Fixed now: record-the-work, practices 17 and 22.
+
+Why
+: The author, 2026-11-18: new agents should get an up-to-date chain from ideal-agent to the domain, without hardcoded instructions like walleye keepers running commands through lab-agent when Claude Code does it. Measured: retired names at every layer; walleye lost two tries. Others: deprecation lists as data with a failing check (pluto, conftest, semgrep), intent-level runbooks, checks at read time.
+
+Rejected
+: A list of allowed tools (it ages faster and blocks the domain's own); deleting every mention (a line that forbids a route is useful); checking only at write time (stored prompts and items go stale after they are written - the hook checks at read); a new role for it (the patrol measures the start; the test guards ideal-agent itself).
+
+About
+: organising-agents
+
+Research
+: instructions-drift

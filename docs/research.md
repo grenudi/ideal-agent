@@ -648,3 +648,25 @@ About
 
 Material
 : research/organising-agents/2026-11-18/
+
+
+<a id="instructions-drift"></a>
+### instructions-drift
+
+Date
+: 2026-11-18
+
+Brief
+: Retired routes are named at every layer a start reads - skills, practices, briefs, items, stored prompts, memory; walleye followed one for 15 hours
+
+Question
+: How does a fresh agent get an up-to-date chain of instructions, without hardcoded routes that outlive themselves?
+
+Found
+: The chain: the session start, the role card and its practices, the brief (from main since 0.3.28), the item's text, the harness's memory. Retired names on 2026-11-18: ideal-agent record-the-work (ocoeco, oco-work), practices 17 and 22, docs briefs (15 lines), 2 open items, the lanes-waker prompt, the machine's memory (source oco-work, fresh, landit). walleye's coordinator wrote 'run the tty reader as a lab-agent job' into an item; keepers followed it 15 hours after its token answered 401 and lost z3 and z5b. Others: a deprecation list as data and a check that fails CI with the replacement (pluto, conftest, semgrep); instructions name intents and link to one mechanism; stored prompts and item text checked when read. scripts/lab-agent-route-free (#69) checks the host side - whether the route still runs.
+
+Sources
+: sre-postmortem-culture
+
+About
+: organising-agents

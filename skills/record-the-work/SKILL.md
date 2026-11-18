@@ -32,6 +32,10 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
   upstream item to ideal-agent for its card or skill. A lesson only in a session log never reaches a
   launched run, which reads its card and brief, not logs (a surya keeper defused the watchdog on an
   unattended try, 2026-11-17, though docs #272 had logged the lesson).
+- **An item or a decision names what to achieve, not the route**: "run the reader so it outlives you", not
+  the tool, host or job runner of the day - the route is looked up when the work is done (the harness's
+  subject, the domain's tools). A route named in an item outlives the route (walleye lost two tries to a
+  retired job route, 2026-11-18); `scripts/route-check` flags a retired one.
 - **A decision is superseded, never edited**: a new one with `ikb decision ... --supersedes ID` (or `--amends ID`
   for a part of it; `--scope` for whom it binds, `--tracked-by` for the item that carries it out); where
   decisions stand - in force, carried out, superseded - is `tad q decided` (bases following idealkb 0.14 on;
@@ -52,11 +56,11 @@ brief, canon and render run after; never SQL, never by hand. What to say in each
 Then land (land-a-change): the commit and its pull request are the record of
 the work, signed by your AGENT_NAME. Hand-work done a third time asks for a tool: record it on the backlog.
 
-A place still kept the older way, with ocoeco (oco/ tables, glimpses), is another project's legacy: follow
-its own AGENTS.md there.
+A place still kept the older way (oco/ tables, glimpses - ocoeco, retired) is another project's legacy:
+follow its own AGENTS.md there.
 
-**The author's words**: every turn of his, as said, with its moment - `turn ID AFTER AT TEXT SAID` (a word of
-oco-work, which that place still uses) into marshall-oco/conversation.
+**The author's words**: every turn of his, as said, with its moment - recorded as
+that place's own AGENTS.md says, into marshall-oco/conversation.
 
 ## Hand-over
 

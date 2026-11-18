@@ -575,3 +575,29 @@ to = ["decisions"]
 field = "decisions.tracked_by"
 to = ["backlog"]
 # idealkb:end
+
+# A route retired: a tool or way an instruction once named, and what does its work now. An instruction names
+# the intent; a retired route named in a card, skill, brief, stored prompt or open item is a sign
+# (scripts/route-check; decision 2026-11-18-instructions-name-intents).
+[tables.routes]
+key = ["id"]
+
+[[tables.routes.fields]]
+name = "id"
+type = "string"
+required = true
+
+[[tables.routes.fields]]
+name = "instead"
+type = "string"
+required = true
+
+[[tables.routes.fields]]
+name = "since"
+type = "date"
+required = true
+
+[[tables.routes.fields]]
+name = "why"
+type = "string"
+required = true

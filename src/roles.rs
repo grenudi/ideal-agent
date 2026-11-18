@@ -171,6 +171,39 @@ fn read_brief(path: &Path) -> Option<(String, &'static str)> {
         .map(|t| (t, "from the file on disk - not on its repository's main"))
 }
 
+/// The retired routes a text still names - each with what does its work now - as a section to print after it,
+/// so a start sees the replacement where it would have followed the old route (decision
+/// 2026-11-18-instructions-name-intents). A line that says the route is retired or forbids it is not counted.
+pub fn retired_named(root: &Path, text: &str) -> String {
+    let Ok(routes) = std::fs::read_to_string(root.join("data/routes.json")) else {
+        return String::new();
+    };
+    let quiet = ["retired", "never", "nothing of", "no longer"];
+    let mut out = String::new();
+    for r in routes
+        .lines()
+        .filter_map(|l| serde_json::from_str::<serde_json::Value>(l).ok())
+    {
+        let (Some(id), Some(instead)) = (r["id"].as_str(), r["instead"].as_str()) else {
+            continue;
+        };
+        let named = text.lines().any(|l| {
+            let low = l.to_lowercase();
+            l.split(|c: char| !(c.is_alphanumeric() || c == '-' || c == '_'))
+                .any(|w| w == id)
+                && !quiet.iter().any(|q| low.contains(q))
+        });
+        if named {
+            out.push_str(&format!("- `{id}` is retired - instead: {instead}\n"));
+        }
+    }
+    if out.is_empty() {
+        out
+    } else {
+        format!("\n## Retired routes your brief still names (follow the instead; tell its owner)\n\n{out}")
+    }
+}
+
 fn expand(path: &str) -> PathBuf {
     match path.strip_prefix("~/") {
         Some(rest) => std::env::var_os("HOME")
@@ -228,7 +261,11 @@ pub fn render(root: Option<&Path>, named: &Named, text: &str, source: &str) -> S
     let mut keep = card.practices.clone();
     keep.extend(named.also.iter().cloned());
     let brief = named.brief.as_deref().map_or_else(String::new, |p| match read_brief(&expand(p)) {
-        Some((t, from)) => format!("\n## Your brief ({p}, {from})\n\n{}\n", t.trim()),
+        Some((t, from)) => format!(
+            "\n## Your brief ({p}, {from})\n\n{}\n{}",
+            t.trim(),
+            root.map(|r| retired_named(r, &t)).unwrap_or_default()
+        ),
         None => format!("\n## Your brief ({p})\n\nIt could not be read: tell whoever started you, and work from the card alone.\n"),
     });
     format!(
@@ -470,6 +507,36 @@ mod tests {
                 "{c} names the class question"
             );
         }
+    }
+
+    #[test]
+    fn a_brief_naming_a_retired_route_is_warned_at_the_start() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let w = retired_named(
+            root,
+            "Run the tty reader as a lab-agent job.\nNothing of ocoeco here.\n",
+        );
+        assert!(w.contains("`lab-agent` is retired - instead:"), "{w}");
+        assert!(
+            !w.contains("`ocoeco`"),
+            "a line that forbids it is not counted"
+        );
+        assert!(retired_named(root, "Use land.\n").is_empty());
+    }
+
+    #[test]
+    fn no_card_or_skill_names_a_retired_route() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR"));
+        let out = std::process::Command::new(root.join("scripts/route-check"))
+            .arg(root.join("agents"))
+            .arg(root.join("skills"))
+            .output()
+            .expect("route-check runs");
+        assert!(
+            out.status.success(),
+            "a card or skill names a retired route:\n{}",
+            String::from_utf8_lossy(&out.stdout)
+        );
     }
 
     #[test]
