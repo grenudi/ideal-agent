@@ -12,7 +12,7 @@ How an agent works in the open commons, written once: the practices every sessio
 - [Research](research.md): 28
 - [Routes](routes.md): 6
 - [Session Log](session_log.md): 37
-- [Sources](sources.md): 66
+- [Sources](sources.md): 67
 - [Subjects](subjects.md): 10
 - [Summaries](summaries.md): 1
 - [Upstream Items](upstream_items.md): 0
