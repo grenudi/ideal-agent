@@ -1122,3 +1122,28 @@ Research
 
 Supersedes
 : 2026-11-18-fork-first-workarounds-named
+
+
+<a id="2026-11-18-instructions-say-where-not-what"></a>
+### 2026-11-18-instructions-say-where-not-what
+
+Date
+: 2026-11-18
+
+Brief
+: Instructions say where a thing is known and what to do if it cannot be reached; ask-a-knowledge-base points to the base's own table; overlay-check --against measures restating
+
+Decision
+: Small: ask-a-knowledge-base no longer copies idealkb's lookup table - it names the base's own AGENTS.md section, laid there by idealkb and current; lab-session-start says the cards, skills and briefs give where a thing is known (a query, a canon id, a record), and where a pointer cannot be followed the thing is not known yet: say so, keep to the card's rules, tell the place's owner, never fill it in from memory. overlay-check gains --against FILE to measure a text against the bases it points to; the patrol runs it over ideal-agent's skills and cards and the domain's briefs. What stays inline: the bootstrap, the safety rules (the guard enforces them even when a lookup fails) and start weight.
+
+Why
+: The author, 2026-11-18, for consideration: tell agents where to get knowledge and what to do if they cannot, rather than hardcoding it, so instructions do not drift from the bases. Measured: the verbatim copies are few and known (one table); write-code-by-the-canon already names ids. Others: one source referenced, never copied (DITA conref), reference apart from how-to (Diátaxis), just-in-time context (Anthropic).
+
+Rejected
+: Rewriting every skill as pointers (most already name skills, queries and ids; the copies are few); transclusion at start (the hook would print the bases' text and the start grows - pointers keep it light); removing safety lines in favour of a lookup (a rule must hold when the lookup fails); a check in CI (the bases are other repositories; the patrol has them).
+
+About
+: practices
+
+Research
+: where-not-what

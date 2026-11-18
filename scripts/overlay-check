@@ -3,22 +3,26 @@
 # 2026-11-17-a-domain-layer-names-its-base): for each brief, the share of its words that stand in a run of N
 # words also found in ideal-agent's role cards, skills or practices. A domain layer holds only what differs.
 #
-#   overlay-check FOLDER [N] [LIMIT] [EXTRA]
+#   overlay-check [--against FILE]... FOLDER [N] [LIMIT] [EXTRA]
 #                                      FOLDER: a domain's agent folder (its *.md briefs); N: the run of words that
 #                                      counts as restated (default 6); LIMIT: the share, in percent, above which
 #                                      a brief fails (default 15); EXTRA: a file of the domain's own text a
-#                                      brief must not restate either (its principles, from its base)
+#                                      brief must not restate either (its principles, from its base);
+#                                      --against FILE: measure against these files alone instead of
+#                                      ideal-agent (its own skills and cards against the bases they point to)
 # Prints one line per brief - bytes, restated percent, and the first restated run - then the whole. Ends 1
 # when a brief is over LIMIT, 2 on a wrong call. Needs tad for the practices (skipped where it is missing).
 set -eu
-[ $# -ge 1 ] && [ $# -le 4 ] || { echo "usage: overlay-check FOLDER [N] [LIMIT] [EXTRA]" >&2; exit 2; }
+against=""
+while [ "${1:-}" = --against ]; do against="$against ${2:?overlay-check: --against needs a file}"; shift 2; done
+[ $# -ge 1 ] && [ $# -le 4 ] || { echo "usage: overlay-check [--against FILE]... FOLDER [N] [LIMIT] [EXTRA]" >&2; exit 2; }
 folder=$1; n=${2:-6}; limit=${3:-15}; extra=${4:-}
 [ -z "$extra" ] || [ -r "$extra" ] || { echo "overlay-check: cannot read $extra" >&2; exit 2; }
 [ -d "$folder" ] || { echo "overlay-check: no folder $folder" >&2; exit 2; }
 root=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 base=$(mktemp); trap 'rm -f "$base"' EXIT
-{ cat "$root"/agents/*.md "$root"/skills/*/SKILL.md
-  (cd "$root" && tad q practices --format csv 2>/dev/null) || true
+{ if [ -n "$against" ]; then cat $against; else cat "$root"/agents/*.md "$root"/skills/*/SKILL.md
+  (cd "$root" && tad q practices --format csv 2>/dev/null) || true; fi
   [ -z "$extra" ] || cat "$extra"; } > "$base"
 fail=0
 for f in "$folder"/*.md; do

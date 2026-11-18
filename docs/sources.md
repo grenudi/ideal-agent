@@ -1226,3 +1226,41 @@ By
 
 Takes
 : a TODO names its issue, and a check fails when that issue is closed - a workaround dies with its reason
+
+
+<a id="diataxis"></a>
+### Diátaxis
+
+Url
+: https://diataxis.fr/
+
+Author
+: Daniele Procida
+
+Year
+: 2026
+
+By
+: diataxis.fr
+
+Takes
+: four forms of documentation for four needs: reference holds the facts; a how-to points to it rather than restating it
+
+
+<a id="dita-conref"></a>
+### DITA 1.3: the conref attribute
+
+Url
+: https://docs.oasis-open.org/dita/dita/v1.3/os/part3-all-inclusive/langRef/attributes/theconrefattribute.html
+
+Author
+: OASIS
+
+Year
+: 2016
+
+By
+: OASIS
+
+Takes
+: content is pulled from its one source by reference, never copied - the copy cannot drift

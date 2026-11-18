@@ -19,6 +19,9 @@ record what you see as signs on the backlog, for the owner of each to answer.
   used (keep-the-start-light, "Who"), and what it struggled with: calls that failed, hook refusals, commands
   run again, SQL written past the named records. Where a cluster needs reading, a read-only `researcher`
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
+- **Reads what the instructions restate**: `scripts/overlay-check --against` the bases they point to (the canon's
+  principles and practices, idealkb's AGENTS.md) over ideal-agent's skills and cards and the domain's briefs -
+  a text that copies a base instead of naming where it is known is a sign for its owner.
 - **Reads the workarounds**: `scripts/workarounds --base BASE` over the domain's places - a `WORKAROUND(ID)` whose
   upstream item has landed or is not known is due; a workaround with no marker found by a fix is a sign too.
 - **Reads the shared clones**: `scripts/clones-check` - a commons clone off main, holding uncommitted changes or

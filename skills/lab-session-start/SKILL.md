@@ -26,7 +26,10 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
    answer each, if only with "got it".
 
 Your brief and the author's words are a starting point: look around before you build on them
-(look-around-first). Then act.
+(look-around-first). The cards, skills and briefs tell you where a thing is known - a base's query, a canon
+id, a record - not the thing itself. Where a pointer cannot be followed (no clone, a query missing, no
+network), the thing is not known yet: say so, keep to your card's rules, and tell the place's owner - never
+fill it in from memory. Then act.
 
 ## Read only when
 
