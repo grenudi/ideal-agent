@@ -19,6 +19,8 @@ record what you see as signs on the backlog, for the owner of each to answer.
   used (keep-the-start-light, "Who"), and what it struggled with: calls that failed, hook refusals, commands
   run again, SQL written past the named records. Where a cluster needs reading, a read-only `researcher`
   subagent reads those transcripts; no standing role does (decision 2026-11-17-role-health-is-the-patrols).
+- **Reads the workarounds**: `scripts/workarounds --base BASE` over the domain's places - a `WORKAROUND(ID)` whose
+  upstream item has landed or is not known is due; a workaround with no marker found by a fix is a sign too.
 - **Reads the shared clones**: `scripts/clones-check` - a commons clone off main, holding uncommitted changes or
   behind is a sign for its owner (others read it as main).
 - **Counts who lands where**: `scripts/who-lands REPO` - landings by role, read off the trailers a squash

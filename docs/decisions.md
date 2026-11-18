@@ -1069,3 +1069,28 @@ About
 
 Research
 : shared-clones
+
+
+<a id="2026-11-18-fork-first-workarounds-named"></a>
+### 2026-11-18-fork-first-workarounds-named
+
+Date
+: 2026-11-18
+
+Brief
+: An upstream fault is fixed in our fork and sent upstream; a workaround stands only until then, narrow, marked WORKAROUND(ITEM-ID), and goes when the item lands
+
+Decision
+: look-around-first's class question, at the root: where the root is an upstream's fault, the fix goes into our fork of that upstream and is sent as an upstream item - not a workaround in our tools; a workaround only until the fork's fix can be had, narrow, naming its item in place as WORKAROUND(ITEM-ID): what it stands in for. scripts/workarounds lists every marker with its item's state from a base's upstream_items and fails where the item has landed, been applied upstream, or is not known; the patrol runs it. Proposed to ideal-knowledge-base (the ikb session, which owns upstreaming): a field on upstream_items naming where an item is worked around, and the fork's commit-subject tags (UPSTREAM, FROMLIST, ours) in its patch life.
+
+Why
+: The author, 2026-11-18, for consideration: tools should not make workarounds and hacks but fork upstream where it hinders us, devise proper solutions and ship them upstream, hand in hand with ikb's upstreaming. Measured: three workarounds today with no tie to an item. Others: upstream first; each carried patch tied to its item (DEP-3); a TODO that fails when its issue closes (todocheck).
+
+Rejected
+: No workarounds at all (a phone must keep working while the upstream fix is weeks away); a workaround table of our own (upstream_items already holds the item; one field links it); a new role (the class question already asks for the root; the patrol measures).
+
+About
+: practices
+
+Research
+: fork-or-workaround
