@@ -640,3 +640,24 @@ Rejected
 
 About
 : organising-agents
+
+---
+
+
+<a id="2026-11-18-one-picking-query"></a>
+### A brief names its base's picking query, never its own SQL
+
+Entry date
+: 2026-11-18
+
+Done
+: Sign from orchestration, seen three times on 2026-11-18: the lab-tools builder's own SQL took a row that waited on something outside its base; walleye's keeper was not offered an item whose blocked_by was done; the patrol found two items blocked by done ones. THE CLASS: a picking rule copied into many places diverges. WHERE ELSE (orchestration's survey): surya-lab and google-walleye-lab lane-next and next ignore blocked_by; phone-next and phone-queue read it only within their base; docs next reads both; builder.md carries raw SQL. THE ROOT: no shared picking query. keep-a-shared-resource now says a brief names the query and carries no SQL; the patrol reads the picking. The generic query (takeable: waits null and every blocked_by done, an id not held here resolved against the commons) goes to ideal-knowledge-base (the ikb session).
+
+Considered
+: A picking rule written into the skill (it belongs to the base, as a query).
+
+Rejected
+: Each base fixing its own copy (the copies diverge again).
+
+About
+: organising-agents
