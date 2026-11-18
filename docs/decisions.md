@@ -1172,3 +1172,31 @@ About
 
 Scope
 : keeper, lane-coordinator
+
+
+<a id="2026-11-18-workarounds-reads-sites-items-and-way-out"></a>
+### 2026-11-18-workarounds-reads-sites-items-and-way-out
+
+Date
+: 2026-11-18
+
+Brief
+: scripts/workarounds reads sites only, knows backlog items as well as upstream items, and gives each workaround its way out
+
+Decision
+: scripts/workarounds skips lines under data/, docs/ and research/ of each path and the placeholder item-id; looks an item up in upstream_items, then in backlog; prints per site "ITEM - state; way out: patch upstream | patch carried in FORK | our work (backlog ITEM)" or "due: retire" (upstream has it, the backlog item is done, or the item is in neither table - then also "file its item"). Ends 1 when one is due.
+
+Why
+: linux-phone-oco decision 2026-11-18-workarounds-read-as-one (docs #542): a rule and a script read the same way. Its failing test research/workarounds/2026-11-18/workarounds-read.sh failed 7 checks on origin/main: records and the AGENTS.md example listed as sites, a backlog item read as not known, no way out named. Checks B-D now pass; A waits on the lanes marking their rules.
+
+Rejected
+: A separate reader for lane rules: one marker, one reader. Excluding data/ and docs/ by grep --exclude-dir: it also skips a PATH named docs (the docs clone itself). Treating an unknown item as merely not known: a marker with no item has no way out, so it is due.
+
+About
+: hooks
+
+Amends
+: 2026-11-18-fork-first-workarounds-named
+
+Scope
+: patrol, keepers, lane-coordinators
