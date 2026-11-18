@@ -107,13 +107,8 @@ A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lan
 
 ## A witnessed step, for a launched keeper
 
-A step a person must witness (practice 11) reaches a launched keeper through its item, since a launched run
-hears no message (decision 2026-11-18-a-witnessed-go-on-the-item). The lane coordinator, when the person says
-go, writes one line into the item's note before running the launcher:
-
-`Witnessed go: "<the person's words>" at HH:MM, until HH:MM; told: <what to expect and what to check>`
-
-The keeper takes the witnessed step only with such a line whose window is still open, and only the step it
-names; it reports what was seen to its lane coordinator at once, for the person. No line, or a window past:
-it does the rest of the item and leaves the step for the next go. A go is never carried from one item to
-another, nor written by anyone but the coordinator that heard it.
+A launched run hears no message, so a person's go reaches it as data (decision
+2026-11-18-a-witnessed-go-is-data): the item is marked `--witness person`, and the lane coordinator that heard
+the go opens it with `ikb backlog-go` and its window - the base's AGENTS.md, "what you may take now", says
+how - putting what the person was told to expect in the item's note. `tad q ready` offers the item only while
+the go is open; the keeper takes it from there, and reports what was seen at once, for the person.

@@ -1200,3 +1200,31 @@ Amends
 
 Scope
 : patrol, keepers, lane-coordinators
+
+
+<a id="2026-11-18-a-witnessed-go-is-data"></a>
+### 2026-11-18-a-witnessed-go-is-data
+
+Date
+: 2026-11-18
+
+Brief
+: A witnessed go is idealkb data: an item --witness person, opened by ikb backlog-go with a window; tad q ready offers it only while open
+
+Decision
+: keep-a-shared-resource ("A witnessed step") and the keeper and lane-coordinator cards point at idealkb 0.21.0: the item is marked --witness person; the lane coordinator that heard the go opens it with ikb backlog-go --until, and writes what the person was told in the note; tad q ready offers the item only while the go is open. The how stays in the base's AGENTS.md; ideal-agent says where, not what.
+
+Why
+: idealkb v0.21.0 (#93) made the go data, asked through the Top Coordinator: the window is read by the one picking query instead of a keeper parsing a note line, so the keeper needs no rule of its own to refuse an expired go.
+
+Rejected
+: Keeping the "Witnessed go:" note line beside the field: two ways to say one go. Restating backlog-go's options in the skill: they would go stale when idealkb changes them; the base's AGENTS.md row is the pointer.
+
+About
+: keeper
+
+Supersedes
+: 2026-11-18-a-witnessed-go-on-the-item
+
+Scope
+: keeper, lane-coordinator
