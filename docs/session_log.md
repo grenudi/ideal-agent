@@ -541,3 +541,21 @@ Rejected
 
 About
 : knowledge-base
+
+---
+
+
+<a id="2026-11-18-lab-agent-how-still-involved-research"></a>
+### lab-agent: how still involved (research)
+
+Entry date
+: 2026-11-18
+
+Done
+: Counted the mentions in main checkouts, ran the systemd-run probe, read how GitHub runners, buildbot, LAVA, systemd and sudo-rs/polkit do it, wrote research 2026-11-18-lab-agent-still-involved, decision 2026-11-18-job-route-retires-next, backlog lab-agent-0 and -7, step 3 note, and the failing test scripts/lab-agent-route-free.
+
+Considered
+: Starting a research-lead session: refused by the app on an automated turn; done here with a researcher subagent for the outside look.
+
+About
+: organising-agents
