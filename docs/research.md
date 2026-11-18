@@ -692,3 +692,25 @@ Sources
 
 About
 : organising-agents
+
+
+<a id="attention-spent-only-where-it-must"></a>
+### attention-spent-only-where-it-must
+
+Date
+: 2026-11-18
+
+Brief
+: The idea - a tool converges, knows what it did and asks a person only on a change - is in neither canon nor the skills; so it never reached lpoco-host's design
+
+Question
+: Is 'a tool spends the human's attention only where it must' already carried by the software canon, the programmer card or the skills, and if not, what is the smallest place that makes it stay?
+
+Found
+: lpoco-host's plan would have asked the author's sudo password on every prepare to rewrite a root file it had installed itself; the fix records a hash of what it installed and treats an unreadable root file as current when the staged content is unchanged and the share check passes. software-engineering-canon has no idempotency, convergence or ask-only-on-change principle (least-astonishment is another idea); ideal-project-playbook has none; write-code-by-the-canon, the programmer card and the skills had none; decision 2026-11-17-decisions-go-to-the-lane covers agents asking the author, not tools. lpoco-host was designed before the programmer role existed. Others: Ansible's changed/ok, Nix and Puppet convergence to a declared state, the UNIX rule of silence, SRE toil.
+
+Sources
+: ansible-idempotency,unix-rule-of-silence,sre-eliminating-toil
+
+About
+: practices

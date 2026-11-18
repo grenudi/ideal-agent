@@ -449,3 +449,22 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="canon-attention-principle"></a>
+### software-engineering-canon: a principle for converging tools that ask only on a change
+
+Status
+: open
+
+Note
+: Proposed by decision 2026-11-18-a-tool-asks-only-on-a-change: an id such as converge-and-ask-only-on-change, beside least-astonishment and fail-fast; then write-code-by-the-canon names the id.
+
+Waits
+: the author, who keeps the canon
+
+About
+: practices
+
+Opened
+: 2026-11-18
