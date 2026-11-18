@@ -248,10 +248,10 @@ Opened
 ### lab-agent retires 2: stop the oco timers
 
 Status
-: open
+: done
 
 Note
-: Proof: systemctl --user list-timers shows no oco-* timer. Next: the author's word that ocoeco's lab lenses are not wanted; the lab's keeper stops them.
+: Done 2026-11-18 by the author's word (turn-2026-11-18-lab-agent-timers-and-keep-awake): oco-agent-shadow, oco-say-what-is-new and oco-ask-to-observe timers disabled and stopped (systemctl --user disable --now; the unit files stay). list-timers shows no oco-* timer. lab-agent-update.timer goes with the daemon (step 7).
 
 About
 : organising-agents
@@ -264,10 +264,10 @@ Opened
 ### lab-agent retires 3: long jobs by systemd-run --user
 
 Status
-: open
+: in-progress
 
 Note
-: Next, and first (decision 2026-11-18-job-route-retires-next). Failing test: scripts/lab-agent-route-free (fails while lab-agent.service, oco-agent.service or a 'run' poller is up; passes when long jobs are systemd-run --user units only). Proof: one walleye kernel build run and read back as a user unit with its journal; then both units stop. Probe done: systemd-run --user works from a session, Linger=yes. Waits on the author: keep-awake while a build runs (default offered: systemd-inhibit --what=idle inside the build unit only).
+: Built 2026-11-18: lpoco-lab job start|status|log|stop|list (lab-tools PR 153, released in family 0.12.2): a long job is its own lpoco-job-NAME user unit, its own process holds an idle:sleep inhibitor only while it runs (shown: systemd-inhibit lists it while running, 0 after), journal is the log, a name is claimed once. Proof so far: a real unit run, logged, finished, freed (ignored test + by hand). Next: orchestration pins the family at 0.12.2 in lab.toml and prepares; one walleye build runs through it; then lab-agent.service and oco-agent.service stop (scripts/lab-agent-route-free passes). Their keep-awake inhibitors go with them.
 
 About
 : organising-agents
@@ -379,10 +379,10 @@ Opened
 ### lab-agent retires 0: the five words only the author can give, asked once
 
 Status
-: open
+: done
 
 Note
-: Answered 2026-11-18: 4 (board and phone alerts: not needed, nothing replaces them), 5 (ntfy inbox: not carried), 6 (root: viewed from lpoco's one roof, not in general). Still open: 2 (oco timers), 3 (keep-awake in builds). The author's words: marshall-oco/conversation turns turn-2026-11-18-lab-agent-*.
+: Closed 2026-11-18: all five answered. 2 (oco timers): unwanted, stopped. 3 (keep-awake): only the build's own unit holds the lab awake, designed from lpoco's one roof. 4: board and phone alerts not carried. 5: the ntfy inbox not carried. 6: the root grant viewed from lpoco's one roof (research 2026-11-18-lpoco-root-from-one-roof), direction waits on his word. His words: marshall-oco/conversation turns turn-2026-11-18-lab-agent-*.
 
 Waits
 : the author
