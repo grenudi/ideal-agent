@@ -55,6 +55,8 @@ A fix answers one incident; the role that made it also asks what the incident wa
 
 - the author's hands or witness were needed where none was planned;
 - a resource was left not known-working, or a fallback did not catch it;
+- an action the author held back happened anyway (a held no lived only in prose: change-a-device, "A held no
+  is a gate");
 - a copy had drifted from its source (a file by hand, a pinned tool, a stored prompt);
 - the same sign a second time, in any lane;
 - a part fixed in one place that other places share (another device, another lane, upstream).

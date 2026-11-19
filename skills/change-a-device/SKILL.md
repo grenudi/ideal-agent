@@ -23,6 +23,11 @@ The device is the reference test, shared by every session; a stranded device cos
 - **Test first.** A check that fails for the missing part, before the fix; generic checks where any device
   runs them, the device's own beside its data. Record what a pass proves (`present` - it is there;
   `works` - it does its work): only a passing `works` test turns a part `works`.
+- **A held no is a gate.** When the author holds back a risky action ("wait" on probing a part, on a
+  flash, on a boot), the hold becomes a check the artefact must pass - in its build and CI, and in the keeper's
+  recipe before it boots or flashes - not only a record (decision 2026-11-19-a-held-no-is-a-gate). The keeper
+  tests what the artefact does (the image's device tree, its config, its command line), not only what the
+  item says; the check goes when the author lifts the hold.
 - **Results file themselves.** The device measures itself after every boot and the conveyor files the
   report. Never type a status a machine can measure; a person's witness goes in the judged field and notes.
   What is not measured is not known yet - never broken.

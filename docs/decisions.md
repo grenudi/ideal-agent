@@ -1228,3 +1228,28 @@ Supersedes
 
 Scope
 : keeper, lane-coordinator
+
+
+<a id="2026-11-19-a-held-no-is-a-gate"></a>
+### 2026-11-19-a-held-no-is-a-gate
+
+Date
+: 2026-11-19
+
+Brief
+: An author's held no on a risky device action becomes a check the artefact must pass, in build, CI and the keeper's recipe - not only a record
+
+Decision
+: change-a-device gains "A held no is a gate": a hold from the author on a risky action is turned into a check on the artefact (its device tree, config, command line) run in its build and CI and by the keeper before it boots or flashes; the check is removed when the hold is lifted. The class question gains a trigger: an action the author held back happened anyway.
+
+Why
+: walleye, lab PR 330: the author said wait on probing the Pixel 2 storage; it was recorded as a decision in prose, an enable for one parked image landed in the shared dts, and four or more unattended boots probed the card. No check tested the artefact against the hold, and keepers boot by try items, not by what the image enables. Walleye's words: "a decision held in prose, not in a check".
+
+Rejected
+: A new skill or practice: one bullet in the skill the keeper already loads suffices. Putting it in keep-a-shared-resource: it is about changing a device, which change-a-device carries for every keeper. A generic guard in ideal-agent's program: what to check is device-specific (a dts node, a cmdline); the lane writes the check, the skill says that it must exist.
+
+About
+: keeper
+
+Scope
+: keeper, builder, lane-coordinator
