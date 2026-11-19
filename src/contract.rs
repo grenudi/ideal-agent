@@ -9,6 +9,7 @@ pub enum Command {
     Start,
     Role,
     Practices,
+    Prune,
     Completions,
     Man,
 }
@@ -19,6 +20,7 @@ impl Command {
         Command::Start,
         Command::Role,
         Command::Practices,
+        Command::Prune,
         Command::Completions,
         Command::Man,
     ];
@@ -30,6 +32,7 @@ impl Command {
             Command::Start => "start",
             Command::Role => "role",
             Command::Practices => "practices",
+            Command::Prune => "prune",
             Command::Completions => "completions",
             Command::Man => "man",
         }
@@ -38,10 +41,11 @@ impl Command {
     /// One line for the help and the man page.
     pub const fn summary(self) -> &'static str {
         match self {
-            Command::Guard => "PreToolUse hook: read the event on standard input; refuse (exit 2, the reason on standard error) a Bash command that pushes to main, writes through tad sql or runs Python",
+            Command::Guard => "PreToolUse hook: read the event on standard input; refuse (exit 2, the reason on standard error) a Bash command that pushes to main, writes through tad sql or runs Python, and a command or a Read, Grep or Glob in a shared clone behind its origin/main",
             Command::Start => "SessionStart hook (the event on standard input): a resumed or compacted session's role and practices again, or a role given by --agent; at a new start only where they come from",
             Command::Role => "UserPromptSubmit hook (the event on standard input): at a session's first prompt, the role its brief names (Role: NAME) - its card and only its practices - or every practice when none is named",
             Command::Practices => "The practices, numbered, each with why and for whom - live from ideal-agent's main, else the installed copy",
+            Command::Prune => "What agents leave behind, nothing written to for 3 days: build run folders (~/.cache/agent-build/RUN) and clean linked worktrees of the clones under ~/Projects - removed (now) or shown (show); a worktree with uncommitted changes is kept and named. The session start runs `prune now` once a day",
             Command::Completions => "Print shell completions: bash, zsh, fish or nushell",
             Command::Man => "Print the man page",
         }
@@ -95,6 +99,17 @@ contract! {
         subcommands: &[Command::Completions],
         arg:         Some(Arg { value_name: "SHELL", ..Arg::positional(0) }),
         summary:     "The shell to print completions for",
+        ..Input::EMPTY
+    };
+    /// What prune does.
+    MODE: String, Command = Input {
+        key:         "mode",
+        ty:          Type::Enum,
+        required:    true,
+        allowed:     &["now", "show"],
+        subcommands: &[Command::Prune],
+        arg:         Some(Arg { value_name: "MODE", ..Arg::positional(0) }),
+        summary:     "now removes what is left behind; show only names it",
         ..Input::EMPTY
     };
     /// The man page's date.

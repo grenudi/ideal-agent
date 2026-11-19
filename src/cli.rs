@@ -3,9 +3,9 @@ use crate::contract::{Command, Contract};
 use anyhow::{Context, Result};
 use argenv_resolve::generate::{self, Program, Shell};
 use argenv_resolve::*;
-use ideal_agent::{guard, practices, roles};
+use ideal_agent::{guard, practices, prune, roles};
 use std::io::Read;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 
 const ABOUT: &str = "The ideal agent's hooks: the ways held when they are tried, and the practices at the start of every session";
 
@@ -42,6 +42,7 @@ pub struct Given {
     env_file: Option<PathBuf>,
     shell: Option<String>,
     date: Option<String>,
+    mode: Option<String>,
 }
 
 impl Given {
@@ -69,6 +70,7 @@ impl Given {
             env_file: get(&Contract::ENV_FILE).map(PathBuf::from),
             shell: get(&Contract::SHELL),
             date: get(&Contract::DATE),
+            mode: get(&Contract::MODE),
         }
     }
 
@@ -100,6 +102,8 @@ pub fn start(given: &Given) -> Result<()> {
     let event = read_event();
     if let (Some(f), Some(r)) = (given.env_file.as_deref(), given.root.as_deref()) {
         agent_env(f, r);
+        // only a real session start (Claude Code gave its environment file), never a test or a hand run
+        prune_daily();
     }
     let root = given.root.as_deref();
     let session = event["session_id"].as_str().unwrap_or("");
@@ -175,6 +179,57 @@ pub fn role(given: &Given) -> Result<()> {
         }
     }
     Ok(())
+}
+
+/// What agents leave behind - build run folders and clean worktrees nothing wrote to for 3 days: removed or shown.
+pub fn prune(given: &Given) -> Result<()> {
+    let now = given.mode.as_deref() == Some("now");
+    let home = std::env::var_os("HOME")
+        .map(PathBuf::from)
+        .context("HOME")?;
+    let cache =
+        std::env::var_os("XDG_CACHE_HOME").map_or_else(|| home.join(".cache"), PathBuf::from);
+    let mut fates = prune::sweep_runs(&cache.join("agent-build"), 3, now);
+    fates.extend(prune::sweep(&home.join("Projects"), 3, now));
+    print!("{}", prune::report(&fates));
+    Ok(())
+}
+
+/// Once a day, the session start leaves `prune now` running on its own - in a process group of its own, so the
+/// hook returns at once - its report appended to ideal-agent's state (pruned.log).
+fn prune_daily() {
+    use std::os::unix::process::CommandExt;
+    let Some(dir) = roles::state_dir().and_then(|d| d.parent().map(Path::to_path_buf)) else {
+        return;
+    };
+    let stamp = dir.join("pruned");
+    let fresh = std::fs::metadata(&stamp)
+        .and_then(|m| m.modified())
+        .ok()
+        .and_then(|t| t.elapsed().ok())
+        .is_some_and(|age| age.as_secs() < 24 * 3600);
+    if fresh || std::fs::create_dir_all(&dir).is_err() || std::fs::write(&stamp, "").is_err() {
+        return;
+    }
+    let (Ok(exe), Ok(log)) = (
+        std::env::current_exe(),
+        std::fs::OpenOptions::new()
+            .create(true)
+            .append(true)
+            .open(dir.join("pruned.log")),
+    ) else {
+        return;
+    };
+    let _ = std::process::Command::new(exe)
+        .args(["prune", "now"])
+        .stdin(std::process::Stdio::null())
+        .stdout(
+            log.try_clone()
+                .map_or_else(|_| std::process::Stdio::null(), Into::into),
+        )
+        .stderr(log)
+        .process_group(0)
+        .spawn();
 }
 
 /// Shell completions, from the contract.

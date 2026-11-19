@@ -531,13 +531,16 @@ Proof
 ### Agent worktrees left behind are pruned: a clean one nothing wrote to for 3 days is removed, a dirty one named
 
 Status
-: open
+: done
 
 Note
-: From linux-phone-oco/docs upstream item stale-worktrees-pruned (about 90 under ~/Projects/linux-phone-oco, most 200-540 behind). Lower than the two above, which landed in 0.3.63. Logic (clean, merged, age) belongs in the Rust program, not agent-env's shell (practice 21); agent-env's daily sweep calls it.
+: Done in 0.3.64: ideal-agent prune now|show (src/prune.rs), started once a day by the session start in its own process group, its report in ~/.local/state/ideal-agent/pruned.log. Worktrees: every linked worktree of the clones under ~/Projects, locked ones never; git worktree remove keeps the branch. Build runs moved here from agent-env, whose loop used find -newermt '-3 days': in a Claude Bash shell find is the app's bfs wrapper, which rejects that date, so every other run folder was removed whatever its age (one left on 2026-11-19); now find -mtime -3, from Rust. At landing: 138 worktrees, 70 untouched for a day, 16 for two, none for three. From linux-phone-oco/docs upstream item stale-worktrees-pruned.
 
 About
 : housekeeping
 
 Opened
 : 2026-11-19
+
+Proof
+: prune test an_old_clean_worktree_is_removed_and_a_dirty_one_kept (live git: show removes nothing, now removes the clean old one, keeps the dirty and the fresh, the branch stays); prune show on the lab machine: nothing 3 days old yet
