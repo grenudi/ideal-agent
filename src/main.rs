@@ -24,6 +24,7 @@ fn run() -> Result<()> {
         Command::Practices => cli::practices(&given),
         Command::Start => cli::start(&given),
         Command::Role => cli::role(&given),
+        Command::Prune => cli::prune(&given),
         Command::Completions => cli::completions(&given),
         Command::Man => cli::man(&given),
     }

@@ -19,7 +19,8 @@
 #                  (RUN as in AGENT_NAME), and TMPDIR under it, so a cargo install or a mktemp lands there too.
 #                  /tmp is a RAM tmpfs the session scratchpads share: small files only. A cargo target stays in
 #                  its worktree (on disk, by branch); CARGO_TARGET_DIR is not moved, scripts read ./target
-#                  A run folder nothing was written to for 3 days is removed, checked once a day
+#                  A run folder nothing was written to for 3 days is removed once a day (`ideal-agent prune now`,
+#                  started by the session start)
 
 case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) PATH="$HOME/.local/bin:$PATH" ;; esac
 case ":$PATH:" in *":$HOME/.cargo/bin:"*) ;; *) PATH="$HOME/.cargo/bin:$PATH" ;; esac
@@ -55,17 +56,6 @@ export LAND_RELEASE="${LAND_RELEASE:-0}"
 _ia_run=$(printf "%s" "${CLAUDE_CODE_SESSION_ID:-}" | tr -dc "0-9a-f" | cut -c1-6)
 export AGENT_BUILD="${AGENT_BUILD:-${XDG_CACHE_HOME:-$HOME/.cache}/agent-build/${_ia_run:-shell}}"
 mkdir -p "$AGENT_BUILD/tmp" 2>/dev/null && export TMPDIR="$AGENT_BUILD/tmp"
-# once a day, in the background: a run whose folder has had nothing written for 3 days is gone (its session
-# ended), so the disk does not fill in place of the tmpfs
-_ia_stamp="${AGENT_BUILD%/*}/.pruned"
-if [ -z "$(find "$_ia_stamp" -newermt "-1 day" 2>/dev/null)" ]; then
-    touch "$_ia_stamp" 2>/dev/null
-    ( for _ia_d in "${AGENT_BUILD%/*}"/*/; do
-          [ "${_ia_d%/}" = "$AGENT_BUILD" ] && continue
-          [ -n "$(find "$_ia_d" -newermt "-3 days" -print -quit 2>/dev/null)" ] || rm -rf "$_ia_d"
-      done ) > /dev/null 2>&1 &
-fi
-unset _ia_stamp
 unset _ia_run
 
 branch() {
