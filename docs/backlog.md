@@ -487,3 +487,57 @@ Opened
 
 Rank
 : 20
+
+
+<a id="role-start-brief-whole"></a>
+### The role start hands the brief over whole from origin/main: a per-session file with its commit, the start's output under the app's cap
+
+Status
+: done
+
+Note
+: Done in 0.3.63: the brief is written to ~/.local/state/ideal-agent/sessions/SESSION.brief.md, headed by its path and main's commit; the start prints a pointer and the first paragraph past the title and head. Measured with linux-phone-oco's briefs: builder 5.7 KB, keeper 6.7, coordinator 8.3, patrol 7.4, orchestrator 7.5 (cap 10,000); each file equals origin/main's. From linux-phone-oco/docs upstream item role-start-brief-whole.
+
+About
+: hooks
+
+Opened
+: 2026-11-19
+
+Proof
+: brief test: a 20 KB brief prints under 2 KB and the file holds it whole; live: five roles' starts under the cap, the file equal to origin/main
+
+
+<a id="guard-refuses-stale-clone-reads"></a>
+### The guard refuses a command in, or a read from, a shared clone's main checkout behind its local origin/main
+
+Status
+: done
+
+Note
+: Done in 0.3.63: PreToolUse matches Bash|Read|Grep|Glob; in a shared clone (shared_main) whose HEAD..origin/main counts more than 0, a command other than git, branch and a few that only look is refused, and so is a path there named in a command or read by Read/Grep/Glob; the refusal names the worktree line, git show and git pull --ff-only; SHARED_CLONE_OK=1, in the command or the environment, lets a deliberate one through. 17 clones under ~/Projects were behind at landing (lab-agent 213, linux-phone-oco/docs 25, surya-lab 23). From linux-phone-oco/docs upstream item guard-refuses-stale-clone-reads.
+
+About
+: hooks
+
+Opened
+: 2026-11-19
+
+Proof
+: guard test reading_in_a_stale_shared_clone_is_refused_and_main_is_not; live against a real clone one behind: cat, Read, Grep and tad -C refused (rc 2), git pull, a worktree Read, SHARED_CLONE_OK=1 and the current clone allowed
+
+
+<a id="stale-worktrees-pruned"></a>
+### Agent worktrees left behind are pruned: a clean one nothing wrote to for 3 days is removed, a dirty one named
+
+Status
+: open
+
+Note
+: From linux-phone-oco/docs upstream item stale-worktrees-pruned (about 90 under ~/Projects/linux-phone-oco, most 200-540 behind). Lower than the two above, which landed in 0.3.63. Logic (clean, merged, age) belongs in the Rust program, not agent-env's shell (practice 21); agent-env's daily sweep calls it.
+
+About
+: housekeeping
+
+Opened
+: 2026-11-19

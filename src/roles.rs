@@ -137,8 +137,8 @@ pub fn brief_in(prompt: &str) -> Option<String> {
 
 /// A brief as its repository's main has it - fetched, then read from origin/main - so that a shared clone left on
 /// a branch or an old commit never gives a stale brief; else the file on disk, said so (no clone, no network,
-/// or a brief not on main yet).
-fn read_brief(path: &Path) -> Option<(String, &'static str)> {
+/// or a brief not on main yet). The second value says where it came from, naming main's commit.
+fn read_brief(path: &Path) -> Option<(String, String)> {
     use std::process::Command;
     let dir = path.parent()?;
     let git = |args: &[&str]| {
@@ -162,13 +162,76 @@ fn read_brief(path: &Path) -> Option<(String, &'static str)> {
         {
             let _ = git(&["fetch", "-q", "origin", "main"]);
             if let Some(t) = git(&["show", &format!("origin/main:{}", rel.display())]) {
-                return Some((t, "from its repository's main"));
+                let commit = git(&["rev-parse", "--short", "origin/main"]).unwrap_or_default();
+                return Some((
+                    t,
+                    format!("from its repository's main at {}", commit.trim()),
+                ));
             }
         }
     }
-    std::fs::read_to_string(path)
-        .ok()
-        .map(|t| (t, "from the file on disk - not on its repository's main"))
+    std::fs::read_to_string(path).ok().map(|t| {
+        (
+            t,
+            "from the file on disk - not on its repository's main".to_string(),
+        )
+    })
+}
+
+/// A brief's first paragraph - its title and its head (`Role:`, `Name:`, `Also`, `Brief:` lines) passed over - at
+/// most about 1,500 characters, cut at a line.
+pub fn first_paragraph(text: &str) -> String {
+    let head = |l: &str| {
+        ["Role:", "Name:", "Also", "Brief:"]
+            .iter()
+            .any(|k| l.starts_with(k))
+    };
+    let mut out = String::new();
+    for para in text.split("\n\n").map(str::trim) {
+        if para.is_empty() || para.lines().all(|l| l.starts_with('#') || head(l)) {
+            continue;
+        }
+        for line in para.lines().filter(|l| !l.starts_with('#')) {
+            if out.len() + line.len() > 1500 {
+                break;
+            }
+            out.push_str(line);
+            out.push('\n');
+        }
+        break;
+    }
+    out
+}
+
+/// Where a session's brief is written whole, so that a start's output stays under the app's hook-output cap
+/// (10,000 characters; past it only a preview arrives) and the brief still arrives as main has it.
+pub fn brief_file(session: &str) -> Option<PathBuf> {
+    state_dir()
+        .filter(|_| safe(session))
+        .map(|d| d.join(format!("{session}.brief.md")))
+}
+
+/// The brief section of a start: the brief written whole to the session's file, a pointer to it and its first
+/// paragraph printed; without a session to name the file by, the brief inline.
+fn brief_section(root: Option<&Path>, into: Option<PathBuf>, p: &str) -> String {
+    let Some((t, from)) = read_brief(&expand(p)) else {
+        return format!("\n## Your brief ({p})\n\nIt could not be read: tell whoever started you, and work from the card alone.\n");
+    };
+    let retired = root.map(|r| retired_named(r, &t)).unwrap_or_default();
+    let written = into.filter(|f| {
+        f.parent()
+            .is_some_and(|d| std::fs::create_dir_all(d).is_ok())
+            && std::fs::write(f, format!("<!-- {p}, {from} -->\n\n{}\n", t.trim())).is_ok()
+    });
+    match written {
+        Some(f) => format!(
+            "\n## Your brief ({p}, {from})\n\nWhole in {} - its first paragraph below; the rest from that file when a step needs \
+             it, never from the copy at {p}, which may be behind main:\n\n{}{retired}",
+            f.display(),
+            first_paragraph(&t)
+        ),
+        None => format!("\n## Your brief ({p}, {from})\n\n{}\n{retired}", t.trim()),
+    }
 }
 
 /// The retired routes a text still names - each with what does its work now - as a section to print after it,
@@ -252,7 +315,13 @@ pub fn parse_card(text: &str) -> Card {
 
 /// What a session reads when its role is known: the card, then only its practices (the card's and the
 /// domain's), each its first sentence; or, without a card of that name, every practice and a word why.
-pub fn render(root: Option<&Path>, named: &Named, text: &str, source: &str) -> String {
+pub fn render(
+    root: Option<&Path>,
+    session: &str,
+    named: &Named,
+    text: &str,
+    source: &str,
+) -> String {
     let card = root
         .map(|r| card_path(r, &named.role))
         .and_then(|p| std::fs::read_to_string(p).ok())
@@ -266,14 +335,10 @@ pub fn render(root: Option<&Path>, named: &Named, text: &str, source: &str) -> S
     };
     let mut keep = card.practices.clone();
     keep.extend(named.also.iter().cloned());
-    let brief = named.brief.as_deref().map_or_else(String::new, |p| match read_brief(&expand(p)) {
-        Some((t, from)) => format!(
-            "\n## Your brief ({p}, {from})\n\n{}\n{}",
-            t.trim(),
-            root.map(|r| retired_named(r, &t)).unwrap_or_default()
-        ),
-        None => format!("\n## Your brief ({p})\n\nIt could not be read: tell whoever started you, and work from the card alone.\n"),
-    });
+    let brief = named
+        .brief
+        .as_deref()
+        .map_or_else(String::new, |p| brief_section(root, brief_file(session), p));
     format!(
         "## Your role: {} (ideal-agent)\n\n{}\n\n## The practices of this role (ideal-agent)\n\n{}{brief}",
         named.role,
@@ -485,15 +550,30 @@ mod tests {
         let n = named_in(&p).expect("named");
         assert_eq!(n.brief.as_deref(), Some(f.to_str().unwrap()));
         let root = Path::new(env!("CARGO_MANIFEST_DIR"));
-        let r = render(Some(root), &n, practices::BUILT_IN, "t");
+        let r = render(Some(root), "", &n, practices::BUILT_IN, "t");
         assert!(r.contains("## Your brief") && r.contains("Measure the lanes."));
         let missing = Named {
             brief: Some("/no/such/brief.md".into()),
             ..n
         };
-        assert!(
-            render(Some(root), &missing, practices::BUILT_IN, "t").contains("could not be read")
+        assert!(render(Some(root), "", &missing, practices::BUILT_IN, "t")
+            .contains("could not be read"));
+        // a long brief: written whole to the session's file, the start short and pointing to it
+        let long = format!(
+            "# A long brief\nThe first paragraph.\n\n{}",
+            "More of the brief.\n".repeat(1100)
         );
+        std::fs::write(&f, &long).unwrap();
+        let into = dir.join("s.brief.md");
+        let r = brief_section(Some(root), Some(into.clone()), f.to_str().unwrap());
+        assert!(long.len() > 20_000 && r.len() < 2_000, "{}", r.len());
+        assert!(
+            r.contains(into.to_str().unwrap())
+                && r.contains("The first paragraph.")
+                && !r.contains("More of")
+        );
+        let kept = std::fs::read_to_string(&into).unwrap();
+        assert!(kept.contains(long.trim()) && kept.starts_with("<!-- "));
         let _ = std::fs::remove_dir_all(dir);
     }
 
@@ -740,7 +820,7 @@ mod tests {
             name: None,
             brief: None,
         };
-        let r = render(Some(root), &n, practices::BUILT_IN, "test");
+        let r = render(Some(root), "", &n, practices::BUILT_IN, "test");
         assert!(r.starts_with("## Your role: keeper"));
         assert!(r.contains("44. "), "the card's own");
         assert!(r.contains("42. "), "the domain's");
@@ -755,8 +835,7 @@ mod tests {
             name: None,
             brief: None,
         };
-        assert!(
-            render(Some(root), &none, practices::BUILT_IN, "t").contains("every practice instead")
-        );
+        assert!(render(Some(root), "", &none, practices::BUILT_IN, "t")
+            .contains("every practice instead"));
     }
 }

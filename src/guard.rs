@@ -9,26 +9,91 @@
 //!   - `git` that changes the checkout or its history (commit, add, reset, checkout, switch, clean, rebase,
 //!     merge, stash, cherry-pick, revert, am, restore) in a shared clone's main checkout under ~/Projects:
 //!     sessions write in a worktree of their own (`branch NAME`); `SHARED_CLONE_OK=1` lets a deliberate one through
+//!   - reading in a shared clone's main checkout whose HEAD is behind its local origin/main - a command run there
+//!     (or naming a path there) other than git, `branch` and a few that only look around, and Read, Grep and Glob
+//!     of its paths: what a role acts on is origin/main, read in a worktree of its own or with `git show`
+//!     (decision 2026-11-19-roles-act-on-origin-main); `SHARED_CLONE_OK=1` lets a deliberate one through
 //!
 //! What only one place's device needs (devlab's phone, say) stays with that place's own guard.
 
 use crate::shell::{simple_commands, unwrapped};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 
 /// Reads the hook's event on standard input; refuses with exit 2, or lets the command run.
 pub fn hook(input: &str) -> Option<String> {
     let event: serde_json::Value = serde_json::from_str(input).unwrap_or_default();
-    if event["tool_name"].as_str() != Some("Bash") {
-        return None;
-    }
-    let command = event["tool_input"]["command"].as_str().unwrap_or_default();
     let cwd = event["cwd"]
         .as_str()
-        .map(std::path::PathBuf::from)
+        .map(PathBuf::from)
         .or_else(|| std::env::current_dir().ok())
         .unwrap_or_default();
-    refused(command, &cwd, &current_branch, &shared_main)
+    let deliberate = std::env::var("SHARED_CLONE_OK").is_ok_and(|v| v == "1");
+    let behind = |d: &Path| (!deliberate).then(|| behind_main(d)).flatten();
+    match event["tool_name"].as_str() {
+        Some("Bash") => {
+            let command = event["tool_input"]["command"].as_str().unwrap_or_default();
+            refused(command, &cwd, &current_branch, &shared_main, &behind)
+        }
+        Some("Read" | "Grep" | "Glob") => {
+            let input = &event["tool_input"];
+            let path = ["file_path", "path"]
+                .iter()
+                .find_map(|k| input[k].as_str())
+                .map_or_else(|| cwd.clone(), |p| cwd.join(p));
+            behind(&path).map(|(top, n)| stale_read("this read", &top, n))
+        }
+        _ => None,
+    }
+}
+
+/// The clone a path is in and how many commits its HEAD is behind its local origin/main, when the path is in a
+/// shared clone's main checkout under ~/Projects (`shared_main`) that is behind; no fetch - every worktree add
+/// fetches through the clone, so its origin/main is as new as the last session's.
+pub fn behind_main(path: &Path) -> Option<(PathBuf, u32)> {
+    let projects = std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Projects"))?;
+    if !path.starts_with(&projects) {
+        return None;
+    }
+    let dir = path.ancestors().find(|a| a.is_dir())?;
+    if !shared_main(dir) {
+        return None;
+    }
+    let git = |args: &[&str]| {
+        Command::new("git")
+            .arg("-C")
+            .arg(dir)
+            .args(args)
+            .output()
+            .ok()
+            .filter(|o| o.status.success())
+            .map(|o| String::from_utf8_lossy(&o.stdout).trim().to_string())
+    };
+    let n: u32 = git(&["rev-list", "--count", "HEAD..refs/remotes/origin/main"])?
+        .parse()
+        .ok()?;
+    let top = git(&["rev-parse", "--show-toplevel"])?;
+    (n > 0).then(|| (PathBuf::from(top), n))
+}
+
+fn stale_read(what: &str, top: &Path, n: u32) -> String {
+    let t = top.display();
+    format!(
+        "{what} is refused: {t} is a shared clone {n} commit(s) behind its origin/main, and what a role acts on is \
+         main. Read main in a worktree of your own - `branch NAME`, or `git -C {t} worktree add --detach \
+         {t}-read-$(date +%s) origin/main` and cd there - or one file with `git -C {t} show origin/main:PATH`; \
+         the brief your start named is whole in the file it gave. `git pull --ff-only` there brings the clone to \
+         main (SHARED_CLONE_OK=1 for a deliberate read)."
+    )
+}
+
+/// Programs that run in a stale shared clone without reading its state: git (how main is reached), `branch`
+/// (which leaves for a worktree), and those that only look where they are.
+fn reads_no_state(program: &str) -> bool {
+    matches!(
+        program,
+        "git" | "branch" | "ls" | "pwd" | "echo" | "printf" | "true" | "false" | "test" | "["
+    )
 }
 
 /// Whether a directory is in the main checkout of a clone under ~/Projects - the one other sessions read and land
@@ -71,6 +136,7 @@ pub fn refused(
     cwd: &Path,
     branch_of: &dyn Fn(&Path) -> Option<String>,
     shared: &dyn Fn(&Path) -> bool,
+    behind: &dyn Fn(&Path) -> Option<(PathBuf, u32)>,
 ) -> Option<String> {
     // where each simple command runs: a `cd` moves the ones after it
     let mut here = cwd.to_path_buf();
@@ -83,7 +149,7 @@ pub fn refused(
             if let Some(d) = args.first() {
                 here = match d.strip_prefix("~/") {
                     Some(rest) => std::env::var_os("HOME")
-                        .map_or_else(|| here.join(d), |h| std::path::PathBuf::from(h).join(rest)),
+                        .map_or_else(|| here.join(d), |h| PathBuf::from(h).join(rest)),
                     None => here.join(d),
                 };
             }
@@ -96,12 +162,25 @@ pub fn refused(
                 .position(|a| a == "-c" || a == "-lc" || a == "-ec")
             {
                 if let Some(inner) = args.get(i + 1) {
-                    if let Some(why) = refused(inner, cwd, branch_of, shared) {
+                    if let Some(why) = refused(inner, cwd, branch_of, shared, behind) {
                         return Some(why);
                     }
                 }
             }
             continue;
+        }
+        if !reads_no_state(program) && !command.contains("SHARED_CLONE_OK=1") {
+            let home = std::env::var_os("HOME").map(PathBuf::from);
+            let named = args.iter().filter_map(|a| match a.strip_prefix("~/") {
+                Some(rest) => home.as_ref().map(|h| h.join(rest)),
+                None => a.starts_with('/').then(|| PathBuf::from(a)),
+            });
+            if let Some((top, n)) = std::iter::once(here.clone())
+                .chain(named)
+                .find_map(|p| behind(&p))
+            {
+                return Some(stale_read(&format!("`{program}` there"), &top, n));
+            }
         }
         if is_python(program) && !installs_a_tool(first, program, args) {
             return Some(format!(
@@ -351,6 +430,7 @@ mod tests {
             Path::new("/tmp"),
             &move |_| Some(branch.to_string()),
             &|_| false,
+            &|_| None,
         )
     }
 
@@ -361,6 +441,7 @@ mod tests {
             Path::new(cwd),
             &|_| Some("main".into()),
             &|d: &Path| d.starts_with("/home/u/Projects/docs"),
+            &|_| None,
         )
     }
 
@@ -506,8 +587,65 @@ mod tests {
         }
     }
 
+    /// As says, with /home/u/Projects/docs a shared clone 3 behind its origin/main and every other place current.
+    fn says_stale(command: &str, cwd: &str) -> Option<String> {
+        refused(
+            command,
+            Path::new(cwd),
+            &|_| Some("main".into()),
+            &|d: &Path| d.starts_with("/home/u/Projects/docs"),
+            &|d: &Path| {
+                d.starts_with("/home/u/Projects/docs")
+                    .then(|| (PathBuf::from("/home/u/Projects/docs"), 3))
+            },
+        )
+    }
+
     #[test]
-    fn only_bash_is_read() {
+    fn reading_in_a_stale_shared_clone_is_refused_and_main_is_not() {
+        for c in [
+            "tad q ready --for keeper",
+            "cat briefs/builder.md",
+            "cd /home/u/Projects/docs && tad q next",
+            "grep -r x /home/u/Projects/docs/data",
+            "sh -c 'cd /home/u/Projects/docs; ikb backlog --id x'",
+        ] {
+            let cwd = if c.starts_with("cat") || c.starts_with("tad") {
+                "/home/u/Projects/docs"
+            } else {
+                "/tmp"
+            };
+            assert!(
+                says_stale(c, cwd).is_some_and(|w| w.contains("3 commit(s) behind") && w.contains("worktree add")),
+                "refused: {c}"
+            );
+        }
+        for c in [
+            "git pull --ff-only",
+            "git fetch -q",
+            "git show origin/main:briefs/builder.md",
+            "git worktree add --detach ../r origin/main",
+            "branch fix-x",
+            "ls",
+            "SHARED_CLONE_OK=1 tad q next",
+        ] {
+            assert!(
+                says_stale(c, "/home/u/Projects/docs").is_none(),
+                "allowed: {c}"
+            );
+        }
+        assert!(
+            says_stale("tad q next", "/home/u/wt/docs-r").is_none(),
+            "a worktree of its own"
+        );
+        assert!(
+            says_stale("tad q next", "/home/u/Projects/lab").is_none(),
+            "a current clone"
+        );
+    }
+
+    #[test]
+    fn bash_and_reads_are_read_and_nothing_else() {
         assert!(
             hook(r#"{"tool_name":"Write","tool_input":{"command":"pip install x"}}"#).is_none()
         );
