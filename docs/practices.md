@@ -446,19 +446,6 @@ For
 : null
 
 
-<a id="06-lab-machine"></a>
-### 06-lab-machine
-
-Practice
-: Do the work - builds, tests, repository work - on the lab machine, where state lives: in a session there, or from elsewhere through a lab job; not in a sandbox copy. No token of the lab's is copied anywhere.
-
-Why
-: null Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools).
-
-For
-: null
-
-
 <a id="16-reflect-where-you-work"></a>
 ### 16-reflect-where-you-work
 
@@ -645,3 +632,16 @@ For
 
 Shown in
 : grenudi/ideal-agent/decisions:2026-11-19-attended-one-command-away
+
+
+<a id="06-lab-machine"></a>
+### 06-lab-machine
+
+Practice
+: Do the work - builds, tests, repository work - on the lab machine, where state lives: in a session there, or from elsewhere through a job on it (`lpoco-lab job`, a systemd-run --user unit); not in a sandbox copy. No token of the lab's is copied anywhere.
+
+Why
+: Reworded on 2026-11-17 without ocoeco's tools, the idea kept (decision 2026-11-17-practices-without-oco-tools); on 2026-11-20 the lab job is lpoco-lab job, lab-agent's job route stopped (backlog lab-agent-3-jobs-by-systemd-run).
+
+For
+: agents and people

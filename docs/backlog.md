@@ -260,22 +260,6 @@ Opened
 : 2026-11-17
 
 
-<a id="lab-agent-3-jobs-by-systemd-run"></a>
-### lab-agent retires 3: long jobs by systemd-run --user
-
-Status
-: in-progress
-
-Note
-: lpoco-lab job start|status|log|stop|list built and released (family 0.12.2); lab-agent.service and oco-agent.service stop after walleye's first build runs through it. scripts/lab-agent-free shows the route's parts still up (3 on 2026-11-18 15:00).
-
-About
-: organising-agents
-
-Opened
-: 2026-11-17
-
-
 <a id="lab-agent-5-inbox-guide-out-of-the-start"></a>
 ### lab-agent retires 5: the session start without lab-agent inbox
 
@@ -544,3 +528,22 @@ Opened
 
 Proof
 : prune test an_old_clean_worktree_is_removed_and_a_dirty_one_kept (live git: show removes nothing, now removes the clean old one, keeps the dirty and the fresh, the branch stays); prune show on the lab machine: nothing 3 days old yet
+
+
+<a id="lab-agent-3-jobs-by-systemd-run"></a>
+### lab-agent retires 3: long jobs by systemd-run --user
+
+Status
+: done
+
+Note
+: Done 2026-11-20 (lab-agent-token-path's session): lab-agent.service, oco-agent.service, lab-agent-update.timer and the four oco timers are off and their unit files removed (lab-machine PR 83); long jobs run as lpoco-lab job. Read on the lab machine: no lab-agent or oco unit in systemctl --user, no lab-agent or oco-agent process; scripts/lab-agent-free: the job route has 0 parts up. Left of the plan: step 7, the daemon and package (the author removes /usr/bin/lab-agent as root; then ~/.local/bin/lab-agent, ~/.config/lab-agent and the two GitHub repos). Still named by what the lab runs, read from origin/main: lab-machine bin/land (a fallback author name lab-agent-session) and setup/ (two comments), lpoco host's grant revoke (names it by purpose).
+
+About
+: organising-agents
+
+Opened
+: 2026-11-19
+
+Proof
+: walleye-c3 and walleye-c4 built through lpoco-lab job on 2026-11-18; systemctl --user list-units and pgrep find nothing of lab-agent or oco-agent on 2026-11-20
