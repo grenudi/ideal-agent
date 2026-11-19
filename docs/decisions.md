@@ -1253,3 +1253,31 @@ About
 
 Scope
 : keeper, builder, lane-coordinator
+
+
+<a id="2026-11-19-python-tools-run-not-written"></a>
+### 2026-11-19-python-tools-run-not-written
+
+Date
+: 2026-11-19
+
+Brief
+: Our own Python stays refused; a required third-party Python tool (dtschema) is installed in its own ~/.local environment and run by name
+
+Decision
+: Practice 21 and the guard: writing Python, or making our tools depend on it, stays refused. Installing a third-party tool a step requires is let through when it is by name and isolated: pipx install|upgrade|uninstall|reinstall|inject|list|ensurepath with package names; python -m venv into ~/.local; such a venv's bin/pip install|uninstall|list|show with package names. Refused still: python and pip otherwise, pipx run, paths, -r, -e. The tool then runs by its own name (make dt_binding_check, dt-doc-validate), which the guard never saw as Python.
+
+Why
+: The author, 2026-11-19, relayed by the Top Coordinator: "its ok to run python if its required, i just dont want our work to depend on it". The kernel's dt_binding_check and dtbs_check need dtschema, a Python tool, before any device-tree patch is mailed.
+
+Rejected
+: Lifting the guard on python and pip: lets our own scripts back in. A one-off override variable (PYTHON_OK=1): any script could carry it, so the rule would hold only by memory. pip install --user into the system Python: not isolated, and Arch refuses it (PEP 668). A system package via pacman: needs root, and dtschema must follow the kernel's version.
+
+About
+: hooks
+
+Amends
+: 2026-11-17-hooks-in-the-plugin
+
+Scope
+: all roles; the guard

@@ -4,7 +4,8 @@
 //!
 //! What is refused, in each simple command of a line (`sh -c` and `$(...)` included):
 //!   - `git push` that reaches main (or master): every change gets its own branch and lands through checks
-//!   - `python`, `pip` and their kin: no new Python - shell to orchestrate, Rust for logic
+//!   - `python`, `pip` and their kin: no Python of our own - shell to orchestrate, Rust for logic; installing a
+//!     third-party tool a step requires, by name, in its own environment under ~/.local, is let through
 //!   - `git` that changes the checkout or its history (commit, add, reset, checkout, switch, clean, rebase,
 //!     merge, stash, cherry-pick, revert, am, restore) in a shared clone's main checkout under ~/Projects:
 //!     sessions write in a worktree of their own (`branch NAME`); `SHARED_CLONE_OK=1` lets a deliberate one through
@@ -102,11 +103,13 @@ pub fn refused(
             }
             continue;
         }
-        if is_python(program) {
+        if is_python(program) && !installs_a_tool(first, program, args) {
             return Some(format!(
-                "`{program}` is refused: no new Python, not even for one-offs - shell to orchestrate, \
-                 Rust for logic (rust-script for a single file). For JSON reach for jq, for text awk or sed, for a \
-                 table tad or duckdb."
+                "`{program}` is refused: no Python of our own, and our work never depends on it - shell to \
+                 orchestrate, Rust for logic (rust-script for a single file). For JSON reach for jq, for text awk or \
+                 sed, for a table tad or duckdb. A third-party tool a step requires (dtschema for the kernel's \
+                 dt_binding_check) is installed in its own environment - `pipx install PKG`, or `python3 -m venv \
+                 ~/.local/share/venvs/NAME` and its `bin/pip install PKG` - and run by name (practice 21)."
             ));
         }
         if program == "tad"
@@ -150,6 +153,66 @@ fn writes(sql: &str) -> bool {
 fn is_python(program: &str) -> bool {
     let bare = program.trim_end_matches(|c: char| c.is_ascii_digit() || c == '.');
     matches!(bare, "python" | "pip" | "pipx" | "ipython" | "pypy")
+}
+
+/// Installing a third-party tool a step requires, in an environment of its own under ~/.local: `pipx`
+/// managing packages by name, `python -m venv` making one under ~/.local, or such a venv's own `bin/pip`
+/// installing packages by name (decision 2026-11-19-python-tools-run-not-written). A path, a requirements file
+/// or an editable install is our own code, and stays refused; so does `pipx run`, which runs a file.
+fn installs_a_tool(first: &str, program: &str, args: &[String]) -> bool {
+    let bare = program.trim_end_matches(|c: char| c.is_ascii_digit() || c == '.');
+    let by_name = |rest: &[String]| {
+        rest.iter().all(|a| {
+            !matches!(
+                a.as_str(),
+                "-r" | "--requirement" | "-e" | "--editable" | "-c"
+            ) && (a.starts_with('-')
+                || !(a.contains('/')
+                    || a.starts_with('.')
+                    || a.starts_with('~')
+                    || a.ends_with(".py")))
+        })
+    };
+    let under_local = |p: &str| {
+        p.starts_with("~/.local/")
+            || p.starts_with("$HOME/.local/")
+            || std::env::var("HOME").is_ok_and(|h| p.starts_with(&format!("{h}/.local/")))
+    };
+    let Some(verb) = args.first() else {
+        return false;
+    };
+    match bare {
+        "pipx" => {
+            matches!(
+                verb.as_str(),
+                "install"
+                    | "upgrade"
+                    | "upgrade-all"
+                    | "uninstall"
+                    | "reinstall"
+                    | "inject"
+                    | "list"
+                    | "ensurepath"
+            ) && by_name(&args[1..])
+        }
+        "python" => {
+            args.len() >= 3
+                && verb == "-m"
+                && args[1] == "venv"
+                && args[2..].iter().filter(|a| !a.starts_with('-')).count() == 1
+                && args[2..]
+                    .iter()
+                    .filter(|a| !a.starts_with('-'))
+                    .all(|a| under_local(a))
+        }
+        "pip" => {
+            under_local(first)
+                && first.contains("/bin/pip")
+                && matches!(verb.as_str(), "install" | "uninstall" | "list" | "show")
+                && by_name(&args[1..])
+        }
+        _ => false,
+    }
 }
 
 /// A git command that changes the checkout or its history, run in a shared clone's main checkout.
@@ -414,6 +477,14 @@ mod tests {
             "echo $(python3 -c 1)",
             "X=\"$(python -V)\"",
             "sh -c \"python3 x\"",
+            "pipx run x.py",
+            "pipx install ./ours",
+            "pip install dtschema",
+            "python3 -m venv /tmp/v",
+            "python3 -m venv ~/.local/share/venvs/x && python3 ours.py",
+            "~/.local/share/venvs/x/bin/pip install -e .",
+            "~/.local/share/venvs/x/bin/pip install -r req.txt",
+            "~/.local/share/venvs/x/bin/python ours.py",
         ] {
             assert!(says(c, "feat").is_some(), "refused: {c}");
         }
@@ -423,6 +494,13 @@ mod tests {
             "rg -n pip src",
             "cargo build --features python",
             "ls ~/.python",
+            "pipx install dtschema",
+            "pipx inject dtschema yamllint",
+            "pipx list",
+            "python3 -m venv ~/.local/share/venvs/dtschema",
+            "~/.local/share/venvs/dtschema/bin/pip install dtschema yamllint",
+            "make dt_binding_check DT_SCHEMA_FILES=x.yaml",
+            "dt-doc-validate x.yaml",
         ] {
             assert!(says(c, "feat").is_none(), "allowed: {c}");
         }
