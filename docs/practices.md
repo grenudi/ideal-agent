@@ -632,13 +632,13 @@ For
 ### 21-no-new-python
 
 Practice
-: No Python of our own, and our work never depends on it; shell only for one-off glue - a few commands in order with their arguments, no parsing, no loops over data, no functions. Anything with logic is Rust: rust-script for a single file, a proper Rust tool for anything that repeats. A third-party tool written in Python that a step requires (the kernel's dtschema, for dt_binding_check and dtbs_check) may be installed user-level in its own environment - pipx, or a venv under ~/.local - and run by name. Edit structure with tools, not text with patches.
+: No Python of our own, and our work never depends on it; shell only for one-off glue - a few commands in order with their arguments, no parsing, no loops over data, no functions. Anything new with logic is Rust: rust-script for a single file, a proper Rust tool for anything that repeats; existing shell stays as it is unless a real need comes. A third-party tool written in Python that a step requires (the kernel's dtschema, for dt_binding_check and dtbs_check) may be installed user-level in its own environment - pipx, or a venv under ~/.local - and run by name. Edit structure with tools, not text with patches.
 
 Why
-: Python's versions, imports and strings make even small things fragile; and most failed runs came from patching source by text anchors, which no language fixes - structured tools do. The author, 2026-11-19: "its ok to run python if its required, i just dont want our work to depend on it", and "shell is even worse than python for any scripts that isnt a one off glue".
+: Python's versions, imports and strings make even small things fragile; and most failed runs came from patching source by text anchors, which no language fixes - structured tools do. The author, 2026-11-19: "its ok to run python if its required, i just dont want our work to depend on it", "shell is even worse than python for any scripts that isnt a one off glue", and on the existing shell "if we dont rely on it much i say we leave them as is for now".
 
 For
 : agents
 
 Shown in
-: creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own, open-commons-observatory/ecosystem/decisions:2026-11-15-the-way-in-for-the-conversation, grenudi/ideal-agent/decisions:2026-11-19-python-tools-run-not-written, grenudi/ideal-agent/decisions:2026-11-19-rust-for-scripts-shell-only-glue
+: creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own, open-commons-observatory/ecosystem/decisions:2026-11-15-the-way-in-for-the-conversation, grenudi/ideal-agent/decisions:2026-11-19-python-tools-run-not-written, grenudi/ideal-agent/decisions:2026-11-19-rust-for-scripts-shell-only-glue, grenudi/ideal-agent/decisions:2026-11-19-existing-shell-stays
