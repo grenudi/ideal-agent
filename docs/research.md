@@ -780,3 +780,25 @@ Sources
 
 About
 : practices
+
+
+<a id="languages-for-scripts"></a>
+### languages-for-scripts
+
+Date
+: 2026-11-19
+
+Brief
+: For our scripts and phone tools Rust (rust-script) leads; Mojo is open but unstable and has no static aarch64 binary; C# has the best IDE but a hard musl cross
+
+Question
+: The author: how do Mojo, Rust, Python, C# and F# (and Nim, Zig, Go, Kotlin script, Deno+TS) hold for our scripts - reliability, single-file ergonomics, aarch64 phone binaries, IDE intelligence against Visual Studio + C#?
+
+Found
+: Mojo 1.2 (Qualcomm-owned): compiler Apache-2.0 since Aug 2026, but 1.1 and 1.2 broke code, no static linking, cross-compile stops at objects, runtime partly non-OSI, IDE without rename: not now, re-check 2027. Rust+rust-script: 5 reliability, warm 4 ms, static musl ~0.3-0.5 MB, IDE 4 (2-3 in script files; cargo -Zscript still unstable). C#: IDE 5, types 5, file-based apps cold 7 s/warm 0.19 s, NativeAOT 1.27 MB but musl-arm64 needs a cross toolchain, no cross-OS. F# fsx 1.1 s each run, IDE 3. Go: trivial cross, IDE 4, weaker errors. Deno and Kotlin: no musl phone target. Python 2 on reliability. Our shell: ~10,500 lines across five repositories, much past glue.
+
+About
+: practices
+
+Material
+: research/practices/2026-11-19/

@@ -468,3 +468,22 @@ About
 
 Opened
 : 2026-11-18
+
+
+<a id="shell-past-glue-into-rust"></a>
+### Move ideal-agent's scripts that are past glue into the Rust program
+
+Status
+: open
+
+Note
+: read-weight, workarounds, overlay-check, licence-check, start-weight, route-check, who-lands: loops and parsing in shell (decision 2026-11-19-rust-for-scripts-shell-only-glue). Each becomes a subcommand of ideal-agent with argenv (practice 43) and a test; the script stays as a one-line pointer until callers move.
+
+About
+: practices
+
+Opened
+: 2026-11-19
+
+Rank
+: 20
