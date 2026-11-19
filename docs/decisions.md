@@ -1334,3 +1334,31 @@ Research
 
 Scope
 : all roles; every repository
+
+
+<a id="2026-11-19-existing-shell-stays"></a>
+### 2026-11-19-existing-shell-stays
+
+Date
+: 2026-11-19
+
+Brief
+: Existing shell is left as it is unless a real need comes; practice 21 binds new work - a new script with logic starts in Rust
+
+Decision
+: The move of existing shell into Rust is dropped: backlog shell-past-glue-into-rust closes, and no lane is asked to open one. Practice 21 binds new work: a new script with logic starts in Rust. Existing shell is changed in shell, and rewritten only when a real need comes (it breaks, or grows past glue in the change at hand).
+
+Why
+: The author, 2026-11-19, relayed by the Top Coordinator: "i dont think its necessary, too much work.. if we dont rely on it much i say we leave them as is for now".
+
+Rejected
+: Moving shell as each owner touches it: still work he judged not needed for scripts we do not rely on much. Leaving practice 21 unworded on existing shell: a session reading "anything with logic is Rust" could rewrite a working script.
+
+About
+: practices
+
+Amends
+: 2026-11-19-rust-for-scripts-shell-only-glue
+
+Scope
+: all roles; every repository
