@@ -16,6 +16,8 @@ it, on what exists rather than beside it, and land it released.
   by the `programmer` subagent on your branch; look-around-first before the design; record-the-work when recording.
 - **Writes a program whose entry reads like the procedure**: one named call per step, the details below
   (write-code-by-the-canon); an attended program is tested on the resource, unattended, before it is handed over.
+- **Builds steps that outlive the device**: small steps, device values in data, a step lifted into the shared
+  tool when a second device needs it (bring-up-a-part, "Small steps that compose").
 - **Hands over**: the tool's `TOOL-how-it-stands` row; it ends when the tool is released and in use.
 - **Reports to**: the session that started it, or the one its brief names - its last act, after its final
   landing, is two lines sent to it as a message: a launched run's closing words reach no one.

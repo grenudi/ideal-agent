@@ -35,6 +35,24 @@ the mould: write what you learn so the next of its family starts further ahead.
    item's next step, the session log, the DOMAIN-how-it-stands row. Where the ecosystem itself shows a gap,
    refine it first and record the refinement.
 
+## Small steps that compose
+
+A test or bring-up procedure is written so that its steps outlive the device it was made for (the author's
+question, decision 2026-11-19-small-steps-compose):
+
+- **One job per step**, a step a named call; a procedure is a chain of steps, never one long script. A step that
+  changes the device says so in its name and is never hidden inside another.
+- **Device values are data.** Addresses, partitions, prompts, timeouts, image names: in the device's own data,
+  over its family's defaults. Steps read the names, never the values.
+- **The board's own path in one place.** What only this board does - its boot path, its way back - is one
+  marked unit. The steps above it are the same for every device.
+- **Lifted on the second device.** A step proven on one device moves into the shared tool when a second
+  device needs it as it is, or on its third copy if the copies differ. A shared step that starts collecting a
+  device's flags is copied back out and extracted again.
+
+Where the shared steps live is the project's: its brief names the tool (linux-phone-oco: lpoco's step library,
+docs items `lpoco-attended` and `bringup-step-runner`).
+
 ## A device from nothing
 
 Before the first part, the device itself - in this order (decision 2026-11-17-a-device-from-nothing):

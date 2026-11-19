@@ -824,3 +824,25 @@ About
 
 Material
 : research/keeper/2026-11-19/
+
+
+<a id="steps-that-compose"></a>
+### steps-that-compose
+
+Date
+: 2026-11-19
+
+Brief
+: LAVA, pytest, Ansible and labgrid keep steps in code and device values in layered data; share a step on its second use as is, or its third copy
+
+Question
+: The author: are test procedures small so they can be chained and extracted into general tools for any device - and is that in our structures? How do LAVA, pytest, Ansible, labgrid split steps from device values, and when do they share a step?
+
+Found
+: All split steps (templates, fixtures, roles, drivers and strategies) from device values (device dictionaries, parametrisation, host_vars, environment YAML) layered over family defaults; board-specific code sits in one marked unit (a labgrid strategy, a LAVA device-type template). Share on the third copy (rule of three), or on a second identical one; a shared step growing flags goes back to its callers (Metz). ideal-agent had only pieces: practice 20, bring-up-a-part, the attended decision.
+
+About
+: keeper
+
+Material
+: research/keeper/2026-11-19/
