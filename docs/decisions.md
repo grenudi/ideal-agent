@@ -1393,3 +1393,31 @@ Amends
 
 Scope
 : coordinator, lane-coordinator, keeper, builder
+
+
+<a id="2026-11-19-small-steps-compose"></a>
+### 2026-11-19-small-steps-compose
+
+Date
+: 2026-11-19
+
+Brief
+: Test and bring-up procedures are chains of small steps with device values as data; a step proven on one device is lifted into the shared tool when a second needs it
+
+Decision
+: bring-up-a-part gains "Small steps that compose": one job per step, a chain not a script, device values in the device data over family defaults, the board's own path one marked unit, a step lifted into the shared tool on the second device that needs it as is (third copy if the copies differ), a shared step growing a device's flags copied back out. keep-a-shared-resource "An attended step", write-code-by-the-canon and the builder card point to it. Where the shared steps live is the project's: linux-phone-oco names lpoco's step library (docs lpoco-attended, bringup-step-runner).
+
+Why
+: The author, 2026-11-19, relayed by the Top Coordinator: "is test procedures are small so that they can be later on chained together and extracted into general tools that will work for any device ? do we have that reflected somewhere in our structures ?" - it was only in pieces (practice 20, bring-up-a-part, 2026-11-19-attended-one-command-away). Research steps-that-compose.
+
+Rejected
+: A new practice: practice 20 already counts hand-work into tools; the how belongs in the bring-up method that every builder and keeper of a device loads. Sharing every step from the start: Metz - the wrong abstraction costs more than a copy, and one device does not show which values vary. Writing the step library here: device work, lpoco's (orchestration's lpoco-attended).
+
+About
+: keeper
+
+Research
+: steps-that-compose
+
+Scope
+: builder, keeper, lane-coordinator

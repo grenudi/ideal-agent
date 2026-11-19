@@ -29,6 +29,10 @@ cite the id when you choose (decision 2026-11-17-a-programmer-consulted-like-a-r
   `main` is the steps in order, one plainly named call each, every one stopping the run when it fails; parsing,
   plumbing and retries live in the modules below (Composed Method; the stepdown rule). A program a person
   attends is that checklist, with its prompts, holds and way back as steps.
+- **Steps compose; values are data** (decision 2026-11-19-small-steps-compose): a step does one job and reads a
+  device's or a host's values from data, never from its own code; what one board alone needs is one marked
+  unit. Shared on the second use as it is, on the third if the copies differ; a shared step that grows a
+  caller's flags goes back to its callers (Sandi Metz: the wrong abstraction costs more than a copy).
 - **Debts only shrink** (`ratchet`): a change leaves the code it touched better by the canon, not worse.
 - **A person's attention only where it must be** (`converge-and-ask-only-on-change`): a tool run again with
   nothing changed changes nothing and asks nothing, and knows what it did.

@@ -120,6 +120,8 @@ A step a person must attend - his hands or his eyes - costs his time, so it is r
   now", says how; decision 2026-11-18-a-witnessed-go-is-data), puts what he was told in the item's note, and
   has the keeper launched before he is called; the keeper says "ready" when the program is at its first
   prompt. The go is for the program's run. Whichever keeper takes it runs that command, and nothing else.
+- **Built of small steps.** The program is a chain of small steps, with the device's values kept as data, so its
+  steps serve the next device too (bring-up-a-part, "Small steps that compose").
 - **A hold, never a live fix.** A step that fails stops the run, and the keeper reports what it saw to its
   lane coordinator, for the person. Nothing is typed by hand while he waits. A fix is made to the program,
   without him, and then a new go. A runner that dies mid-run ends that run; the same program starts again,
