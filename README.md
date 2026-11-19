@@ -71,4 +71,6 @@ domain part is now its `ideal-agent-linux-phone-oco/` folder. Why it moved: [dec
 
 ## Licence
 
-MIT.
+MIT OR Apache-2.0, at your option ([LICENSE-MIT](LICENSE-MIT), [LICENSE-APACHE](LICENSE-APACHE)) - the program, its
+scripts and hooks, the skills, role cards and practices, and the knowledge base alike; per path in
+[REUSE.toml](REUSE.toml), kept whole by `scripts/licence-check` in CI.
