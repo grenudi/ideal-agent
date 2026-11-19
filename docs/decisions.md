@@ -1306,3 +1306,31 @@ About
 
 Scope
 : ideal-agent
+
+
+<a id="2026-11-19-rust-for-scripts-shell-only-glue"></a>
+### 2026-11-19-rust-for-scripts-shell-only-glue
+
+Date
+: 2026-11-19
+
+Brief
+: Rust stays the language for our logic and scripts; shell is only one-off glue; Mojo not now (re-check 2027); no second scripting language
+
+Decision
+: Practice 21 is tightened: shell only for one-off glue (a few commands in order, no parsing, no loops over data, no functions); anything with logic is Rust - rust-script for one file, a Rust tool for what repeats. No second language is adopted. Existing shell past glue moves to Rust as each owner touches it (backlog shell-past-glue-into-rust here; each lane its own), not in one rewrite. The canon does not change: it holds principles, and a language choice is our practice.
+
+Why
+: The author's remark (2026-11-19) and research languages-for-scripts: Rust scores highest on reliability and on static aarch64-musl phone binaries, warm script start 4 ms; its IDE is one step below Roslyn, closing as cargo scripts stabilise.
+
+Rejected
+: Mojo: 1.1 and 1.2 broke code, no static binaries, cross-compile stops at objects, part of it non-OSI - against "never depends on what is not open and stable". C#/F# beside Rust: the best IDE (Visual Studio is the benchmark), but a second toolchain, a 7 s cold start, and a musl-arm64 cross that needs a sysroot; worth it only if IDE outweighs one toolchain, and with Rust at IDE 4 it does not. Go: easiest cross, but errors are easy to drop and no inline deps; a second language for little gain. Deno, Kotlin: no musl phone target. Rewriting all shell now: ~10,500 lines; moving it as touched follows practice 20.
+
+About
+: practices
+
+Research
+: languages-for-scripts
+
+Scope
+: all roles; every repository
