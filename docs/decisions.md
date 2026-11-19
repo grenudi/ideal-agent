@@ -1421,3 +1421,25 @@ Research
 
 Scope
 : builder, keeper, lane-coordinator
+
+
+<a id="2026-11-19-large-outputs-on-disk"></a>
+### 2026-11-19-large-outputs-on-disk
+
+Date
+: 2026-11-19
+
+Brief
+: Large outputs go on disk under AGENT_BUILD (~/.cache/agent-build/RUN), with TMPDIR there; /tmp is a RAM tmpfs for small scratch files only
+
+Decision
+: agent-env exports AGENT_BUILD=~/.cache/agent-build/RUN and TMPDIR=AGENT_BUILD/tmp, so kernel builds, images, package trees, cargo install builds and mktemp land on disk. A cargo target stays in its worktree (on disk, made by branch); CARGO_TARGET_DIR is left alone.
+
+Why
+: The lab machine's /tmp is a 16 GB RAM tmpfs that session scratchpads share; it reached 98% on 2026-11-19 from old builders' cargo targets and kernel and image copies. The author freed disk (500+ GB). The Top Coordinator asked that it hold without anyone remembering it.
+
+Rejected
+: A global CARGO_TARGET_DIR: packaging scripts in tad-engine, lab-agent, snapall and lab-tools read ./target/release and would break. A line in briefs only: it holds only while remembered.
+
+Scope
+: every agent shell (agent-env)

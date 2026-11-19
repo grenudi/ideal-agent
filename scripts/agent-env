@@ -15,6 +15,10 @@
 #                  ~/.local/share/agent-worktrees/REPO/NAME, and you moved there - the shared clone is never
 #                  written (the guard refuses it; decision 2026-11-18-sessions-write-in-their-own-worktree)
 #   land           land the current branch: its PR, every check, the merge, main read back (lab-machine's land)
+#   AGENT_BUILD    where large outputs go - kernel builds, images, package trees: on disk, ~/.cache/agent-build/RUN
+#                  (RUN as in AGENT_NAME), and TMPDIR under it, so a cargo install or a mktemp lands there too.
+#                  /tmp is a RAM tmpfs the session scratchpads share: small files only. A cargo target stays in
+#                  its worktree (on disk, by branch); CARGO_TARGET_DIR is not moved, scripts read ./target
 
 case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) PATH="$HOME/.local/bin:$PATH" ;; esac
 case ":$PATH:" in *":$HOME/.cargo/bin:"*) ;; *) PATH="$HOME/.cargo/bin:$PATH" ;; esac
@@ -46,6 +50,11 @@ fi
 export GIT_AUTHOR_EMAIL GIT_COMMITTER_EMAIL="${GIT_COMMITTER_EMAIL:-$GIT_AUTHOR_EMAIL}"
 # a release pull request is landed on its own (land --release), not with every change
 export LAND_RELEASE="${LAND_RELEASE:-0}"
+# large outputs on disk, not in /tmp (a RAM tmpfs the scratchpads share; it filled to 98% on 2026-11-19)
+_ia_run=$(printf "%s" "${CLAUDE_CODE_SESSION_ID:-}" | tr -dc "0-9a-f" | cut -c1-6)
+export AGENT_BUILD="${AGENT_BUILD:-${XDG_CACHE_HOME:-$HOME/.cache}/agent-build/${_ia_run:-shell}}"
+mkdir -p "$AGENT_BUILD/tmp" 2>/dev/null && export TMPDIR="$AGENT_BUILD/tmp"
+unset _ia_run
 
 branch() {
     [ $# -eq 1 ] || { echo "usage: branch NAME" >&2; return 2; }
