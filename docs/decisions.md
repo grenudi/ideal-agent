@@ -1443,3 +1443,31 @@ Rejected
 
 Scope
 : every agent shell (agent-env)
+
+
+<a id="2026-11-19-roles-act-on-origin-main"></a>
+### 2026-11-19-roles-act-on-origin-main
+
+Date
+: 2026-11-19
+
+Brief
+: A role acts on origin/main: the start writes its brief from main to a session file and prints a pointer; the guard refuses reads in a shared clone behind origin/main
+
+Decision
+: 1. The role start writes the brief, read from its repository's origin/main, whole to the session's file under ~/.local/state/ideal-agent/sessions, headed by its path and main's commit, and prints a pointer and its first paragraph, so the start stays under the app's 10,000-character hook-output cap. 2. The guard refuses, in a shared clone's main checkout whose HEAD is behind its local origin/main (no fetch), any command but git, branch and those that only look, a path there named in a command, and Read, Grep and Glob of its paths - naming a worktree of one's own, git show origin/main:PATH and git pull --ff-only; SHARED_CLONE_OK=1 lets a deliberate one through.
+
+Why
+: linux-phone-oco measured it (linux-phone-oco/docs research stale-clones-where-roles-read): the start's output, 10.6 KB for a builder, was over the cap in 203 of 333 starts, so only a 2 KB preview arrived and 200 of 333 read the brief from the stale disk copy; reads in shared clones 41 and 64 behind led to a missed row and a redone item. Others keep workers off a stale view by reading the source (CI checkouts, GitOps) and refusing when it does not match (If-Match): its decision 2026-11-19-roles-read-origin-main-not-shared-clones.
+
+Rejected
+: Shortening card and practices to fit the brief inline: briefs reach 10 KB on their own. Printing the brief whole and hoping: the cap is the app's. Fetching in the guard: a network call on every read; the clone's origin/main is as new as the last worktree add. A timer keeping clones on main (lab-tools host-clones-fresh): misses clones on a branch or detached, lands as a convenience only. Refusing only tad: the brief read is a Read, not tad.
+
+About
+: hooks
+
+Scope
+: every role session; ideal-agent guard and start; linux-phone-oco's briefs
+
+Tracked by
+: guard-refuses-stale-clone-reads

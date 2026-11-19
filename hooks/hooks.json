@@ -1,5 +1,5 @@
 {
-  "description": "The ways held when they are tried: no git push to main, no tad sql that writes, no Python; the inbox at every session start; at the first prompt the role its brief names - its card and only its practices - or every practice.",
+  "description": "The ways held when they are tried: no git push to main, no tad sql that writes, no Python, no reads in a shared clone behind its origin/main; the inbox at every session start; at the first prompt the role its brief names - its card and only its practices - or every practice.",
   "hooks": {
     "SessionStart": [
       {
@@ -17,7 +17,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash",
+        "matcher": "Bash|Read|Grep|Glob",
         "hooks": [
           { "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ideal-agent\" guard", "timeout": 10 }
         ]

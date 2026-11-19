@@ -16,7 +16,9 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
    practices, each its first sentence; with no role named, every practice. Each whole, with its reason, only
    when one bears on a choice you are making: `scripts/ideal-agent practices`.
 2. **Your brief's first paragraph** - what the project adds to the role (its agent folder,
-   `ideal-agent-PROJECT/`). The rest of the brief only when a step of yours needs it.
+   `ideal-agent-PROJECT/`). The start gives it from its repository's main, whole in a file of your session
+   (it names the file and the commit); the rest of the brief from that file, only when a step of yours needs
+   it - never from the `Brief:` path's copy, which may be behind main.
 3. **Your task's subject, in summary** - `tad q about --subject S` (it leads with the summary and gives each
    record by its brief), or the top of your queue (`tad q next --about S`, a role's queue query). That is
    enough to act.

@@ -118,14 +118,20 @@ pub fn start(given: &Given) -> Result<()> {
             brief: None,
         };
         roles::remember(session, Some(&named));
-        print!("{}", roles::render(root, &named, &text, &from_where));
+        print!(
+            "{}",
+            roles::render(root, session, &named, &text, &from_where)
+        );
     } else if let Some(kept) = (source != "startup")
         .then(|| roles::recall(session))
         .flatten()
     {
         // a resume, a compaction or a clear reads again what this session was given
         match kept {
-            Some(named) => print!("{}", roles::render(root, &named, &text, &from_where)),
+            Some(named) => print!(
+                "{}",
+                roles::render(root, session, &named, &text, &from_where)
+            ),
             None => print_all(&text, &from_where),
         }
     } else if session.is_empty() {
@@ -141,7 +147,7 @@ pub fn start(given: &Given) -> Result<()> {
         println!("They come with your first prompt: your role's card and only its practices when the brief names a role (`Role: NAME` - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol), else every practice.");
     }
     println!(
-        "\nThe ideal agent's hooks refuse git push to main and python/pip (ideal-agent guard); its skills say how to start, land, record and change shared hardware."
+        "\nThe ideal agent's hooks refuse git push to main, python/pip, and reads in a shared clone behind its origin/main (ideal-agent guard); its skills say how to start, land, record and change shared hardware."
     );
     Ok(())
 }
@@ -160,7 +166,7 @@ pub fn role(given: &Given) -> Result<()> {
             roles::remember(session, Some(&named));
             print!(
                 "{}",
-                roles::render(given.root.as_deref(), &named, &text, &from_where)
+                roles::render(given.root.as_deref(), session, &named, &text, &from_where)
             );
         }
         None => {
