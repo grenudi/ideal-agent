@@ -31,5 +31,7 @@ The device is the reference test, shared by every session; a stranded device cos
 - **Results file themselves.** The device measures itself after every boot and the conveyor files the
   report. Never type a status a machine can measure; a person's witness goes in the judged field and notes.
   What is not measured is not known yet - never broken.
-- **Witnessed tests.** Before anything the author must hear or see, say what to expect and what to check,
-  and wait for his go. Keep sounds quiet. Notify urgently only when his hands or eyes are needed.
+- **Attended tests.** Anything the author must hear, see or touch is one command away before he is asked:
+  a program, tested without him, that says what to expect and what to check and waits for his go
+  (keep-a-shared-resource, "An attended step"). Keep sounds quiet. Notify urgently only when his hands or
+  eyes are needed.

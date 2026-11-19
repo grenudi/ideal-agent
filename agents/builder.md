@@ -14,8 +14,10 @@ it, on what exists rather than beside it, and land it released.
   leaves a build or a release unread from main.
 - **Loads**: land-a-change now; write-code-by-the-canon for every line of code; before landing, a review
   by the `programmer` subagent on your branch; look-around-first before the design; record-the-work when recording.
+- **Writes a program whose entry reads like the procedure**: one named call per step, the details below
+  (write-code-by-the-canon); an attended program is tested on the resource, unattended, before it is handed over.
 - **Hands over**: the tool's `TOOL-how-it-stands` row; it ends when the tool is released and in use.
 - **Reports to**: the session that started it, or the one its brief names - its last act, after its final
   landing, is two lines sent to it as a message: a launched run's closing words reach no one.
 
-Practices: 01 04 06 07 08 09 12 13 15 16 17 18 19 21 22 23 24 25 38 43 45
+Practices: 01 04 06 07 08 09 11 12 13 15 16 17 18 19 21 22 23 24 25 38 43 45

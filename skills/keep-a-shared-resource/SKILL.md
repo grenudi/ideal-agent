@@ -105,10 +105,22 @@ A lane starts its own sessions without anyone's click (decision 2026-11-17-a-lan
   lighter model) or a read-only look; a launcher is for work that changes something or takes long.
 - How a launcher is made and run in your harness: ideal-agent's base, `tad q about --subject claude-code`.
 
-## A witnessed step, for a launched keeper
+## An attended step
 
-A launched run hears no message, so a person's go reaches it as data (decision
-2026-11-18-a-witnessed-go-is-data): the item is marked `--witness person`, and the lane coordinator that heard
-the go opens it with `ikb backlog-go` and its window - the base's AGENTS.md, "what you may take now", says
-how - putting what the person was told to expect in the item's note. `tad q ready` offers the item only while
-the go is open; the keeper takes it from there, and reports what was seen at once, for the person.
+A step a person must attend - his hands or his eyes - costs his time, so it is ready before he is asked
+(practice 11; decision 2026-11-19-attended-one-command-away). Like a launch sequence, it has three parts.
+
+- **Prepared without him.** The lane coordinator has the whole sequence written as one program run with one
+  command (a builder; its entry reads like the procedure - write-code-by-the-canon), with its checks, its
+  prompts to him, its holds and its way back. The program is dry-run, and every safe part is run for real on
+  the resource. Only then does the lane coordinator tell its coordinator "ready, one command away", with what
+  to expect, what to check and how long it takes.
+- **A go for that run.** The item is marked `--witness person` and names the program and its command. The
+  lane coordinator opens the go with `ikb backlog-go` and its window (the base's AGENTS.md, "what you may take
+  now", says how; decision 2026-11-18-a-witnessed-go-is-data), puts what he was told in the item's note, and
+  has the keeper launched before he is called; the keeper says "ready" when the program is at its first
+  prompt. The go is for the program's run. Whichever keeper takes it runs that command, and nothing else.
+- **A hold, never a live fix.** A step that fails stops the run, and the keeper reports what it saw to its
+  lane coordinator, for the person. Nothing is typed by hand while he waits. A fix is made to the program,
+  without him, and then a new go. A runner that dies mid-run ends that run; the same program starts again,
+  and he is told before it does.
