@@ -67,19 +67,6 @@ For
 : agents
 
 
-<a id="11-heads-up"></a>
-### 11-heads-up
-
-Practice
-: Before a test a person must witness, say what to expect and what to check, and wait for their go.
-
-Why
-: Their time and attention are the scarcest thing in the lab.
-
-For
-: agents
-
-
 <a id="12-unknown"></a>
 ### 12-unknown
 
@@ -642,3 +629,16 @@ For
 
 Shown in
 : creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own, open-commons-observatory/ecosystem/decisions:2026-11-15-the-way-in-for-the-conversation, grenudi/ideal-agent/decisions:2026-11-19-python-tools-run-not-written, grenudi/ideal-agent/decisions:2026-11-19-rust-for-scripts-shell-only-glue, grenudi/ideal-agent/decisions:2026-11-19-existing-shell-stays
+
+
+<a id="11-heads-up"></a>
+### 11-heads-up
+
+Practice
+: Ask a person to attend only when everything is prepared and one launch away: the attended sequence written as data a runner executes (steps, checks that stop it, the points where the person acts), dry-run and tested by you first. Then say what to expect and what to check, and wait for their go.
+
+Why
+: Their time and attention are the scarcest thing in the lab. The author, 2026-11-19: "please, ask me to attent only when everything is preped 1 launch sequence away with test sequences being prepered as rust-script or something and they test them before asking me to attend".
+
+For
+: agents

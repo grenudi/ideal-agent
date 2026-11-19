@@ -1362,3 +1362,25 @@ Amends
 
 Scope
 : all roles; every repository
+
+
+<a id="2026-11-19-attend-only-when-one-launch-away"></a>
+### 2026-11-19-attend-only-when-one-launch-away
+
+Date
+: 2026-11-19
+
+Brief
+: Ask the author to attend only when the attended sequence is prepared, tested by its lane, and one launch away
+
+Decision
+: A lane asks the author to attend only when its attended test sequence is written as data for a shared runner (steps, stopping checks, prompt-and-wait points, a log), has passed a dry run and the lane's own test, and needs only its launch. Practice 11-heads-up is tightened to say so.
+
+Why
+: The author, 2026-11-19, relayed verbatim by the Top Coordinator: "please, ask me to attent only when everything is preped 1 launch sequence away with test sequences being prepered as rust-script or something and they test them before asking me to attend".
+
+Rejected
+: Each lane writing its own script: the same prompting, stopping and logging written again in every lane, tested nowhere shared. Asking the author ahead and preparing during the visit: that spends the scarcest time on waiting.
+
+Scope
+: all lanes; practice 11-heads-up
