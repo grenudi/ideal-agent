@@ -67,19 +67,6 @@ For
 : agents
 
 
-<a id="11-heads-up"></a>
-### 11-heads-up
-
-Practice
-: Before a test a person must witness, say what to expect and what to check, and wait for their go.
-
-Why
-: Their time and attention are the scarcest thing in the lab.
-
-For
-: agents
-
-
 <a id="12-unknown"></a>
 ### 12-unknown
 
@@ -642,3 +629,19 @@ For
 
 Shown in
 : creation-guidelines/lab-agent/decisions:2026-11-15-a-job-says-only-what-is-its-own, open-commons-observatory/ecosystem/decisions:2026-11-15-the-way-in-for-the-conversation, grenudi/ideal-agent/decisions:2026-11-19-python-tools-run-not-written, grenudi/ideal-agent/decisions:2026-11-19-rust-for-scripts-shell-only-glue, grenudi/ideal-agent/decisions:2026-11-19-existing-shell-stays
+
+
+<a id="11-heads-up"></a>
+### 11-heads-up
+
+Practice
+: Ask a person to attend only when the step is one command away: the whole sequence written as a program whose entry reads like the procedure, dry-run and every safe part run for real without them. Then say what to expect and what to check, and wait for their go - a go for that prepared run. Nothing is typed by hand while they wait: a failing step holds the run, and the fix goes into the program.
+
+Why
+: A person's presence is the scarcest thing in the work. The author, 2026-11-19, after sitting at the phones while a keeper fumbled its arguments and a go reached a keeper that was not the attended one: "please, ask me to attent only when everything is preped 1 launch sequence away with test sequences being prepered as rust-script or something and they test them before asking me to attend", and "make sure the rust program reads cleanly and simply on the top entry file level, like any other simple scripted procedure would read".
+
+For
+: agents and people
+
+Shown in
+: grenudi/ideal-agent/decisions:2026-11-19-attended-one-command-away

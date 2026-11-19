@@ -27,7 +27,8 @@ the mould: write what you learn so the next of its family starts further ahead.
    proven, the change goes where every flash carries it. A step done a second time by hand is a tool to
    build.
 7. **Proven by the device.** Its own report turns the part's status; a person's witness goes in judged and
-   notes. Then look at the face.
+   notes - an attended proof is one prepared command (keep-a-shared-resource, "An attended step"). Then
+   look at the face.
 8. **Upstream.** A fix that works becomes a series ready to send. Sending is the author's decision, in his
    name: say it waits for him; never send mail yourself.
 9. **Recorded as you go**, in the project's data: decisions with what was rejected, research, the backlog

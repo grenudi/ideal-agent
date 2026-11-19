@@ -1362,3 +1362,34 @@ Amends
 
 Scope
 : all roles; every repository
+
+
+<a id="2026-11-19-attended-one-command-away"></a>
+### 2026-11-19-attended-one-command-away
+
+Date
+: 2026-11-19
+
+Brief
+: A person is asked to attend only when the step is one prepared, tested command away; the go is for that run; a failure holds the run, never a live fix
+
+Decision
+: Practice 11 is tightened. Each role carries its own part: the coordinator calls the author only on a lane's "ready, one command away"; the lane coordinator has the program built and tested without him, opens the go on the item naming the program, and launches the keeper before he is called; the builder writes a program whose entry reads like the procedure; the keeper runs only the prepared command and holds on failure. keep-a-shared-resource "An attended step" holds the whole; change-a-device, bring-up-a-part and write-code-by-the-canon point to it. ideal-agent's own main.rs now reads as its procedure (plumbing moved to cli.rs; every output byte-identical).
+
+Why
+: The author's two rules of 2026-11-19 (practice 11 quotes them) and research attended-steps: rehearse before asking, one action to start, an approval bound to one run, holds instead of improvising.
+
+Rejected
+: A run id in every go, as GitHub and Jenkins bind theirs: the go on an item that names its program already binds it to that program; whether a per-run id is needed is for the shared runner (docs lpoco-attended) to show. Keeping practice 11 as a heads-up only: it let a person wait while a procedure was written. Writing the attended runner here: it is device work, the lanes' and lpoco's (surya-lab #388/#390, google-walleye-lab #411, docs #634); ideal-agent holds the general rule.
+
+About
+: keeper
+
+Research
+: attended-steps
+
+Amends
+: 2026-11-18-a-witnessed-go-is-data
+
+Scope
+: coordinator, lane-coordinator, keeper, builder

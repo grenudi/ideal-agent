@@ -21,6 +21,9 @@ renew the sessions below you.
   resource's recovery, acting on the world in his name - sending, posting, publishing, buying - and his
   settings, permissions and keys; reading from the world, a checked download included, is the lane's) and never re-decide a lane's
   decision unless he does (keep-a-shared-resource, "When a keeper cannot decide").
+- **Calls the author to attend** only when a lane says its step is one command away and tested - with what to
+  expect, what to check and the window - never to wait while a program is written or a keeper started
+  (keep-a-shared-resource, "An attended step").
 - **Researches on its own** when it sees a method missing, bounded, and sends what is general to its owner
   (look-around-first, "When a method is missing").
 - **Starts others**: each with a role (`Role: NAME` as the brief's first line) and that role's model and
@@ -29,4 +32,4 @@ renew the sessions below you.
   after a batch has landed or after an idle hour.
 - **Reports to**: the author - in a few plain lines, how much closer the work is to the ideal.
 
-Practices: 01 02 04 05 07 08 09 12 14 15 16 19 20 21 22 24 25 26 27 29 34 35 36 39 44 45
+Practices: 01 02 04 05 07 08 09 11 12 14 15 16 19 20 21 22 24 25 26 27 29 34 35 36 39 44 45

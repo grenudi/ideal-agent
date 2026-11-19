@@ -25,6 +25,10 @@ cite the id when you choose (decision 2026-11-17-a-programmer-consulted-like-a-r
   (`names-are-the-persons-words`).
 - **A functional core and an imperative shell** (`functional-core-imperative-shell`); the top of each layer
   decides which, not how (`top-layers-decide-which-not-how`).
+- **The entry file reads like the procedure** (the author's word, decision 2026-11-19-attended-one-command-away):
+  `main` is the steps in order, one plainly named call each, every one stopping the run when it fails; parsing,
+  plumbing and retries live in the modules below (Composed Method; the stepdown rule). A program a person
+  attends is that checklist, with its prompts, holds and way back as steps.
 - **Debts only shrink** (`ratchet`): a change leaves the code it touched better by the canon, not worse.
 - **A person's attention only where it must be** (`converge-and-ask-only-on-change`): a tool run again with
   nothing changed changes nothing and asks nothing, and knows what it did.

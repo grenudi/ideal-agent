@@ -802,3 +802,25 @@ About
 
 Material
 : research/practices/2026-11-19/
+
+
+<a id="attended-steps"></a>
+### attended-steps
+
+Date
+: 2026-11-19
+
+Brief
+: Others rehearse a procedure before the person is asked, run it with one action, bind an approval to one run, and hold on failure - never improvise
+
+Question
+: How do others organise a step a person must attend - HIL rigs, launch countdowns and checklists, runbooks as code, human-gated pipeline steps, procedures as code that read like a checklist - and what let ours waste the author's presence?
+
+Found
+: Ours: the program was built and the keeper started at his arrival; the go went to whichever keeper was alive; fixes were typed live. Others: HIL runs are scripted from a known state; countdowns have built-in holds and a go/no-go poll, then the sequencer runs the terminal count; checklists use pause points (do-verify); SRE playbooks give ~3x faster recovery than improvising; do-nothing scripts are steps as functions; GitHub, Jenkins, Spinnaker and GitLab bind an approval to one run; Composed Method and the stepdown rule make main read as the procedure.
+
+About
+: keeper
+
+Material
+: research/keeper/2026-11-19/
