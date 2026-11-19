@@ -635,10 +635,10 @@ Shown in
 ### 11-heads-up
 
 Practice
-: Ask a person to attend only when everything is prepared and one launch away: the attended sequence written as data a runner executes (steps, checks that stop it, the points where the person acts), dry-run and tested by you first. Then say what to expect and what to check, and wait for their go.
+: Ask a person to attend only when everything is prepared and one launch away: the attended procedure written as a short entry file of named steps (what to run, checks that stop it, the points where the person acts) on a shared runner, dry-run and tested by you first. Then say what to expect and what to check, and wait for their go.
 
 Why
-: Their time and attention are the scarcest thing in the lab. The author, 2026-11-19: "please, ask me to attent only when everything is preped 1 launch sequence away with test sequences being prepered as rust-script or something and they test them before asking me to attend".
+: Their time and attention are the scarcest thing in the lab. The author, 2026-11-19: "please, ask me to attent only when everything is preped 1 launch sequence away with test sequences being prepered as rust-script or something and they test them before asking me to attend", and of the runner: "make sure the rust program reads cleanly and simply on the top entry file level, like any other simple scripted procedure would read".
 
 For
 : agents
