@@ -1281,3 +1281,28 @@ Amends
 
 Scope
 : all roles; the guard
+
+
+<a id="2026-11-19-one-licence-for-the-plugin"></a>
+### 2026-11-19-one-licence-for-the-plugin
+
+Date
+: 2026-11-19
+
+Brief
+: ideal-agent is MIT OR Apache-2.0 throughout - program, scripts, skills, role cards, practices, base - per path in REUSE.toml, held by a shell check in CI
+
+Decision
+: LICENSE becomes LICENSE-MIT beside LICENSE-APACHE; Cargo.toml and plugin.json say MIT OR Apache-2.0; REUSE.toml annotates every path; README names the licences; scripts/licence-check (shell) fails CI when a tracked file has neither a REUSE.toml path nor an SPDX-License-Identifier line, or a named licence has no text. The prose too is MIT OR Apache-2.0, the call linux-phone-oco docs decision 2026-11-19-licences-for-our-repositories left to the owner.
+
+Why
+: The author's word "Yes, as suggested", relayed by orchestration, on docs decision 2026-11-19-licences-for-our-repositories: code MIT OR Apache-2.0, with the owner choosing for prose. Here the prose is the plugin's behaviour: the program reads data/practices.json and ships it in the crate, and the skills and cards load as the plugin runs - one licence keeps the package whole.
+
+Rejected
+: CC-BY-SA-4.0 for skills, cards and the base: share-alike in a package beside permissive code splits one plugin into two terms, and the crate ships practices.json. REUSE lint: a Python tool, which our work must not depend on (practice 21). One annotation for all paths (**): a new top-level folder would pass unseen; three named groups make it ask.
+
+About
+: ideal-agent
+
+Scope
+: ideal-agent

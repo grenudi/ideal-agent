@@ -39,3 +39,9 @@ jobs:
           done
       - name: Scripts are sound
         run: sh -n scripts/ideal-agent && sh -n scripts/install-tad.sh && shellcheck scripts/ideal-agent scripts/install-tad.sh
+  licences:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Every tracked file has a licence (REUSE.toml or an SPDX line)
+        run: sh scripts/licence-check

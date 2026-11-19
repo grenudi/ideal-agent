@@ -1,0 +1,20 @@
+# The licences of this repository, per path (https://reuse.software/spec-3.3/#reusetoml). Everything here - the
+# program, its scripts and hooks, the skills, role cards and practices it ships, and its knowledge base - is
+# MIT OR Apache-2.0 (decision 2026-11-19-one-licence-for-the-plugin). scripts/licence-check holds every tracked
+# file to one annotation below, or to an SPDX-License-Identifier line of its own.
+version = 1
+
+[[annotations]]
+path = ["src/**", "scripts/**", "hooks/**", "bin/**", ".github/**", ".claude-plugin/**", "Cargo.toml", "Cargo.lock", "Makefile", "rust-toolchain.toml", ".gitignore"]
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "MIT OR Apache-2.0"
+
+[[annotations]]
+path = ["skills/**", "agents/**", "README.md", "AGENTS.md", "REUSE.toml"]
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "MIT OR Apache-2.0"
+
+[[annotations]]
+path = ["data/**", "docs/**", "queries/**", "records/**", "research/**", "tables.toml", "idealkb.toml", "oco.toml"]
+SPDX-FileCopyrightText = "2026 grenudi"
+SPDX-License-Identifier = "MIT OR Apache-2.0"
