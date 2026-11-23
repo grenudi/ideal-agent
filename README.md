@@ -1,3 +1,10 @@
+---
+what: how an agent works in the open commons - its practices, roles and skills, and the plugin that holds them
+kept by: ideal-agent-builder (another session sends it the change)
+records in: this repository's tad base (data/, through ikb)
+branches: ROLE/WHAT, one change each, deleted when it lands; main the only lasting one
+---
+
 # Ideal agent
 
 How an agent works in the open commons, written once: an open, transparent database of the practices every
@@ -5,6 +12,23 @@ session reads at its start, the decisions and research they rest on, and how oth
 the same know-how as one Claude Code plugin, so that any machine, project or cloud session gets the same
 agent. What is one project's domain (a device, its records, how its hard parts stand) stays in that
 project's own data; this place keeps only what is general.
+
+## Map
+
+- `agents/` - the role cards, one per role, which Claude Code also offers as subagents (no README: every .md there loads as an agent)
+- `skills/` - the methods, one folder per skill (`NAME/SKILL.md`)
+- `hooks/` - `hooks.json`: which of the program's commands each Claude Code hook runs
+- `src/` - the program (Rust): guard, start and role, practices, prune, layout-check
+- `scripts/` - `agent-env`, the shell every session starts from, and the checks run by hand or by patrol
+- `bin/` - idealkb's generic tools for a base (`install-ikb.sh`)
+- `data/` - the base: one JSON object per line per table, the source of every record
+- `records/` - the named records `ikb` writes through, one SQL file each
+- `queries/` - the named queries `tad q` answers, one SQL file each
+- `docs/` - the pages rendered from `data/` by `tad render`; never edited by hand
+- `research/` - research material, one folder per subject and date, named by its research row
+
+Never at the top: worktrees, build output, logs or notes - they live in the worktree home,
+`$AGENT_BUILD` and the research folders.
 
 ## Install
 
@@ -25,7 +49,7 @@ seconds) into the plugin's data folder; until then nothing is refused.
 | **UserPromptSubmit hook** | at a session's first prompt, the role it names (`Role: keeper`) - its card and only its practices, live from this repository's main (`data/practices.json`) - or every practice when it names none |
 | **PreToolUse hook** (Bash) | refuses a `git push` that reaches main, `tad sql` that writes (`ikb set` and `ikb remove` instead), and Python (`python`, `pip` and their kin) - in every simple command of a line, `sh -c` and `$(...)` included - and says why |
 | **skills/** | `lab-session-start`, `land-a-change`, `record-the-work`, `change-a-device`; the methods of the roles: `orchestrate-agents`, `research-a-feature`, `bring-up-a-part`, `keep-a-shared-resource`; finding your way in a tad knowledge base: `ask-a-knowledge-base`; before acting on a proposal: `look-around-first`; keeping what a fresh agent reads light: `keep-the-start-light` (measured by `scripts/start-weight` and, from a transcript, `scripts/read-weight`) |
-| **agents/** | the roles, one card each - `coordinator`, `lane-coordinator`, `orchestrator`, `keeper`, `research-lead`, `builder`, `patrol`: purpose, what it owns and never does, what it loads, its model and effort, how it hands over, whom it reports to, and its practices; and `researcher`, a read-only subagent for one question |
+| **agents/** | the roles, one card each - `coordinator`, `lane-coordinator`, `orchestrator`, `keeper`, `research-lead`, `builder`, `patrol`, `steward`: purpose, what it owns and never does, what it loads, its model and effort, how it hands over, whom it reports to, and its practices; and `researcher`, a read-only subagent for one question |
 
 A project keeps only its domain - what a role owns there, its device's tool, its places - in its agent folder
 (`ideal-agent-PROJECT/`, or the folder its AGENTS.md names). Each brief names its role on a line under its

@@ -11,9 +11,11 @@
 #                  merge keeps the name as a Co-authored-by trailer (decision 2026-11-18-a-run-signs-as-role-and-run)
 #   GH_TOKEN       the GitHub token, where ~/.config/ideal-agent/token is (mode 600, never in a repository)
 #   PATH           ~/.local/bin (land, tad, ikb, devlab) and ~/.cargo/bin first
-#   branch NAME    branch first, in a worktree of your own: a new branch NAME from origin/main, checked out under
-#                  ~/.local/share/agent-worktrees/REPO/NAME, and you moved there - the shared clone is never
-#                  written (the guard refuses it; decision 2026-11-18-sessions-write-in-their-own-worktree)
+#   branch ROLE/WHAT  branch first, in a worktree of your own: a new branch ROLE/WHAT from origin/main, checked
+#                  out under ~/.local/share/agent-worktrees/REPO/ROLE/WHAT ($AGENT_WORKTREES), and you moved there -
+#                  the shared clone is never written (the guard refuses it; decision
+#                  2026-11-18-sessions-write-in-their-own-worktree). `branch --read [CLONE]`: a detached worktree
+#                  at origin/main in the same home, to read main in; prune removes it 3 days after its last write
 #   land           land the current branch: its PR, every check, the merge, main read back (lab-machine's land)
 #   AGENT_BUILD    where large outputs go - kernel builds, images, package trees: on disk, ~/.cache/agent-build/RUN
 #                  (RUN as in AGENT_NAME), and TMPDIR under it, so a cargo install or a mktemp lands there too.
@@ -59,11 +61,21 @@ mkdir -p "$AGENT_BUILD/tmp" 2>/dev/null && export TMPDIR="$AGENT_BUILD/tmp"
 unset _ia_run
 
 branch() {
-    [ $# -eq 1 ] || { echo "usage: branch NAME" >&2; return 2; }
-    git rev-parse --git-dir > /dev/null 2>&1 || { echo "branch: not in a clone" >&2; return 1; }
-    _ia_top=$(git rev-parse --path-format=absolute --git-common-dir); _ia_top=${_ia_top%/.git}
-    _ia_dir="${AGENT_WORKTREES:-$HOME/.local/share/agent-worktrees}/$(basename "$_ia_top")/$1"
-    git -C "$_ia_top" fetch -q origin && git -C "$_ia_top" worktree add -q -b "$1" "$_ia_dir" origin/main &&
-        cd "$_ia_dir" && echo "on $1 in $_ia_dir (a worktree of your own), from origin/main $(git rev-parse --short HEAD)"
-    unset _ia_top _ia_dir
+    case "${1:-}" in
+        --read) _ia_from="${2:-.}"; _ia_name="read-$(date +%s)"; _ia_how="--detach" ;;
+        ""|-*) echo "usage: branch ROLE/WHAT | branch --read [CLONE]" >&2; return 2 ;;
+        *) [ $# -eq 1 ] || { echo "usage: branch ROLE/WHAT | branch --read [CLONE]" >&2; return 2; }
+           _ia_from=.; _ia_name=$1; _ia_how=-b ;;
+    esac
+    git -C "$_ia_from" rev-parse --git-dir > /dev/null 2>&1 || { echo "branch: $_ia_from is not in a clone" >&2; return 1; }
+    _ia_top=$(git -C "$_ia_from" rev-parse --path-format=absolute --git-common-dir); _ia_top=${_ia_top%/.git}
+    _ia_dir="${AGENT_WORKTREES:-$HOME/.local/share/agent-worktrees}/$(basename "$_ia_top")/$_ia_name"
+    git -C "$_ia_top" fetch -q --prune origin || return 1
+    if [ "$_ia_how" = --detach ]; then
+        git -C "$_ia_top" worktree add -q --detach "$_ia_dir" origin/main || return 1
+    else
+        git -C "$_ia_top" worktree add -q -b "$_ia_name" "$_ia_dir" origin/main || return 1
+    fi
+    cd "$_ia_dir" && echo "on $_ia_name in $_ia_dir (a worktree of your own), from origin/main $(git rev-parse --short HEAD)"
+    unset _ia_from _ia_name _ia_how _ia_top _ia_dir
 }

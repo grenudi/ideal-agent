@@ -5,10 +5,14 @@ description: How a change reaches main: its own branch, checks, a record, land, 
 
 # Landing a change
 
-- **Branch first, in a worktree of your own.** `branch NAME` (from the session's start, scripts/agent-env) makes a
-  worktree from origin/main and moves you there; the clone under ~/Projects stays at main for everyone who
-  reads it, and the guard refuses a commit, reset or checkout in it. Remove your worktree after `land`. Work only
-  in places your brief says you own.
+- **Branch first, in a worktree of your own.** `branch ROLE/WHAT` (from the session's start, scripts/agent-env)
+  makes a worktree from origin/main in the worktree home (~/.local/share/agent-worktrees/REPO/ROLE/WHAT) and
+  moves you there; the clone under ~/Projects stays at main for everyone who reads it, and the guard refuses a
+  commit, reset or checkout in it, and a worktree anywhere else. To read main without writing, `branch --read
+  CLONE` (detached, same home). Remove your worktree after `land`. Work only in places your brief says you own.
+- **Name the branch `ROLE/WHAT`** - your role (`keeper/`, `builder/`, `research/`, `coord/`, `orch/`,
+  `steward/`) and what the one change does (`builder/structure-homes`). It holds one change and is deleted when it
+  lands. A repository with a scheme of its own says so in its README (the kernel's `topic/`, `wip/`, `int/`).
 - **Change what you mean.** Edit the exact text that changes; rows
   through the base's named records (`tad r NAME ...`). Never copy a whole file from an older copy.
 - **Check like CI.** Rust: `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, `cargo test`. A tad place: after the last data

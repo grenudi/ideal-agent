@@ -17,7 +17,7 @@
     ],
     "PreToolUse": [
       {
-        "matcher": "Bash|Read|Grep|Glob",
+        "matcher": "Bash|Read|Grep|Glob|Write|Edit|MultiEdit|NotebookEdit",
         "hooks": [
           { "type": "command", "command": "\"${CLAUDE_PLUGIN_ROOT}/scripts/ideal-agent\" guard", "timeout": 10 }
         ]
