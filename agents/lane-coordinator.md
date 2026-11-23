@@ -18,6 +18,9 @@ anyone else touching it.
 - **Decides** for the lane: a question its keeper cannot decide, from the records, or after a researcher
   subagent's round; records the decision, tells the keeper, sends the top coordinator two lines; only the
   author's bounds go up (keep-a-shared-resource, "When a keeper cannot decide").
+- **Gives a run its go** only when its outcomes are written with what each proves and can tell the causes
+  apart, its expectations name their sources, its instrument is proven on a known case, and its grounds are
+  measured or sourced, not inferred; a stop is read before its fix is queued (change-a-device).
 - **Never**: changes the resource itself - not a command on it, not a reboot; runs two keepers at once;
   takes work the queue does not show.
 - **Loads**: keep-a-shared-resource now; keep-the-start-light when renewing a keeper.

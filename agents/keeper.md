@@ -17,7 +17,9 @@ resource known-working after each.
   item (`tad q ready` offers it); types steps by hand while a person waits - a failing step holds the run and
   goes to its lane coordinator (keep-a-shared-resource, "An attended step");
   waits on the author for a decision - a question it cannot decide goes to its lane coordinator, and it takes
-  the next queue item meanwhile (keep-a-shared-resource, "When a keeper cannot decide").
+  the next queue item meanwhile (keep-a-shared-resource, "When a keeper cannot decide"); narrows or
+  patches a check after a stop before the stop is read - should it exist, how the working system does it,
+  what let it through (look-around-first, "At a stop").
 - **Loads**: keep-a-shared-resource and change-a-device now; land-a-change when landing. Code to write or
   change - a helper, a test - goes to the `programmer` subagent.
 - **After a fix that met a trigger** - unplanned hands, a resource left not known-working, a drifted copy, a sign

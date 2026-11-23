@@ -202,22 +202,6 @@ Shown in
 : open-commons-observatory/ocoeco/decisions:2026-11-15-a-name-that-names-one-thing
 
 
-<a id="25-evidence-before-the-word"></a>
-### 25-evidence-before-the-word
-
-Practice
-: A conclusion is written from what a check counted, never before it, and what landed is read back from main. A job writes its finding from the number it computed; counts across stars are taken with every star on its main; before landing, the checks CI runs are run on the lab too (cargo fmt --check, clippy, tests); after landing, main itself is read to see it holds what was built - not the job's own say-so.
-
-Why
-: On 2026-11-12 a record ran ahead of its evidence three times, each by a different route: all links hold was written before the check ran; a count read the lab's copies as they stood, one on a branch CI had refused; and a change was recorded as landed while main held only its record - bringing every star to main for a proof had wiped the code. Each is closed by a check, not by care.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ecosystem/reflections:2026-11-14-a-sign-written-from-an-impression
-
-
 <a id="27-signs-not-problems"></a>
 ### 27-signs-not-problems
 
@@ -248,22 +232,6 @@ For
 
 Shown in
 : open-commons-observatory/ecosystem/decisions:2026-11-13-states-are-read-off-the-act, open-commons-observatory/ocoeco/decisions:2026-11-14-where-the-work-happens
-
-
-<a id="32-the-whole-is-discovered"></a>
-### 32-the-whole-is-discovered
-
-Practice
-: When something halts or does not fit, look at the whole before adding a part: what fits, what overlaps, where the gaps are, and where two things are one nature under two names or one thing reached by two routes. The whole is not changed but discovered.
-
-Why
-: The author, 2026-11-13 and 14. Looked back over that week, every overlap met was one nature under two names or one thing by two routes, and every gap a relation never drawn.
-
-For
-: agents
-
-Shown in
-: open-commons-observatory/ocoeco/decisions:2026-11-14-one-thing-by-two-routes, open-commons-observatory/ocoeco/decisions:2026-11-14-the-nature-of-a-pointing, open-commons-observatory/ecosystem/reflections:2026-11-14-the-whole-looked-at
 
 
 <a id="35-say-which-model-fits"></a>
@@ -648,3 +616,35 @@ For
 
 Shown in
 : grenudi/ideal-agent/decisions:2026-11-23-messages-between-sessions-carry-work
+
+
+<a id="32-the-whole-is-discovered"></a>
+### 32-the-whole-is-discovered
+
+Practice
+: When something halts or does not fit, look at the whole before adding a part: what fits, what overlaps, where the gaps are, and where two things are one nature under two names or one thing reached by two routes. The whole is not changed but discovered. A run that stops or a check that fails is such a halt, and is read before it is fixed: should this hindrance exist at all; how does the working system do it - its source read (Android's kernel and documentation, upstream, others' ports) and the device's own captured text, never memory; and what in our flow let it through. The fix comes after, citing what was read.
+
+Why
+: The author, 2026-11-13 and 14. Looked back over that week, every overlap met was one nature under two names or one thing by two routes, and every gap a relation never drawn. The author, 2026-11-23 (turn-2026-11-23-hindrance-is-a-sign-not-a-hurdle): instead of using a hindrance as a sign to reflect on the overall flow, sessions brainstorm with guesswork to pass over it - walleye's stage 2 checks narrowed run after run against bootloader behaviour AOSP documents (research a-stop-read-before-the-fix).
+
+For
+: agents
+
+Shown in
+: open-commons-observatory/ocoeco/decisions:2026-11-14-one-thing-by-two-routes, open-commons-observatory/ocoeco/decisions:2026-11-14-the-nature-of-a-pointing, open-commons-observatory/ecosystem/reflections:2026-11-14-the-whole-looked-at, grenudi/ideal-agent/decisions:2026-11-23-a-stop-is-read-before-the-fix
+
+
+<a id="25-evidence-before-the-word"></a>
+### 25-evidence-before-the-word
+
+Practice
+: A conclusion is written from what a check counted, never before it, and what landed is read back from main. A job writes its finding from the number it computed; counts across stars are taken with every star on its main; before landing, the checks CI runs are run on the lab too (cargo fmt --check, clippy, tests); after landing, main itself is read to see it holds what was built - not the job's own say-so. What a check expects names its source - a document, a source line, or text the device printed, captured - never a value typed from memory; and a measure counts only once proven on a case whose answer is known.
+
+Why
+: On 2026-11-12 a record ran ahead of its evidence three times, each by a different route: all links hold was written before the check ran; a count read the lab's copies as they stood, one on a branch CI had refused; and a change was recorded as landed while main held only its record - bringing every star to main for a proof had wiped the code. Each is closed by a check, not by care. On 2026-11-23 walleye lost runs to fixtures typed from memory, read pstore before proving it survives a watchdog reset, and a count of 2,138 branches came from an unchecked measure where GitHub had 68 (research a-stop-read-before-the-fix).
+
+For
+: agents
+
+Shown in
+: open-commons-observatory/ecosystem/reflections:2026-11-14-a-sign-written-from-an-impression, grenudi/ideal-agent/decisions:2026-11-23-a-stop-is-read-before-the-fix

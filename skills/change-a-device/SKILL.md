@@ -23,6 +23,18 @@ The device is the reference test, shared by every session; a stranded device cos
 - **Test first.** A check that fails for the missing part, before the fix; generic checks where any device
   runs them, the device's own beside its data. Record what a pass proves (`present` - it is there;
   `works` - it does its work): only a passing `works` test turns a part `works`.
+- **What a check expects names its source** - a document and its section, a source file and line, or text the
+  device printed, captured into a research folder - never a value typed from memory or a stand-in line. A
+  fixture is captured device text. The project's procedure tests refuse an expectation with no source.
+- **The instrument first.** A measuring path - pstore, a log, a counter, a query - is proven on a case whose
+  answer is known (a known-good boot, a forced known failure) before its answer on the unknown counts. An
+  empty reading from an unproven path says nothing.
+- **A run's go names its outcomes.** Before a device run: each outcome it can end in and what each proves,
+  the way preregistration and strong inference write them. A run whose outcomes cannot tell the causes apart
+  gets no go - add the observation that separates them first. A finding is marked measured, sourced or
+  inferred; an inferred one opens no go.
+- **A stop is read before it is fixed**: should the hindrance exist, how the working system does it (its
+  source, read), what in our flow let it through - then the fix (look-around-first, "At a stop").
 - **A held no is a gate.** When the author holds back a risky action ("wait" on probing a part, on a
   flash, on a boot), the hold becomes a check the artefact must pass - in its build and CI, and in the keeper's
   recipe before it boots or flashes - not only a record (decision 2026-11-19-a-held-no-is-a-gate). The keeper

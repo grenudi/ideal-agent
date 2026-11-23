@@ -706,3 +706,19 @@ About
 
 Opened
 : 2026-11-23
+
+
+<a id="a-stop-read-before-the-fix"></a>
+### A stop is read before its fix; checks expect sourced values; runs discriminate; instruments proven first
+
+Status
+: done
+
+Note
+: Done in plugin 0.3.71: practices 25 and 32, look-around-first 'At a stop', change-a-device, keep-a-shared-resource, bring-up-a-part, cards coordinator, lane-coordinator, keeper, builder. Next, outside this base: the steward brings linux-phone-oco's briefs and walleye's and lab-tools' procedure tests into line (a check with no source refused; a go with outcomes).
+
+About
+: practices
+
+Opened
+: 2026-11-23

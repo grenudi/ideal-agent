@@ -48,6 +48,23 @@ second time; a cluster in the patrol's "struggled with".
   and a message to its owner. The owner looks around in turn, decides, lands and reads back, and the domain
   keeps a pointer. No one changes a general practice, skill or card from a domain's place.
 
+## At a stop - read before the fix
+
+A run that stops, or a check that fails, is a sign before it is a task (practice 32; decision
+2026-11-23-a-stop-is-read-before-the-fix). The patch is within reach; reading comes first. Before any change to
+the check, the procedure or the device, the stop's record answers:
+
+1. **Should this hindrance exist at all?** What would the flow look like without it - is the check, the step or
+   the expectation itself the thing that is wrong?
+2. **How does the working system do it?** Read, do not reason: the source of what behaved (the program's own
+   code, Android's kernel and its documentation, upstream, others' ports of the same device or SoC) and the
+   device's own printed text, captured. Cite what was read.
+3. **What in our flow let it through?** An expectation with no source, an instrument never proven on a known
+   case, a run whose outcomes could not tell the causes apart, a finding inferred and taken as measured.
+
+Then the fix, citing (2); and where (3) names a gap in the flow, the flow is refined in the same change - the
+class question below, asked now, not after.
+
 ## After a fix - the class question
 
 A fix answers one incident; the role that made it also asks what the incident was an instance of

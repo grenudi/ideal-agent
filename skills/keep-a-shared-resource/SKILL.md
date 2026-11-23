@@ -37,7 +37,9 @@ present or works), and what it risks. The keeper takes it; you are told through 
 3. **Take the next item by the weakest link** - the item a milestone rests on, whose proof is clearest - not
    by arrival. Say on the item that you took it.
 4. **Execute it through the resource's tool**, one change at a time, keeping the resource known-working:
-   tries fall back by themselves and end in its health report (change-a-device for a device).
+   tries fall back by themselves and end in its health report (change-a-device for a device). An item runs
+   only with its outcomes written - what each proves - and its expectations sourced; when it stops, the stop
+   is read before anything is fixed (look-around-first, "At a stop").
 5. **Record as you go**: the item's result and proof, its status (done only when read back), what was
    learned in the how-it-stands row - item by item, never rewritten whole.
 6. **End** when your piece lands or your context grows large: write the hand-over into the how-it-stands row

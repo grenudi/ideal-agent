@@ -16,6 +16,9 @@ it, on what exists rather than beside it, and land it released.
   by the `programmer` subagent on your branch; look-around-first before the design; record-the-work when recording.
 - **Writes a program whose entry reads like the procedure**: one named call per step, the details below
   (write-code-by-the-canon); an attended program is tested on the resource, unattended, before it is handed over.
+- **Writes checks from sources**: each value a check expects names where it came from (a document, a source
+  line, captured device text); fixtures are captured text, never typed stand-ins; a measuring path is tested on
+  a known case before it is trusted (change-a-device).
 - **Builds steps that outlive the device**: small steps, device values in data, a step lifted into the shared
   tool when a second device needs it (bring-up-a-part, "Small steps that compose").
 - **Hands over**: the tool's `TOOL-how-it-stands` row; it ends when the tool is released and in use.
