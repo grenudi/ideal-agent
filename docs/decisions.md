@@ -1499,3 +1499,31 @@ Scope
 
 Tracked by
 : layout-check
+
+
+<a id="2026-11-23-rhizoid-named-where-a-project-adopts-it"></a>
+### 2026-11-23-rhizoid-named-where-a-project-adopts-it
+
+Date
+: 2026-11-23
+
+Brief
+: ideal-agent's skills name git-rhizoid where a git flow it covers occurs, used where a project's README or brief names its graph or lists; nothing of it in the start
+
+Decision
+: git-rhizoid is a general git tool (status, assemble, bump, follow, cuttings, send-back), so the points where its flows occur in any project are named in ideal-agent's general skills: land-a-change says a flow a project gave to rhizoid runs through it and never by hand beside it (a test tree from topic branches by assemble, ended with --done; a pin bump by bump, its rhizoid/bump branch landed with land; a dependency to patch as a cutting; status for where each edge stands), and that elsewhere branch and land are the whole flow; bring-up-a-part says a fix is a topic branch and the tested tree is assembled from a list where the device's kernel is assembled from topics, and an upstream series is drafted by send-back, which never signs or sends. Each line is conditional on the project having adopted it. What stays in project briefs and READMEs: which graph file, list files and tag shapes, which repositories, the wrapper that adds record checks (linux-phone-oco's lpoco-bringup kernel assemble), whether int tags are pushed, the image build. Nothing in the start (scripts/agent-env), the guard or the plugin's install: rhizoid's worktrees already live in the worktree home (REPO/rhizoid/), assemble locks the ones it keeps and prune skips locked worktrees, so the two fit without code. Revisit when the author has judged rhizoid on walleye: a flow that proves itself in two projects may become the default named without the condition.
+
+Why
+: Practice 38: what every session does is ideal-agent's start and skills, and rhizoid is now generic git, not kernel-bound (Top Coordinator, 2026-11-23). Practice 13: build on the tool that exists rather than hand flows beside it; docs decision 2026-11-23-structure-git-flows-run-on-rhizoid already moved linux-phone-oco's git flows onto it and keeps worktree home, branch names, land and prune with ideal-agent. Practice 45: two skill lines, read only when the flow is in hand. The author has not judged rhizoid's quality for walleye ('we will see how it naturally develops'), so the skills name it where a project chose it rather than make it every project's default.
+
+Rejected
+: A rhizoid section in the start or a wrapper in agent-env (every session would carry a tool most do not use; practice 45). Making rhizoid every repository's default flow now (the author has not judged it; a project that never chose it would get a second flow beside branch/land). Leaving it to project briefs only (each brief would retell the same generic flow, and the generic skills would keep describing hand merges and hand-cut series; practice 38). Having rhizoid make its worktrees through branch (it already uses the same home, and prune reads locks; a coupling with no gain).
+
+About
+: skills
+
+Scope
+: skills: land-a-change, bring-up-a-part; roles: builder, keeper; projects that adopt git-rhizoid
+
+Tracked by
+: rhizoid-named-in-skills
