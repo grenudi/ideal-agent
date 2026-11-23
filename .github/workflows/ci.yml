@@ -22,6 +22,8 @@ jobs:
       - run: cargo fmt --check
       - run: cargo clippy --all-targets --locked -- -D warnings
       - run: cargo test --locked
+      - name: layout (the README's Map against the tracked folders)
+        run: cargo run --locked --quiet -- layout-check
   plugin:
     runs-on: ubuntu-latest
     steps:

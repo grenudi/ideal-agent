@@ -1471,3 +1471,31 @@ Scope
 
 Tracked by
 : guard-refuses-stale-clone-reads
+
+
+<a id="2026-11-23-structure-homes-held-by-ideal-agent"></a>
+### 2026-11-23-structure-homes-held-by-ideal-agent
+
+Date
+: 2026-11-23
+
+Brief
+: ideal-agent holds the structure decisions at tool time and in CI: worktrees in one home, no loose files under ~/Projects, the README Map read by layout-check
+
+Decision
+: Built from linux-phone-oco/docs' structure decisions of 2026-11-23: the guard refuses git worktree add outside the worktree home and a file written under ~/Projects outside a clone or a place whose README says what it is; branch ROLE/WHAT and branch --read make worktrees there; ideal-agent layout-check reads the README's ## Map as the layout and refuses a tracked top-level folder with no README or no Map line; the steward role card. Two refinements of ours: a place outside git explains itself by a README.md at its top (the build areas the decision keeps under ~/Projects), and a folder whose every file is read as something else (a plugin's agents/) carries its meaning in its Map line, (no README: WHY).
+
+Why
+: The Steward's review (reflections of every role, a look-around) found worktrees in three homes, 138 left behind, loose logs beside the clones and no map; the decisions name ideal-agent's guard and a CI check as their holders. A README in agents/ would load as a stray agent (Claude Code docs: each .md under agents/ defines one). Refusing every write outside git under ~/Projects would have stopped the keepers' builds in walleye-build and surya-audio, which the decision keeps.
+
+Rejected
+: A list of allowed build areas in the guard: a second copy of what the places can say themselves. Exempting the build areas by name: the next one needs a release. A README in agents/: loads as an agent. Moving agents/ elsewhere via plugin.json's agents list: a list to keep in step with the cards. Reading HEAD in layout-check: a new folder counts only after its commit; the index serves both.
+
+About
+: hooks
+
+Scope
+: every agent session (guard, branch); every repository that runs layout-check in CI; the steward role
+
+Tracked by
+: layout-check

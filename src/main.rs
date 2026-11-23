@@ -25,6 +25,7 @@ fn run() -> Result<()> {
         Command::Start => cli::start(&given),
         Command::Role => cli::role(&given),
         Command::Prune => cli::prune(&given),
+        Command::LayoutCheck => cli::layout_check(),
         Command::Completions => cli::completions(&given),
         Command::Man => cli::man(&given),
     }

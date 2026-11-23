@@ -547,3 +547,98 @@ Opened
 
 Proof
 : walleye-c3 and walleye-c4 built through lpoco-lab job on 2026-11-18; systemctl --user list-units and pgrep find nothing of lab-agent or oco-agent on 2026-11-20
+
+
+<a id="worktree-home-guarded"></a>
+### One worktree home: the guard refuses git worktree add outside it; branch --read makes a detached worktree there
+
+Status
+: done
+
+Note
+: Done in 0.3.65: guard worktree_outside_home (a literal path, ~ and $HOME expanded, judged by what precedes any other variable); agent-env branch ROLE/WHAT and branch --read [CLONE], both in ${AGENT_WORKTREES:-~/.local/share/agent-worktrees}/REPO/NAME, fetching with --prune; the stale-clone refusal names branch --read. Also fixed: the guard read 'cd ~' as a folder named ~ under the current one. From linux-phone-oco/docs decisions 2026-11-23-structure-lab-machine-homes, -checks-refuse-wrong-homes, -branch-names.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-23
+
+Proof
+: guard test a_worktree_lives_in_the_worktree_home and cd_home_goes_home; live: worktree beside the clones refused, in the home allowed; branch and branch --read run in zsh and sh
+
+
+<a id="loose-files-under-projects-refused"></a>
+### The guard refuses a file written under ~/Projects outside a clone or a place whose README says what it is
+
+Status
+: done
+
+Note
+: Done in 0.3.65: PreToolUse matches Write, Edit, MultiEdit and NotebookEdit too; shell redirects (> F, >> F, 2>F) where the parse sees them, best effort. A place outside git with a README.md at its top is a home of its own (the build areas walleye-build and surya-audio, whose READMEs were written 2026-11-23), and a README.md itself may always be written; git clone stays allowed. From linux-phone-oco/docs decisions 2026-11-23-structure-lab-machine-homes, -checks-refuse-wrong-homes, -branch-names.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-23
+
+Proof
+: guard test a_loose_file_under_projects_is_refused_where_the_parse_sees_it; live: Write in ~/Projects/ORG and ~/Projects and a redirect refused; Edit and a new folder in a clone, git clone, the build area with its README allowed
+
+
+<a id="layout-check"></a>
+### ideal-agent layout-check: every tracked top-level folder has a README.md and a line in the README's ## Map
+
+Status
+: done
+
+Note
+: Done in 0.3.65: src/layout.rs, run from a CI step (ideal-agent's rust job: cargo run -- layout-check; another repository installs it with cargo install --git https://github.com/grenudi/ideal-agent). Reads the index (git ls-files), so it holds before a commit as in CI; dot-folders and LICENSES aside; a stale Map line is named too. A folder whose every file is read as something else says so in its Map line, (no README: WHY) - a plugin's agents/, where a README would load as an agent. ideal-agent itself passes: a header, a Map and a README in each folder (idealkb's data, docs, queries, records, research, bin written here until idealkb lays them). From linux-phone-oco/docs decisions 2026-11-23-structure-lab-machine-homes, -checks-refuse-wrong-homes, -branch-names.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-23
+
+Proof
+: layout tests; ideal-agent layout-check rc 0, and 23 problems before the READMEs
+
+
+<a id="steward-role-card"></a>
+### The steward role card, agents/steward.md
+
+Status
+: done
+
+Note
+: Done in 0.3.65: the Steward's draft with its three additions, shaped as the other cards (opus, high; look-around-first, land-a-change); named in the role lists (start text, orchestrate-agents, README). From linux-phone-oco/docs decisions 2026-11-23-structure-lab-machine-homes, -checks-refuse-wrong-homes, -branch-names.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-23
+
+Proof
+: agents/steward.md on main
+
+
+<a id="branch-names-role-what"></a>
+### Branch names ROLE/WHAT in land-a-change
+
+Status
+: done
+
+Note
+: Done in 0.3.65: land-a-change says branch ROLE/WHAT in the worktree home, one change, deleted when it lands; a repository with a scheme of its own (the kernel's topic/, wip/, int/) says so in its README; branch --read to read main. From linux-phone-oco/docs decisions 2026-11-23-structure-lab-machine-homes, -checks-refuse-wrong-homes, -branch-names.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-23
+
+Proof
+: land-a-change on main

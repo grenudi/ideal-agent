@@ -3,7 +3,7 @@ use crate::contract::{Command, Contract};
 use anyhow::{Context, Result};
 use argenv_resolve::generate::{self, Program, Shell};
 use argenv_resolve::*;
-use ideal_agent::{guard, practices, prune, roles};
+use ideal_agent::{guard, layout, practices, prune, roles};
 use std::io::Read;
 use std::path::{Path, PathBuf};
 
@@ -148,7 +148,7 @@ pub fn start(given: &Given) -> Result<()> {
     } else {
         roles::await_first(session);
         println!("## The practices (ideal-agent)\n");
-        println!("They come with your first prompt: your role's card and only its practices when the brief names a role (`Role: NAME` - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol), else every practice.");
+        println!("They come with your first prompt: your role's card and only its practices when the brief names a role (`Role: NAME` - coordinator, lane-coordinator, orchestrator, keeper, research-lead, builder, patrol, steward), else every practice.");
     }
     println!(
         "\nThe ideal agent's hooks refuse git push to main, python/pip, and reads in a shared clone behind its origin/main (ideal-agent guard); its skills say how to start, land, record and change shared hardware."
@@ -230,6 +230,51 @@ fn prune_daily() {
         .stderr(log)
         .process_group(0)
         .spawn();
+}
+
+/// The repository here, checked against its README's map: each problem named, exit 1 while any is left.
+pub fn layout_check() -> Result<()> {
+    let git = |args: &[&str]| -> Result<String> {
+        let o = std::process::Command::new("git").args(args).output()?;
+        anyhow::ensure!(
+            o.status.success(),
+            "git {}: {}",
+            args.join(" "),
+            String::from_utf8_lossy(&o.stderr).trim()
+        );
+        Ok(String::from_utf8_lossy(&o.stdout).into_owned())
+    };
+    let top = PathBuf::from(git(&["rev-parse", "--show-toplevel"])?.trim());
+    // what is tracked: the index, so the check holds before a commit as in CI
+    let files: std::collections::BTreeSet<String> =
+        git(&["-C", &top.to_string_lossy(), "ls-files"])?
+            .lines()
+            .map(String::from)
+            .collect();
+    let folders: Vec<String> = files
+        .iter()
+        .filter_map(|f| f.split_once('/').map(|(d, _)| d.to_string()))
+        .collect::<std::collections::BTreeSet<_>>()
+        .into_iter()
+        .collect();
+    let readme = std::fs::read_to_string(top.join("README.md")).ok();
+    let problems = layout::problems(&folders, &files, readme.as_deref());
+    for p in &problems {
+        println!("{p}");
+    }
+    if !problems.is_empty() {
+        eprintln!(
+            "layout-check: {} problem(s) in {}",
+            problems.len(),
+            top.display()
+        );
+        std::process::exit(1);
+    }
+    println!(
+        "layout-check: every top-level folder of {} has a README and a Map line",
+        top.display()
+    );
+    Ok(())
 }
 
 /// Shell completions, from the contract.

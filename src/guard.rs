@@ -33,7 +33,22 @@ pub fn hook(input: &str) -> Option<String> {
     match event["tool_name"].as_str() {
         Some("Bash") => {
             let command = event["tool_input"]["command"].as_str().unwrap_or_default();
-            refused(command, &cwd, &current_branch, &shared_main, &behind)
+            refused(
+                command,
+                &cwd,
+                &current_branch,
+                &shared_main,
+                &behind,
+                &loose_in_projects,
+            )
+        }
+        Some("Write" | "Edit" | "MultiEdit" | "NotebookEdit") => {
+            let input = &event["tool_input"];
+            let path = ["file_path", "notebook_path"]
+                .iter()
+                .find_map(|k| input[k].as_str())
+                .map(|p| cwd.join(p))?;
+            loose_in_projects(&path).then(|| loose_write(&path))
         }
         Some("Read" | "Grep" | "Glob") => {
             let input = &event["tool_input"];
@@ -80,8 +95,8 @@ fn stale_read(what: &str, top: &Path, n: u32) -> String {
     let t = top.display();
     format!(
         "{what} is refused: {t} is a shared clone {n} commit(s) behind its origin/main, and what a role acts on is \
-         main. Read main in a worktree of your own - `branch NAME`, or `git -C {t} worktree add --detach \
-         {t}-read-$(date +%s) origin/main` and cd there - or one file with `git -C {t} show origin/main:PATH`; \
+         main. Read main in a worktree of your own - `branch --read {t}` makes one at origin/main in \
+         the worktree home and moves you there - or one file with `git -C {t} show origin/main:PATH`; \
          the brief your start named is whole in the file it gave. `git pull --ff-only` there brings the clone to \
          main (SHARED_CLONE_OK=1 for a deliberate read)."
     )
@@ -93,6 +108,160 @@ fn reads_no_state(program: &str) -> bool {
     matches!(
         program,
         "git" | "branch" | "ls" | "pwd" | "echo" | "printf" | "true" | "false" | "test" | "["
+    )
+}
+
+/// Where every worktree lives (decision 2026-11-23-structure-lab-machine-homes, linux-phone-oco/docs):
+/// $AGENT_WORKTREES, else ~/.local/share/agent-worktrees - what agent-env's `branch` makes.
+pub fn worktree_home() -> PathBuf {
+    std::env::var_os("AGENT_WORKTREES")
+        .filter(|v| !v.is_empty())
+        .map(PathBuf::from)
+        .or_else(|| {
+            std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".local/share/agent-worktrees"))
+        })
+        .unwrap_or_default()
+}
+
+/// A word as the shell would give it for a path: `~`, `~/`, `$HOME` and `${HOME}` expanded; a relative path
+/// joined to where the command runs; any other variable left as it is.
+fn expand_path(word: &str, here: &Path) -> PathBuf {
+    let home = std::env::var("HOME").unwrap_or_default();
+    let w = if word == "~" || word == "$HOME" || word == "${HOME}" {
+        home.clone()
+    } else if let Some(rest) = word
+        .strip_prefix("~/")
+        .or_else(|| word.strip_prefix("$HOME/"))
+        .or_else(|| word.strip_prefix("${HOME}/"))
+    {
+        format!("{home}/{rest}")
+    } else {
+        word.to_string()
+    };
+    if w.starts_with('/') || w.starts_with('$') {
+        PathBuf::from(w)
+    } else {
+        here.join(w)
+    }
+}
+
+/// `git worktree add PATH` with PATH outside the worktree home. A path that begins with a variable other than
+/// HOME cannot be told and passes; one with a variable later is judged by what comes before it.
+fn worktree_outside_home(args: &[String], here: &Path) -> Option<String> {
+    // git's own options before the subcommand: -C DIR moves where a relative path is read from
+    let mut here = here.to_path_buf();
+    let mut i = 0;
+    while i < args.len() && args[i].starts_with('-') {
+        if args[i] == "-C" {
+            if let Some(d) = args.get(i + 1) {
+                here = expand_path(d, &here);
+            }
+            i += 1;
+        } else if args[i] == "-c" {
+            i += 1;
+        }
+        i += 1;
+    }
+    if args.get(i).map(String::as_str) != Some("worktree")
+        || args.get(i + 1).map(String::as_str) != Some("add")
+    {
+        return None;
+    }
+    let mut rest = args[i + 2..].iter();
+    let path = loop {
+        let a = rest.next()?;
+        match a.as_str() {
+            "-b" | "-B" | "--reason" => {
+                rest.next();
+            }
+            "--" => break rest.next()?,
+            o if o.starts_with('-') => {}
+            _ => break a,
+        }
+    };
+    let p = expand_path(path, &here).to_string_lossy().into_owned();
+    let known = p.split('$').next().unwrap_or_default();
+    if known.is_empty() {
+        return None;
+    }
+    let home = worktree_home().to_string_lossy().into_owned();
+    let inside = Path::new(known).starts_with(&home)
+        || (p.contains('$') && format!("{home}/").starts_with(known));
+    (!inside).then(|| {
+        format!(
+            "`git worktree add {path}` is refused: every worktree lives in {home}/REPO/NAME (decision \
+             2026-11-23-structure-lab-machine-homes) - `branch ROLE/WHAT` makes one to write in from origin/main, \
+             `branch --read CLONE` a detached one to read main in; a tool makes its own there, under its name \
+             (REPO/TOOL/NAME)."
+        )
+    })
+}
+
+/// Where a shell line writes a file by redirection (`> F`, `>> F`, `2>F`), best effort: what the parse sees.
+fn redirect_targets(words: &[String], here: &Path) -> Vec<PathBuf> {
+    let mut out = Vec::new();
+    let mut it = words.iter().peekable();
+    while let Some(w) = it.next() {
+        let Some(at) = w.rfind('>') else { continue };
+        let after = &w[at + 1..];
+        if after.starts_with('&') || w[..at].ends_with('<') {
+            continue;
+        }
+        let target = if after.is_empty() {
+            match it.peek() {
+                Some(n) => n.as_str(),
+                None => continue,
+            }
+        } else {
+            after
+        };
+        if target != "/dev/null" && !target.starts_with('&') {
+            out.push(expand_path(target, here));
+        }
+    }
+    out
+}
+
+/// Whether a path under ~/Projects is outside every git working tree there - a loose file where only clones
+/// belong (decision 2026-11-23-structure-checks-refuse-wrong-homes). A place outside git that says what it is -
+/// a README.md at its top, as a build area kept under ~/Projects has - is a home of its own; and a README.md
+/// itself is how a place says so, never loose.
+pub fn loose_in_projects(path: &Path) -> bool {
+    let Some(projects) = std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Projects")) else {
+        return false;
+    };
+    if !path.starts_with(&projects) || path.file_name().is_some_and(|n| n == "README.md") {
+        return false;
+    }
+    let explained = path
+        .ancestors()
+        .skip(1)
+        .take_while(|a| *a != projects)
+        .any(|a| a.join("README.md").is_file());
+    if explained {
+        return false;
+    }
+    let Some(dir) = path
+        .parent()
+        .and_then(|p| p.ancestors().find(|a| a.is_dir()))
+    else {
+        return false;
+    };
+    !Command::new("git")
+        .arg("-C")
+        .arg(dir)
+        .args(["rev-parse", "--is-inside-work-tree"])
+        .output()
+        .is_ok_and(|o| o.status.success() && o.stdout.starts_with(b"true"))
+}
+
+fn loose_write(path: &Path) -> String {
+    format!(
+        "writing {} is refused: under ~/Projects only clones live - and places outside git whose README says what \
+         they are - and this is in neither (decision 2026-11-23-structure-checks-refuse-wrong-homes). A file belongs in a repository - in a \
+         worktree of your own (`branch ROLE/WHAT`) - a run's output in $AGENT_BUILD, a note in your session's \
+         scratchpad.",
+        path.display()
     )
 }
 
@@ -137,6 +306,7 @@ pub fn refused(
     branch_of: &dyn Fn(&Path) -> Option<String>,
     shared: &dyn Fn(&Path) -> bool,
     behind: &dyn Fn(&Path) -> Option<(PathBuf, u32)>,
+    loose: &dyn Fn(&Path) -> bool,
 ) -> Option<String> {
     // where each simple command runs: a `cd` moves the ones after it
     let mut here = cwd.to_path_buf();
@@ -146,14 +316,13 @@ pub fn refused(
         let program = first.rsplit('/').next().unwrap_or(first);
         let args = &words[1..];
         if program == "cd" {
-            if let Some(d) = args.first() {
-                here = match d.strip_prefix("~/") {
-                    Some(rest) => std::env::var_os("HOME")
-                        .map_or_else(|| here.join(d), |h| PathBuf::from(h).join(rest)),
-                    None => here.join(d),
-                };
-            }
+            here = expand_path(args.first().map_or("~", String::as_str), &here);
             continue;
+        }
+        for t in redirect_targets(&words, &here) {
+            if loose(&t) {
+                return Some(loose_write(&t));
+            }
         }
         let cwd = here.as_path();
         if matches!(program, "sh" | "bash" | "zsh" | "dash" | "fish") {
@@ -162,7 +331,7 @@ pub fn refused(
                 .position(|a| a == "-c" || a == "-lc" || a == "-ec")
             {
                 if let Some(inner) = args.get(i + 1) {
-                    if let Some(why) = refused(inner, cwd, branch_of, shared, behind) {
+                    if let Some(why) = refused(inner, cwd, branch_of, shared, behind, loose) {
                         return Some(why);
                     }
                 }
@@ -204,6 +373,9 @@ pub fn refused(
             );
         }
         if program == "git" {
+            if let Some(why) = worktree_outside_home(args, cwd) {
+                return Some(why);
+            }
             if let Some(why) = git_push_to_main(args, cwd, branch_of) {
                 return Some(why);
             }
@@ -431,6 +603,7 @@ mod tests {
             &move |_| Some(branch.to_string()),
             &|_| false,
             &|_| None,
+            &|_| false,
         )
     }
 
@@ -442,6 +615,7 @@ mod tests {
             &|_| Some("main".into()),
             &|d: &Path| d.starts_with("/home/u/Projects/docs"),
             &|_| None,
+            &|_| false,
         )
     }
 
@@ -475,7 +649,7 @@ mod tests {
             "git fetch -q",
             "git log",
             "git pull --ff-only",
-            "git worktree add ../wt -b x origin/main",
+            "git worktree add ~/.local/share/agent-worktrees/docs/x -b x origin/main",
             "SHARED_CLONE_OK=1 git reset --hard origin/main",
             "git diff --stat",
         ] {
@@ -598,6 +772,7 @@ mod tests {
                 d.starts_with("/home/u/Projects/docs")
                     .then(|| (PathBuf::from("/home/u/Projects/docs"), 3))
             },
+            &|_| false,
         )
     }
 
@@ -616,7 +791,9 @@ mod tests {
                 "/tmp"
             };
             assert!(
-                says_stale(c, cwd).is_some_and(|w| w.contains("3 commit(s) behind") && w.contains("worktree add")),
+                says_stale(c, cwd).is_some_and(
+                    |w| w.contains("3 commit(s) behind") && w.contains("branch --read")
+                ),
                 "refused: {c}"
             );
         }
@@ -624,7 +801,7 @@ mod tests {
             "git pull --ff-only",
             "git fetch -q",
             "git show origin/main:briefs/builder.md",
-            "git worktree add --detach ../r origin/main",
+            "git worktree add --detach $AGENT_WORKTREES/docs/r origin/main",
             "branch fix-x",
             "ls",
             "SHARED_CLONE_OK=1 tad q next",
@@ -642,6 +819,92 @@ mod tests {
             says_stale("tad q next", "/home/u/Projects/lab").is_none(),
             "a current clone"
         );
+    }
+
+    /// As says, with /home/u/Projects/loose and /home/u/Projects/ORG a place outside every clone.
+    fn says_loose(command: &str, cwd: &str) -> Option<String> {
+        refused(
+            command,
+            Path::new(cwd),
+            &|_| Some("feat".into()),
+            &|_| false,
+            &|_| None,
+            &|p: &Path| p.parent() == Some(Path::new("/home/u/Projects/ORG")),
+        )
+    }
+
+    #[test]
+    fn a_worktree_lives_in_the_worktree_home() {
+        let home = worktree_home();
+        let h = home.display();
+        for c in [
+            "git worktree add -q --detach /home/u/Projects/linux-phone-oco/wt-keeper-1 origin/main",
+            "git -C /home/u/Projects/docs worktree add ../docs-read-$(date +%s) origin/main",
+            "git worktree add /tmp/x",
+            "git worktree add -b x /home/u/Projects/wt-$R origin/main",
+        ] {
+            assert!(
+                says(c, "feat").is_some_and(|w| w.contains("branch --read")),
+                "refused: {c}"
+            );
+        }
+        for c in [
+            format!("git worktree add -q -b builder/x {h}/docs/builder/x origin/main"),
+            format!("git -C /x worktree add --detach {h}/docs/rhizoid/int-$R v7.3"),
+            "git worktree add $AGENT_WORKTREES/docs/x origin/main".to_string(),
+            "git worktree list".to_string(),
+            "git worktree remove /home/u/Projects/wt-old".to_string(),
+        ] {
+            assert!(says(&c, "feat").is_none(), "allowed: {c}");
+        }
+    }
+
+    #[test]
+    fn a_loose_file_under_projects_is_refused_where_the_parse_sees_it() {
+        for c in [
+            "echo x > /home/u/Projects/ORG/notes.md",
+            "cat a >>/home/u/Projects/ORG/log",
+            "cd /home/u/Projects/ORG && ls 2> err.log",
+        ] {
+            assert!(
+                says_loose(c, "/tmp").is_some_and(|w| w.contains("only clones live")),
+                "refused: {c}"
+            );
+        }
+        for c in [
+            "echo x > /home/u/Projects/ORG/clone/notes.md",
+            "make 2>&1 | tee build.log",
+            "cmd > /dev/null 2>&1",
+            "git clone https://example.org/x /home/u/Projects/ORG/x",
+        ] {
+            assert!(says_loose(c, "/tmp").is_none(), "allowed: {c}");
+        }
+    }
+
+    #[test]
+    fn cd_home_goes_home() {
+        let home = std::env::var("HOME").unwrap();
+        for w in ["~", "$HOME", "${HOME}"] {
+            assert_eq!(expand_path(w, Path::new("/x")), PathBuf::from(&home));
+        }
+        assert_eq!(
+            expand_path("~/a", Path::new("/x")),
+            PathBuf::from(&home).join("a")
+        );
+        assert_eq!(expand_path("a", Path::new("/x")), PathBuf::from("/x/a"));
+        // a stale clone left by `cd ~` is left: the next command does not run there
+        let r = refused(
+            "cd ~ && cat f",
+            Path::new("/home/u/Projects/docs"),
+            &|_| Some("main".into()),
+            &|_| true,
+            &|d: &Path| {
+                d.starts_with("/home/u/Projects/docs")
+                    .then(|| (PathBuf::from("/d"), 1))
+            },
+            &|_| false,
+        );
+        assert!(r.is_none(), "{r:?}");
     }
 
     #[test]
