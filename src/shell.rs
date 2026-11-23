@@ -210,6 +210,14 @@ pub fn simple_commands(line: &str) -> Vec<Vec<String>> {
                 }
                 continue;
             }
+            // `>&` and `<&` duplicate a descriptor (`2>&1`), and `&>` sends both to a file: a redirection, not `&`
+            '&' if (in_word && word.ends_with(['>', '<'])) || chars.get(i + 1) == Some(&'>') => {
+                if !word.ends_with(['>', '<']) {
+                    end_word(&mut words, &mut word, &mut in_word);
+                }
+                in_word = true;
+                word.push('&');
+            }
             ';' | '&' | '|' | '\n' | '(' | ')' | '`' | '{' | '}'
                 if !(c == '{' || c == '}') || !in_word =>
             {
@@ -297,5 +305,16 @@ mod tests {
     #[test]
     fn a_here_string_is_not_a_here_document() {
         assert_eq!(programs("cat <<< 'python3'\nls"), ["cat", "ls"]);
+    }
+
+    #[test]
+    fn a_duplicated_descriptor_is_a_redirection_not_a_command() {
+        assert_eq!(
+            simple_commands("make 2>&1 | tail -5"),
+            [vec!["make", "2>&1"], vec!["tail", "-5"]]
+        );
+        assert_eq!(programs("cmd &> log; cat 0<&3"), ["cmd", "cat"]);
+        assert_eq!(programs("sleep 1 & ls"), ["sleep", "ls"]);
+        assert_eq!(programs("a && b |& c"), ["a", "b", "c"]);
     }
 }
