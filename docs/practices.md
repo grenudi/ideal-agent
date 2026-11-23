@@ -589,19 +589,6 @@ For
 : null
 
 
-<a id="04-inbox"></a>
-### 04-inbox
-
-Practice
-: Read what was said to you at every natural pause and between jobs - the messages other sessions send arrive in your conversation; answer every message, if only with 'got it'.
-
-Why
-: The author, 2026-11-18: the ntfy inbox is not carried anymore (turn-2026-11-18-lab-agent-ntfy-inbox-not-carried); the lab-agent inbox is no longer read at a session's start (decision 2026-11-17-lab-agent-retires-by-parts, part 5).
-
-For
-: agents
-
-
 <a id="21-no-new-python"></a>
 ### 21-no-new-python
 
@@ -645,3 +632,19 @@ Why
 
 For
 : agents and people
+
+
+<a id="04-inbox"></a>
+### 04-inbox
+
+Practice
+: Read what was said to you at every natural pause and between jobs - the messages other sessions send arrive in your conversation. Between sessions, a message carries work: a result, a question, a refusal or a blocker - one per finished piece, never per step, and never a reply that only acknowledges. The send's own delivery, and the record on main, are the receipt; a request is answered by its result, and a proposal no one objects to stands. A sender that must know reads the delivery, list_events or main, never asks for an ack. The author's words are always answered. When the app pauses your sends, write the message into the shared notes folder your start names, as a file named for its reader, and the reader reads it at its next pause.
+
+Why
+: The author, 2026-11-18: the ntfy inbox is not carried anymore (turn-2026-11-18-lab-agent-ntfy-inbox-not-carried; decision 2026-11-17-lab-agent-retires-by-parts, part 5). The author's go, 2026-11-23, to refine it: the desktop app pauses a session's sends to other sessions after about 20 in a row with no user turn, and 'answer every message, if only with got it' spent that budget on acks until the author typed '.' by hand (research messages-between-sessions-carry-work).
+
+For
+: agents
+
+Shown in
+: grenudi/ideal-agent/decisions:2026-11-23-messages-between-sessions-carry-work
