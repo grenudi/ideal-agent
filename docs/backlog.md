@@ -658,3 +658,19 @@ About
 
 Opened
 : 2026-11-23
+
+
+<a id="guard-reads-dup-redirect"></a>
+### The guard's parse reads 2>&1, <&N and &> as redirections, not & and a command named 1
+
+Status
+: done
+
+Note
+: Done in plugin 0.3.68: the steward saw '`1` there is refused' for 'cmd 2>&1 | tail -5' in a stale clone; the & of >& was taken as a separator. The refusal itself was right by the rule; only the name was wrong. Test a_duplicated_descriptor_is_a_redirection_not_a_command.
+
+About
+: hooks
+
+Opened
+: 2026-11-23
