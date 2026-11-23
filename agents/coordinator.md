@@ -26,6 +26,9 @@ renew the sessions below you.
   (keep-a-shared-resource, "An attended step").
 - **Researches on its own** when it sees a method missing, bounded, and sends what is general to its owner
   (look-around-first, "When a method is missing").
+- **Reads a stop before a fix**: when a lane reports a run stopped, ask first for its three answers - should
+  the hindrance exist, how the working system does it (its source, read), what in the flow let it through -
+  and reason about no cause the lane has not read (look-around-first, "At a stop").
 - **Starts others**: each with a role (`Role: NAME` as the brief's first line) and that role's model and
   effort from its card; a domain brief adds only its specifics.
 - **Hands over**: rewrites `coordinator-how-it-stands` and renews itself at 250k tokens of context, or 150k

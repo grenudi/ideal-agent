@@ -1312,3 +1312,118 @@ By
 
 Takes
 : A message that carries no content costs the reader an interruption; say the substance in the first message
+
+
+<a id="platt-strong-inference"></a>
+### Strong Inference
+
+Url
+: https://doi.org/10.1126/science.146.3642.347
+
+Author
+: John R. Platt
+
+Year
+: 1964
+
+By
+: -
+
+Takes
+: Devise alternative hypotheses, then a crucial experiment whose outcomes exclude some of them; an experiment that cannot exclude anything teaches nothing
+
+
+<a id="nosek-preregistration"></a>
+### The preregistration revolution
+
+Url
+: https://doi.org/10.1073/pnas.1708274114
+
+Author
+: Nosek, Ebersole, DeHaven, Mellor
+
+Year
+: 2018
+
+By
+: -
+
+Takes
+: Write the prediction and what each outcome would mean before the data, so the reading is not fitted after it
+
+
+<a id="feynman-cargo-cult-science"></a>
+### Cargo Cult Science
+
+Url
+: https://calteches.library.caltech.edu/51/2/CargoCult.htm
+
+Author
+: Richard Feynman
+
+Year
+: 1974
+
+By
+: -
+
+Takes
+: Calibrate the apparatus on a known case first (the rat-maze controls); the first principle is that you must not fool yourself
+
+
+<a id="google-sre-postmortem"></a>
+### Site Reliability Engineering, chapter 15: Postmortem Culture: Learning from Failure
+
+Url
+: https://sre.google/sre-book/postmortem-culture/
+
+Author
+: Google
+
+Year
+: 2016
+
+By
+: -
+
+Takes
+: A failure is written up blamelessly for its contributing causes in the system and process, not patched and forgotten
+
+
+<a id="pmos-porting"></a>
+### Porting to a new device
+
+Url
+: https://wiki.postmarketos.org/wiki/Porting_to_a_new_device
+
+By
+: postmarketOS
+
+Takes
+: Bring-up starts from the vendor (downstream) kernel source as the reference for what the device does
+
+
+<a id="aosp-ab-updates"></a>
+### A/B (seamless) system updates
+
+Url
+: https://source.android.com/docs/core/ota/ab
+
+By
+: Android Open Source Project
+
+Takes
+: The bootloader's slot flags (active, successful, unbootable, retry count) are documented: what a flash and a boot do to them is read here, not guessed
+
+
+<a id="utsl"></a>
+### UTSL: Use the Source, Luke
+
+Url
+: https://en.wikipedia.org/wiki/Use_the_source,_Luke
+
+By
+: hacker usage, the Jargon File
+
+Takes
+: When behaviour is in question and the source is open, read the source rather than guess

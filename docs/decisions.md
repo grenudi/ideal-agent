@@ -1583,3 +1583,34 @@ Research
 
 Scope
 : all roles; practice 04; skills lab-session-start, orchestrate-agents; card steward; projects' briefs (linux-phone-oco: the steward)
+
+
+<a id="2026-11-23-a-stop-is-read-before-the-fix"></a>
+### 2026-11-23-a-stop-is-read-before-the-fix
+
+Date
+: 2026-11-23
+
+Brief
+: A stop is read before its fix (should it exist, how the working system does it, what let it through); expectations sourced; runs discriminate; instruments proven first
+
+Decision
+: No new practice: the look moves to the moment it was missing. Practice 32 names a stopped run or failed check as a halt read before it is fixed, with three questions: should this hindrance exist at all; how does the working system do it, its source read (Android's kernel and documentation, upstream, others' ports) and the device's captured text, never memory; what in our flow let it through; the fix comes after and cites what was read. Practice 25 adds that what a check expects names its source and a measure counts only once proven on a known case. look-around-first gains 'At a stop - read before the fix', ahead of the class question, which is now asked at the stop rather than after. change-a-device: expectations name their source and fixtures are captured text, refused otherwise by the project's procedure tests; the instrument first; a run's go names its outcomes and what each proves, none for a run that cannot tell the causes apart; findings marked measured, sourced or inferred, an inferred one opening no go. keep-a-shared-resource and bring-up-a-part point to it. Cards: the lane coordinator gives a go only on those terms; the keeper never narrows a check after a stop before it is read; the builder writes checks from sources and tests a measuring path on a known case; the top coordinator asks for a stop's three answers and reasons about no cause the lane has not read. Enforcement where it can be mechanical is the project's: its procedure tests refuse a check with no named source, and a go without outcomes (linux-phone-oco: the steward, with walleye and lab-tools).
+
+Why
+: The author, 2026-11-23 (turn-2026-11-23-hindrance-is-a-sign-not-a-hurdle), and his go via the Top Coordinator. Practices 22, 26, 27 and 32 already said it, yet did not bite: they are read at a start, the stop meets a session mid-run with a fix in reach, and the one structured moment at a failure, the class question, came after the fix (research a-stop-read-before-the-fix: walleye stage 2 runs 1, 2, 3 and 5; stage 1 runs 3 and 4; run 7; the busybox reboot argument; the 2,138 branches). Preregistration, strong inference, calibrating on a known case, reading the source and blameless postmortems all put the look before the act; phone bring-up reads the vendor kernel and Android's documentation as the reference.
+
+Rejected
+: A new practice restating 22, 27 and 32 (they existed and did not bite; another sentence read at a start would not either; practice 45). A hook on failed commands (it cannot tell what a device run's failure means, and it is a countermeasure, practice 27). A full postmortem document for every stop (too heavy for a run that stops several times a day; the three answers in the stop's record carry its point). Marking measured, sourced or inferred as a new field in ideal-agent's schema (the records of runs are each project's; the project's tests can require it). Asking the author to review each fix (his hands for what the records can carry).
+
+About
+: practices
+
+Research
+: a-stop-read-before-the-fix
+
+Scope
+: practices 25 and 32; skills look-around-first, change-a-device, keep-a-shared-resource, bring-up-a-part; cards coordinator, lane-coordinator, keeper, builder; projects' procedure tests (linux-phone-oco: the steward, walleye, lab-tools)
+
+Tracked by
+: a-stop-read-before-the-fix

@@ -20,7 +20,9 @@ the mould: write what you learn so the next of its family starts further ahead.
    logs. Write what you observe as a specification; the driver is written from it. GPL code may be ported
    with its copyright and licence kept; disassembled or decompiled proprietary code never enters a patch, a
    note or a commit. Firmware is never redistributed beyond its licence.
-4. **The test first** - a check that fails for the missing part (change-a-device).
+4. **The test first** - a check that fails for the missing part (change-a-device), each value it expects
+   taken from a source (the vendor kernel, Android's documentation, the device's captured text), and the
+   way it measures proven on a known case first.
 5. **The change.** One branch per fix, each commit clean enough to go upstream as it is; userspace
    configuration beside the device's data, each mask or overlay with its reason beside it. Where the
    device's kernel is assembled from topic branches (its brief names the lists), a fix is a `topic/ITEM`

@@ -868,3 +868,25 @@ Sources
 
 About
 : practices
+
+
+<a id="a-stop-read-before-the-fix"></a>
+### a-stop-read-before-the-fix
+
+Date
+: 2026-11-23
+
+Brief
+: Looking first fails at the stop because the look comes after the fix; others put it before: expectations sourced, runs that discriminate, instruments proven on a known case, the source read
+
+Question
+: Practices 22, 25, 26, 27 and 32 already say look around first and read a hindrance as a sign; why do they not bite at the moment a run stops or a check fails, and how do others make that hold by construction?
+
+Found
+: What is (linux-phone-oco, 2026-11-23, per the Top Coordinator and google-walleye-lab PRs 833, 834, 836, 862, 872): stage 2 runs 1, 2, 3 and 5 stopped on checks that assumed bootloader slot behaviour AOSP's A/B documentation states otherwise; each fix narrowed the check after the run (836, 862) instead of reading the source before it (833 found it afterwards). Stage 1 runs 3 and 4 were lost to fixtures typed from memory, not captured phone text. Run 7 read pstore without first proving pstore survives a watchdog reset, so its empty result could not tell the causes apart (872). A reboot-to-bootloader failure was blamed on the kernel's reboot reason when busybox's source shows it drops the argument. A count of 2,138 branches came from an unchecked measure where GitHub had 68. Why the practices do not bite: they are read at a start, and the stop meets a session mid-run with a fix in reach; ideal-agent's only structured moment at a failure is 'after a fix - the class question', which runs once the fix is made and only on listed triggers. Nothing asks for the source before a check is written, for a run's outcomes before its go, or for the instrument to be proven first. What others do: preregistration writes the prediction and what each outcome means before the data (Nosek 2018); strong inference designs the experiment so its outcomes exclude hypotheses (Platt 1964); lab science calibrates the apparatus on a known case first (Feynman 1974); 'use the source' reads open source instead of guessing; blameless postmortems ask what in the system let it happen (Google SRE); phone bring-up reads the vendor kernel and Android's documentation as the reference for what the device does (postmarketOS porting, AOSP A/B). Ways it could go: (1) a stop answered first with three questions, the fix only after and citing what was read; (2) every expectation a check encodes names its source, enforced by the project's procedure tests; (3) a run's go names its outcomes and what each proves, no go for a run that cannot tell them apart; (4) the instrument proven on a known case first; (5) findings marked measured, sourced or inferred, an inferred one opening no go; (6) a new practice restating 22/27/32 (would not bite either); (7) a guard or a hook at a failed command (cannot see a device run's meaning; a countermeasure).
+
+Sources
+: platt-strong-inference,nosek-preregistration,feynman-cargo-cult-science,utsl,google-sre-postmortem,pmos-porting,aosp-ab-updates
+
+About
+: practices
