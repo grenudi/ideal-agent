@@ -22,15 +22,19 @@ the mould: write what you learn so the next of its family starts further ahead.
    note or a commit. Firmware is never redistributed beyond its licence.
 4. **The test first** - a check that fails for the missing part (change-a-device).
 5. **The change.** One branch per fix, each commit clean enough to go upstream as it is; userspace
-   configuration beside the device's data, each mask or overlay with its reason beside it.
+   configuration beside the device's data, each mask or overlay with its reason beside it. Where the
+   device's kernel is assembled from topic branches (its brief names the lists), a fix is a `topic/ITEM`
+   branch on the base and the tree you test is `rhizoid assemble`d from a list - never merged by hand.
 6. **Through the conveyor, never by hand.** Tries fall back by themselves and end in the health report; once
    proven, the change goes where every flash carries it. A step done a second time by hand is a tool to
    build.
 7. **Proven by the device.** Its own report turns the part's status; a person's witness goes in judged and
    notes - an attended proof is one prepared command (keep-a-shared-resource, "An attended step"). Then
    look at the face.
-8. **Upstream.** A fix that works becomes a series ready to send. Sending is the author's decision, in his
-   name: say it waits for him; never send mail yourself.
+8. **Upstream.** A fix that works becomes a series ready to send - where the project uses git-rhizoid,
+   drafted by `rhizoid send-back BRANCH --onto TARGET` (rebased, cut as the next version with its
+   range-diff, the checks run; it never signs or sends). Sending is the author's decision, in his name: say it
+   waits for him; never send mail yourself.
 9. **Recorded as you go**, in the project's data: decisions with what was rejected, research, the backlog
    item's next step, the session log, the DOMAIN-how-it-stands row. Where the ecosystem itself shows a gap,
    refine it first and record the refinement.

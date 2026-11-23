@@ -642,3 +642,19 @@ Opened
 
 Proof
 : land-a-change on main
+
+
+<a id="rhizoid-named-in-skills"></a>
+### git-rhizoid's general flows named in land-a-change and bring-up-a-part, where a project adopts it
+
+Status
+: done
+
+Note
+: Done in plugin 0.3.66: land-a-change names assemble, bump, cuttings and status for a flow a project gave to rhizoid; bring-up-a-part names topic branches assembled from a list and send-back for a series. Project specifics (graph, lists, tags, wrapper, int-tag push) stay in briefs. Revisit when the author has judged rhizoid on walleye.
+
+About
+: skills
+
+Opened
+: 2026-11-23
