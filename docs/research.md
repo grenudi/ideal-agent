@@ -846,3 +846,25 @@ About
 
 Material
 : research/keeper/2026-11-19/
+
+
+<a id="messages-between-sessions-carry-work"></a>
+### messages-between-sessions-carry-work
+
+Date
+: 2026-11-23
+
+Brief
+: Between sessions an ack-only reply buys nothing the transport and main do not already give, and costs the app's ~20-message brake; others piggyback acks and take silence as assent
+
+Question
+: How should sessions answer each other so the desktop app's outbound pause (about 20 messages in a row with no user turn, lifted only by the author typing there) stops stalling work, while nothing said is lost?
+
+Found
+: What is: practice 4 said answer every message, if only with 'got it'; the app pauses a session's sends to other sessions after about 20 in a row with no user message, a deliberate safety brake with no setting (Top Coordinator, 2026-11-23); on 2026-11-23 it paused walleye, the steward and others repeatedly until the author typed '.'. In this builder session since the rhizoid request: 10 sends, 1 of them ack-only, and 1 ack of an ack left unsent; the walleye and steward pauses came from lanes with longer chains. The transport already gives a receipt: each send's result says delivered, or queued while the reader is busy, and list_events shows a session's turns. What others do: Apache's lazy consensus takes silence as assent and discourages +1-only mail; TCP (RFC 1122 4.2.3.2) delays an ACK so it rides on the next data instead of costing a segment; 'no hello' asks that a message carry its substance, not a ping. Async teams answer a request with its result in the shared record, not a reply. Ways it could go: (a) no ack-only replies between sessions, the answer is the work or the record on main; (b) one message per finished piece; (c) a sender who must know checks the delivery, list_events or main; (d) a fallback to the shared notes folder when paused; (e) a guard that refuses ack-only sends (a countermeasure, and SendMessage is not a tool the hook sees); (f) a budget counter in the start (state to keep true, practice 28).
+
+Sources
+: apache-lazy-consensus,rfc1122-delayed-ack,nohello
+
+About
+: practices

@@ -24,8 +24,11 @@ one file away, named but not read (practice 45-keep-the-start-light; ideal-knowl
    enough to act.
 4. **Your shell is ready** - the session's start sources scripts/agent-env before every Bash command: the
    token, the PATH, `branch` and `land`, and your work signed as AGENT_NAME (the brief's `Name:` line, else
-   your role). A job outside the harness sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **What was said to you** - the messages other sessions send arrive in your conversation:
-   answer each, if only with "got it".
+   your role). A job outside the harness sources it itself (`. ~/Projects/grenudi/ideal-agent/scripts/agent-env`). **What was said to you** - the messages other sessions send arrive in your conversation.
+   Between sessions, write only a result, a question, a refusal or a blocker, one message per finished piece -
+   never an ack: the send's delivery and the record on main are the receipt. Always answer the author. When
+   your sends are paused, leave the message in the shared notes folder your start names, a file named for
+   its reader (practice 04).
 
 Your brief and the author's words are a starting point: look around before you build on them
 (look-around-first). The cards, skills and briefs tell you where a thing is known - a base's query, a canon

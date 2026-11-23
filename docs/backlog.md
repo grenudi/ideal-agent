@@ -690,3 +690,19 @@ About
 
 Opened
 : 2026-11-23
+
+
+<a id="messages-between-sessions-carry-work"></a>
+### Practice 4 refined: between sessions a message carries work, no ack-only replies, notes folder when paused
+
+Status
+: done
+
+Note
+: Done in plugin 0.3.70: practice 04, lab-session-start, orchestrate-agents, steward card carries 04. Next, outside this base: the steward brings linux-phone-oco's briefs into line.
+
+About
+: practices
+
+Opened
+: 2026-11-23

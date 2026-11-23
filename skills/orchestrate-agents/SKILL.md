@@ -50,7 +50,11 @@ decisions 2026-11-17-agents-organised-by-the-data and -experts-written-not-stand
 ## Sessions, one machine
 
 Each place has one owner at a time; every session works in clones or worktrees of its own. Talk to sessions
-directly through their ids; a message is not a record - what is decided goes where it belongs. A session is
+directly through their ids; a message is not a record - what is decided goes where it belongs. A message
+carries work - a result, a question, a refusal, a blocker - and a brief asks for one report when the piece is
+done, never acks or a report per step: the app pauses a session's sends after about 20 in a row with no
+user turn, and acks spend that on nothing (practice 04). Know a message arrived from its delivery,
+`list_events` or main, not from a reply. A session is
 ended when its part lands, or before its context is compacted, after its hand-over is written into its
 domain's rows (record-the-work, "Hand-over"); the next starts fresh from them.
 

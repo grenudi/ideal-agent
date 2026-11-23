@@ -1555,3 +1555,31 @@ Amends
 
 Tracked by
 : rhizoid-named-in-skills
+
+
+<a id="2026-11-23-messages-between-sessions-carry-work"></a>
+### 2026-11-23-messages-between-sessions-carry-work
+
+Date
+: 2026-11-23
+
+Brief
+: Between sessions a message carries work - a result, question, refusal or blocker, one per finished piece; no ack-only replies; delivery and main are the receipt; the author always answered
+
+Decision
+: Practice 4 is refined: read what was said at every pause; between sessions write only when there is a result, a question, a refusal or a blocker, one message per finished piece rather than per step, and never a reply that only acknowledges. The receipt is the send's own delivery (delivered, or queued while the reader is busy) and the record on main; a request is answered by its result, and a proposal no one objects to stands (lazy consensus). A sender that must know whether it was read checks the delivery, list_events or main, and never asks for an ack. The author's words are always answered. When the app pauses a session's sends, the message goes as a file into the shared notes folder the session's start names (the group's side-session-notes folder), named for its reader, who reads it at its next pause; a note is a pointer, the record still goes on main. lab-session-start says the same in one line. orchestrate-agents tells whoever writes briefs: a brief asks for one report at the end, never acks or step reports. The cards change only where they said otherwise: the steward card now carries practice 04; builder and research-lead already report once, as their last act; coordinator, keeper, lane-coordinator, orchestrator and patrol carry practice 04 and get the change through it, with no card text. Nothing in the start beyond the practice it already prints, and nothing in the guard.
+
+Why
+: The author's go, 2026-11-23 ('yes, with a bit of reflection of what would be the best'). The app's brake is deliberate and has no setting, so the budget is ours to spend well: acks bought nothing the transport's delivery result and the record on main did not already give (research messages-between-sessions-carry-work). Apache's lazy consensus, TCP's piggybacked ACK and 'no hello' all put the acknowledgement in the next piece of substance. Practice 27: answered by refining the whole (what a message is), not a counter or a guard.
+
+Rejected
+: A guard that refuses ack-only sends (a countermeasure, practice 27; and SendMessage is not a tool the hook sees). A budget counter in the start that warns near 20 (a state to keep true, practice 28; the brake's number is the app's, not ours). Keeping 'got it' for messages from coordinators only (the brake counts every send, and a coordinator reads delivery like anyone). Moving all traffic to the notes folder (messages wake a session, notes do not; notes are the fallback only). Asking the author to type in each paused session (that is the stall itself).
+
+About
+: practices
+
+Research
+: messages-between-sessions-carry-work
+
+Scope
+: all roles; practice 04; skills lab-session-start, orchestrate-agents; card steward; projects' briefs (linux-phone-oco: the steward)

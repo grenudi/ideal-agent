@@ -1264,3 +1264,51 @@ By
 
 Takes
 : content is pulled from its one source by reference, never copied - the copy cannot drift
+
+
+<a id="apache-lazy-consensus"></a>
+### Lazy consensus
+
+Url
+: https://community.apache.org/committers/lazyConsensus.html
+
+Author
+: The Apache Software Foundation
+
+By
+: Apache projects
+
+Takes
+: Silence is assent: a proposal stands unless someone objects; no one replies only to agree
+
+
+<a id="rfc1122-delayed-ack"></a>
+### RFC 1122: Requirements for Internet Hosts, 4.2.3.2 When to Send an ACK Segment
+
+Url
+: https://www.rfc-editor.org/rfc/rfc1122
+
+Author
+: R. Braden (ed.)
+
+Year
+: 1989
+
+By
+: IETF
+
+Takes
+: An acknowledgement rides on the next data sent (delayed, piggybacked ACK) rather than costing a segment of its own
+
+
+<a id="nohello"></a>
+### no hello
+
+Url
+: https://nohello.net
+
+By
+: -
+
+Takes
+: A message that carries no content costs the reader an interruption; say the substance in the first message
