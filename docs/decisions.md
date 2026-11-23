@@ -1527,3 +1527,31 @@ Scope
 
 Tracked by
 : rhizoid-named-in-skills
+
+
+<a id="2026-11-23-rhizoid-plan-then-now-pins-only-by-bump"></a>
+### 2026-11-23-rhizoid-plan-then-now-pins-only-by-bump
+
+Date
+: 2026-11-23
+
+Brief
+: land-a-change adds rhizoid's plan-then-now for outward verbs, the author's go on a module's first outward step, and that a graph-named pin moves only by bump
+
+Decision
+: Where a project has adopted git-rhizoid, land-a-change also says: a verb that changes anything outside the machine prints its plan (outward=yes|no per step) and acts only with now, so read the plan, then run it with now; the first outward step for a module (a fork, a push, a merge from upstream, a cut tag) waits on the author's go; a pin the graph names moves only by rhizoid bump, never by hand; a cutting is followed with update. It points to linux-phone-oco's page of each lane's git jobs (ideal-agent-linux-phone-oco/rhizoid.md) as that project's specifics, as bring-up-a-part names lpoco's step library.
+
+Why
+: The rhizoid coordinator's handover page (docs #776, rhizoid v0.3.2): every outward verb plans and acts only with now (practice 8); docs decision 2026-11-23-pins-stay-with-their-readers, accepted by the author on 2026-11-23 on condition it brings no drift or busy work, makes bump the only mover of a pin; the author's go is needed for each module's first outward step. These hold for any project using rhizoid, so they belong with the general line (practice 38).
+
+Rejected
+: Copying the page's lane-by-lane command table into the skill (it is linux-phone-oco's and would go stale in two places; practice 45). Leaving the skill as 0.3.66 had it (a session would run bump or add without now and read the plan as done, or edit a pin by hand).
+
+About
+: skills
+
+Amends
+: 2026-11-23-rhizoid-named-where-a-project-adopts-it
+
+Tracked by
+: rhizoid-named-in-skills

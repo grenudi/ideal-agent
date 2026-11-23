@@ -16,10 +16,14 @@ description: How a change reaches main: its own branch, checks, a record, land, 
 - **A git flow the project gave to git-rhizoid runs through it**, where the repository's README or your brief
   names its graph or lists - never the same flow by hand beside it. A test tree from topic branches is
   `rhizoid assemble LIST` (its own locked worktree and tag; `--done TAG` once what was built from it is
-  recorded); a pin bump is `rhizoid bump` (its `rhizoid/bump/...` branch lands with `land` from a worktree on
-  that branch, which reuses the pull request `--pr` opened); a dependency to patch is a cutting (`rhizoid add`
-  or `import`); `rhizoid status` says where each edge stands. Elsewhere `branch` and `land` are the whole
-  flow. Which graph, lists and tag shapes a project uses is its brief's.
+  recorded); a pin the graph names moves only by `rhizoid bump` - never edited by hand (its
+  `rhizoid/bump/...` branch lands with `land` from a worktree on that branch, which reuses the pull request
+  `--pr` opened); a dependency to patch is a cutting (`rhizoid add` or `import`, followed by `update`);
+  `rhizoid status` says where each edge stands. A verb that changes anything outside the machine prints its
+  plan (`outward=yes|no` per step) and acts only with `now`: read the plan, then run it with `now` - the first
+  outward step for a module (a fork, a push, a merge from upstream, a cut tag) waits on the author's go.
+  Elsewhere `branch` and `land` are the whole flow. Which graph, lists and tag shapes a project uses is its
+  brief's (linux-phone-oco: each lane's command for each git job, `ideal-agent-linux-phone-oco/rhizoid.md`).
 - **Change what you mean.** Edit the exact text that changes; rows
   through the base's named records (`tad r NAME ...`). Never copy a whole file from an older copy.
 - **Check like CI.** Rust: `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, `cargo test`. A tad place: after the last data
