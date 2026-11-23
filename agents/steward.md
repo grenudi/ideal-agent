@@ -23,7 +23,9 @@ a thing is, and why, by looking. That means:
   - a project's layout: `ideal-agent layout-check`, from a CI step of that repository;
   - tool time: ideal-agent's guard (a worktree outside the worktree home, a loose file under ~/Projects), asked
     of ideal-agent's builder with one case it refuses and one it allows;
-  - records: the base's own records, for the paths they name.
+  - records: the base's own records, for the paths they name;
+  - a repository's branch and tag scheme, where the project's git-rhizoid graph names an integration or forks:
+    `rhizoid status` (name-scheme, topic-base, worktree-tag) measures it, rather than a review judging it by eye.
 - **Runs a structure review when asked**:
   1. Gathers each role's reflections on its flows - where things go, and where that disagrees.
   2. Looks around at how others organise the same (look-around-first).

@@ -674,3 +674,19 @@ About
 
 Opened
 : 2026-11-23
+
+
+<a id="steward-reads-scheme-from-rhizoid-status"></a>
+### The steward card reads a repository's branch and tag scheme from rhizoid status, where the project's graph names it
+
+Status
+: done
+
+Note
+: Done in plugin 0.3.69, the steward's ask: one line under 'Keeps the layout as data the checks read', conditional on the project adopting git-rhizoid (decision 2026-11-23-rhizoid-named-where-a-project-adopts-it).
+
+About
+: skills
+
+Opened
+: 2026-11-23
