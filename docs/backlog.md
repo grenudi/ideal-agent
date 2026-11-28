@@ -722,3 +722,25 @@ About
 
 Opened
 : 2026-11-23
+
+
+<a id="hand-off-starts-on-the-report"></a>
+### orchestrate-agents and keep-a-shared-resource: the next step starts in the turn a report is read back; archiving after; a turn's end waited on with notify_when_idle; the waker only a safety net
+
+Status
+: open
+
+Note
+: From linux-phone-oco/docs research flow-gaps-from-a-working-piece-to-the-phone and decision 2026-11-28-a-hand-off-starts-on-the-report (2026-11-28): in 24 h the lanes stood idle 35%, 55% of the long gaps ending only at the hourly waker, mostly where a coordinator waited for a reported launcher's turn to end before archiving it and starting the next. Today keep-a-shared-resource says the waker starts the next keeper - make the report the trigger and the waker the net. Also: the patrol's start-weight and hand-off-gap signs measure it.
+
+About
+: organising-agents
+
+Opened
+: 2026-11-28
+
+Needs
+: build
+
+Proof
+: The skills' text says it (orchestrate-agents' hand-off step, keep-a-shared-resource's waker paragraph, the launcher's end: report as the last act, then end the turn), and a linux-phone-oco day after it shows a median launcher-to-launcher gap under 5 min with no lane restarted by its waker
